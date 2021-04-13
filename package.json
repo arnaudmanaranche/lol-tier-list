@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "vercel-build": "prisma migrate deploy && next build",
+    "prisma:generate": "prisma generate",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "2.20.1",
