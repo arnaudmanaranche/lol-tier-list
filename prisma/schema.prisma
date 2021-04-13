@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tournament {
+  id           String    @id @default(uuid())
+  name         String
+  pandascoreId Int
+  teams        Json
+  status       Boolean   @default(true)
+  logo         String
+  year         Int
+  Ranking      Ranking[]
+}
+
+model Ranking {
+  id           String     @id @default(uuid())
+  data         Json
+  createdAt    DateTime   @default(now()) @map(name: "created_at")
+  updatedAt    DateTime   @updatedAt @map(name: "updated_at")
+  tournament   Tournament @relation(fields: [tournamentId], references: [id])
+  tournamentId String
+}
