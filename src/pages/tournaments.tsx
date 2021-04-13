@@ -43,7 +43,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const tournaments = await prisma.tournament.findMany()
 
   return {
-    props: { tournaments }
+    props: { tournaments },
+    revalidate: 3600
   }
 }
 
