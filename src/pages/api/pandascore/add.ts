@@ -18,7 +18,7 @@ export default async function synchronizeTournament(
   const organizedTeams: TEAM[] = []
 
   const unorganizedTeams = await fetch(
-    `https://api.pandascore.co/tournaments/${tournamentId}/rosters?token=2m6hvBX4vR09uxa1SMDhYG3SXXM5VibpSiMH0vv_wU0SJVZEAuo`
+    `https://api.pandascore.co/tournaments/${tournamentId}/rosters?token=${process.env.PANDASCORE_TOKEN}`
   ).then((response) => response.json())
 
   unorganizedTeams.rosters.map(
