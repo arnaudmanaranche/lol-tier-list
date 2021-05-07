@@ -6,6 +6,7 @@ const ContentSecurityPolicy = `
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
+  worker-src blob:;
   font-src 'self';
 `
 
