@@ -1,11 +1,12 @@
 {
   "name": "lol-power-ranking",
-  "description": "Share easily your League of Legends power rankings",
   "version": "0.1.0",
   "private": true,
+  "description": "Share easily your League of Legends power rankings",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "vercel-build": "prisma migrate deploy && next build",
     "prisma:generate": "prisma generate",
@@ -33,6 +34,7 @@
     "autoprefixer": "10.2.5",
     "eslint": "7.23.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
+    "next-sitemap": "1.6.49",
     "postcss": "8.2.9",
     "prettier": "2.2.1",
     "prisma": "2.20.1",
