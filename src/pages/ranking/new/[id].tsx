@@ -1,6 +1,7 @@
-import { GetServerSideProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 import Button from 'Components/Button'
@@ -23,8 +24,14 @@ type Props = {
 }
 
 const Ranking: React.FC<Props> = ({ tournament }) => {
-  const { teams, id, logo, name } = tournament
+  const router = useRouter()
 
+  // Make a clean loading state
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
+  const { teams, id, logo, name } = tournament
   const [modalOpen, toggleModal] = React.useState(false)
   const [rankingId, setRankingId] = React.useState('')
 
@@ -155,7 +162,20 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const tournaments = await prisma.tournament.findMany()
+
+  const paths = tournaments.map((tournament) => ({
+    params: { id: tournament.id }
+  }))
+
+  return {
+    paths,
+    fallback: true
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params
 
   const tournament = await prisma.tournament.findUnique({
@@ -173,7 +193,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   }
 
   return {
-    props: { tournament }
+    props: { tournament },
+    revalidate: 3600
   }
 }
 
