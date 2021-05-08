@@ -4,8 +4,10 @@ import Header from './header'
 const Layout: React.FC<React.ReactNode> = ({ children }) => (
   <>
     <Header />
-    <main className="relative p-5">{children}</main>
-    <Footer />
+    <div className="flex flex-col w-full min-h-screen">
+      <main className="flex-grow mt-10">{children}</main>
+      <Footer />
+    </div>
   </>
 )
 

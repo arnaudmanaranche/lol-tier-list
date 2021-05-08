@@ -20,5 +20,6 @@ module.exports = {
         body: ['Merriweather']
       }
     }
-  }
+  },
+  plugins: [require('@tailwindcss/typography')]
 }
