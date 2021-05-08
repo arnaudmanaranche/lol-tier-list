@@ -17,7 +17,7 @@ const Footer: React.FC = () => (
     <p>
       Stats provided by{' '}
       <Link href="https://pandascore.co/">
-        <a className="text-primary" target="_blank">
+        <a className="text-primary" target="_blank" rel="noreferrer noopener">
           PandaScore
         </a>
       </Link>
