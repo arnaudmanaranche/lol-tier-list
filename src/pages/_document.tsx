@@ -66,7 +66,10 @@ class AppDocument extends Document {
           />
           <script async src="https://cdn.panelbear.com/analytics.js?site=EDTH57eGNsp" />
           <script dangerouslySetInnerHTML={{ __html: getPanelbearScript() }}></script>
-          <script src="https://cmp.osano.com/169le9SWhqJ5CDSP/d125558d-b1ba-4e3b-a1f2-7fb2afc827d7/osano.js"></script>
+          <script
+            async
+            src="https://cmp.osano.com/169le9SWhqJ5CDSP/d125558d-b1ba-4e3b-a1f2-7fb2afc827d7/osano.js"
+          ></script>
         </Head>
         <body>
           <Main />
