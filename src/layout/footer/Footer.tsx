@@ -5,11 +5,13 @@ const Footer: React.FC = () => (
     <div className="flex">
       <p className="mb-3 mr-3">
         <Link href="https://lolpowerranking.statuspage.io/">
-          <a target="_blank">Status</a>
+          <a target="_blank" rel="noreferrer noopener">
+            Status
+          </a>
         </Link>
       </p>
       <p className="mb-3">
-        <Link href="/privacy-policy">
+        <Link href="/privacy-policy" prefetch={false}>
           <a>Privacy Policy</a>
         </Link>
       </p>
