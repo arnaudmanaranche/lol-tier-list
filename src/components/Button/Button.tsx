@@ -7,11 +7,11 @@ type Props = {
 }
 
 const Button: React.FC<Props> = ({ children, onClick, href }) => {
-  const className = 'p-4 uppercase border-2 border-primary'
+  const className = 'p-4 text-center uppercase transition rounded bg-primary hover:bg-primaryDark'
 
   if (href) {
     return (
-      <Link href={href}>
+      <Link href={href} prefetch={false}>
         <a className={className}>{children}</a>
       </Link>
     )

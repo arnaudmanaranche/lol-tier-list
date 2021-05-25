@@ -38,7 +38,7 @@ const Player: React.FC<Props> = ({ name, role, value, onUpdate, disabled }) => {
   }
 
   const className = clsx(
-    'flex uppercase items-center justify-center h-full px-1.5 py-2.5 border-0	',
+    'flex uppercase items-center justify-center h-full px-1.5 py-2.5 border-0',
     currentClassname
   )
 

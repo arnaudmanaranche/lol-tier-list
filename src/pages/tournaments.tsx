@@ -13,21 +13,23 @@ type PROPS = {
 }
 
 const Tournaments: React.FC<PROPS> = ({ tournaments }) => (
-  <>
+  <div className="max-w-screen-md mx-auto">
     <Head>
       <title>{`Tournaments - ${DEFAULT_TITLE}`}</title>
     </Head>
-    <h1 className="text-center">Select a tournament</h1>
+    <div className="m-auto mb-10 prose lg:prose-xl">
+      <h1 className="text-center">Select a tournament</h1>
+    </div>
     {tournaments.length === 0 ? (
       <Error className="text-center">
         <p>No tournament are available for the moment.</p>
         <p>Please try again later.</p>
       </Error>
     ) : (
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
         {tournaments.map((tournament) => {
           return (
-            <Link key={tournament.id} href={`/ranking/new/${tournament.id}`}>
+            <Link key={tournament.id} href={`/ranking/new/${tournament.id}`} prefetch={false}>
               <a>
                 <Tournament {...tournament} />
               </a>
@@ -36,7 +38,7 @@ const Tournaments: React.FC<PROPS> = ({ tournaments }) => (
         })}
       </div>
     )}
-  </>
+  </div>
 )
 
 export const getStaticProps: GetStaticProps = async () => {

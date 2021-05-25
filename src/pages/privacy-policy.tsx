@@ -1,5 +1,5 @@
 const PrivacyPolicy: React.FC = () => (
-  <article className="m-auto prose lg:prose-xl">
+  <div className="m-auto prose lg:prose-xl">
     <h1>Privacy Policy</h1>
     <p>Last updated: May 08, 2021</p>
     <p>
@@ -420,7 +420,7 @@ const PrivacyPolicy: React.FC = () => (
     <ul>
       <li>By email: contact@lol-power-ranking.app</li>
     </ul>
-  </article>
+  </div>
 )
 
 export default PrivacyPolicy
