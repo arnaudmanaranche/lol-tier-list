@@ -6,4 +6,17 @@
 
 ### [Documentation](https://github.com/arnaudmanaranche/lol-power-ranking/wiki/Documentation)
 
-### [Contributing](https://github.com/arnaudmanaranche/lol-power-ranking/wiki/Contributing)
+## How to run
+
+Would you like to contribute? Awesome! 👏 
+
+    $ git clone git@github.com:your-github-username/lol-power-ranking
+
+Install dependencies
+
+    $ cd lol-power-ranking
+    $ npm install
+
+Start app on localhost:3000 by running the following command
+
+    $ npm run dev
