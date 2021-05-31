@@ -26,14 +26,18 @@ const Tournaments: React.FC<PROPS> = ({ tournaments }) => (
         <p>Please try again later.</p>
       </Error>
     ) : (
-      <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-10 md:grid-cols-3">
         {tournaments.map((tournament) => {
-          return (
+          return tournament.status ? (
             <Link key={tournament.id} href={`/ranking/new/${tournament.id}`} prefetch={false}>
               <a>
                 <Tournament {...tournament} />
               </a>
             </Link>
+          ) : (
+            <div className="opacity-50 cursor-not-allowed" key={tournament.id}>
+              <Tournament {...tournament} />
+            </div>
           )
         })}
       </div>

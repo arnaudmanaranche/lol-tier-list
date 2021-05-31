@@ -82,11 +82,11 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
       </Head>
       <div className="m-auto mb-10 prose lg:prose-xl">
         <h1 className="flex items-center justify-center mb-4 capitalize">
-          <Image src={logo} height={60} width={60} />
+          <Image src={logo} alt={`${name} logo`} height={60} width={60} />
           <p>{name}</p>
         </h1>
       </div>
-      <div className="grid gap-10 mx-auto sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-10 px-6 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:px-0">
         {ranking?.map(
           ({
             id: teamId,
@@ -113,7 +113,7 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
           )
         )}
       </div>
-      <div className="my-6 text-center">
+      <div className="m-6 text-center">
         <Button
           onClick={() => {
             openModal()
