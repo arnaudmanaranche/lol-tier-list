@@ -80,11 +80,11 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${name} logo`} />
       </Head>
-      <div className="m-auto mb-10 prose lg:prose-xl">
-        <h1 className="flex items-center justify-center mb-4 capitalize">
-          <Image src={logo} alt={`${name} logo`} height={60} width={60} />
-          <p>{name}</p>
-        </h1>
+      <div className="flex items-center justify-center w-full mb-10">
+        <Image src={logo} alt={`${name} logo`} height={70} width={70} />
+        <div className="prose lg:prose-xl">
+          <h1>{name}</h1>
+        </div>
       </div>
       <div className="grid gap-10 px-6 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:px-0">
         {ranking?.map(
@@ -182,7 +182,11 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const tournaments = await prisma.tournament.findMany()
+  const tournaments = await prisma.tournament.findMany({
+    where: {
+      status: true
+    }
+  })
 
   const paths = tournaments.map((tournament) => ({
     params: { id: tournament.id }
