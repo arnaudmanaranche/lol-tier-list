@@ -20,3 +20,7 @@ Install dependencies
 Start app on localhost:3000 by running the following command
 
     $ npm run dev
+
+## Roadmap
+
+Check what's coming next within the web app on the [Trello board](https://trello.com/b/ee4e6psd/lol-power-ranking).
