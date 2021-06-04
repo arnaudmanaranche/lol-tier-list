@@ -17,6 +17,11 @@ Install dependencies
     $ cd lol-power-ranking
     $ npm install
 
+Create a `.env` file
+
+    DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA
+    PANDASCORE_TOKEN=YOUR_TOKEN
+
 Start app on localhost:3000 by running the following command
 
     $ npm run dev
