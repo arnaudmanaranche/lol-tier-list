@@ -20,7 +20,7 @@
     "@svgr/webpack": "5.5.0",
     "babel-plugin-superjson-next": "0.2.3",
     "clsx": "1.1.1",
-    "next": "10.2.0",
+    "next": "11.0.0",
     "node-fetch": "2.6.1",
     "preact": "10.5.13",
     "react": "17.0.2",
@@ -36,14 +36,15 @@
     "@typescript-eslint/parser": "4.21.0",
     "autoprefixer": "10.2.5",
     "eslint": "7.23.0",
+    "eslint-config-next": "11.0.1",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "next-sitemap": "1.6.49",
     "postcss": "8.2.9",
     "prettier": "2.2.1",
     "prisma": "2.20.1",
     "sort-package-json": "1.49.0",
-    "tailwindcss": "2.1.1",
+    "tailwindcss": "2.2.0",
     "ts-node": "9.1.1",
-    "typescript": "4.2.4"
+    "typescript": "4.3.4"
   }
 }
