@@ -12,12 +12,12 @@ const Tournament: React.FC<TOURNAMENT> = ({ name, logo, status }) => (
     )}
   >
     {!status && (
-      <div className="text-sm font-bold bg-primary ribbon">
+      <div className="absolute top-0 right-0 w-24 mt-4 -mr-5 text-sm font-bold bg-primary transform rotate-[45deg]">
         <p>Soon</p>
       </div>
     )}
     <Image src={logo} alt={`${name} logo`} height={60} width={60} />
-    <p className="capitalize text-dark">{name}</p>
+    <p className="capitalize text-dark dark:text-white">{name}</p>
   </div>
 )
 

@@ -39,11 +39,11 @@ const Player: React.FC<Props> = ({ name, role, value, onUpdate, disabled }) => {
 
   const className = clsx(
     'flex uppercase items-center justify-center h-full px-1.5 py-2.5 border-0',
-    currentClassname
+    currentClassname ? currentClassname : 'bg-white'
   )
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between text-black dark:text-black">
       <p className="p-2 uppercase">{role}</p>
       <p className="p-2">{name}</p>
       {disabled ? (

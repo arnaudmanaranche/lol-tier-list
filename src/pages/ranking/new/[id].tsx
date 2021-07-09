@@ -83,7 +83,7 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
       <div className="flex items-center justify-center w-full mb-10">
         <Image src={logo} alt={`${name} logo`} height={70} width={70} />
         <div className="prose lg:prose-xl">
-          <h1>{name}</h1>
+          <h1 className="dark:text-white">{name}</h1>
         </div>
       </div>
       <div className="grid gap-10 px-6 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:px-0">

@@ -6,7 +6,7 @@ const { TOURNAMENTS } = ROUTES
 const Home: React.FC = () => (
   <div className="flex flex-col items-center text-center">
     <div className="m-auto mb-10 prose lg:prose-xl">
-      <h1>Share easily your League of Legends power rankings</h1>
+      <h1 className="dark:text-white">Share easily your League of Legends power rankings</h1>
     </div>
     <Button href={TOURNAMENTS}>Create yours</Button>
   </div>

@@ -18,7 +18,7 @@ const Tournaments: React.FC<PROPS> = ({ tournaments }) => (
       <title>{`Tournaments - ${DEFAULT_TITLE}`}</title>
     </Head>
     <div className="m-auto mb-10 prose lg:prose-xl">
-      <h1 className="text-center">Select a tournament</h1>
+      <h1 className="text-center dark:text-white">Select a tournament</h1>
     </div>
     {tournaments.length === 0 ? (
       <Error className="text-center">

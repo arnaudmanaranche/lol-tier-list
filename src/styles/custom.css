@@ -11,13 +11,3 @@
   font-display: optional;
   src: url('/fonts/merriweather.woff2') format('woff2');
 }
-
-.ribbon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100px;
-  margin-right: -20px;
-  margin-top: 15px;
-  transform: rotate(45deg);
-}

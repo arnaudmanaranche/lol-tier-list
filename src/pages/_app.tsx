@@ -2,6 +2,7 @@ import * as Sentry from '@sentry/react'
 import { Integrations } from '@sentry/tracing'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { ThemeProvider } from 'next-themes'
 
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
@@ -32,9 +33,11 @@ const App = ({ Component, pageProps }: AppProps) => (
       <meta name="twitter:title" content={DEFAULT_TITLE} key="twitter:title" />
       <meta name="twitter:description" content={DEFAULT_DESCRIPTION} key="twitter:description" />
     </Head>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ThemeProvider attribute="class">
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   </>
 )
 
