@@ -8,7 +8,7 @@
 
 ## How to run
 
-Would you like to contribute? Awesome! 👏 
+Would you like to contribute? Awesome! 👏
 
     $ git clone git@github.com:your-github-username/lol-power-ranking
 
@@ -28,4 +28,4 @@ Start app on localhost:3000 by running the following command
 
 ## Roadmap
 
-Check what's coming next within the web app on the [Trello board](https://trello.com/b/ee4e6psd/lol-power-ranking).
+Check what's coming next within the web app on the [Notion page](https://spectacled-month-229.notion.site/a2af6ae9e2c54c2f84e00487915985a9?v=4a974d2f2a6741aaa3fb2ef2cc87216c).
