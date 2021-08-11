@@ -1,6 +1,7 @@
 # LoL Power Ranking
 
 [![](https://img.shields.io/security-headers?style=flat-square&url=https%3A%2F%2Flol-power-ranking.app%2F)](https://shields.io/)
+[![](https://img.shields.io/github/deployments/arnaudmanaranche/lol-power-ranking/production?label=Vercel&style=flat-square)](https://shields.io/)
 
 ## Wiki
 
