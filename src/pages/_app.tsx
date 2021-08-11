@@ -15,7 +15,7 @@ import '../styles/custom.css'
 
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
-    dsn: 'https://414bc62ada7a494dbecebef07435dca4@o81045.ingest.sentry.io/5717735',
+    dsn: process.env.SENTRY_DSN,
     release: `lol-power-ranking@${packageJson.version}`,
     integrations: [new Integrations.BrowserTracing()],
     tracesSampleRate: 1.0

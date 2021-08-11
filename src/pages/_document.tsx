@@ -2,7 +2,7 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 
 const PANELBEAR_CONFIG = {
-  site: 'EDTH57eGNsp',
+  site: process.env.PANELBEAR_SITE_ID,
   spaMode: 'history',
   debug: false
 }
@@ -64,12 +64,12 @@ class AppDocument extends Document {
             type="font/woff2"
             crossOrigin="true"
           />
-          <script async src="https://cdn.panelbear.com/analytics.js?site=EDTH57eGNsp" />
-          <script dangerouslySetInnerHTML={{ __html: getPanelbearScript() }}></script>
           <script
             async
-            src="https://cmp.osano.com/169le9SWhqJ5CDSP/d125558d-b1ba-4e3b-a1f2-7fb2afc827d7/osano.js"
-          ></script>
+            src={`https://cdn.panelbear.com/analytics.js?site=${process.env.PANELBEAR_SITE_ID}`}
+          />
+          <script dangerouslySetInnerHTML={{ __html: getPanelbearScript() }}></script>
+          <script async src={process.env.OSANO_URL}></script>
         </Head>
         <body>
           <Main />
