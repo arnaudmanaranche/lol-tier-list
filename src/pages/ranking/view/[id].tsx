@@ -23,17 +23,32 @@ const ViewRanking: React.FC<Props> = ({ ranking }) => (
     </Head>
     <div className="m-auto mb-10 prose lg:prose-xl">
       <h1 className="flex items-center justify-center mb-4 capitalize">
-        <Image src={ranking.tournament.logo} height={60} width={60} />
+        <Image
+          src={ranking.tournament.logo}
+          alt={`${ranking?.tournament?.name} logo`}
+          height={60}
+          width={60}
+          id={ranking?.tournament?.name}
+          onLoadingComplete={() => {
+            const img = document.getElementById(ranking?.tournament?.name)
+
+            img.classList.add('imageIsLoaded')
+          }}
+          placeholder="blur"
+          blurDataURL={ranking?.tournament?.base64}
+          className="image"
+        />
         <p>{ranking.tournament.name}</p>
       </h1>
     </div>
     <div className="grid gap-10 mx-auto sm:grid-cols-2 md:grid-cols-3">
-      {ranking?.data?.map(({ id: teamId, logo, name, players }) => (
+      {ranking?.data?.map(({ id: teamId, logo, name, players, base64 }) => (
         <Team
           onUpdate={() => null}
           key={teamId}
           id={teamId}
           logo={logo}
+          base64={base64}
           disabled
           name={name}
           players={players}

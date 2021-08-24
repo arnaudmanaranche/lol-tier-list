@@ -11,3 +11,15 @@
   font-display: optional;
   src: url('/fonts/merriweather.woff2') format('woff2');
 }
+
+.image {
+  transition: 0.3s ease;
+  transition-property: opacity, transform, filter;
+  will-change: transform, filter;
+}
+
+.imageIsLoaded {
+  @apply opacity-100;
+  filter: blur(0px);
+  transform: scale(1);
+}

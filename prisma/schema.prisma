@@ -14,6 +14,7 @@ model Tournament {
   teams        Json
   status       Boolean   @default(true)
   logo         String
+  base64       String
   year         Int
   Ranking      Ranking[]
 }

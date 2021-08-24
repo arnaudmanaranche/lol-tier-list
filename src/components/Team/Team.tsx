@@ -8,11 +8,25 @@ interface Props extends TEAM {
   disabled: boolean
 }
 
-const Team: React.FC<Props> = ({ logo, name, players, onUpdate, disabled }) => {
+const Team: React.FC<Props> = ({ base64, logo, name, players, onUpdate, disabled }) => {
   return (
     <div className="h-full bg-white border-b-2 border-solid dark:bg-white header-shadow border-primary">
       <div className="flex items-center p-2 bg-primary">
-        <Image src={logo} alt={`${name} logo`} height={60} width={60} />
+        <Image
+          src={logo}
+          alt={`${name} logo`}
+          height={60}
+          width={60}
+          id={name}
+          onLoadingComplete={() => {
+            const img = document.getElementById(name)
+
+            img.classList.add('imageIsLoaded')
+          }}
+          placeholder="blur"
+          blurDataURL={base64}
+          className="image"
+        />
         <p className="m-2 font-bold text-black dark:text-black">{name}</p>
       </div>
       {players.map(({ name: playerName, role, id: playerId, value }) => (

@@ -25,7 +25,7 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
     return <div>Loading...</div>
   }
 
-  const { teams, id, logo, name } = tournament
+  const { teams, id, logo, name, base64 } = tournament
 
   function closeModal() {
     setOpen(false)
@@ -81,7 +81,21 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
         <meta property="og:image:alt" content={`${name} logo`} />
       </Head>
       <div className="flex items-center justify-center w-full mb-10">
-        <Image src={logo} alt={`${name} logo`} height={70} width={70} />
+        <Image
+          src={logo}
+          alt={`${name} logo`}
+          height={70}
+          width={70}
+          id={name}
+          onLoadingComplete={() => {
+            const img = document.getElementById(name)
+
+            img.classList.add('imageIsLoaded')
+          }}
+          placeholder="blur"
+          blurDataURL={base64}
+          className="image"
+        />
         <div className="prose lg:prose-xl">
           <h1 className="dark:text-white">{name}</h1>
         </div>
@@ -92,11 +106,13 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
             id: teamId,
             logo,
             name,
-            players
+            players,
+            base64
           }: {
             id: number
             logo: string
             name: string
+            base64: string
             players: PLAYER[]
           }) => (
             <Team
@@ -105,6 +121,7 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
               disabled={false}
               logo={logo}
               name={name}
+              base64={base64}
               players={players}
               onUpdate={(value, playerId) => {
                 onUpdate(value, playerId, teamId)

@@ -18,6 +18,7 @@ export type TEAM = {
   id: number
   acronym?: string
   logo: string
+  base64: string
   name: string
   players: PLAYER[]
 }
@@ -34,6 +35,7 @@ export type TOURNAMENT = {
   logo: string
   name: string
   status: boolean
+  base64: string
   year: number
   pandascoreId: number
   teams: TEAM[]
