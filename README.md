@@ -18,10 +18,13 @@ Install dependencies
     $ cd lol-power-ranking
     $ npm install
 
-Create a `.env` file
+Copy example dotenv file without the .example extension
 
-    DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA
-    PANDASCORE_TOKEN=YOUR_TOKEN
+    $ cp .env.example .env
+
+Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+    $ nvm use
 
 Start app on localhost:3000 by running the following command
 
