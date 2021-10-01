@@ -4,7 +4,7 @@ import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/do
 const PANELBEAR_CONFIG = {
   site: process.env.PANELBEAR_SITE_ID,
   spaMode: 'history',
-  debug: false
+  debug: process.env.NODE_ENV === 'development'
 }
 
 function getPanelbearScript() {

@@ -135,6 +135,7 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
           onClick={() => {
             openModal()
             createRanking()
+            window.panelbear('track', `new_ranking_for_tournament_${tournament.id}`)
           }}
         >{`Create my ${name} power raking`}</Button>
       </div>
