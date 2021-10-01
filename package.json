@@ -53,5 +53,6 @@
   },
   "prisma": {
     "seed": "node prisma/seed.js"
-  }
+  },
+  "packageManager": "yarn@3.0.2"
 }
