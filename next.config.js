@@ -1,3 +1,42 @@
+// @ts-check
+/**
+ * @type {import('next').NextConfig}
+ */
+module.exports = {
+  webpack5: true,
+  future: {
+    strictPostcssConfiguration: true
+  },
+  reactStrictMode: true,
+  webpack: (config, { dev, isServer }) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack']
+    })
+
+    // Replace React with Preact only in client production build
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom': 'preact/compat'
+      })
+    }
+
+    return config
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders
+      }
+    ]
+  },
+  images: {
+    domains: ['firebasestorage.googleapis.com']
+  }
+}
+
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.panelbear.com cmp.osano.com;
@@ -40,38 +79,3 @@ const securityHeaders = [
     value: 'camera=(), microphone=(), geolocation=()'
   }
 ]
-
-module.exports = {
-  webpack5: true,
-  future: {
-    strictPostcssConfiguration: true
-  },
-  reactStrictMode: true,
-  webpack: (config, { dev, isServer }) => {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack']
-    })
-
-    // Replace React with Preact only in client production build
-    if (!dev && !isServer) {
-      Object.assign(config.resolve.alias, {
-        react: 'preact/compat',
-        'react-dom': 'preact/compat'
-      })
-    }
-
-    return config
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders
-      }
-    ]
-  },
-  images: {
-    domains: ['firebasestorage.googleapis.com']
-  }
-}
