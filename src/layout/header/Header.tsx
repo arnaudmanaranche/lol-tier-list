@@ -1,31 +1,43 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
-import { DEFAULT_TITLE, ROUTES } from 'Utils/constants'
+import { checkUser, handleAuthChange, login, logout } from 'Utils/auth'
+import { DEFAULT_TITLE, ROUTES, SUPABASE_EVENTS } from 'Utils/constants'
+import supabase from 'Utils/supabase'
 
-import Moon from '../../svgs/moon.svg'
-import Sun from '../../svgs/sun.svg'
+import { useSetUser, useUser } from '../../contexts/user'
 
 const { HOME, TOURNAMENTS } = ROUTES
 
 const LINKS = [{ label: 'Tournaments', path: TOURNAMENTS }]
 
-const LIGHT = 'light'
-const DARK = 'dark'
-
 const Header: React.FC = () => {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const user = useUser()
+  const setUser = useSetUser()
   const router = useRouter()
 
-  useEffect(() => setMounted(true), [])
-
-  if (!mounted) return null
-
   const { pathname } = router
+
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      handleAuthChange(event, session)
+
+      if (event === SUPABASE_EVENTS.SIGNED_IN) {
+        checkUser(session?.user)
+        setUser(session?.user)
+      }
+
+      if (event === SUPABASE_EVENTS.SIGNED_OUT) {
+        setUser(null)
+      }
+    })
+
+    return () => {
+      authListener.unsubscribe()
+    }
+  }, [])
 
   return (
     <header className="text-gray-600 body-font">
@@ -47,18 +59,7 @@ const Header: React.FC = () => {
             </Link>
           ))}
         </nav>
-        <Moon
-          className={clsx('w-5 h-5 cursor-pointer', theme === DARK && 'hidden')}
-          onClick={() => {
-            setTheme(DARK)
-          }}
-        />
-        <Sun
-          className={clsx('w-5 h-5 text-white cursor-pointer', theme === LIGHT && 'hidden')}
-          onClick={() => {
-            setTheme(LIGHT)
-          }}
-        />
+        {user ? <div onClick={logout}>Logout</div> : <div onClick={login}>Login</div>}
       </div>
     </header>
   )

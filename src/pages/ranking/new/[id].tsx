@@ -1,29 +1,25 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import type { User } from '@supabase/gotrue-js'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import { Fragment, useRef, useState } from 'react'
 
 import Button from 'Components/Button'
 import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
+import supabase from 'Utils/supabase'
 import { PLAYER, TOURNAMENT } from 'Utils/types'
 
 type Props = {
   tournament: TOURNAMENT
+  user: User
 }
 
-const Ranking: React.FC<Props> = ({ tournament }) => {
-  const router = useRouter()
+const Ranking: React.FC<Props> = ({ tournament, user }) => {
   const [open, setOpen] = useState(false)
   const cancelButtonRef = useRef()
-
-  // Make a clean loading state
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
 
   const { teams, id, logo, name, base64 } = tournament
 
@@ -45,7 +41,7 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ranking, tournamentId: id })
+      body: JSON.stringify({ ranking, tournamentId: id, userId: user?.id })
     }
 
     try {
@@ -199,24 +195,7 @@ const Ranking: React.FC<Props> = ({ tournament }) => {
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const tournaments = await prisma.tournament.findMany({
-    where: {
-      status: true
-    }
-  })
-
-  const paths = tournaments.map((tournament) => ({
-    params: { id: tournament.id }
-  }))
-
-  return {
-    paths,
-    fallback: true
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
   const { id } = params
 
   const tournament = await prisma.tournament.findUnique({
@@ -233,9 +212,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 
+  const { user } = await supabase.auth.api.getUserByCookie(req)
+
   return {
-    props: { tournament },
-    revalidate: 3600
+    props: { tournament, user }
   }
 }
 

@@ -7,6 +7,7 @@ import { ThemeProvider } from 'next-themes'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
 import packageJson from '../../package.json'
+import { UserProvider } from '../contexts/user'
 import Layout from '../layout/Layout'
 
 import '../styles/tailwind.css'
@@ -33,11 +34,13 @@ const App = ({ Component, pageProps }: AppProps) => (
       <meta name="twitter:title" content={DEFAULT_TITLE} key="twitter:title" />
       <meta name="twitter:description" content={DEFAULT_DESCRIPTION} key="twitter:description" />
     </Head>
-    <ThemeProvider attribute="class">
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <UserProvider>
+      <ThemeProvider attribute="class">
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </UserProvider>
   </>
 )
 

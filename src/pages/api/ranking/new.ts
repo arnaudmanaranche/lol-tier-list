@@ -6,12 +6,13 @@ export default async function createRanking(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
-  const { ranking, tournamentId } = req.body
+  const { ranking, tournamentId, userId } = req.body
 
   const result = await prisma.ranking.create({
     data: {
       data: ranking,
-      tournamentId
+      userId,
+      tournamentId: tournamentId
     }
   })
 
