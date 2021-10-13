@@ -4,10 +4,10 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'next-themes'
 
+import { UserProvider } from 'Contexts/user'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
 import packageJson from '../../package.json'
-import { UserProvider } from '../contexts/user'
 import Layout from '../layout/Layout'
 
 import '../styles/tailwind.css'

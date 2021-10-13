@@ -3,11 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
+import { useSetUser, useUser } from 'Contexts/user'
 import { checkUser, handleAuthChange, login, logout } from 'Utils/auth'
 import { DEFAULT_TITLE, ROUTES, SUPABASE_EVENTS } from 'Utils/constants'
 import supabase from 'Utils/supabase'
-
-import { useSetUser, useUser } from '../../contexts/user'
 
 const { HOME, TOURNAMENTS } = ROUTES
 

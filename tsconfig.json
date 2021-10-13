@@ -16,6 +16,7 @@
     "strict": false,
     "baseUrl": ".",
     "paths": {
+      "Contexts/*": ["src/contexts/*"],
       "Components/*": ["src/components/*"],
       "Utils/*": ["src/utils/*"]
     }
