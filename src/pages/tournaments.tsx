@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -6,6 +6,7 @@ import Error from 'Components/Error'
 import Tournament from 'Components/Tournament'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
+import protectedRoute from 'Utils/protectedRoute'
 import { TOURNAMENT } from 'Utils/types'
 
 type PROPS = {
@@ -45,13 +46,11 @@ const Tournaments: React.FC<PROPS> = ({ tournaments }) => (
   </div>
 )
 
-export const getStaticProps: GetStaticProps = async () => {
-  const tournaments = await prisma.tournament.findMany()
+export const getServerSideProps: GetServerSideProps = (context) =>
+  protectedRoute(context, async () => {
+    const tournaments = await prisma.tournament.findMany()
 
-  return {
-    props: { tournaments },
-    revalidate: 3600
-  }
-}
+    return { tournaments }
+  })
 
 export default Tournaments
