@@ -9,6 +9,7 @@ import Button from 'Components/Button'
 import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
+import protectedRoute from 'Utils/protectedRoute'
 import supabase from 'Utils/supabase'
 import { PLAYER, TOURNAMENT } from 'Utils/types'
 
@@ -195,28 +196,27 @@ const Ranking: React.FC<Props> = ({ tournament, user }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
-  const { id } = params
+export const getServerSideProps: GetServerSideProps = (context) =>
+  protectedRoute(context, async () => {
+    const { id } = context.params
 
-  const tournament = await prisma.tournament.findUnique({
-    where: {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      id
+    const tournament = await prisma.tournament.findUnique({
+      where: {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        id
+      }
+    })
+
+    if (!tournament) {
+      return {
+        notFound: true
+      }
     }
+
+    const { user } = await supabase.auth.api.getUserByCookie(context.req)
+
+    return { tournament, user }
   })
-
-  if (!tournament) {
-    return {
-      notFound: true
-    }
-  }
-
-  const { user } = await supabase.auth.api.getUserByCookie(req)
-
-  return {
-    props: { tournament, user }
-  }
-}
 
 export default Ranking
