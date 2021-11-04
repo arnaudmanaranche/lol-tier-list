@@ -16,7 +16,7 @@ Would you like to contribute? Awesome! 👏
 Install dependencies
 
     $ cd lol-power-ranking
-    $ npm install
+    $ yarn
 
 Copy example dotenv file without the .example extension
 
@@ -28,4 +28,4 @@ Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-
 
 Start app on localhost:3000 by running the following command
 
-    $ npm run dev
+    $ yarn dev
