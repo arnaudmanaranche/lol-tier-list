@@ -24,15 +24,19 @@ const Settings = ({ user }: { user: User }): ReactElement => {
 
   return (
     <div className="max-w-screen-md mx-auto">
-      <h1 className="mb-5">Settings</h1>
-      <div className="py-16">
-        Toggle mode
+      <div className="mb-5">
+        <h1 className="mb-2 text-3xl font-title">Account</h1>
+        <p className="text-md">Email: {user.email}</p>
+      </div>
+      <h1 className="mb-5 text-3xl font-title">Settings</h1>
+      <div className="flex items-center">
+        <span className="mr-3">Toggle mode</span>
         <Switch
           checked={theme === DARK}
           onChange={() => {
             theme === DARK ? setTheme(LIGHT) : setTheme(DARK)
           }}
-          className={`${theme === DARK ? 'bg-red-900' : 'bg-blue-700'}
+          className={`${theme === DARK ? 'bg-primaryDark' : 'bg-dark'}
           relative inline-flex flex-shrink-0 h-[38px] w-[74px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
         >
           <span className="sr-only">Toggle mode</span>
