@@ -4,9 +4,8 @@ import type { ReactElement } from 'react'
 import { useState } from 'react'
 
 import Button from 'Components/Button'
-import { ROUTES } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import supabase from 'Utils/supabase'
+import protectedRoute from 'Utils/protectedRoute'
 import { RANKING } from 'Utils/types'
 
 const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
@@ -38,7 +37,7 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
     <div className="max-w-screen-md mx-auto">
       <h1 className="mb-5">My Rankings</h1>
       <ul>
-        {myRankings.map((ranking) => (
+        {myRankings?.map((ranking) => (
           <li className="flex items-center justify-around" key={ranking.id}>
             <div className="flex items-center">
               <Image
@@ -74,23 +73,18 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const { user } = await supabase.auth.api.getUserByCookie(req)
+export const getServerSideProps: GetServerSideProps = (context) =>
+  protectedRoute(context, async (user) => {
+    const rankings = await prisma.ranking.findMany({
+      where: {
+        userId: user.id
+      },
+      include: {
+        tournament: true
+      }
+    })
 
-  if (!user) {
-    return { props: {}, redirect: { destination: ROUTES.HOME } }
-  }
-
-  const rankings = await prisma.ranking.findMany({
-    where: {
-      userId: user.id
-    },
-    include: {
-      tournament: true
-    }
+    return { rankings }
   })
-
-  return { props: { rankings } }
-}
 
 export default MyRankings

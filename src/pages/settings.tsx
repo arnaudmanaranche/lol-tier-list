@@ -5,8 +5,7 @@ import { useTheme } from 'next-themes'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
-import { ROUTES } from 'Utils/constants'
-import supabase from 'Utils/supabase'
+import protectedRoute from 'Utils/protectedRoute'
 
 const LIGHT = 'light'
 const DARK = 'dark'
@@ -51,14 +50,8 @@ const Settings = ({ user }: { user: User }): ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const { user } = await supabase.auth.api.getUserByCookie(req)
-
-  if (!user) {
-    return { props: {}, redirect: { destination: ROUTES.HOME } }
-  }
-
-  return { props: { user } }
+export const getServerSideProps: GetServerSideProps = (context) => {
+  return protectedRoute(context)
 }
 
 export default Settings

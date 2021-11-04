@@ -10,7 +10,6 @@ import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import protectedRoute from 'Utils/protectedRoute'
-import supabase from 'Utils/supabase'
 import { PLAYER, TOURNAMENT } from 'Utils/types'
 
 type Props = {
@@ -214,9 +213,7 @@ export const getServerSideProps: GetServerSideProps = (context) =>
       }
     }
 
-    const { user } = await supabase.auth.api.getUserByCookie(context.req)
-
-    return { tournament, user }
+    return { tournament }
   })
 
 export default Ranking

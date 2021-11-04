@@ -21,14 +21,14 @@ const Tournaments: React.FC<PROPS> = ({ tournaments }) => (
     <div className="m-auto mb-10 prose lg:prose-xl">
       <h1 className="text-center dark:text-white">Select a tournament</h1>
     </div>
-    {tournaments.length === 0 ? (
+    {tournaments?.length === 0 ? (
       <Error className="text-center">
         <p>No tournament are available for the moment.</p>
         <p>Please try again later.</p>
       </Error>
     ) : (
       <div className="grid grid-cols-2 gap-10 md:grid-cols-3">
-        {tournaments.map((tournament) => {
+        {tournaments?.map((tournament) => {
           return tournament.status ? (
             <Link key={tournament.id} href={`/ranking/new/${tournament.id}`} prefetch={false}>
               <a>
