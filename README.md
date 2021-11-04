@@ -29,7 +29,3 @@ Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-
 Start app on localhost:3000 by running the following command
 
     $ npm run dev
-
-## Roadmap
-
-Check what's coming next within the web app on the [Notion page](https://enaut.notion.site/a2af6ae9e2c54c2f84e00487915985a9?v=4a974d2f2a6741aaa3fb2ef2cc87216c).
