@@ -1,10 +1,15 @@
 import { Switch } from '@headlessui/react'
 import type { User } from '@supabase/gotrue-js'
 import type { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
+import Button from 'Components/Button'
+import { useSetUser } from 'Contexts/user'
+import { logout } from 'Utils/auth'
+import { ROUTES } from 'Utils/constants'
 import protectedRoute from 'Utils/protectedRoute'
 
 const LIGHT = 'light'
@@ -12,12 +17,32 @@ const DARK = 'dark'
 
 const Settings = ({ user }: { user: User }): ReactElement => {
   const [mounted, setMounted] = useState(false)
-
+  const router = useRouter()
   const { theme, setTheme } = useTheme()
+  const setUser = useSetUser()
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  const deleteUser = async (userId) => {
+    const user = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userId })
+    }
+
+    try {
+      await logout()
+      await fetch('/api/user/delete', user)
+      setUser(null)
+      router.push(ROUTES.HOME)
+    } catch (error) {
+      return error
+    }
+  }
 
   if (!mounted) return null
 
@@ -45,6 +70,15 @@ const Settings = ({ user }: { user: User }): ReactElement => {
             pointer-events-none inline-block h-[34px] w-[34px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
           />
         </Switch>
+      </div>
+      <div>
+        <Button
+          onClick={() => {
+            deleteUser(user.id)
+          }}
+        >
+          Delete my account
+        </Button>
       </div>
     </div>
   )

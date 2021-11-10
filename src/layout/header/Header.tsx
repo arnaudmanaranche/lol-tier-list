@@ -28,10 +28,6 @@ const Header: React.FC = () => {
         checkUser(session?.user)
         setUser(session?.user)
       }
-
-      if (event === SUPABASE_EVENTS.SIGNED_OUT) {
-        setUser(null)
-      }
     })
 
     return () => {
