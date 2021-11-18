@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from 'next'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
-import { useState } from 'react'
 
 import Button from 'Components/Button'
 import prisma from 'Utils/prisma'
@@ -9,7 +9,7 @@ import protectedRoute from 'Utils/protectedRoute'
 import { RANKING } from 'Utils/types'
 
 const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
-  const [myRankings, setMyRakings] = useState(rankings)
+  const router = useRouter()
 
   const deleteRanking = async (rankingId) => {
     const ranking = {
@@ -22,12 +22,7 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
 
     try {
       await fetch('/api/ranking/delete', ranking)
-      const myRankingsCopy = [...myRankings]
-      const index = myRankings.findIndex((arr) => arr.id === rankingId)
-      if (index !== -1) {
-        myRankingsCopy.splice(index, 1)
-        setMyRakings(myRankingsCopy)
-      }
+      router.replace(router.asPath)
     } catch (error) {
       return error
     }
@@ -37,7 +32,7 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
     <div className="max-w-screen-md mx-auto">
       <h1 className="mb-5">My Rankings</h1>
       <ul>
-        {myRankings?.map((ranking) => (
+        {rankings?.map((ranking) => (
           <li className="flex items-center justify-around" key={ranking.id}>
             <div className="flex items-center">
               <Image
