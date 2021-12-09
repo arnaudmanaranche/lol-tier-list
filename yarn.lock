@@ -1813,17 +1813,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:0.4.0":
-  version: 0.4.0
-  resolution: "@tailwindcss/typography@npm:0.4.0"
+"@tailwindcss/typography@npm:0.5.0":
+  version: 0.5.0
+  resolution: "@tailwindcss/typography@npm:0.5.0"
   dependencies:
     lodash.castarray: ^4.4.0
     lodash.isplainobject: ^4.0.6
     lodash.merge: ^4.6.2
     lodash.uniq: ^4.5.0
   peerDependencies:
-    tailwindcss: 2.0.0-alpha.24 || ^2.0.0
-  checksum: bdb221d48909eaf4e61cacfdb78670157a4289309125549b1c78c382585679c2faef33f332d9e4d445d2f469f7810fc78bf715607e0a435277310d49fba056d1
+    tailwindcss: "*"
+  checksum: 84986845115cd8bfc0d9df8f2a6d3e86fdba0d54e236a6150782b1340e27218610a5dbb5ab63c34cbc6f8bef4180ff0d1540808895e893b16854c2b0f83094dc
   languageName: node
   linkType: hard
 
@@ -5308,7 +5308,7 @@ __metadata:
     "@sentry/react": 6.2.5
     "@sentry/tracing": 6.2.5
     "@svgr/webpack": 5.5.0
-    "@tailwindcss/typography": 0.4.0
+    "@tailwindcss/typography": 0.5.0
     "@types/node": 14.14.37
     "@types/node-fetch": 2.5.10
     "@types/react": 17.0.3
