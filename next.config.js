@@ -3,6 +3,7 @@
  * @type {import('next').NextConfig}
  */
 module.exports = {
+  swcMinify: true,
   webpack5: true,
   future: {
     strictPostcssConfiguration: true
