@@ -1,7 +1,9 @@
+import type { ReactElement, ReactNode } from 'react'
+
 import Footer from './footer'
 import Header from './header'
 
-const Layout: React.FC<React.ReactNode> = ({ children }) => (
+const Layout = ({ children }: { children: ReactNode }): ReactElement => (
   <>
     <Header />
     <div className="flex flex-col w-full min-h-screen">

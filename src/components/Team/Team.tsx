@@ -1,14 +1,15 @@
 import Image from 'next/image'
+import type { ReactElement } from 'react'
 
 import Player from 'Components/Player'
-import { TEAM } from 'Utils/types'
+import type { TEAM } from 'Utils/types'
 
 interface Props extends TEAM {
   onUpdate: (value: string, playerId: number) => void
   disabled: boolean
 }
 
-const Team: React.FC<Props> = ({ base64, logo, name, players, onUpdate, disabled }) => {
+const Team = ({ base64, logo, name, players, onUpdate, disabled }: Props): ReactElement => {
   return (
     <div className="h-full bg-white border-b-2 border-solid dark:bg-white header-shadow border-primary">
       <div className="flex items-center p-2 bg-primary">

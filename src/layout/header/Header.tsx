@@ -2,6 +2,7 @@ import { Menu, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import type { ReactElement } from 'react'
 import { Fragment, useEffect } from 'react'
 
 import { useSetUser, useUser } from 'Contexts/user'
@@ -13,7 +14,7 @@ const { HOME, TOURNAMENTS, MY_RANKINGS, SETTINGS } = ROUTES
 
 const LINKS = [{ label: 'Tournaments', path: TOURNAMENTS }]
 
-const Header: React.FC = () => {
+const Header = (): ReactElement => {
   const user = useUser()
   const setUser = useSetUser()
   const router = useRouter()

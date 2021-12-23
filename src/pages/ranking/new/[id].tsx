@@ -3,6 +3,7 @@ import type { User } from '@supabase/gotrue-js'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import type { ReactElement } from 'react'
 import { Fragment, useRef, useState } from 'react'
 
 import Button from 'Components/Button'
@@ -10,14 +11,9 @@ import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import protectedRoute from 'Utils/protectedRoute'
-import { PLAYER, TOURNAMENT } from 'Utils/types'
+import type { PLAYER, RANKING_VALUES, TOURNAMENT } from 'Utils/types'
 
-type Props = {
-  tournament: TOURNAMENT
-  user: User
-}
-
-const Ranking: React.FC<Props> = ({ tournament, user }) => {
+const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): ReactElement => {
   const [open, setOpen] = useState(false)
   const cancelButtonRef = useRef()
 
@@ -54,7 +50,7 @@ const Ranking: React.FC<Props> = ({ tournament, user }) => {
     }
   }
 
-  const onUpdate = (value: string, playerId: number, teamId: number) => {
+  const onUpdate = (value: RANKING_VALUES, playerId: number, teamId: number) => {
     const team = ranking.find((t) => t.id === teamId)
 
     const player = team?.players.find((p) => p.id === playerId)

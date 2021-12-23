@@ -1,9 +1,10 @@
 import clsx from 'clsx'
 import Image from 'next/image'
+import type { ReactElement } from 'react'
 
-import { TOURNAMENT } from 'Utils/types'
+import type { TOURNAMENT } from 'Utils/types'
 
-const Tournament: React.FC<TOURNAMENT> = ({ name, logo, status, base64 }) => (
+const Tournament = ({ name, logo, status, base64 }: TOURNAMENT): ReactElement => (
   <div
     className={clsx(
       `flex flex-col items-center p-2 text-center transition-shadow rounded-md radius-md relative min-w-[200px] overflow-hidden ${

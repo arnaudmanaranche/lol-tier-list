@@ -1,20 +1,22 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import type { ReactElement } from 'react'
 
 import Button from 'Components/Button'
 import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import supabase from 'Utils/supabase'
-import { RANKING } from 'Utils/types'
+import type { RANKING } from 'Utils/types'
 
-type Props = {
+const ViewRanking = ({
+  ranking,
+  isEditMode
+}: {
   ranking: RANKING
   isEditMode: boolean
-}
-
-const ViewRanking: React.FC<Props> = ({ ranking, isEditMode }) => {
+}): ReactElement => {
   const copyRanking = Object.assign({}, ranking)
 
   const updateRanking = async () => {

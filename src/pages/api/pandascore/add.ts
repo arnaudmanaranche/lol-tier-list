@@ -4,19 +4,19 @@ import { getPlaiceholder } from 'plaiceholder'
 
 import { LINEUP_ORDER } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import { PLAYER, TEAM } from 'Utils/types'
+import type { PLAYER } from 'Utils/types'
 
 export default async function synchronizeTournament(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
-  const tournamentId = req.body.pandascoreId
-  const tournamentRegion = req.body.region
-  const tournamentLogo = req.body.logo
-  const tournamentEvent = req.body.event
-  const tournamentYear = req.body.year
+  const tournamentId: string = req.body.pandascoreId
+  const tournamentRegion: string = req.body.region
+  const tournamentLogo: string = req.body.logo
+  const tournamentEvent: string = req.body.event
+  const tournamentYear: number = req.body.year
 
-  const organizedTeams: TEAM[] = []
+  const organizedTeams = []
 
   const unorganizedTeams = await fetch(
     `https://api.pandascore.co/tournaments/${tournamentId}/rosters?token=${process.env.PANDASCORE_TOKEN}`

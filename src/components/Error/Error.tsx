@@ -1,10 +1,11 @@
-type Props = {
+import type { ReactElement } from 'react'
+
+const Error = ({
+  className,
+  children
+}: {
   className?: string
   children?: React.ReactNode
-}
-
-const Error: React.FC<Props> = ({ className, children }) => {
-  return <div className={className}>{children}</div>
-}
+}): ReactElement => <div className={className}>{children}</div>
 
 export default Error

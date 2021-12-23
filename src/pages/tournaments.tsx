@@ -1,19 +1,16 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import type { ReactElement } from 'react'
 
 import Error from 'Components/Error'
 import Tournament from 'Components/Tournament'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import protectedRoute from 'Utils/protectedRoute'
-import { TOURNAMENT } from 'Utils/types'
+import type { TOURNAMENT } from 'Utils/types'
 
-type PROPS = {
-  tournaments: TOURNAMENT[]
-}
-
-const Tournaments: React.FC<PROPS> = ({ tournaments }) => (
+const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactElement => (
   <div className="max-w-screen-md mx-auto">
     <Head>
       <title>{`Tournaments - ${DEFAULT_TITLE}`}</title>
