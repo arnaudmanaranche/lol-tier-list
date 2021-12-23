@@ -11,7 +11,7 @@ module.exports = {
     'simple-import-sort/imports': [
       2,
       {
-        groups: [['^@?\\w'], ['^(Components|Utils)(/.*|$)'], ['^\\.'], ['^.+\\.css$']]
+        groups: [['^@?\\w'], ['^(Contexts|Components|Utils)(/.*|$)'], ['^\\.'], ['^.+\\.css$']]
       }
     ],
     'simple-import-sort/exports': 2
