@@ -2,10 +2,10 @@ import Image from 'next/image'
 import type { ReactElement } from 'react'
 
 import Player from 'Components/Player'
-import type { TEAM } from 'Utils/types'
+import type { RANKING_VALUES, TEAM } from 'Utils/types'
 
 interface Props extends TEAM {
-  onUpdate: (value: string, playerId: number) => void
+  onUpdate: (value: RANKING_VALUES, playerId: number) => void
   disabled: boolean
 }
 
