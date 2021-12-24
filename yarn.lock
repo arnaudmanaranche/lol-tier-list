@@ -2979,6 +2979,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@liveblocks/client@npm:0.13.1":
+  version: 0.13.1
+  resolution: "@liveblocks/client@npm:0.13.1"
+  checksum: 514d20506dac41702dbf5e1eab780f85aeca0a1b9a37dded739f0b91a28445fdd89b77649d321f035c7dee426782d0ee29a2030fb1ecd9602f8644c08da82bf3
+  languageName: node
+  linkType: hard
+
+"@liveblocks/react@npm:0.13.1":
+  version: 0.13.1
+  resolution: "@liveblocks/react@npm:0.13.1"
+  peerDependencies:
+    "@liveblocks/client": 0.13.1
+    react: ^16.14.0 || ^17
+  checksum: 5944fcab26ac2662147155f5139267e5d3cd5d0ebde7fc17e1a60be2ee2f17383cd3ac603b4561aee078b994d8c0feaf8df7a030161b4d62281f0203e1a79844
+  languageName: node
+  linkType: hard
+
 "@lpr/configs@*, @lpr/configs@workspace:packages/configs":
   version: 0.0.0-use.local
   resolution: "@lpr/configs@workspace:packages/configs"
@@ -17079,6 +17096,8 @@ typescript@4.5.4:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@headlessui/react": 1.4.2
+    "@liveblocks/client": 0.13.1
+    "@liveblocks/react": 0.13.1
     "@lpr/configs": "*"
     "@lpr/types": "*"
     "@lpr/ui": "*"

@@ -1,5 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
+import { RoomProvider, useMyPresence, useOthers } from '@liveblocks/react'
 import * as Panelbear from '@panelbear/panelbear-js'
+import type { User } from '@supabase/gotrue-js'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -14,11 +16,52 @@ import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 
-const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
-  const user = useUser()
-  const [open, setOpen] = useState(false)
-  const cancelButtonRef = useRef()
+function Cursor({ color, x, y }) {
+  return (
+    <svg
+      style={{
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        transition: 'transform 0.5s cubic-bezier(.17,.93,.38,1)',
+        transform: `translateX(${x}px) translateY(${y}px)`
+      }}
+      width="24"
+      height="36"
+      viewBox="0 0 24 36"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5.65376 12.3673H5.46026L5.31717 12.4976L0.500002 16.8829L0.500002 1.19841L11.7841 12.3673H5.65376Z"
+        fill={color}
+      />
+    </svg>
+  )
+}
 
+const COLORS = [
+  '#E57373',
+  '#9575CD',
+  '#4FC3F7',
+  '#81C784',
+  '#FFF176',
+  '#FF8A65',
+  '#F06292',
+  '#7986CB'
+]
+
+const RankingContainer = ({
+  tournament,
+  user
+}: {
+  tournament: TOURNAMENT
+  user: User
+}): ReactElement => {
+  const [open, setOpen] = useState(false)
+  const [_, updateMyPresence] = useMyPresence()
+  const cancelButtonRef = useRef()
+  const others = useOthers()
   const { teams, id, logo, name, base64 } = tournament
 
   function closeModal() {
@@ -67,7 +110,22 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
   }
 
   return (
-    <div className="max-w-screen-xl pt-10 mx-auto">
+    <div
+      className="max-w-screen-xl mx-auto"
+      onPointerMove={(event) =>
+        updateMyPresence({
+          cursor: {
+            x: Math.round(event.clientX),
+            y: Math.round(event.clientY)
+          }
+        })
+      }
+      onPointerLeave={() =>
+        updateMyPresence({
+          cursor: null
+        })
+      }
+    >
       <Head>
         <title>{`${name} - ${DEFAULT_TITLE}`}</title>
         <meta property="og:image" content={logo} key="og:image" />
@@ -76,7 +134,21 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${name} logo`} />
       </Head>
-      <div className="flex flex-col items-center mb-10">
+      <div className="flex items-center justify-center w-full mb-10">
+        {others.map(({ connectionId, presence }) => {
+          if (presence == null || presence.cursor == null) {
+            return null
+          }
+
+          return (
+            <Cursor
+              key={`cursor-${connectionId}`}
+              color={COLORS[connectionId % COLORS.length]}
+              x={presence.cursor.x}
+              y={presence.cursor.y}
+            />
+          )
+        })}
         <Image
           src={logo}
           alt={`${name} logo`}
@@ -116,6 +188,10 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
               onUpdate={(value, playerId) => {
                 onUpdate(value, playerId, teamId)
               }}
+              onFocus={(name) => {
+                updateMyPresence({ focusedId: name })
+              }}
+              onBlur={() => updateMyPresence({ focusedId: null })}
             />
           )
         )}
@@ -187,10 +263,22 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
   )
 }
 
+const RankingPage = ({
+  tournament,
+  user
+}: {
+  tournament: TOURNAMENT
+  user: User
+}): ReactElement => {
+  return (
+    <RoomProvider id={tournament.id}>
+      <RankingContainer tournament={tournament} user={user} />
+    </RoomProvider>
+  )
+}
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {
-    params: { id }
-  } = context
+  const { id } = context.params
 
   let tournament = null
 
@@ -221,4 +309,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-export default Ranking
+export default RankingPage
