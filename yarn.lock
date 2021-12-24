@@ -1389,12 +1389,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:1.1.1":
-  version: 1.1.1
-  resolution: "@headlessui/react@npm:1.1.1"
+"@headlessui/react@npm:1.4.2":
+  version: 1.4.2
+  resolution: "@headlessui/react@npm:1.4.2"
   peerDependencies:
-    react: ">=16"
-  checksum: da043af1ab45b3eec82ba56a91d4c2b507c178721eae4ce8327e4919088e781c0ca0bc41860d4c6da8f07dc887bf1d354841db20cf742fb59253a6e1eab9c6ab
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 28c36204430365190c05cbd48235f8239897360c8d55189583c03868fe640b171051238a8672a501b441de79281bb08285966105bfeb4534ca0e612382dcd41f
   languageName: node
   linkType: hard
 
@@ -5426,7 +5427,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lol-power-ranking@workspace:."
   dependencies:
-    "@headlessui/react": 1.1.1
+    "@headlessui/react": 1.4.2
     "@prisma/client": 2.26.0
     "@sentry/react": 6.2.5
     "@sentry/tracing": 6.2.5

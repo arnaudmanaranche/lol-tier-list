@@ -14,7 +14,7 @@
     "seed:db": "prisma db seed --preview-feature"
   },
   "dependencies": {
-    "@headlessui/react": "1.1.1",
+    "@headlessui/react": "1.4.2",
     "@prisma/client": "2.26.0",
     "@sentry/react": "6.2.5",
     "@sentry/tracing": "6.2.5",
