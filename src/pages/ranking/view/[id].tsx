@@ -8,7 +8,7 @@ import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import supabase from 'Utils/supabase'
-import type { RANKING } from 'Utils/types'
+import type { RANKING, RANKING_VALUES } from 'Utils/types'
 
 const ViewRanking = ({
   ranking,
@@ -37,7 +37,7 @@ const ViewRanking = ({
     }
   }
 
-  const onUpdate = (value: string, playerId: number, teamId: number) => {
+  const onUpdate = (value: RANKING_VALUES, playerId: number, teamId: number) => {
     const team = copyRanking.data.find((t) => t.id === teamId)
 
     const player = team?.players.find((p) => p.id === playerId)

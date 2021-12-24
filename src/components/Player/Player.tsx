@@ -6,7 +6,7 @@ import type { PLAYER } from 'Utils/types'
 import { RANKING_VALUES } from 'Utils/types'
 
 interface Props extends PLAYER {
-  onUpdate: (value: string) => void
+  onUpdate: (value: RANKING_VALUES) => void
   disabled: boolean
 }
 
@@ -54,7 +54,7 @@ const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactElement 
           disabled={disabled}
           className={className}
           onChange={(e) => {
-            onUpdate(e.target.value)
+            onUpdate(e.target.value as RANKING_VALUES)
             setValue(e.target.value as RANKING_VALUES)
           }}
           defaultValue={currentValue}
