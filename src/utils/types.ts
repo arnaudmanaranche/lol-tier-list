@@ -7,14 +7,14 @@ export enum RANKING_VALUES {
   d = 'd'
 }
 
-export type PLAYER = {
+export interface PLAYER {
   id: number
   name: string
   role: string
-  value?: string
+  value?: RANKING_VALUES
 }
 
-export type TEAM = {
+export interface TEAM {
   id: number
   acronym?: string
   logo: string
@@ -23,14 +23,14 @@ export type TEAM = {
   players: PLAYER[]
 }
 
-export type RANKING = {
+export interface RANKING {
   id: string
   data: TEAM[]
   tournamentId: string
   tournament: TOURNAMENT
 }
 
-export type TOURNAMENT = {
+export interface TOURNAMENT {
   id: string
   logo: string
   name: string

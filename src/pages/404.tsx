@@ -1,4 +1,6 @@
-function Page404() {
+import type { ReactElement } from 'react'
+
+const Page404 = (): ReactElement => {
   return <p>404 Page</p>
 }
 

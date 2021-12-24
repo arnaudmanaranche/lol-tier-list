@@ -1,16 +1,17 @@
 import clsx from 'clsx'
-import React from 'react'
+import type { ReactElement } from 'react'
+import { useState } from 'react'
 
-import { RANKING_VALUES } from 'Utils/constants'
-import { PLAYER } from 'Utils/types'
+import type { PLAYER } from 'Utils/types'
+import { RANKING_VALUES } from 'Utils/types'
 
 interface Props extends PLAYER {
-  onUpdate: (value: string) => void
+  onUpdate: (value: RANKING_VALUES) => void
   disabled: boolean
 }
 
-const Player: React.FC<Props> = ({ name, role, value, onUpdate, disabled }) => {
-  const [currentValue, setValue] = React.useState(value)
+const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactElement => {
+  const [currentValue, setValue] = useState(value)
 
   let currentClassname = ''
 
@@ -53,8 +54,8 @@ const Player: React.FC<Props> = ({ name, role, value, onUpdate, disabled }) => {
           disabled={disabled}
           className={className}
           onChange={(e) => {
-            onUpdate(e.target.value)
-            setValue(e.target.value)
+            onUpdate(e.target.value as RANKING_VALUES)
+            setValue(e.target.value as RANKING_VALUES)
           }}
           defaultValue={currentValue}
         >

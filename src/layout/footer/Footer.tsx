@@ -1,6 +1,7 @@
 import Link from 'next/link'
+import type { ReactElement } from 'react'
 
-const Footer: React.FC = () => (
+const Footer = (): ReactElement => (
   <footer className="flex flex-col items-center py-5 header-shadow">
     <div className="flex">
       <p className="mb-3 mr-3">

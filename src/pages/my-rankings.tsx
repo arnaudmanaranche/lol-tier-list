@@ -6,7 +6,7 @@ import type { ReactElement } from 'react'
 import Button from 'Components/Button'
 import prisma from 'Utils/prisma'
 import protectedRoute from 'Utils/protectedRoute'
-import { RANKING } from 'Utils/types'
+import type { RANKING } from 'Utils/types'
 
 const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
   const router = useRouter()
