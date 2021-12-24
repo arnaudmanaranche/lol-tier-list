@@ -49,9 +49,9 @@ export default async function synchronizeTournament(
           })
         })
 
-        const teamLogo = `https://firebasestorage.googleapis.com/v0/b/esport-power-ranking-15c5b.appspot.com/o/league_of_legends%2F${tournamentRegion.toLowerCase()}%2F${
+        const teamLogo = `https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${
           acronym ? acronym.toLowerCase() : ''.toLowerCase()
-        }.png?alt=media`
+        }.png`
 
         const { base64 } = await getPlaiceholder(teamLogo)
 

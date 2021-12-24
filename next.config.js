@@ -34,7 +34,7 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['firebasestorage.googleapis.com']
+    domains: ['fjjmcodfztuygoihyhnr.supabase.in']
   }
 }
 
