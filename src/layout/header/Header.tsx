@@ -29,6 +29,10 @@ const Header = (): ReactElement => {
         checkUser(session?.user)
         setUser(session?.user)
       }
+
+      if (event === SUPABASE_EVENTS.SIGNED_OUT) {
+        setUser(null)
+      }
     })
 
     return () => {
