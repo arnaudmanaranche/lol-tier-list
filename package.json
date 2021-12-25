@@ -8,8 +8,6 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "vercel-build": "prisma migrate deploy && next build",
-    "prisma:generate": "prisma generate",
     "postinstall": "prisma generate",
     "seed:db": "prisma db seed --preview-feature"
   },
