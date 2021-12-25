@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { RoomProvider, useMyPresence, useOthers } from '@liveblocks/react'
+import { RoomProvider, useMyPresence, useObject, useOthers } from '@liveblocks/react'
 import * as Panelbear from '@panelbear/panelbear-js'
 import type { User } from '@supabase/gotrue-js'
 import type { GetServerSideProps } from 'next'
@@ -60,6 +60,7 @@ const RankingContainer = ({
 }): ReactElement => {
   const [open, setOpen] = useState(false)
   const [_, updateMyPresence] = useMyPresence()
+  const [rankingId, setRankingId] = useState('')
   const cancelButtonRef = useRef()
   const others = useOthers()
   const { teams, id, logo, name, base64 } = tournament
@@ -72,9 +73,9 @@ const RankingContainer = ({
     setOpen(true)
   }
 
-  const [rankingId, setRankingId] = useState('')
-
-  const ranking = teams
+  const data = useObject('ranking', {
+    ranking: teams
+  })
 
   const createRanking = async () => {
     const newRanking = {
@@ -104,10 +105,15 @@ const RankingContainer = ({
 
     if (player) {
       player.value = value
+      data.set('ranking', ranking)
     }
 
     return
   }
+
+  if (!data) return <div>Loading</div>
+
+  const { ranking } = data.toObject()
 
   return (
     <div
