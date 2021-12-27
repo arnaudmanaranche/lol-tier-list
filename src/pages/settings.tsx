@@ -61,7 +61,7 @@ const Settings = ({ user }: { user: User }): ReactElement => {
             theme === DARK ? setTheme(LIGHT) : setTheme(DARK)
           }}
           className={`${theme === DARK ? 'bg-primaryDark' : 'bg-dark'}
-          relative inline-flex flex-shrink-0 h-[38px] w-[74px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          relative shrink-0 inline-flex h-[38px] w-[74px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
         >
           <span className="sr-only">Toggle mode</span>
           <span
