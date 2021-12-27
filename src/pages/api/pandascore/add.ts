@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import fetch from 'node-fetch'
 import { getPlaiceholder } from 'plaiceholder'
 
 import { LINEUP_ORDER } from 'Utils/constants'

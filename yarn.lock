@@ -5447,7 +5447,6 @@ __metadata:
     next: 12
     next-sitemap: 1.6.49
     next-themes: 0.0.14
-    node-fetch: 2.6.1
     plaiceholder: 2.0.1
     postcss: 8.3.6
     preact: 10.5.13
