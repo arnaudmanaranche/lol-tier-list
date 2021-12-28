@@ -75,8 +75,23 @@ export const getServerSideProps: GetServerSideProps = (context) =>
       where: {
         userId: user.id
       },
-      include: {
-        tournament: true
+      select: {
+        id: true,
+        tournamentId: true,
+        data: false,
+        tournament: {
+          select: {
+            teams: false,
+            id: true,
+            name: true,
+            pandascoreId: true,
+            status: true,
+            logo: true,
+            base64: true,
+            year: true
+          }
+        },
+        userId: true
       }
     })
 

@@ -27,13 +27,17 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
       <div className="grid grid-cols-2 gap-10 md:grid-cols-3">
         {tournaments?.map((tournament) => {
           return tournament.status ? (
-            <Link key={tournament.id} href={`/ranking/new/${tournament.id}`} prefetch={false}>
+            <Link
+              key={tournament.pandascoreId}
+              href={`/ranking/new/${tournament.id}`}
+              prefetch={false}
+            >
               <a>
                 <Tournament {...tournament} />
               </a>
             </Link>
           ) : (
-            <div className="opacity-50 cursor-not-allowed" key={tournament.id}>
+            <div className="opacity-50 cursor-not-allowed" key={tournament.pandascoreId}>
               <Tournament {...tournament} />
             </div>
           )
@@ -45,7 +49,18 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
 
 export const getServerSideProps: GetServerSideProps = (context) =>
   protectedRoute(context, async () => {
-    const tournaments = await prisma.tournament.findMany()
+    const tournaments = await prisma.tournament.findMany({
+      select: {
+        teams: false,
+        id: true,
+        name: true,
+        pandascoreId: true,
+        status: true,
+        logo: true,
+        base64: true,
+        year: true
+      }
+    })
 
     return { tournaments }
   })

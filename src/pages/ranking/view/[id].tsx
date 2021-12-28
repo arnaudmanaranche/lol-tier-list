@@ -118,7 +118,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // @ts-ignore
       id
     },
-    include: { tournament: true }
+    select: {
+      id: true,
+      tournamentId: true,
+      data: true,
+      tournament: {
+        select: {
+          teams: false,
+          id: true,
+          name: true,
+          pandascoreId: true,
+          status: true,
+          logo: true,
+          base64: true,
+          year: true
+        }
+      },
+      userId: true
+    }
   })
 
   if (!ranking) {
