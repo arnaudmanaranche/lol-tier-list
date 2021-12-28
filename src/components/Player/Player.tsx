@@ -39,12 +39,12 @@ const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactElement 
   }
 
   const className = clsx(
-    'flex uppercase items-center justify-center h-full px-1.5 py-2.5 border-0 group-hover:bg-slate-100',
+    'flex uppercase items-center justify-center h-full px-1.5 py-2.5 border-0',
     currentClassname ? currentClassname : 'bg-white'
   )
 
   return (
-    <div className="flex items-center justify-between text-black bg-white dark:text-black group hover:bg-slate-100">
+    <div className="flex items-center justify-between text-black bg-white dark:text-black">
       <p className="p-2 uppercase">{role}</p>
       <p className="p-2">{name}</p>
       {disabled ? (
