@@ -41,6 +41,8 @@ sitemap.xml
 # yarn berry
 .pnp.*
 .yarn/*
+!.yarn/unplugged
+!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
