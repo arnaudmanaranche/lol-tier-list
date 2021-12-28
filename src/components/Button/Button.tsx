@@ -1,16 +1,17 @@
 import Link from 'next/link'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 const Button = ({
   children,
   onClick,
   href
 }: {
-  children: React.ReactNode
+  children: ReactNode
   onClick?: () => unknown
   href?: string
 }): ReactElement => {
-  const className = 'p-4 text-center uppercase transition rounded bg-primary hover:bg-primaryDark'
+  const className =
+    'flex items-center justify-center p-4 text-center text-black rounded font-body bg-primary hover:bg-primaryDark'
 
   if (href) {
     return (

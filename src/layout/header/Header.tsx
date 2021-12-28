@@ -5,14 +5,21 @@ import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { Fragment, useEffect } from 'react'
 
+import Button from 'Components/Button'
 import { useSetUser, useUser } from 'Contexts/user'
 import { checkUser, handleAuthChange, login, logout } from 'Utils/auth'
 import { DEFAULT_TITLE, ROUTES, SUPABASE_EVENTS } from 'Utils/constants'
 import supabase from 'Utils/supabase'
 
+import TwitterIcon from '../../svgs/twitter.svg'
+
 const { HOME, TOURNAMENTS, MY_RANKINGS, SETTINGS } = ROUTES
 
 const LINKS = [{ label: 'Tournaments', path: TOURNAMENTS }]
+const DROPDOWN_LINKS = [
+  { label: 'My Rankings', path: MY_RANKINGS },
+  { label: 'My Settings', path: SETTINGS }
+]
 
 const Header = (): ReactElement => {
   const user = useUser()
@@ -41,7 +48,7 @@ const Header = (): ReactElement => {
   }, [])
 
   return (
-    <header className="text-gray-600 body-font">
+    <header className="text-gray-600 bg-white dark:bg-[#2b2d2e] shadow-md shadow-black/10 body-font">
       <div className="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
         <Link href={HOME} prefetch={false}>
           <a className="flex-1 font-bold text-center lg:flex-none text-primary">{DEFAULT_TITLE}</a>
@@ -51,7 +58,7 @@ const Header = (): ReactElement => {
             <Link href={path} key={label} prefetch={false}>
               <a
                 className={clsx(
-                  'font-bold p-2 hover:text-primary transition ease duration-200 dark:text-white',
+                  'font-bold p-2 hover:text-primary dark:text-white',
                   clsx(pathname === path && 'text-primary')
                 )}
               >
@@ -61,14 +68,17 @@ const Header = (): ReactElement => {
           ))}
         </nav>
         {!user ? (
-          <div onClick={login}>Login</div>
+          <Button onClick={login}>
+            Login with Twitter
+            <TwitterIcon className="w-5 h-5 ml-2" />
+          </Button>
         ) : (
           <div className="w-56 text-right">
             <Menu as="div" className="relative inline-block text-left">
               {({ open }) => (
                 <>
                   <div>
-                    <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white rounded-md bg-opacity-80 bg-primary hover:bg-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                    <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm text-black rounded-md dark:text-white bg-opacity-80 bg-primary hover:bg-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 font-body">
                       My Account
                     </Menu.Button>
                   </div>
@@ -84,20 +94,15 @@ const Header = (): ReactElement => {
                   >
                     <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <div className="px-1 py-1 ">
-                        <Menu.Item>
-                          <Link href={MY_RANKINGS} prefetch={false}>
-                            <a className="flex items-center w-full px-2 py-2 text-sm hover:text-primary">
-                              Rankings
-                            </a>
-                          </Link>
-                        </Menu.Item>
-                        <Menu.Item>
-                          <Link href={SETTINGS} prefetch={false}>
-                            <a className="flex items-center w-full px-2 py-2 text-sm hover:text-primary">
-                              Settings
-                            </a>
-                          </Link>
-                        </Menu.Item>
+                        {DROPDOWN_LINKS.map(({ label, path }) => (
+                          <Menu.Item>
+                            <Link href={path} prefetch={false}>
+                              <a className="flex items-center w-full px-2 py-2 text-sm hover:text-primary">
+                                {label}
+                              </a>
+                            </Link>
+                          </Menu.Item>
+                        ))}
                       </div>
                       <div className="px-1 py-1">
                         <Menu.Item>

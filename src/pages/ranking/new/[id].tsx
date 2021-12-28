@@ -89,7 +89,7 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
           className="image"
         />
         <div className="prose lg:prose-xl">
-          <h1 className="dark:text-white">{name}</h1>
+          <h1 className="capitalize dark:text-white">{name}</h1>
         </div>
       </div>
       <div className="grid gap-10 px-6 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:px-0">
@@ -122,7 +122,7 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
           )
         )}
       </div>
-      <div className="m-6 text-center">
+      <div className="flex justify-center m-6">
         <Button
           onClick={() => {
             openModal()
@@ -165,7 +165,7 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                <Dialog.Title as="h3" className="mb-10 text-lg font-medium leading-6 text-gray-900">
+                <Dialog.Title as="h3" className="mb-6 text-lg font-medium leading-6 text-gray-900">
                   Your power ranking was created.
                   <br />
                   It's time to share your power ranking.

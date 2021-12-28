@@ -30,11 +30,11 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
 
   return (
     <div className="max-w-screen-md mx-auto">
-      <h1 className="mb-5">My Rankings</h1>
+      <h1 className="mb-10 text-5xl font-bold text-center dark:text-white">My Rankings</h1>
       <ul>
         {rankings?.map((ranking) => (
-          <li className="flex items-center justify-around" key={ranking.id}>
-            <div className="flex items-center">
+          <li className="flex items-center my-12" key={ranking.id}>
+            <div className="flex items-center w-[30%]">
               <Image
                 src={ranking.tournament.logo}
                 alt={`${ranking.tournament.name} logo`}
@@ -52,7 +52,7 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
               />
               <span>{ranking.tournament.name}</span>
             </div>
-            <div>
+            <div className="flex justify-end w-[70%] space-x-4">
               <Button
                 onClick={() => {
                   deleteRanking(ranking.id)

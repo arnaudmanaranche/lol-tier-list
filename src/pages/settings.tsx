@@ -25,18 +25,18 @@ const Settings = ({ user }: { user: User }): ReactElement => {
     setMounted(true)
   }, [])
 
-  const deleteUser = async (userId) => {
-    const user = {
+  const deleteMyAccount = async () => {
+    const request = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ userId })
+      body: JSON.stringify({ userId: user.id })
     }
 
     try {
       await logout()
-      await fetch('/api/user/delete', user)
+      await fetch('/api/user/delete', request)
       setUser(null)
       router.push(ROUTES.HOME)
     } catch (error) {
@@ -48,37 +48,39 @@ const Settings = ({ user }: { user: User }): ReactElement => {
 
   return (
     <div className="max-w-screen-md mx-auto">
-      <div className="mb-5">
-        <h1 className="mb-2 text-3xl font-title">Account</h1>
-        <p className="text-md">Email: {user.email}</p>
-      </div>
-      <h1 className="mb-5 text-3xl font-title">Settings</h1>
+      <h1 className="mb-10 text-5xl font-bold text-center">Settings</h1>
+      <p className="text-md">
+        Email: <b>{user.email}</b>
+      </p>
+      <hr className="my-6" />
       <div className="flex items-center">
-        <span className="mr-3">Toggle mode</span>
+        <span className="mr-3">Toggle mode:</span>
         <Switch
           checked={theme === DARK}
           onChange={() => {
             theme === DARK ? setTheme(LIGHT) : setTheme(DARK)
           }}
           className={`${theme === DARK ? 'bg-primaryDark' : 'bg-dark'}
-          relative shrink-0 inline-flex h-[38px] w-[74px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          relative shrink-0 inline-flex h-[24px] w-[50px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
         >
           <span className="sr-only">Toggle mode</span>
           <span
             aria-hidden="true"
-            className={`${theme === DARK ? 'translate-x-9' : 'translate-x-0'}
-            pointer-events-none inline-block h-[34px] w-[34px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
+            className={`${theme === DARK ? 'translate-x-[26px]' : 'translate-x-0'}
+            pointer-events-none inline-block h-[20px] w-[20px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
           />
         </Switch>
       </div>
+      <hr className="my-6" />
       <div>
-        <Button
-          onClick={() => {
-            deleteUser(user.id)
-          }}
-        >
-          Delete my account
-        </Button>
+        <p className="mb-1">Please be aware that deleting your account means that :</p>
+        <ul className="mb-5 list-disc list-inside">
+          <li className="pl-2">all your account data and personal information will be deleted.</li>
+          <li className="pl-2">
+            all your rankings will be deleted and will no longer be viewable and editable.
+          </li>
+        </ul>
+        <Button onClick={deleteMyAccount}>Delete my account</Button>
       </div>
     </div>
   )
