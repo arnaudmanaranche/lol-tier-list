@@ -16,7 +16,7 @@ async function main() {
       teams: [
         {
           id: 115,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/vit.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/vit.png',
           name: 'Team Vitality',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAOUlEQVQImQ3GsQkAIRBFwV+lvV4qCNeAiUUsGngsrvK8iUYRM2CBu+sA46WXDfqAmmhpgSRhGXv+XXa+JsBHKc1SAAAAAElFTkSuQmCC',
@@ -31,7 +31,7 @@ async function main() {
         },
         {
           id: 394,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/fnc.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/fnc.png',
           name: 'Fnatic',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAOElEQVQImWP4vzTu/5Sg/zNC/y+NY/g/O+z/pAAQZ3YYA0hmfiSIsyiG4f+Jiv9V9u4MDP+PlAEALi8d3KVV9dUAAAAASUVORK5CYII=',
@@ -46,7 +46,7 @@ async function main() {
         },
         {
           id: 3983,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/rge.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/rge.png',
           name: 'Rogue',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAP0lEQVQImQE0AMv/AAAAAGCAtnKV0wAAAAB6nuCSyue/9f+w5P8AqeL/eq3Kk8XcquL/AAAAAIOv6p/P/9H//5+6HYTZQ620AAAAAElFTkSuQmCC',
@@ -61,7 +61,7 @@ async function main() {
         },
         {
           id: 37,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/msf.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/msf.png',
           name: 'Misfits Gaming',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAP0lEQVQImQE0AMv/AJ+fn5qjo7O4uObm5gDP0tLw5uezqap5rawAXGBk/93g/eDjGT8/AAAAAPr//+76+gAAAGBTHqhG/tuUAAAAAElFTkSuQmCC',
@@ -76,7 +76,7 @@ async function main() {
         },
         {
           id: 88,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/g2.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/g2.png',
           name: 'G2 Esports',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAANUlEQVQImR3BsQkAMAgEwB/BvSzdvxYsJCAJwgcS8A6qymFm6O5TtdxJYo+MyEwAIHnfE5EP14Eklb30T8QAAAAASUVORK5CYII=',
@@ -91,7 +91,7 @@ async function main() {
         },
         {
           id: 126536,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/mad.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/mad.png',
           name: 'MAD Lions',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAMElEQVQImR3JQQoAMAgDwfy3iuK/PUlzTbEwh4UFADHEwNaY6GsMYv7jYkJdumd1PQ6tIVMMcqZOAAAAAElFTkSuQmCC',
@@ -106,7 +106,7 @@ async function main() {
         }
       ],
       status: true,
-      logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/logo.png',
+      logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/logo.png',
       base64:
         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAACxLAAAsSwGlPZapAAAAH0lEQVQImWP4l+L2f0XF/80N/zc3MEAoPJx1NQwMDAB2VSBJq3zHBQAAAABJRU5ErkJggg==',
       year: 2021
@@ -125,7 +125,7 @@ async function main() {
       teams: [
         {
           id: 115,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/vit.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/vit.png',
           name: 'Team Vitality',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAOUlEQVQImQ3GsQkAIRBFwV+lvV4qCNeAiUUsGngsrvK8iUYRM2CBu+sA46WXDfqAmmhpgSRhGXv+XXa+JsBHKc1SAAAAAElFTkSuQmCC',
@@ -140,7 +140,7 @@ async function main() {
         },
         {
           id: 394,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/fnc.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/fnc.png',
           name: 'Fnatic',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAOElEQVQImWP4vzTu/5Sg/zNC/y+NY/g/O+z/pAAQZ3YYA0hmfiSIsyiG4f+Jiv9V9u4MDP+PlAEALi8d3KVV9dUAAAAASUVORK5CYII=',
@@ -155,7 +155,7 @@ async function main() {
         },
         {
           id: 3983,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/rge.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/rge.png',
           name: 'Rogue',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAP0lEQVQImQE0AMv/AAAAAGCAtnKV0wAAAAB6nuCSyue/9f+w5P8AqeL/eq3Kk8XcquL/AAAAAIOv6p/P/9H//5+6HYTZQ620AAAAAElFTkSuQmCC',
@@ -170,7 +170,7 @@ async function main() {
         },
         {
           id: 37,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/msf.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/msf.png',
           name: 'Misfits Gaming',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAP0lEQVQImQE0AMv/AJ+fn5qjo7O4uObm5gDP0tLw5uezqap5rawAXGBk/93g/eDjGT8/AAAAAPr//+76+gAAAGBTHqhG/tuUAAAAAElFTkSuQmCC',
@@ -185,7 +185,7 @@ async function main() {
         },
         {
           id: 88,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/g2.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/g2.png',
           name: 'G2 Esports',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAANUlEQVQImR3BsQkAMAgEwB/BvSzdvxYsJCAJwgcS8A6qymFm6O5TtdxJYo+MyEwAIHnfE5EP14Eklb30T8QAAAAASUVORK5CYII=',
@@ -200,7 +200,7 @@ async function main() {
         },
         {
           id: 126536,
-          logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/mad.png',
+          logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/mad.png',
           name: 'MAD Lions',
           base64:
             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAEJwAABCcAFu8l9tAAAAMElEQVQImR3JQQoAMAgDwfy3iuK/PUlzTbEwh4UFADHEwNaY6GsMYv7jYkJdumd1PQ6tIVMMcqZOAAAAAElFTkSuQmCC',
@@ -215,7 +215,7 @@ async function main() {
         }
       ],
       status: false,
-      logo: 'https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/lec/logo.png',
+      logo: 'https://cshcnecridevmmzopztb.supabase.in/storage/v1/object/public/lec/logo.png',
       base64:
         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAACxLAAAsSwGlPZapAAAAH0lEQVQImWP4l+L2f0XF/80N/zc3MEAoPJx1NQwMDAB2VSBJq3zHBQAAAABJRU5ErkJggg==',
       year: 2021

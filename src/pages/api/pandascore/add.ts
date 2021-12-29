@@ -48,7 +48,9 @@ export default async function synchronizeTournament(
           })
         })
 
-        const teamLogo = `https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${
+        const teamLogo = `https://${
+          process.env.NEXT_PUBLIC_SUPABASE_ID
+        }.supabase.in/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${
           acronym ? acronym.toLowerCase() : ''.toLowerCase()
         }.png`
 

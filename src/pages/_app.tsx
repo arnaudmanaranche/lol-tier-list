@@ -19,7 +19,8 @@ if (process.env.NODE_ENV === 'production') {
     dsn: process.env.SENTRY_DSN,
     release: `lol-power-ranking@${packageJson.version}`,
     integrations: [new Integrations.BrowserTracing()],
-    tracesSampleRate: 1.0
+    tracesSampleRate: 1.0,
+    environment: process.env.APP_ENV
   })
 }
 

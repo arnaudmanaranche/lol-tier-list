@@ -20,7 +20,7 @@ const Home = (): ReactElement => (
         {REGIONS.map((region) => (
           <li key={region}>
             <Image
-              src={`https://fjjmcodfztuygoihyhnr.supabase.in/storage/v1/object/public/${region}/logo.png`}
+              src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.in/storage/v1/object/public/${region}/logo.png`}
               alt={`${region} logo`}
               className="grayscale"
               height={80}

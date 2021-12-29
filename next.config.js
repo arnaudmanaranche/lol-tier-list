@@ -34,7 +34,7 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['fjjmcodfztuygoihyhnr.supabase.in']
+    domains: ['fjjmcodfztuygoihyhnr.supabase.in', 'cshcnecridevmmzopztb.supabase.in']
   }
 }
 
