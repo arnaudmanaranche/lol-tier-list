@@ -19,6 +19,6 @@ export const SUPABASE_EVENTS = {
 
 export const API_ENDPOINT = {
   development: 'http://localhost:3000/api',
-  preview: 'https://lol-power-ranking-axkdokaif-arnaudmanaranche.vercel.app/',
+  preview: 'https://preview.lol-power-ranking.app',
   production: 'https://lol-power-ranking.app/api'
 }[process.env.APP_ENV]
