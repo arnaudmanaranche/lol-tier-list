@@ -1321,10 +1321,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@corex/deepmerge@npm:^2.5.9":
-  version: 2.6.34
-  resolution: "@corex/deepmerge@npm:2.6.34"
-  checksum: 73a396a32f7fc5698f7ad29bc1067d8499cb1767f91b315e6ef01abede34f4342a6c5ed264928f888569db6476a85f9a3f6e5a2261ec22a637d647661784b963
+"@corex/deepmerge@npm:^2.6.34":
+  version: 2.6.148
+  resolution: "@corex/deepmerge@npm:2.6.148"
+  checksum: b80b6b3e408901151de26e27b519a43cda1771a81e5390ff10cd6b47add0139bb315ca44112ff076d68ac887d7cfe237c9fb33868efb04839c4afb7c38864385
   languageName: node
   linkType: hard
 
@@ -5364,7 +5364,7 @@ __metadata:
     eslint-config-next: 11.0.1
     eslint-plugin-simple-import-sort: 7.0.0
     next: 12
-    next-sitemap: 1.6.49
+    next-sitemap: 1.6.203
     next-themes: 0.0.14
     plaiceholder: 2.0.1
     postcss: 8.4.5
@@ -5705,18 +5705,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:1.6.49":
-  version: 1.6.49
-  resolution: "next-sitemap@npm:1.6.49"
+"next-sitemap@npm:1.6.203":
+  version: 1.6.203
+  resolution: "next-sitemap@npm:1.6.203"
   dependencies:
-    "@corex/deepmerge": ^2.5.9
+    "@corex/deepmerge": ^2.6.34
     matcher: ^4.0.0
     minimist: ^1.2.5
   peerDependencies:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 4db29b9199fdda1e80d6f06d9c1c044cd8972dec7c33996e2f13e54e3eb89bd28bfbe6f40af73d6b5c619fc4170e792ebd260836e033e46d670c5a8b3e049c81
+  checksum: a083a5ab9e6dc6345dcb27207d31a46dd4f84ff3cc7fa673038ed82d9961cbb7481958e35e67f6febff659d4e99749ab3256bab1263917f4e842d82147ab49b4
   languageName: node
   linkType: hard
 
