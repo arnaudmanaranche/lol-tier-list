@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 const PANELBEAR_CONFIG = {
   site: process.env.PANELBEAR_SITE_ID,
@@ -20,12 +19,6 @@ panelbear("config", ${JSON.stringify(PANELBEAR_CONFIG)});
 }
 
 class AppDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-
-    return initialProps
-  }
-
   render(): JSX.Element {
     return (
       <Html lang="en" dir="ltr">
