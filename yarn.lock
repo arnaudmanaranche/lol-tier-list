@@ -5368,7 +5368,7 @@ __metadata:
     next-themes: 0.0.14
     plaiceholder: 2.0.1
     postcss: 8.4.5
-    preact: 10.5.13
+    preact: 10.6.4
     prettier: 2.2.1
     prisma: 2.26.0
     react: 17.0.2
@@ -6495,10 +6495,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.5.13":
-  version: 10.5.13
-  resolution: "preact@npm:10.5.13"
-  checksum: afc22da600977935dd0c69c7b69f54d44cdf5d0bc50a6a1a47eafb55cce9c6bf126213b6e842f8079e7e6aca77ea763478eaba6ff75eb5bcb998273bc15b74d1
+"preact@npm:10.6.4":
+  version: 10.6.4
+  resolution: "preact@npm:10.6.4"
+  checksum: 09c496bb3cbe231fb6ef218b44d29af53a1f4bf1ae2e5929ef0faf70f9ecffaa475b4459ef72dd8f0f5396c255172c7c26de5c7d2eb6f6849e36e724c7aa86b7
   languageName: node
   linkType: hard
 
