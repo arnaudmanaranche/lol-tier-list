@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import type { User } from '@supabase/gotrue-js'
-import { GetServerSideProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'

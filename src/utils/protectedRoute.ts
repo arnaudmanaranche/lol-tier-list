@@ -4,8 +4,6 @@ import type { GetServerSidePropsContext } from 'next'
 import { ROUTES } from 'Utils/constants'
 import supabase from 'Utils/supabase'
 
-import { TOURNAMENT } from './types'
-
 const protectedRoute = async (
   context: GetServerSidePropsContext,
   getProps?: (user?: User) => any
@@ -25,7 +23,7 @@ const protectedRoute = async (
     return {
       props: {
         user,
-        ...((await getProps(user)) as TOURNAMENT[])
+        ...(await getProps(user))
       }
     }
   }
