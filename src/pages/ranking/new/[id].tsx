@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import type { User } from '@supabase/gotrue-js'
-import { GetServerSideProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
@@ -168,7 +168,7 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
                 <Dialog.Title as="h3" className="mb-6 text-lg font-medium leading-6 text-gray-900">
                   Your power ranking was created.
                   <br />
-                  It's time to share your power ranking.
+                  It&apos;s time to share your power ranking.
                 </Dialog.Title>
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                   <Button
@@ -197,9 +197,7 @@ export const getServerSideProps: GetServerSideProps = (context) =>
 
     const tournament = await prisma.tournament.findUnique({
       where: {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        id
+        id: id as string
       }
     })
 

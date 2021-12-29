@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
@@ -114,9 +114,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const ranking = await prisma.ranking.findUnique({
     where: {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      id
+      id: id as string
     },
     select: {
       id: true,
