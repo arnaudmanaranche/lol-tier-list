@@ -5246,6 +5246,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.clonedeep@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.clonedeep@npm:4.5.0"
+  checksum: 92c46f094b064e876a23c97f57f81fbffd5d760bf2d8a1c61d85db6d1e488c66b0384c943abee4f6af7debf5ad4e4282e74ff83177c9e63d8ff081a4837c3489
+  languageName: node
+  linkType: hard
+
 "lodash.debounce@npm:^4.0.8":
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
@@ -5313,7 +5320,7 @@ __metadata:
     react-dom: 17.0.2
     sharp: 0.29.3
     sort-package-json: 1.49.0
-    superjson: 1.7.3
+    superjson: 1.8.0
     tailwindcss: 3.0.7
     ts-node: 9.1.1
     typescript: 4.5.4
@@ -7417,12 +7424,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"superjson@npm:1.7.3":
-  version: 1.7.3
-  resolution: "superjson@npm:1.7.3"
+"superjson@npm:1.8.0":
+  version: 1.8.0
+  resolution: "superjson@npm:1.8.0"
   dependencies:
     debug: ^4.3.1
-  checksum: f708b94a76ee1faa04ddff0675129a40604396b18106a41d7e79492eaedd4a98f06e8d23768c65808d7740b17c378a1c54493004c9e585b66104d1bf7a3be31d
+    lodash.clonedeep: ^4.5.0
+  checksum: f1b333354a14be3b8dae147d008d70c337330d4d690457e25b58365d68c2a720e1eb2e0e16af9a8e7505b6a96c3a7a5e39d9fb7c930c4b8b3655b9748e5f156a
   languageName: node
   linkType: hard
 
