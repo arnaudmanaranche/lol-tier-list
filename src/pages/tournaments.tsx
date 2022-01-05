@@ -44,27 +44,21 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
         animate="show"
         className="grid grid-cols-2 gap-10 md:grid-cols-3"
       >
-        {tournaments?.map((tournament) => {
-          return tournament.status ? (
-            <motion.div variants={stat}>
-              <Link
-                key={tournament.pandascoreId}
-                href={`/ranking/new/${tournament.id}`}
-                prefetch={false}
-              >
+        {tournaments?.map((tournament) => (
+          <motion.div variants={stat} key={tournament.pandascoreId}>
+            {tournament.status ? (
+              <Link href={`/ranking/new/${tournament.id}`} prefetch={false}>
                 <a>
                   <Tournament {...tournament} />
                 </a>
               </Link>
-            </motion.div>
-          ) : (
-            <motion.div variants={stat}>
-              <div className="opacity-50 cursor-not-allowed" key={tournament.pandascoreId}>
+            ) : (
+              <div className="opacity-50 cursor-not-allowed">
                 <Tournament {...tournament} />
               </div>
-            </motion.div>
-          )
-        })}
+            )}
+          </motion.div>
+        ))}
       </motion.div>
     )}
   </div>
