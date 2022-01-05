@@ -45,7 +45,7 @@ const Header = (): ReactElement => {
     return () => {
       authListener.unsubscribe()
     }
-  }, [])
+  }, [setUser])
 
   return (
     <header className="text-gray-600 bg-white shadow-md dark:bg-gray-700 shadow-black/10 body-font">
