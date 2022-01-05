@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -9,6 +10,19 @@ import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import protectedRoute from 'Utils/protectedRoute'
 import type { TOURNAMENT } from 'Utils/types'
+
+const parent = {
+  show: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const stat = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 }
+}
 
 const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactElement => (
   <div className="max-w-screen-md mx-auto">
@@ -24,25 +38,34 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
         <p>Please try again later.</p>
       </Error>
     ) : (
-      <div className="grid grid-cols-2 gap-10 md:grid-cols-3">
+      <motion.div
+        variants={parent}
+        initial="hidden"
+        animate="show"
+        className="grid grid-cols-2 gap-10 md:grid-cols-3"
+      >
         {tournaments?.map((tournament) => {
           return tournament.status ? (
-            <Link
-              key={tournament.pandascoreId}
-              href={`/ranking/new/${tournament.id}`}
-              prefetch={false}
-            >
-              <a>
-                <Tournament {...tournament} />
-              </a>
-            </Link>
+            <motion.div variants={stat}>
+              <Link
+                key={tournament.pandascoreId}
+                href={`/ranking/new/${tournament.id}`}
+                prefetch={false}
+              >
+                <a>
+                  <Tournament {...tournament} />
+                </a>
+              </Link>
+            </motion.div>
           ) : (
-            <div className="opacity-50 cursor-not-allowed" key={tournament.pandascoreId}>
-              <Tournament {...tournament} />
-            </div>
+            <motion.div variants={stat}>
+              <div className="opacity-50 cursor-not-allowed" key={tournament.pandascoreId}>
+                <Tournament {...tournament} />
+              </div>
+            </motion.div>
           )
         })}
-      </div>
+      </motion.div>
     )}
   </div>
 )

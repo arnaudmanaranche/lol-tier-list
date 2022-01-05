@@ -48,7 +48,7 @@ const Header = (): ReactElement => {
   }, [])
 
   return (
-    <header className="text-gray-600 bg-white dark:bg-[#2b2d2e] shadow-md shadow-black/10 body-font">
+    <header className="text-gray-600 bg-white shadow-md dark:bg-gray-700 shadow-black/10 body-font">
       <div className="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
         <Link href={HOME} prefetch={false}>
           <a className="flex-1 font-bold text-center lg:flex-none text-primary">{DEFAULT_TITLE}</a>

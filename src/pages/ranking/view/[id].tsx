@@ -67,14 +67,8 @@ const ViewRanking = ({
             height={60}
             width={60}
             id={ranking?.tournament?.name}
-            onLoadingComplete={() => {
-              const img = document.getElementById(ranking?.tournament?.name)
-
-              img.classList.add('imageIsLoaded')
-            }}
             placeholder="blur"
             blurDataURL={ranking?.tournament?.base64}
-            className="image"
           />
           <p>{ranking.tournament.name}</p>
         </h1>
