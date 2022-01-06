@@ -11,7 +11,7 @@ interface Props extends TEAM {
 
 const Team = ({ base64, logo, name, players, onUpdate, disabled }: Props): ReactElement => {
   return (
-    <div className="h-full border-b-2 border-solid header-shadow border-primary">
+    <div className="h-full bg-white border-b-2 border-solid rounded-t header-shadow border-primary">
       <div className="flex items-center p-2 rounded-t bg-primary">
         <Image
           src={logo}
@@ -19,14 +19,8 @@ const Team = ({ base64, logo, name, players, onUpdate, disabled }: Props): React
           height={60}
           width={60}
           id={name}
-          onLoadingComplete={() => {
-            const img = document.getElementById(name)
-
-            img.classList.add('imageIsLoaded')
-          }}
           placeholder="blur"
           blurDataURL={base64}
-          className="image"
         />
         <p className="m-2 font-bold text-black dark:text-black">{name}</p>
       </div>

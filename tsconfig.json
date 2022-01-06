@@ -19,8 +19,9 @@
       "Contexts/*": ["src/contexts/*"],
       "Components/*": ["src/components/*"],
       "Utils/*": ["src/utils/*"]
-    }
+    },
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts", "src/pages/_error.js"],
   "exclude": ["node_modules"]
 }

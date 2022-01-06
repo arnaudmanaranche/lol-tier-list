@@ -1,8 +1,9 @@
+import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import prisma from 'Utils/prisma'
 
-export default async function createUser(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+async function createUser(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const { userId } = req.body
 
   const user = await prisma.user.upsert({
@@ -13,3 +14,5 @@ export default async function createUser(req: NextApiRequest, res: NextApiRespon
 
   res.json(user)
 }
+
+export default withSentry(createUser)

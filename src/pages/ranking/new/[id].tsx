@@ -72,21 +72,15 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${name} logo`} />
       </Head>
-      <div className="flex items-center justify-center w-full mb-10">
+      <div className="flex flex-col items-center mb-10">
         <Image
           src={logo}
           alt={`${name} logo`}
           height={70}
           width={70}
           id={name}
-          onLoadingComplete={() => {
-            const img = document.getElementById(name)
-
-            img.classList.add('imageIsLoaded')
-          }}
           placeholder="blur"
           blurDataURL={base64}
-          className="image"
         />
         <div className="prose lg:prose-xl">
           <h1 className="capitalize dark:text-white">{name}</h1>

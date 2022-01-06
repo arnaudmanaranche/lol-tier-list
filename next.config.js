@@ -1,8 +1,10 @@
+const { withSentryConfig } = require('@sentry/nextjs')
+
 // @ts-check
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = {
+const moduleExports = {
   swcMinify: true,
   webpack5: true,
   future: {
@@ -80,3 +82,11 @@ const securityHeaders = [
     value: 'camera=(), microphone=(), geolocation=()'
   }
 ]
+
+const sentryWebpackPluginOptions = {
+  silent: true
+}
+
+// Make sure adding Sentry options is the last code to run before exporting, to
+// ensure that your source maps include changes from all other Webpack plugins
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)
