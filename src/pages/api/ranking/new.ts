@@ -1,11 +1,9 @@
+import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import prisma from 'Utils/prisma'
 
-export default async function createRanking(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+async function createRanking(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const { ranking, tournamentId, userId } = req.body
 
   const result = await prisma.ranking.create({
@@ -18,3 +16,5 @@ export default async function createRanking(
 
   res.json(result)
 }
+
+export default withSentry(createRanking)

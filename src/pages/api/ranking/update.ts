@@ -1,11 +1,9 @@
+import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import prisma from 'Utils/prisma'
 
-export default async function updateRanking(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+async function updateRanking(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const { ranking } = req.body
 
   const result = await prisma.ranking.update({
@@ -19,3 +17,5 @@ export default async function updateRanking(
 
   res.json(result)
 }
+
+export default withSentry(updateRanking)

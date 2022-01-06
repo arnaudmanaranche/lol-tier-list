@@ -1,11 +1,9 @@
+import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import prisma from 'Utils/prisma'
 
-export default async function updateTournament(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+async function updateTournament(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const { tournamentId, status, teams } = req.body
 
   const result = await prisma.tournament.update({
@@ -20,3 +18,5 @@ export default async function updateTournament(
 
   res.json(result)
 }
+
+export default withSentry(updateTournament)
