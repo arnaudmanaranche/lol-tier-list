@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "esModuleInterop": true,
     "target": "es6",
     "allowJs": true,
@@ -19,25 +16,12 @@
     "strict": false,
     "baseUrl": ".",
     "paths": {
-      "Contexts/*": [
-        "src/contexts/*"
-      ],
-      "Components/*": [
-        "src/components/*"
-      ],
-      "Utils/*": [
-        "src/utils/*"
-      ]
+      "Contexts/*": ["src/contexts/*"],
+      "Components/*": ["src/components/*"],
+      "Utils/*": ["src/utils/*"]
     },
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "custom.d.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts", "src/pages/_error.js"],
+  "exclude": ["node_modules"]
 }

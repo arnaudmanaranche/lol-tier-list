@@ -1,5 +1,4 @@
 import * as Sentry from '@sentry/react'
-import { Integrations } from '@sentry/tracing'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'next-themes'
@@ -7,22 +6,11 @@ import { ThemeProvider } from 'next-themes'
 import { UserProvider } from 'Contexts/user'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
-import packageJson from '../../package.json'
 import Layout from '../layout/Layout'
 
 import '../styles/tailwind.css'
 import 'tailwindcss/utilities.css'
 import '../styles/custom.css'
-
-if (process.env.NODE_ENV === 'production') {
-  Sentry.init({
-    dsn: process.env.SENTRY_DSN,
-    release: `lol-power-ranking@${packageJson.version}`,
-    integrations: [new Integrations.BrowserTracing()],
-    tracesSampleRate: 1.0,
-    environment: process.env.APP_ENV
-  })
-}
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
