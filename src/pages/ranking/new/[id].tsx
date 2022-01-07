@@ -63,7 +63,7 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
   }
 
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl pt-10 mx-auto">
       <Head>
         <title>{`${name} - ${DEFAULT_TITLE}`}</title>
         <meta property="og:image" content={logo} key="og:image" />
@@ -123,7 +123,7 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
             createRanking()
             window.panelbear('track', `new_ranking_for_tournament_${tournament.id}`)
           }}
-        >{`Create my ${name} power raking`}</Button>
+        >{`Create my ${name} power ranking`}</Button>
       </div>
       <Transition show={open} as={Fragment}>
         <Dialog

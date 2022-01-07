@@ -25,7 +25,7 @@ const stat = {
 }
 
 const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactElement => (
-  <div className="max-w-screen-md mx-auto">
+  <div className="max-w-screen-md pt-10 mx-auto">
     <Head>
       <title>{`Tournaments - ${DEFAULT_TITLE}`}</title>
     </Head>

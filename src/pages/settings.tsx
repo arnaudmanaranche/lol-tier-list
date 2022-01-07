@@ -47,7 +47,7 @@ const Settings = ({ user }: { user: User }): ReactElement => {
   if (!mounted) return null
 
   return (
-    <div className="max-w-screen-md mx-auto">
+    <div className="max-w-screen-md pt-10 mx-auto">
       <h1 className="mb-10 text-5xl font-bold text-center">Settings</h1>
       <p className="text-md">
         Email: <b>{user.email}</b>

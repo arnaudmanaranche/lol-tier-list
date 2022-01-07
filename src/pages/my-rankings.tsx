@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 
 import Button from 'Components/Button'
+import Error from 'Components/Error'
 import prisma from 'Utils/prisma'
 import protectedRoute from 'Utils/protectedRoute'
 import type { RANKING } from 'Utils/types'
@@ -29,36 +30,42 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
   }
 
   return (
-    <div className="max-w-screen-md mx-auto">
+    <div className="max-w-screen-md pt-10 mx-auto">
       <h1 className="mb-10 text-5xl font-bold text-center dark:text-white">My Rankings</h1>
-      <ul>
-        {rankings?.map((ranking) => (
-          <li className="flex items-center my-12" key={ranking.id}>
-            <div className="flex items-center w-[30%]">
-              <Image
-                src={ranking.tournament.logo}
-                alt={`${ranking.tournament.name} logo`}
-                height={60}
-                width={60}
-                id={ranking.tournament.name}
-                placeholder="blur"
-                blurDataURL={ranking.tournament.base64}
-              />
-              <span>{ranking.tournament.name}</span>
-            </div>
-            <div className="flex justify-end w-[70%] space-x-4">
-              <Button
-                onClick={() => {
-                  deleteRanking(ranking.id)
-                }}
-              >
-                Delete
-              </Button>
-              <Button href={`/ranking/view/${ranking.id}?edit`}>Edit</Button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {rankings.length <= 0 ? (
+        <Error className="text-center">
+          <span>You have not created any ranking for the moment.</span>
+        </Error>
+      ) : (
+        <ul>
+          {rankings?.map((ranking) => (
+            <li className="flex items-center my-12" key={ranking.id}>
+              <div className="flex items-center w-[30%]">
+                <Image
+                  src={ranking.tournament.logo}
+                  alt={`${ranking.tournament.name} logo`}
+                  height={60}
+                  width={60}
+                  id={ranking.tournament.name}
+                  placeholder="blur"
+                  blurDataURL={ranking.tournament.base64}
+                />
+                <span>{ranking.tournament.name}</span>
+              </div>
+              <div className="flex justify-end w-[70%] space-x-4">
+                <Button
+                  onClick={() => {
+                    deleteRanking(ranking.id)
+                  }}
+                >
+                  Delete
+                </Button>
+                <Button href={`/ranking/view/${ranking.id}?edit`}>Edit</Button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

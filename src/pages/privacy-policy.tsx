@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 const PrivacyPolicy = (): ReactElement => (
-  <div className="m-auto prose lg:prose-xl dark:text-white">
+  <div className="pt-10 m-auto prose lg:prose-xl dark:text-white">
     <h1 className="dark:text-white">Privacy Policy</h1>
     <p>Last updated: May 08, 2021</p>
     <p>

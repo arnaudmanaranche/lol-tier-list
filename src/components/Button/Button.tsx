@@ -16,7 +16,9 @@ const Button = ({
   if (href) {
     return (
       <Link href={href} prefetch={false}>
-        <a className={className}>{children}</a>
+        <a className={className} target="_blank" rel="noreferrer noopener">
+          {children}
+        </a>
       </Link>
     )
   } else {

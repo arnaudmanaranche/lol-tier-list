@@ -50,7 +50,7 @@ const ViewRanking = ({
   }
 
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl pt-10 mx-auto">
       <Head>
         <title>{`${ranking?.tournament?.name} - ${DEFAULT_TITLE}`}</title>
         <meta property="og:image" content={ranking?.tournament?.logo} key="og:image" />
@@ -93,7 +93,7 @@ const ViewRanking = ({
         <div className="m-6 text-center">
           <Button
             onClick={updateRanking}
-          >{`Update my ${ranking.tournament.name} power raking`}</Button>
+          >{`Update my ${ranking.tournament.name} power ranking`}</Button>
         </div>
       ) : null}
     </div>
