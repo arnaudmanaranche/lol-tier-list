@@ -1,4 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
+import * as Panelbear from '@panelbear/panelbear-js'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -43,6 +44,7 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
     try {
       const fetchResponse = await fetch('/api/ranking/new', newRanking)
       const data = await fetchResponse.json()
+      Panelbear.track('NewRanking')
       setRankingId(data.id)
       openModal()
       return data

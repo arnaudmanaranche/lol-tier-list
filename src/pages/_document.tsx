@@ -1,23 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
-const PANELBEAR_CONFIG = {
-  site: process.env.PANELBEAR_SITE_ID,
-  spaMode: 'history',
-  debug: process.env.NODE_ENV === 'development'
-}
-
-function getPanelbearScript() {
-  if (PANELBEAR_CONFIG.debug) {
-    console.warn(
-      'Panelbear is running in debug mode, you should probably turn this off for production.'
-    )
-  }
-
-  return `window.panelbear = window.panelbear || function(){ window.panelbearQ = window.panelbearQ || []; panelbearQ.push(arguments); };
-panelbear("config", ${JSON.stringify(PANELBEAR_CONFIG)});
-`
-}
-
 class AppDocument extends Document {
   render(): JSX.Element {
     return (
@@ -57,11 +39,6 @@ class AppDocument extends Document {
             type="font/woff2"
             crossOrigin="true"
           />
-          <script
-            async
-            src={`https://cdn.panelbear.com/analytics.js?site=${process.env.PANELBEAR_SITE_ID}`}
-          />
-          <script dangerouslySetInnerHTML={{ __html: getPanelbearScript() }}></script>
           <script async src={process.env.OSANO_URL}></script>
         </Head>
         <body>

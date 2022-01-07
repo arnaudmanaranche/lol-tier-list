@@ -1624,6 +1624,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@panelbear/panelbear-js@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@panelbear/panelbear-js@npm:1.3.3"
+  checksum: acd28dd5c5e94b39b9e825d6b39f39a1ac138100729c3b9dbc931e9cb80ac73ae187d4884a457de3ce91ee3f58bbbdedd23135338c41b57bda9305288a4f6c69
+  languageName: node
+  linkType: hard
+
+"@panelbear/panelbear-nextjs@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@panelbear/panelbear-nextjs@npm:1.0.3"
+  dependencies:
+    "@panelbear/panelbear-js": ^1.3.3
+  peerDependencies:
+    next: ^10 || ^11 || ^12
+    react: ^16 || ^17
+  checksum: 93695be038dea373227dc7a0a3cb444ea397e14bbfab7d9c5eee1fd7c5147b28eb21417318c52d92600d6b97f275afcecd98f5d2a5e5285fba38572d4c38f823
+  languageName: node
+  linkType: hard
+
 "@prisma/client@npm:2.26.0":
   version: 2.26.0
   resolution: "@prisma/client@npm:2.26.0"
@@ -5469,6 +5488,7 @@ __metadata:
   resolution: "lol-power-ranking@workspace:."
   dependencies:
     "@headlessui/react": 1.4.2
+    "@panelbear/panelbear-nextjs": ^1.0.3
     "@prisma/client": 2.26.0
     "@sentry/nextjs": ^6.16.1
     "@sentry/react": 6.16.1
