@@ -90,7 +90,7 @@ const ViewRanking = ({
         ))}
       </div>
       {isEditMode ? (
-        <div className="m-6 text-center">
+        <div className="flex justify-center m-6">
           <Button
             onClick={updateRanking}
           >{`Update my ${ranking.tournament.name} power ranking`}</Button>

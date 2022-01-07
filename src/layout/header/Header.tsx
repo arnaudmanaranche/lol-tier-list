@@ -47,8 +47,14 @@ const Header = (): ReactElement => {
     }
   }, [setUser])
 
+  const handleLogout = async () => {
+    await logout()
+    setUser(null)
+    router.push(ROUTES.HOME)
+  }
+
   return (
-    <header className="text-gray-600 bg-white shadow-md  dark:bg-gray-700 shadow-black/10 body-font">
+    <header className="text-gray-600 bg-white shadow-md dark:bg-gray-700 shadow-black/10 body-font">
       <div className="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
         <Link href={HOME} prefetch={false}>
           <a className="flex-1 font-bold text-center lg:flex-none text-primary">{DEFAULT_TITLE}</a>
@@ -108,7 +114,7 @@ const Header = (): ReactElement => {
                         <Menu.Item>
                           <button
                             className="flex items-center w-full px-2 py-2 text-sm hover:text-primary"
-                            onClick={logout}
+                            onClick={handleLogout}
                           >
                             Logout
                           </button>

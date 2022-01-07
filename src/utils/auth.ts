@@ -7,9 +7,16 @@ const logout = async (): Promise<void> => {
 }
 
 const login = async (): Promise<void> => {
-  await supabase.auth.signIn({
-    provider: 'twitter'
-  })
+  const redirectTo = window.location.href
+
+  await supabase.auth.signIn(
+    {
+      provider: 'twitter'
+    },
+    {
+      redirectTo
+    }
+  )
 }
 
 const handleAuthChange = async (event: AuthChangeEvent, session: Session): Promise<void> => {

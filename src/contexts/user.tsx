@@ -22,12 +22,9 @@ export function UserProvider({ children }: { children: NonNullable<ReactNode> })
     checkUser()
   }, [])
 
-  const setUserData = useCallback(
-    (user): void => {
-      setUser(user)
-    },
-    [user]
-  )
+  const setUserData = useCallback((user): void => {
+    setUser(user)
+  }, [])
 
   return (
     <SetUserContext.Provider value={setUserData}>

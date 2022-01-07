@@ -1,19 +1,19 @@
 import { Dialog, Transition } from '@headlessui/react'
-import type { User } from '@supabase/gotrue-js'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import type { ReactElement } from 'react'
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, ReactElement, useRef, useState } from 'react'
 
 import Button from 'Components/Button'
 import Team from 'Components/Team'
+import { useUser } from 'Contexts/user'
+import { login } from 'Utils/auth'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import protectedRoute from 'Utils/protectedRoute'
 import type { PLAYER, RANKING_VALUES, TOURNAMENT } from 'Utils/types'
 
-const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): ReactElement => {
+const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
+  const user = useUser()
   const [open, setOpen] = useState(false)
   const cancelButtonRef = useRef()
 
@@ -44,6 +44,7 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
       const fetchResponse = await fetch('/api/ranking/new', newRanking)
       const data = await fetchResponse.json()
       setRankingId(data.id)
+      openModal()
       return data
     } catch (error) {
       return error
@@ -117,13 +118,11 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
         )}
       </div>
       <div className="flex justify-center m-6">
-        <Button
-          onClick={() => {
-            openModal()
-            createRanking()
-            window.panelbear('track', `new_ranking_for_tournament_${tournament.id}`)
-          }}
-        >{`Create my ${name} power ranking`}</Button>
+        {user?.id ? (
+          <Button onClick={createRanking}>{`Create my ${name} power ranking`}</Button>
+        ) : (
+          <Button onClick={login}>Login with Twitter</Button>
+        )}
       </div>
       <Transition show={open} as={Fragment}>
         <Dialog
@@ -185,23 +184,26 @@ const Ranking = ({ tournament, user }: { tournament: TOURNAMENT; user: User }): 
   )
 }
 
-export const getServerSideProps: GetServerSideProps = (context) =>
-  protectedRoute(context, async () => {
-    const { id } = context.params
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { id } = context.params
 
-    const tournament = await prisma.tournament.findUnique({
-      where: {
-        id: id as string
-      }
-    })
-
-    if (!tournament) {
-      return {
-        notFound: true
-      }
+  const tournament = await prisma.tournament.findUnique({
+    where: {
+      id: id as string
     }
-
-    return { tournament }
   })
+
+  if (!tournament) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      tournament
+    }
+  }
+}
 
 export default Ranking

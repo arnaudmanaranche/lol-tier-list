@@ -10,10 +10,11 @@ import Button from 'Components/Button'
 import { useSetUser } from 'Contexts/user'
 import { logout } from 'Utils/auth'
 import { ROUTES } from 'Utils/constants'
-import protectedRoute from 'Utils/protectedRoute'
+import supabase from 'Utils/supabase'
 
 const LIGHT = 'light'
 const DARK = 'dark'
+const { HOME } = ROUTES
 
 const Settings = ({ user }: { user: User }): ReactElement => {
   const [mounted, setMounted] = useState(false)
@@ -86,8 +87,23 @@ const Settings = ({ user }: { user: User }): ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = (context) => {
-  return protectedRoute(context)
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { user } = await supabase.auth.api.getUserByCookie(context.req)
+
+  if (!user) {
+    return {
+      redirect: {
+        destination: HOME,
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {
+      user
+    }
+  }
 }
 
 export default Settings

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
@@ -8,7 +8,6 @@ import Error from 'Components/Error'
 import Tournament from 'Components/Tournament'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import protectedRoute from 'Utils/protectedRoute'
 import type { TOURNAMENT } from 'Utils/types'
 
 const parent = {
@@ -64,22 +63,25 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
   </div>
 )
 
-export const getServerSideProps: GetServerSideProps = (context) =>
-  protectedRoute(context, async () => {
-    const tournaments = await prisma.tournament.findMany({
-      select: {
-        teams: false,
-        id: true,
-        name: true,
-        pandascoreId: true,
-        status: true,
-        logo: true,
-        base64: true,
-        year: true
-      }
-    })
-
-    return { tournaments }
+export const getStaticProps: GetStaticProps = async () => {
+  const tournaments = await prisma.tournament.findMany({
+    select: {
+      teams: false,
+      id: true,
+      name: true,
+      pandascoreId: true,
+      status: true,
+      logo: true,
+      base64: true,
+      year: true
+    }
   })
+
+  return {
+    props: {
+      tournaments
+    }
+  }
+}
 
 export default Tournaments

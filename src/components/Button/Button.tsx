@@ -4,21 +4,29 @@ import type { ReactElement, ReactNode } from 'react'
 const Button = ({
   children,
   onClick,
-  href
+  href,
+  to
 }: {
   children: ReactNode
   onClick?: () => unknown
   href?: string
+  to?: string
 }): ReactElement => {
   const className =
     'flex items-center justify-center p-4 text-center text-black rounded font-body bg-primary hover:bg-primaryDark'
 
   if (href) {
     return (
-      <Link href={href} prefetch={false}>
+      <Link href={href}>
         <a className={className} target="_blank" rel="noreferrer noopener">
           {children}
         </a>
+      </Link>
+    )
+  } else if (to) {
+    return (
+      <Link href={to} prefetch={false}>
+        <a className={className}>{children}</a>
       </Link>
     )
   } else {

@@ -5,9 +5,12 @@ import type { ReactElement } from 'react'
 
 import Button from 'Components/Button'
 import Error from 'Components/Error'
+import { ROUTES } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import protectedRoute from 'Utils/protectedRoute'
+import supabase from 'Utils/supabase'
 import type { RANKING } from 'Utils/types'
+
+const { HOME } = ROUTES
 
 const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
   const router = useRouter()
@@ -60,7 +63,7 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
                 >
                   Delete
                 </Button>
-                <Button href={`/ranking/view/${ranking.id}?edit`}>Edit</Button>
+                <Button to={`/ranking/view/${ranking.id}?edit`}>Edit</Button>
               </div>
             </li>
           ))}
@@ -70,33 +73,47 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = (context) =>
-  protectedRoute(context, async (user) => {
-    const rankings = await prisma.ranking.findMany({
-      where: {
-        userId: user.id
-      },
-      select: {
-        id: true,
-        tournamentId: true,
-        data: false,
-        tournament: {
-          select: {
-            teams: false,
-            id: true,
-            name: true,
-            pandascoreId: true,
-            status: true,
-            logo: true,
-            base64: true,
-            year: true
-          }
-        },
-        userId: true
-      }
-    })
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { user } = await supabase.auth.api.getUserByCookie(context.req)
 
-    return { rankings }
+  if (!user) {
+    return {
+      redirect: {
+        destination: HOME,
+        permanent: false
+      }
+    }
+  }
+
+  const rankings = await prisma.ranking.findMany({
+    where: {
+      userId: user.id
+    },
+    select: {
+      id: true,
+      tournamentId: true,
+      data: false,
+      tournament: {
+        select: {
+          teams: false,
+          id: true,
+          name: true,
+          pandascoreId: true,
+          status: true,
+          logo: true,
+          base64: true,
+          year: true
+        }
+      },
+      userId: true
+    }
   })
+
+  return {
+    props: {
+      rankings
+    }
+  }
+}
 
 export default MyRankings

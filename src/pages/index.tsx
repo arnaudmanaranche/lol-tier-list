@@ -1,11 +1,8 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 
 import Button from 'Components/Button'
-import { useUser } from 'Contexts/user'
-import { login } from 'Utils/auth'
 import { REGIONS, ROUTES } from 'Utils/constants'
 
 const { TOURNAMENTS } = ROUTES
@@ -24,17 +21,6 @@ const stat = {
 }
 
 const Home = (): ReactElement => {
-  const user = useUser()
-  const router = useRouter()
-
-  const createYoursCTA = () => {
-    if (user) {
-      router.push(TOURNAMENTS)
-    } else {
-      login()
-    }
-  }
-
   return (
     <div className="flex flex-col items-center text-center">
       <div className="flex flex-col items-center w-full h-screen">
@@ -48,7 +34,7 @@ const Home = (): ReactElement => {
         <h1 className="my-10 text-6xl font-bold dark:text-white">
           Share easily your League of Legends power rankings
         </h1>
-        <Button onClick={createYoursCTA}>CREATE YOURS</Button>
+        <Button to={TOURNAMENTS}>CREATE YOURS</Button>
         <motion.div
           variants={parent}
           initial="hidden"
