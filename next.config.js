@@ -36,7 +36,7 @@ const moduleExports = {
     ]
   },
   images: {
-    domains: ['fjjmcodfztuygoihyhnr.supabase.in', 'cshcnecridevmmzopztb.supabase.in']
+    domains: [`${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.in`]
   }
 }
 
