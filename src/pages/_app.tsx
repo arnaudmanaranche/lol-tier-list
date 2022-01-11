@@ -25,27 +25,28 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-const App = ({ Component, pageProps }: AppProps) => (
-  <>
-    <Head>
-      <title>{DEFAULT_TITLE}</title>
-      <meta name="description" content={DEFAULT_DESCRIPTION} />
-      <meta property="og:image" content="" key="og:image" />
-      <meta property="og:title" content={DEFAULT_TITLE} key="og:title" />
-      <meta property="og:description" content={DEFAULT_DESCRIPTION} key="og:description" />
-      <meta name="twitter:title" content={DEFAULT_TITLE} key="twitter:title" />
-      <meta name="twitter:description" content={DEFAULT_DESCRIPTION} key="twitter:description" />
-    </Head>
-    <LiveblocksProvider client={initLiveBlocks}>
-      <UserProvider>
-        <ThemeProvider attribute="class">
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </UserProvider>
-    </LiveblocksProvider>
-  </>
-)
+  return (
+    <>
+      <Head>
+        <title>{DEFAULT_TITLE}</title>
+        <meta name="description" content={DEFAULT_DESCRIPTION} />
+        <meta property="og:image" content="" key="og:image" />
+        <meta property="og:title" content={DEFAULT_TITLE} key="og:title" />
+        <meta property="og:description" content={DEFAULT_DESCRIPTION} key="og:description" />
+        <meta name="twitter:title" content={DEFAULT_TITLE} key="twitter:title" />
+        <meta name="twitter:description" content={DEFAULT_DESCRIPTION} key="twitter:description" />
+      </Head>
+      <LiveblocksProvider client={initLiveBlocks}>
+        <UserProvider>
+          <ThemeProvider attribute="class">
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ThemeProvider>
+        </UserProvider>
+      </LiveblocksProvider>
+    </>
+  )
+}
 
 export default Sentry.withProfiler(App)
