@@ -6,8 +6,8 @@ import type { RANKING_VALUES, TEAM } from 'Utils/types'
 
 interface Props extends TEAM {
   onUpdate: (value: RANKING_VALUES, playerId: number) => void
-  onFocus: (name: string) => void
-  onBlur: () => void
+  onFocus?: (name: string) => void
+  onBlur?: () => void
   disabled: boolean
 }
 
