@@ -1,7 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { RoomProvider, useMyPresence, useObject, useOthers } from '@liveblocks/react'
 import * as Panelbear from '@panelbear/panelbear-js'
-import type { User } from '@supabase/gotrue-js'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -111,7 +110,7 @@ const RankingContainer = ({ tournament }: { tournament: TOURNAMENT }): ReactElem
 
   return (
     <div
-      className="max-w-screen-xl mx-auto"
+      className="max-w-screen-xl pt-10 mx-auto"
       onPointerMove={(event) =>
         updateMyPresence({
           cursor: {
