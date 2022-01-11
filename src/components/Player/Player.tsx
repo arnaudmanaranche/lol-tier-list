@@ -38,21 +38,26 @@ const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactElement 
       break
   }
 
-  const className = clsx(
-    'flex uppercase items-center justify-center h-full px-1.5 py-2.5 border-0 outline-none',
-    currentClassname ? currentClassname : 'bg-white'
-  )
-
   return (
     <div className="flex items-center justify-between text-black">
-      <p className="p-2 uppercase">{role}</p>
-      <p className="p-2">{name}</p>
+      <p className="pl-3 uppercase">{role}</p>
+      <p className="text-center grow">{name}</p>
       {disabled ? (
-        <p className={className}>{currentValue}</p>
+        <p
+          className={clsx(
+            'py-2 flex uppercase items-center justify-center h-full min-w-[60px]',
+            currentClassname ? currentClassname : 'bg-white'
+          )}
+        >
+          {currentValue ?? 'N/A'}
+        </p>
       ) : (
         <select
           disabled={disabled}
-          className={className}
+          className={clsx(
+            'flex uppercase items-center justify-center h-[40px] border-0 py-2 outline-none min-w-[60px]',
+            currentClassname ? currentClassname : 'bg-white'
+          )}
           onChange={(e) => {
             onUpdate(e.target.value as RANKING_VALUES)
             setValue(e.target.value as RANKING_VALUES)
