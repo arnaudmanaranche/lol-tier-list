@@ -1631,7 +1631,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@panelbear/panelbear-nextjs@npm:^1.0.3":
+"@panelbear/panelbear-nextjs@npm:1.0.3":
   version: 1.0.3
   resolution: "@panelbear/panelbear-nextjs@npm:1.0.3"
   dependencies:
@@ -1753,7 +1753,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/nextjs@npm:^6.16.1":
+"@sentry/nextjs@npm:6.16.1":
   version: 6.16.1
   resolution: "@sentry/nextjs@npm:6.16.1"
   dependencies:
@@ -5488,9 +5488,9 @@ __metadata:
   resolution: "lol-power-ranking@workspace:."
   dependencies:
     "@headlessui/react": 1.4.2
-    "@panelbear/panelbear-nextjs": ^1.0.3
+    "@panelbear/panelbear-nextjs": 1.0.3
     "@prisma/client": 2.26.0
-    "@sentry/nextjs": ^6.16.1
+    "@sentry/nextjs": 6.16.1
     "@sentry/react": 6.16.1
     "@sentry/tracing": 6.16.1
     "@supabase/supabase-js": 1.24.0
