@@ -3,9 +3,13 @@ import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import prisma from 'Utils/prisma'
+import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 
 async function createRanking(req: NextApiRequest, res: NextApiResponse<Ranking>): Promise<void> {
-  const { ranking, tournamentId, userId } = req.body
+  const {
+    preview,
+    body: { ranking, tournamentId, userId }
+  } = req
 
   const result = await prisma.ranking.create({
     data: {
@@ -14,6 +18,8 @@ async function createRanking(req: NextApiRequest, res: NextApiResponse<Ranking>)
       tournamentId: tournamentId
     }
   })
+
+  if (!preview) redis.set(result.id, JSON.stringify(result), 'ex', ONE_YEAR_IN_SECONDS)
 
   res.json(result)
 }

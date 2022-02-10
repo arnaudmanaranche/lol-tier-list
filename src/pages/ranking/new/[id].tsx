@@ -11,6 +11,7 @@ import { useUser } from 'Contexts/user'
 import { login } from 'Utils/auth'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
+import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 import type { PLAYER, RANKING_VALUES, TOURNAMENT } from 'Utils/types'
 
 const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
@@ -187,13 +188,26 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.params
+  const {
+    preview,
+    params: { id }
+  } = context
 
-  const tournament = await prisma.tournament.findUnique({
-    where: {
-      id: id as string
-    }
-  })
+  let tournament = null
+
+  let cachedData = preview ? null : await redis.get(id)
+
+  if (cachedData) {
+    tournament = JSON.parse(cachedData)
+  } else {
+    tournament = await prisma.tournament.findUnique({
+      where: {
+        id: id as string
+      }
+    })
+
+    redis.set(id, JSON.stringify(tournament), 'ex', ONE_YEAR_IN_SECONDS)
+  }
 
   if (!tournament) {
     return {
