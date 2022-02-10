@@ -206,7 +206,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     })
 
-    redis.set(id, JSON.stringify(tournament), 'ex', ONE_YEAR_IN_SECONDS)
+    if (!preview) {
+      redis.set(id, JSON.stringify(tournament), 'ex', ONE_YEAR_IN_SECONDS)
+    }
   }
 
   if (!tournament) {

@@ -141,7 +141,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     })
 
-    redis.set(id, JSON.stringify(ranking), 'ex', ONE_YEAR_IN_SECONDS)
+    if (!preview) {
+      redis.set(id, JSON.stringify(ranking), 'ex', ONE_YEAR_IN_SECONDS)
+    }
   }
 
   if (!ranking) {
