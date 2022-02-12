@@ -3,7 +3,7 @@ import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import prisma from 'Utils/prisma'
-import redis from 'Utils/redis'
+import initRedis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 
 async function updateTournament(
   req: NextApiRequest,
@@ -13,6 +13,8 @@ async function updateTournament(
     preview,
     body: { tournamentId, status, teams }
   } = req
+
+  const redis = initRedis(preview)
 
   const tournament = await prisma.tournament.update({
     where: {
@@ -24,7 +26,7 @@ async function updateTournament(
     }
   })
 
-  if (!preview) redis.set(tournament.id, JSON.stringify(tournament))
+  if (!preview) redis.set(tournament.id, JSON.stringify(tournament), 'ex', ONE_YEAR_IN_SECONDS)
 
   res.json(tournament)
 }

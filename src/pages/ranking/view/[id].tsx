@@ -7,7 +7,7 @@ import Button from 'Components/Button'
 import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
+import initRedis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 import supabase from 'Utils/supabase'
 import type { RANKING, RANKING_VALUES } from 'Utils/types'
 
@@ -111,6 +111,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } = context
 
   let ranking = null
+
+  const redis = initRedis(preview)
 
   let cachedData = preview ? null : await redis.get(id)
 
