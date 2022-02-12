@@ -7,7 +7,7 @@ import Button from 'Components/Button'
 import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import initRedis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
+import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 import supabase from 'Utils/supabase'
 import type { RANKING, RANKING_VALUES } from 'Utils/types'
 
@@ -105,16 +105,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = await supabase.auth.api.getUserByCookie(context.req)
 
   const {
-    preview,
     params: { id },
     query: { edit }
   } = context
 
   let ranking = null
 
-  const redis = initRedis(preview)
-
-  let cachedData = preview ? null : await redis.get(id)
+  let cachedData = await redis.get(id)
 
   if (cachedData) {
     ranking = JSON.parse(cachedData)
@@ -143,9 +140,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     })
 
-    if (!preview) {
-      redis.set(id, JSON.stringify(ranking), 'ex', ONE_YEAR_IN_SECONDS)
-    }
+    redis.set(id, JSON.stringify(ranking), 'ex', ONE_YEAR_IN_SECONDS)
   }
 
   if (!ranking) {
