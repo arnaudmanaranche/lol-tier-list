@@ -193,6 +193,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     params: { id }
   } = context
 
+  console.log(context)
+  console.log(preview)
+
   let tournament = null
 
   let cachedData = preview ? null : await redis.get(id)
