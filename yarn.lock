@@ -4810,7 +4810,7 @@ fsevents@~2.3.2:
     prisma: 2.26.0
     react: 17.0.2
     react-dom: 17.0.2
-    sort-package-json: 1.49.0
+    sort-package-json: 1.54.0
     superjson: 1.8.1
     tailwindcss: 3.0.7
     ts-node: 9.1.1
@@ -6186,9 +6186,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sort-package-json@npm:1.49.0":
-  version: 1.49.0
-  resolution: "sort-package-json@npm:1.49.0"
+"sort-package-json@npm:1.54.0":
+  version: 1.54.0
+  resolution: "sort-package-json@npm:1.54.0"
   dependencies:
     detect-indent: ^6.0.0
     detect-newline: 3.1.0
@@ -6198,7 +6198,7 @@ resolve@^2.0.0-next.3:
     sort-object-keys: ^1.1.3
   bin:
     sort-package-json: cli.js
-  checksum: 271a396794747f55b857326b59abb873068d73ef593bd39687c25441e9cd607232627ca80edf148a6e1fc741d95aba9cc4af812042dacde04a121b5f92423d0d
+  checksum: 042a6ce7a41f3ecb1f7861d97cb3ce550ea007bdd482414370da2104c53897f1e618923409fe416fbb48d3d9502be3d23072d8a7ac88c2e4d5c321247adb418f
   languageName: node
   linkType: hard
 
