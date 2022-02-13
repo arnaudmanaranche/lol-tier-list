@@ -7,6 +7,7 @@ import Button from 'Components/Button'
 import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
+import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 import supabase from 'Utils/supabase'
 import type { RANKING, RANKING_VALUES } from 'Utils/types'
 
@@ -103,32 +104,44 @@ const ViewRanking = ({
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = await supabase.auth.api.getUserByCookie(context.req)
 
-  const { id } = context.params
-  const { edit } = context.query
+  const {
+    params: { id },
+    query: { edit }
+  } = context
 
-  const ranking = await prisma.ranking.findUnique({
-    where: {
-      id: id as string
-    },
-    select: {
-      id: true,
-      tournamentId: true,
-      data: true,
-      tournament: {
-        select: {
-          teams: false,
-          id: true,
-          name: true,
-          pandascoreId: true,
-          status: true,
-          logo: true,
-          base64: true,
-          year: true
-        }
+  let ranking = null
+
+  let cachedData = await redis.get(id)
+
+  if (cachedData) {
+    ranking = JSON.parse(cachedData)
+  } else {
+    ranking = await prisma.ranking.findUnique({
+      where: {
+        id: id as string
       },
-      userId: true
-    }
-  })
+      select: {
+        id: true,
+        tournamentId: true,
+        data: true,
+        tournament: {
+          select: {
+            teams: false,
+            id: true,
+            name: true,
+            pandascoreId: true,
+            status: true,
+            logo: true,
+            base64: true,
+            year: true
+          }
+        },
+        userId: true
+      }
+    })
+
+    redis.set(id, JSON.stringify(ranking), 'ex', ONE_YEAR_IN_SECONDS)
+  }
 
   if (!ranking) {
     return {
