@@ -1,3 +1,4 @@
+import { Tournament } from '@prisma/client'
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
@@ -6,7 +7,10 @@ import { LINEUP_ORDER } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import type { PLAYER } from 'Utils/types'
 
-async function synchronizeTournament(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+async function synchronizeTournament(
+  req: NextApiRequest,
+  res: NextApiResponse<Tournament>
+): Promise<void> {
   const tournamentId: string = req.body.pandascoreId
   const tournamentRegion: string = req.body.region
   const tournamentLogo: string = req.body.logo
@@ -68,7 +72,7 @@ async function synchronizeTournament(req: NextApiRequest, res: NextApiResponse):
 
   const { base64 } = await getPlaiceholder(tournamentLogo)
 
-  const team = await prisma.tournament.create({
+  const tournament = await prisma.tournament.create({
     data: {
       name: `${tournamentRegion} - ${tournamentEvent} (${tournamentYear})`,
       pandascoreId: parseInt(tournamentId),
@@ -79,7 +83,7 @@ async function synchronizeTournament(req: NextApiRequest, res: NextApiResponse):
     }
   })
 
-  res.json(team)
+  res.json(tournament)
 }
 
 export default withSentry(synchronizeTournament)

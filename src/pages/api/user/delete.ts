@@ -4,7 +4,10 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from 'Utils/prisma'
 import supabase from 'Utils/supabase'
 
-async function deleteUser(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+async function deleteUser(
+  req: NextApiRequest,
+  res: NextApiResponse<{ status: string }>
+): Promise<void> {
   const { userId } = req.body
 
   await prisma.user.delete({
