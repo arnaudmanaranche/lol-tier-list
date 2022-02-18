@@ -2103,14 +2103,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.3":
-  version: 17.0.3
-  resolution: "@types/react@npm:17.0.3"
+"@types/react@npm:17.0.39":
+  version: 17.0.39
+  resolution: "@types/react@npm:17.0.39"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: d29f2a33ed69fae9d9f42f8b39b40352e3209eb821f827d566330adfdffb48d2dc730982356cd50a7fda6171e6bc7deca793f7b105c95fce615a45ab313ecf41
+  checksum: bf04d3c2894559012710d595553e12b422d3b91cd8f4f7e122d8cb044ba9c2ba17f6e8a4e09581359cc5509ddc59cd8c8fabd6774f3505a40a45393f074d6e6e
   languageName: node
   linkType: hard
 
@@ -4790,7 +4790,7 @@ fsevents@~2.3.2:
     "@svgr/webpack": 5.5.0
     "@tailwindcss/typography": 0.5.0
     "@types/node": 14.18.3
-    "@types/react": 17.0.3
+    "@types/react": 17.0.39
     "@types/tailwindcss": 2.2.4
     autoprefixer: 10.4.1
     babel-plugin-superjson-next: 0.3.1
