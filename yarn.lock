@@ -2075,10 +2075,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.18.3":
-  version: 14.18.3
-  resolution: "@types/node@npm:14.18.3"
-  checksum: 72275674a25b0e9d4fe213449d874fd3e8280a84d911a359d298d68b84550b6a3210d484dc2662b8eb6e0b1829f4dac5e60cb7c01ce78878b316305c798d1cbb
+"@types/node@npm:14.18.11":
+  version: 14.18.11
+  resolution: "@types/node@npm:14.18.11"
+  checksum: 58f75d05406004b83f1fd4c72115d2c180f22812bd48187b89b27dd9ea09f90774b2261f068e94bf6a6792a1f33a585b624135be3c4b6e2acd766043148754a7
   languageName: node
   linkType: hard
 
@@ -4790,8 +4790,8 @@ fsevents@~2.3.2:
     "@supabase/supabase-js": 1.24.0
     "@svgr/webpack": 5.5.0
     "@tailwindcss/typography": 0.5.0
-    "@types/node": 14.18.3
-    "@types/react": 17.0.39
+    "@types/node": 14.18.11
+    "@types/react": 17.0.3
     "@types/tailwindcss": 2.2.4
     autoprefixer: 10.4.1
     babel-plugin-superjson-next: 0.3.1
