@@ -4304,7 +4304,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"ioredis@npm:^4.28.5":
+"ioredis@npm:4.28.5":
   version: 4.28.5
   resolution: "ioredis@npm:4.28.5"
   dependencies:
@@ -4799,8 +4799,8 @@ fsevents@~2.3.2:
     eslint-config-next: 12.0.7
     eslint-plugin-simple-import-sort: 7.0.0
     framer-motion: 5.5.5
-    ioredis: ^4.28.5
-    next: 12
+    ioredis: 4.28.5
+    next: 12.0.9
     next-sitemap: 1.6.203
     next-themes: 0.0.14
     plaiceholder: 2.0.1
@@ -5107,7 +5107,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"next@npm:12":
+"next@npm:12.0.9":
   version: 12.0.9
   resolution: "next@npm:12.0.9"
   dependencies:
