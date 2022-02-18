@@ -26,6 +26,10 @@ Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-
 
     $ nvm use
 
+Seed local database
+
+    $ yarn seed:db
+
 Start app on localhost:3000 by running the following command
 
     $ yarn dev
