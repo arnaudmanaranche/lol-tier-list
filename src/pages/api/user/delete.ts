@@ -14,7 +14,7 @@ async function deleteUser(
     where: { id: userId }
   })
 
-  await supabase.auth.api.deleteUser(userId, process.env.PRISMA_SERVICE_ROLE)
+  await supabase.auth.api.deleteUser(userId)
 
   res.status(204).json({ status: 'OK' })
 }
