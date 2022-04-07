@@ -3,7 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import Button from 'Components/Button'
+import { Button } from 'design-system'
+
 import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'

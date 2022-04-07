@@ -2,7 +2,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import Button from 'Components/Button'
+import { Button } from 'design-system'
+
 import { REGIONS, ROUTES } from 'Utils/constants'
 
 const { TOURNAMENTS } = ROUTES

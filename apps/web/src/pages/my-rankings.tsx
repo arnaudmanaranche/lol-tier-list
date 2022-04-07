@@ -3,7 +3,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 
-import Button from 'Components/Button'
+import { Button } from 'design-system'
+
 import Error from 'Components/Error'
 import { ROUTES } from 'Utils/constants'
 import prisma from 'Utils/prisma'

@@ -6,7 +6,8 @@ import { useTheme } from 'next-themes'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
-import Button from 'Components/Button'
+import { Button } from 'design-system'
+
 import { useSetUser } from 'Contexts/user'
 import { logout } from 'Utils/auth'
 import { ROUTES } from 'Utils/constants'

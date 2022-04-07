@@ -5,7 +5,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Fragment, ReactElement, useRef, useState } from 'react'
 
-import Button from 'Components/Button'
+import { Button } from 'design-system'
+
 import Team from 'Components/Team'
 import { useUser } from 'Contexts/user'
 import { login } from 'Utils/auth'
