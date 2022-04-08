@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "main": "./index.ts",
   "scripts": {
-    "build-css": "tailwindcss -i ./styles/index.css -o ./dist/output.css",
+    "build": "tailwindcss -i ./styles/index.css -o ./dist/output.css",
     "build-storybook": "build-storybook --quiet",
     "dev": "start-storybook --quiet",
     "watch:css": "tailwindcss -i ./styles/index.css -o ./dist/output.css --watch"
