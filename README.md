@@ -20,16 +20,12 @@ Install dependencies
 
 Copy example dotenv file without the .example extension
 
-    $ cp .env.example .env
+    $ cp apps/web/.env.example apps/web/.env
 
 Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
     $ nvm use
 
-Seed local database
-
-    $ yarn seed:db
-
-Start app on localhost:3000 by running the following command
+Start Webapp and Storybook by running the following command
 
     $ yarn dev

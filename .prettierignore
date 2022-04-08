@@ -1,5 +1,8 @@
 # dependencies
+.yarn
 node_modules
 
 # production
 .next
+storybook-static
+dist
