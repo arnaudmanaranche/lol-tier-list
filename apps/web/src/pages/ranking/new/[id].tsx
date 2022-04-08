@@ -5,15 +5,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Fragment, ReactElement, useRef, useState } from 'react'
 
-import { Button } from 'design-system'
+import type { PLAYER, RANKING_VALUES, TOURNAMENT } from '@lpr/types'
+import { Button, Team } from '@lpr/ui'
 
-import Team from 'Components/Team'
 import { useUser } from 'Contexts/user'
 import { login } from 'Utils/auth'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
-import type { PLAYER, RANKING_VALUES, TOURNAMENT } from 'Utils/types'
 
 const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
   const user = useUser()

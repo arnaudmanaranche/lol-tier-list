@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { Fragment, useEffect } from 'react'
 
-import { Button } from 'design-system'
+import { Button } from '@lpr/ui'
 
 import { useSetUser, useUser } from 'Contexts/user'
 import { checkUser, handleAuthChange, login, logout } from 'Utils/auth'

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@headlessui/react": "1.4.2",
+    "@lpr/ui": "*",
     "@panelbear/panelbear-nextjs": "1.0.3",
     "@prisma/client": "2.26.0",
     "@sentry/nextjs": "6.17.6",
@@ -22,7 +23,6 @@
     "@svgr/webpack": "5.5.0",
     "babel-plugin-superjson-next": "0.3.1",
     "clsx": "1.1.1",
-    "design-system": "*",
     "framer-motion": "5.5.5",
     "ioredis": "4.28.5",
     "next": "12.1.0",
@@ -35,7 +35,8 @@
     "superjson": "1.8.1"
   },
   "devDependencies": {
-    "configs": "*",
+    "@lpr/configs": "*",
+    "@lpr/types": "*",
     "next-sitemap": "1.6.203",
     "prisma": "2.26.0"
   },

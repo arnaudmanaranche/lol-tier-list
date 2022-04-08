@@ -7,7 +7,7 @@ module.exports = {
       {
         groups: [
           ["^@?\\w"],
-          ["design-system"],
+          ["^(@lpr)(/.*|$)"],
           ["^(Contexts|Components|Utils)(/.*|$)"],
           ["^\\."],
           ["^.+\\.css$"],

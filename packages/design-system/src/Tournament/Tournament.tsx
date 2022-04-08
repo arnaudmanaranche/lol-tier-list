@@ -1,11 +1,16 @@
-import Image from 'next/image'
-import type { ReactElement } from 'react'
+import Image from "next/image";
+import type { ReactElement } from "react";
 
-import type { TOURNAMENT } from 'Utils/types'
+import type { TOURNAMENT } from "@lpr/types";
 
-const Tournament = ({ name, logo, status, base64 }: TOURNAMENT): ReactElement => {
+export const Tournament = ({
+  name,
+  logo,
+  status,
+  base64,
+}: TOURNAMENT): ReactElement => {
   return (
-    <div className="flex flex-col items-center p-2 text-center transition-shadow radius-md relative min-w-[200px] overflow-hidden text-dark  bg-white rounded-lg shadow">
+    <div className="flex flex-col items-center p-2 text-center transition-shadow radius-md relative min-w-[200px] overflow-hidden text-dark bg-white rounded-lg shadow">
       {!status ? (
         <div className="absolute top-0 right-0 w-24 mt-4 -mr-5 text-sm font-bold bg-primary rotate-[45deg]">
           <span>Soon</span>
@@ -22,7 +27,5 @@ const Tournament = ({ name, logo, status, base64 }: TOURNAMENT): ReactElement =>
       />
       <p className="capitalize">{name}</p>
     </div>
-  )
-}
-
-export default Tournament
+  );
+};

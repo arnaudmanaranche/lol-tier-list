@@ -3,14 +3,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import { Button } from 'design-system'
+import type { RANKING, RANKING_VALUES } from '@lpr/types'
+import { Button, Team } from '@lpr/ui'
 
-import Team from 'Components/Team'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 import supabase from 'Utils/supabase'
-import type { RANKING, RANKING_VALUES } from 'Utils/types'
 
 const ViewRanking = ({
   ranking,

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import { Button } from 'design-system'
+import { Button } from '@lpr/ui'
 
 import { REGIONS, ROUTES } from 'Utils/constants'
 

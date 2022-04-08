@@ -3,9 +3,10 @@ import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
 
+import type { PLAYER } from '@lpr/types'
+
 import { LINEUP_ORDER } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import type { PLAYER } from 'Utils/types'
 
 async function synchronizeTournament(
   req: NextApiRequest,

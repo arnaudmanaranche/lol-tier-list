@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactElement, ReactNode } from "react";
 
-interface ButtonProps {
+export interface ButtonProps {
   children: ReactNode;
   onClick?: () => unknown;
   href?: string;

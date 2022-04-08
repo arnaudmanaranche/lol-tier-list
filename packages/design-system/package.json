@@ -1,19 +1,20 @@
 {
-  "name": "design-system",
+  "name": "@lpr/ui",
   "version": "0.0.0",
   "main": "./index.ts",
   "scripts": {
-    "build": "npx tailwindcss -i ./styles/index.css -o ./dist/output.css",
+    "build-css": "npx tailwindcss -i ./styles/index.css -o ./dist/output.css",
     "build-storybook": "build-storybook --quiet",
-    "dev": "npx tailwindcss -i ./styles/index.css -o ./dist/output.css --watch",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "watch:css": "npx tailwindcss -i ./styles/index.css -o ./dist/output.css --watch"
   },
   "devDependencies": {
+    "@lpr/configs": "*",
+    "@lpr/types": "*",
     "@storybook/addon-actions": "6.4.20",
     "@storybook/addon-essentials": "6.4.20",
     "@storybook/addon-links": "6.4.20",
     "@storybook/addon-postcss": "2.0.0",
-    "@storybook/react": "6.4.20",
-    "configs": "*"
+    "@storybook/react": "6.4.20"
   }
 }

@@ -4,11 +4,11 @@ import Head from 'next/head'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
 
-import Error from 'Components/Error'
-import Tournament from 'Components/Tournament'
+import type { TOURNAMENT } from '@lpr/types'
+import { Error, Tournament } from '@lpr/ui'
+
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import type { TOURNAMENT } from 'Utils/types'
 
 const parent = {
   show: {

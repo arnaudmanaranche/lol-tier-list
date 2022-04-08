@@ -1,1 +1,1 @@
-module.exports = require('configs/eslint-next')
+module.exports = require('@lpr/configs/eslint-config')

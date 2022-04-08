@@ -9,6 +9,7 @@ import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
 import Layout from '../layout/Layout'
 
+import '@lpr/ui/dist/output.css'
 import '../styles/tailwind.css'
 import 'tailwindcss/utilities.css'
 import '../styles/custom.css'

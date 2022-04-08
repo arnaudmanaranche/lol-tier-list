@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { ReactElement } from 'react'
 
 const Footer = (): ReactElement => (
-  <footer className="flex flex-col items-center py-5 header-shadow">
+  <footer className="flex flex-col items-center py-5">
     <div className="flex">
       <p className="mb-3 mr-3">
         <Link href="https://lolpowerranking.statuspage.io/">

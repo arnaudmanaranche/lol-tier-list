@@ -1,18 +1,26 @@
-import Image from 'next/image'
-import type { ReactElement } from 'react'
+import Image from "next/image";
+import type { ReactElement } from "react";
 
-import Player from 'Components/Player'
-import type { RANKING_VALUES, TEAM } from 'Utils/types'
+import type { RANKING_VALUES, TEAM } from "@lpr/types";
 
-interface Props extends TEAM {
-  onUpdate: (value: RANKING_VALUES, playerId: number) => void
-  disabled: boolean
+import { Player } from "../Player";
+
+export interface TeamProps extends TEAM {
+  onUpdate: (value: RANKING_VALUES, playerId: number) => void;
+  disabled: boolean;
 }
 
-const Team = ({ base64, logo, name, players, onUpdate, disabled }: Props): ReactElement => {
+export const Team = ({
+  base64,
+  logo,
+  name,
+  players,
+  onUpdate,
+  disabled,
+}: TeamProps): ReactElement => {
   return (
-    <div className="h-full bg-white border-b-2 border-solid rounded-t header-shadow border-primary">
-      <div className="flex items-center p-2 rounded-t bg-primary">
+    <div className="h-full bg-white border-b-2 border-solid rounded-t border-primary">
+      <div className="flex flex-row items-center p-2 rounded-t bg-primary">
         <Image
           src={logo}
           alt={`${name} logo`}
@@ -33,12 +41,10 @@ const Team = ({ base64, logo, name, players, onUpdate, disabled }: Props): React
           key={playerId}
           id={playerId}
           onUpdate={(value) => {
-            onUpdate(value, playerId)
+            onUpdate(value, playerId);
           }}
         />
       ))}
     </div>
-  )
-}
-
-export default Team
+  );
+};

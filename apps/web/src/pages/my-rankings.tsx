@@ -3,13 +3,12 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 
-import { Button } from 'design-system'
+import type { RANKING } from '@lpr/types'
+import { Button, Error } from '@lpr/ui'
 
-import Error from 'Components/Error'
 import { ROUTES } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import supabase from 'Utils/supabase'
-import type { RANKING } from 'Utils/types'
 
 const { HOME } = ROUTES
 

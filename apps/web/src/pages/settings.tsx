@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
-import { Button } from 'design-system'
+import { Button } from '@lpr/ui'
 
 import { useSetUser } from 'Contexts/user'
 import { logout } from 'Utils/auth'
