@@ -1,0 +1,7 @@
+{
+  "name": "@lpr/types",
+  "version": "0.0.0",
+  "files": [
+    "types.ts"
+  ]
+}
