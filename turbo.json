@@ -6,21 +6,9 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "./dist/**"]
     },
-    "web#build": {
-      "dependsOn": [
-        "^build",
-        "$APP_ENV",
-        "$DATABASE_URL",
-        "$NEXT_PUBLIC_PANELBEAR_SITE_ID",
-        "$NEXT_PUBLIC_SUPABASE_ID",
-        "$NEXT_PUBLIC_SUPABASE_TOKEN",
-        "$NEXT_PUBLIC_SENTRY_DSN",
-        "$OSANO_URL",
-        "$PANDASCORE_TOKEN",
-        "$PRISMA_SERVICE_ROLE",
-        "$REDIS_URL"
-      ],
-      "outputs": [".next/**"]
+    "build-storybook": {
+      "dependsOn": ["^build-storybook"],
+      "outputs": ["storybook-static/**"]
     },
     "web#build": {
       "dependsOn": [
