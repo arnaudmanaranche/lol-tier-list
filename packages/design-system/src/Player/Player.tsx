@@ -59,6 +59,7 @@ export const Player = ({
         </p>
       ) : (
         <select
+          data-testid={`${name}_value`}
           disabled={disabled}
           className={clsx(
             "flex uppercase items-center justify-center h-[40px] border-0 py-2 outline-none min-w-[60px]",
