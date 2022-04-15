@@ -1,5 +1,5 @@
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
-import * as Sentry from '@sentry/react'
+import { withProfiler } from '@sentry/react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'next-themes'
@@ -41,4 +41,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   )
 }
 
-export default Sentry.withProfiler(App)
+export default withProfiler(App)

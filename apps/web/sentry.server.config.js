@@ -1,6 +1,6 @@
-import * as Sentry from '@sentry/nextjs'
+import { init } from '@sentry/nextjs'
 
-Sentry.init({
+init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
   tracesSampleRate: 0.2,
   environment: process.env.APP_ENV
