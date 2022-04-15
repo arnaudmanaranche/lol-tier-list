@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
 
 import { RANKING_VALUES } from "@lpr/types";
 
@@ -12,78 +13,66 @@ export default {
 
 const Template: ComponentStory<typeof Team> = (args) => <Team {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+const args = {
   base64: "https://fakeimg.pl/440x320/282828/eae0d0/",
   logo: "https://fakeimg.pl/440x320/282828/eae0d0/",
   name: "Team Name",
   players: [
     {
       id: 1,
-      name: "Name",
+      name: "Zeus",
       role: "top",
     },
     {
       id: 2,
-      name: "Name",
+      name: "Jankos",
       role: "jun",
     },
     {
       id: 3,
-      name: "Name",
+      name: "Betsy",
       role: "mid",
     },
     {
       id: 4,
-      name: "Name",
+      name: "Rekkles",
       role: "adc",
     },
     {
       id: 5,
-      name: "Name",
+      name: "LIMIT",
       role: "sup",
     },
   ],
   onUpdate: () => {},
 };
 
+export const Default = Template.bind({});
+Default.args = {
+  ...args,
+};
+Default.play = async ({ canvasElement }) => {
+  const players = args.players;
+
+  players.map(async (player) => {
+    const pickRandom = Math.floor(
+      Math.random() * Object.keys(RANKING_VALUES).length
+    );
+
+    const randomRankingValue =
+      RANKING_VALUES[
+        Object.keys(RANKING_VALUES)[pickRandom] as keyof typeof RANKING_VALUES
+      ];
+
+    await userEvent.selectOptions(
+      await within(canvasElement).findByTestId(`${player.name}_value`),
+      [randomRankingValue]
+    );
+  });
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
-  base64: "https://fakeimg.pl/440x320/282828/eae0d0/",
-  logo: "https://fakeimg.pl/440x320/282828/eae0d0/",
-  name: "Team Name",
-  players: [
-    {
-      id: 1,
-      name: "Name",
-      role: "top",
-      value: RANKING_VALUES.a,
-    },
-    {
-      id: 2,
-      name: "Name",
-      role: "jun",
-      value: RANKING_VALUES.b,
-    },
-    {
-      id: 3,
-      name: "Name",
-      role: "mid",
-      value: RANKING_VALUES.c,
-    },
-    {
-      id: 4,
-      name: "Name",
-      role: "adc",
-      value: RANKING_VALUES.d,
-    },
-    {
-      id: 5,
-      name: "Name",
-      role: "sup",
-      value: RANKING_VALUES.g,
-    },
-  ],
-  onUpdate: () => {},
+  ...args,
   disabled: true,
 };
