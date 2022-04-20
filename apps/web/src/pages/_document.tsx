@@ -1,5 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
+
 class AppDocument extends Document {
   render(): JSX.Element {
     return (
@@ -39,7 +40,7 @@ class AppDocument extends Document {
             type="font/woff2"
             crossOrigin="true"
           />
-          <script async src={process.env.OSANO_URL}></script>
+          
         </Head>
         <body>
           <Main />
