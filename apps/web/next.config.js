@@ -7,7 +7,6 @@ const withTM = require('next-transpile-modules')(['@lpr/ui', '@lpr/types'])
  */
 const moduleExports = {
   swcMinify: true,
-  webpack5: true,
   future: {
     strictPostcssConfiguration: true
   },
