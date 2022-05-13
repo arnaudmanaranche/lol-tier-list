@@ -39,7 +39,6 @@ class AppDocument extends Document {
             type="font/woff2"
             crossOrigin="true"
           />
-          <script async src={process.env.OSANO_URL}></script>
         </Head>
         <body>
           <Main />

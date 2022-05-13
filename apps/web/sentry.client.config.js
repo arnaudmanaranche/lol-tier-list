@@ -1,7 +1,7 @@
-import * as Sentry from '@sentry/nextjs'
+import { init } from '@sentry/nextjs'
 import { Integrations } from '@sentry/tracing'
 
-Sentry.init({
+init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 0.2,

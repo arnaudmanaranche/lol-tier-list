@@ -1,7 +1,8 @@
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
-import * as Sentry from '@sentry/react'
+import { withProfiler } from '@sentry/react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
 
 import { UserProvider } from 'Contexts/user'
@@ -30,6 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="twitter:title" content={DEFAULT_TITLE} key="twitter:title" />
         <meta name="twitter:description" content={DEFAULT_DESCRIPTION} key="twitter:description" />
       </Head>
+      <Script src={process.env.OSANO_URL}></Script>
       <UserProvider>
         <ThemeProvider attribute="class">
           <Layout>
@@ -41,4 +43,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   )
 }
 
-export default Sentry.withProfiler(App)
+export default withProfiler(App)
