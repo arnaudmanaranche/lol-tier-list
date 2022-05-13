@@ -19,7 +19,7 @@
     "@sentry/nextjs": "6.17.6",
     "@sentry/react": "6.16.1",
     "@sentry/tracing": "6.16.1",
-    "@supabase/supabase-js": "1.30.0",
+    "@supabase/supabase-js": "1.35.3",
     "clsx": "1.1.1",
     "framer-motion": "5.5.5",
     "ioredis": "4.28.5",
