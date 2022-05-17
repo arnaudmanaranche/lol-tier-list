@@ -5980,10 +5980,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.18.13":
-  version: 14.18.13
-  resolution: "@types/node@npm:14.18.13"
-  checksum: 307cd26bd6b8135c4ab87c94182111f057e7e7232fd0ffcb2f5de9d3a0523d171bb9a97addfcc29f3ebed94f2a599af7c3622326eaa85907af265616775f0574
+"@types/node@npm:14.18.18":
+  version: 14.18.18
+  resolution: "@types/node@npm:14.18.18"
+  checksum: a165225cd2603f6e62af8407449e4a4407305e03b41c1adf6b186fdf546e1a03c8214217659b5b36c556947c0c06234993ac880d4db6378136a7a810d47e0742
   languageName: node
   linkType: hard
 
@@ -14065,7 +14065,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lol-power-ranking-apps@workspace:."
   dependencies:
-    "@types/node": 14.18.13
+    "@types/node": 14.18.18
     "@types/react": 17.0.44
     "@types/tailwindcss": 3.0.10
     autoprefixer: 10.4.4
