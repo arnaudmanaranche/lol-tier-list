@@ -5,7 +5,7 @@ import { getPlaiceholder } from 'plaiceholder'
 
 import type { PLAYER } from '@lpr/types'
 
-import { LINEUP_ORDER } from 'Utils/constants'
+import { API_ENDPOINT, LINEUP_ORDER } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 
 async function synchronizeTournament(
@@ -83,6 +83,10 @@ async function synchronizeTournament(
       base64
     }
   })
+
+  await fetch(
+    `${API_ENDPOINT}/revalidate?secret=${process.env.UNSTABLE_REVALIDATE_SECRET}&path=tournaments`
+  )
 
   res.json(tournament)
 }
