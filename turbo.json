@@ -26,6 +26,9 @@
       ],
       "outputs": [".next/**"]
     },
+    "postbuild": {
+      "dependsOn": ["^postbuild"]
+    },
     "test": {
       "dependsOn": ["^build"],
       "outputs": []

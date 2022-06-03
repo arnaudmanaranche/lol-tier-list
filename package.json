@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build && turbo run postbuild",
     "build-storybook": "turbo run build-storybook",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
