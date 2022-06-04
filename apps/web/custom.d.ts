@@ -16,5 +16,6 @@ declare namespace NodeJS {
     PANDASCORE_TOKEN: string
     PRISMA_SERVICE_ROLE: string
     REDIS_URL: string
+    UNSTABLE_REVALIDATE_SECRET: string
   }
 }
