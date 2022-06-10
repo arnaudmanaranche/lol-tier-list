@@ -1,3 +1,4 @@
+import { Ranking } from '@prisma/client'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -115,6 +116,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (cachedData) {
     ranking = JSON.parse(cachedData)
+
+    // TODO: tournament name and logo are not cached, so we need to fetch them again.
+    const tournament = await prisma.tournament.findUnique({
+      where: { id: ranking.tournamentId }
+    })
+
+    ranking.tournament = tournament
   } else {
     ranking = await prisma.ranking.findUnique({
       where: {
