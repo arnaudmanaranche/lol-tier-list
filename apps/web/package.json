@@ -12,7 +12,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@headlessui/react": "1.4.2",
     "@lpr/ui": "*",
     "@panelbear/panelbear-nextjs": "1.0.3",
     "@prisma/client": "2.26.0",
