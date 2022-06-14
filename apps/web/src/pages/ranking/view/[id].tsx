@@ -1,4 +1,4 @@
-import { Ranking } from '@prisma/client'
+import { track as PanelbearTrack } from '@panelbear/panelbear-js'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -22,17 +22,16 @@ const ViewRanking = ({
   const copyRanking = Object.assign({}, ranking)
 
   const updateRanking = async () => {
-    const newRanking = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ ranking })
-    }
-
     try {
-      const fetchResponse = await fetch('/api/ranking/update', newRanking)
+      const fetchResponse = await fetch('/api/ranking/update', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ranking })
+      })
       const data = await fetchResponse.json()
+      PanelbearTrack('UpdateRanking')
       return data
     } catch (error) {
       return error
