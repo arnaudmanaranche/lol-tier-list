@@ -12,6 +12,9 @@
     "lint": "turbo run lint",
     "test": "turbo run test"
   },
+  "dependencies": {
+    "@headlessui/react": "1.4.3"
+  },
   "devDependencies": {
     "@types/node": "14.18.18",
     "@types/react": "17.0.44",
