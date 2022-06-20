@@ -2909,13 +2909,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:1.4.3":
-  version: 1.4.3
-  resolution: "@headlessui/react@npm:1.4.3"
+"@headlessui/react@npm:1.6.5":
+  version: 1.6.5
+  resolution: "@headlessui/react@npm:1.6.5"
   peerDependencies:
     react: ^16 || ^17 || ^18
     react-dom: ^16 || ^17 || ^18
-  checksum: 0c55bba6dc09a81576ec7d41320e3beb57b3f4576637ac4aad6048af851d5fe5434fd0d10dfb5c7b2db16eca6ded5eb3368822ddb87ff4dcb99fc3592ef63b0a
+  checksum: 6e3db77c992b5346b7835ea23ab78f251dc2165f2848db38904e6e84a44a2039cf3d5ea94a3a709dd4fc783bccfa638fe3c7bb450216f02ebbac5bb54f29947e
   languageName: node
   linkType: hard
 
@@ -14019,7 +14019,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lol-power-ranking-apps@workspace:."
   dependencies:
-    "@headlessui/react": 1.4.3
+    "@headlessui/react": 1.6.5
     "@types/node": 14.18.18
     "@types/react": 17.0.44
     "@types/tailwindcss": 3.0.10
