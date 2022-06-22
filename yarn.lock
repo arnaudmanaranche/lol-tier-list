@@ -16243,10 +16243,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.6.4":
-  version: 10.6.4
-  resolution: "preact@npm:10.6.4"
-  checksum: 09c496bb3cbe231fb6ef218b44d29af53a1f4bf1ae2e5929ef0faf70f9ecffaa475b4459ef72dd8f0f5396c255172c7c26de5c7d2eb6f6849e36e724c7aa86b7
+"preact@npm:10.8.2":
+  version: 10.8.2
+  resolution: "preact@npm:10.8.2"
+  checksum: 183358ba03b4c104c89b383ea926099b49acd0435f24e95dee9ff0e81350d1bfbd77908f6a2ed16b3654d75e84832fd5b4479216c85fe8af6ad8c2ebe795c4f9
   languageName: node
   linkType: hard
 
@@ -20130,7 +20130,7 @@ typescript@4.5.4:
     next-themes: 0.0.14
     next-transpile-modules: 9.0.0
     plaiceholder: 2.2.0
-    preact: 10.6.4
+    preact: 10.8.2
     prisma: 2.26.0
     react: 17.0.2
     react-dom: 17.0.2
