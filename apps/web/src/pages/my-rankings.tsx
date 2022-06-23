@@ -5,6 +5,7 @@ import type { ReactElement } from 'react'
 
 import type { RANKING } from '@lpr/types'
 import { Button, Error } from '@lpr/ui'
+import Title from '@lpr/ui/src/Title'
 
 import { ROUTES } from 'Utils/constants'
 import prisma from 'Utils/prisma'
@@ -34,7 +35,7 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
 
   return (
     <div className="max-w-screen-md pt-10 mx-auto">
-      <h1 className="mb-10 text-5xl font-bold text-center dark:text-white">My Rankings</h1>
+      <Title tag="h1">My Rankings</Title>
       {rankings.length <= 0 ? (
         <Error className="text-center">
           <span>You have not created any ranking for the moment.</span>
