@@ -53,7 +53,7 @@ async function synchronizeTournament(
 
         const teamLogo = `https://${
           process.env.NEXT_PUBLIC_SUPABASE_ID
-        }.supabase.in/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${
+        }.supabase.co/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${
           acronym ? acronym.toLowerCase() : ''.toLowerCase()
         }.png`
 
