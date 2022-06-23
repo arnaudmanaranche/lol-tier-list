@@ -66,7 +66,7 @@ const Header = (): ReactElement => {
               <a
                 className={clsx(
                   'font-bold p-2 hover:text-primary dark:text-white',
-                  clsx(pathname === path && 'text-primary')
+                  pathname === path && 'text-primary'
                 )}
               >
                 {label}

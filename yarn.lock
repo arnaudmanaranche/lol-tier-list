@@ -14558,6 +14558,7 @@ __metadata:
     "@types/react": 17.0.44
     "@types/tailwindcss": 3.0.10
     autoprefixer: 10.4.4
+    clsx: 1.1.1
     eslint: 8.5.0
     postcss: 8.4.5
     prettier: 2.5.1
@@ -20827,8 +20828,11 @@ typescript@4.5.4:
     "@sentry/tracing": 6.16.1
     "@supabase/supabase-js": 1.30.0
     "@svgr/webpack": 5.5.0
+<<<<<<< HEAD
     clsx: 1.1.1
     cypress: 10.2.0
+=======
+>>>>>>> d6ff7b0 (Add hover effect on Tournament component)
     framer-motion: 5.5.5
     ioredis: 4.28.5
     next: 12.1.0
