@@ -7,13 +7,12 @@ import { ReactElement, useEffect, useState } from 'react'
 import type { RANKING_VALUES, TEAM, TOURNAMENT } from '@lpr/types'
 import { Button, Modal, Team } from '@lpr/ui'
 
+import TwitterIcon from 'Assets/twitter.svg'
 import { useUser } from 'Contexts/user'
 import { login } from 'Utils/auth'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
-
-import TwitterIcon from '../../../svgs/twitter.svg'
 
 const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
   const { teams, id, logo, name, base64 } = tournament

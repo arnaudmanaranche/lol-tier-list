@@ -7,13 +7,12 @@ import { Fragment, useEffect } from 'react'
 
 import { Button } from '@lpr/ui'
 
+import TwitterIcon from 'Assets/twitter.svg'
+import UserIcon from 'Assets/user.svg'
 import { useSetUser, useUser } from 'Contexts/user'
 import { checkUser, handleAuthChange, login, logout } from 'Utils/auth'
 import { DEFAULT_TITLE, ROUTES, SUPABASE_EVENTS } from 'Utils/constants'
 import supabase from 'Utils/supabase'
-
-import TwitterIcon from '../../svgs/twitter.svg'
-import UserIcon from '../../svgs/user.svg'
 
 const { HOME, TOURNAMENTS, MY_RANKINGS, SETTINGS } = ROUTES
 
