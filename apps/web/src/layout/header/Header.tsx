@@ -13,6 +13,7 @@ import { DEFAULT_TITLE, ROUTES, SUPABASE_EVENTS } from 'Utils/constants'
 import supabase from 'Utils/supabase'
 
 import TwitterIcon from '../../svgs/twitter.svg'
+import UserIcon from '../../svgs/user.svg'
 
 const { HOME, TOURNAMENTS, MY_RANKINGS, SETTINGS } = ROUTES
 
@@ -85,8 +86,9 @@ const Header = (): ReactElement => {
               {({ open }) => (
                 <>
                   <div>
-                    <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm text-black rounded-md dark:text-white bg-opacity-80 bg-primary hover:bg-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 font-body">
+                    <Menu.Button className="flex w-full p-4 text-black rounded-md dark:text-white  bg-primary hover:bg-primaryDark  font-body items-center">
                       My Account
+                      <UserIcon className="w-5 h-5 ml-2" />
                     </Menu.Button>
                   </div>
                   <Transition
