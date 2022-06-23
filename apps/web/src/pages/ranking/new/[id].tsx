@@ -13,6 +13,8 @@ import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 
+import TwitterIcon from '../../../svgs/twitter.svg'
+
 const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
   const { teams, id, logo, name, base64 } = tournament
 
@@ -113,7 +115,9 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
         {user?.id ? (
           <Button onClick={createRanking}>{`Create my ${name} power ranking`}</Button>
         ) : (
-          <Button onClick={login}>Login with Twitter</Button>
+          <Button onClick={login}>
+            Login with Twitter <TwitterIcon className="w-5 h-5 ml-2" />
+          </Button>
         )}
       </div>
       <Modal title="Your power ranking was created" toggleModal={toggleModal} isOpen={isModalOpen}>
