@@ -53,7 +53,7 @@ const Settings = ({ user }: { user: User }): ReactElement => {
     <div className="max-w-screen-md pt-10 mx-auto">
       <Title tag="h1">Settings</Title>
       <p className="text-md mt-10">
-        Email: <b>{user.email}</b>
+        Email: <span>{user.email}</span>
       </p>
       <hr className="my-6" />
       <div className="flex items-center">
