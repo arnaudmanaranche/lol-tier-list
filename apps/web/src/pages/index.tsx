@@ -43,7 +43,7 @@ const Home = (): ReactElement => {
           className="flex mt-20 space-x-20"
         >
           {REGIONS.map((region) => (
-            <motion.div variants={stat} key={region}>
+            <motion.div variants={stat} key={region} data-testid={region}>
               <Image
                 src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.in/storage/v1/object/public/${region}/logo.png`}
                 alt={`${region} logo`}
