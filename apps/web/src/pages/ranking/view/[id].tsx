@@ -8,6 +8,7 @@ import type { RANKING, RANKING_VALUES } from '@lpr/types'
 import { Button, Team } from '@lpr/ui'
 import Title from '@lpr/ui/src/Title'
 
+import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
@@ -24,16 +25,15 @@ const ViewRanking = ({
 
   const updateRanking = async () => {
     try {
-      const fetchResponse = await fetch('/api/ranking/update', {
-        method: 'PATCH',
+      const res = await apiInstance.patch('/rankings', {
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ ranking })
       })
-      const data = await fetchResponse.json()
+      const updatedRanking = res.data
       PanelbearTrack('UpdateRanking')
-      return data
+      return updatedRanking
     } catch (error) {
       return error
     }

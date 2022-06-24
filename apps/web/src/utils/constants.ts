@@ -21,4 +21,4 @@ export const API_ENDPOINT = {
   development: 'http://localhost:3000/api',
   preview: 'https://preview.lol-power-ranking.app',
   production: 'https://lol-power-ranking.app/api'
-}[process.env.APP_ENV]
+}[process.env.NEXT_PUBLIC_APP_ENV]

@@ -10,6 +10,7 @@ import { Button } from '@lpr/ui'
 import Title from '@lpr/ui/src/Title'
 
 import { useSetUser } from 'Contexts/user'
+import { apiInstance } from 'Utils/api'
 import { logout } from 'Utils/auth'
 import { ROUTES } from 'Utils/constants'
 import supabase from 'Utils/supabase'
@@ -29,17 +30,13 @@ const Settings = ({ user }: { user: User }): ReactElement => {
   }, [])
 
   const deleteMyAccount = async () => {
-    const request = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ userId: user.id })
-    }
-
     try {
       await logout()
-      await fetch('/api/user/delete', request)
+      await apiInstance.delete(`/users/${user.id}`, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       setUser(null)
       router.push(ROUTES.HOME)
     } catch (error) {
