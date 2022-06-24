@@ -10,8 +10,9 @@ import Title from '@lpr/ui/src/Title'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { useUser } from 'Contexts/user'
+import { apiInstance } from 'Utils/api'
 import { login } from 'Utils/auth'
-import { DEFAULT_TITLE } from 'Utils/constants'
+import { API_ENDPOINT, DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 
@@ -37,14 +38,13 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
 
   const createRanking = async () => {
     try {
-      const post = await fetch('/api/ranking/new', {
-        method: 'POST',
+      const res = await apiInstance.post('/rankings', {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ranking, tournamentId: id, userId: user?.id })
+        body: JSON.stringify({ ranking, tournamentId: id, userId: user.id })
       })
-      const data = await post.json()
+      const data = res.data
       PanelbearTrack('NewRanking')
       setRankingId(data.id)
       toggleModal()
