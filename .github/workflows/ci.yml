@@ -12,4 +12,4 @@ jobs:
         with:
           config-file: apps/web/cypress.config.ts
           start: yarn start:e2e
-          spec: apps/web/cypress/e2e/**/*.cy.js
+          spec: apps/web/cypress/e2e/homepage/index.cy.js
