@@ -26,7 +26,7 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
     }
 
     try {
-      await apiInstance.delete(`/rankings/${rankingId}`, ranking)
+      await apiInstance.delete(`/rankings/${rankingId}`)
       router.replace(router.asPath)
     } catch (error) {
       return error
