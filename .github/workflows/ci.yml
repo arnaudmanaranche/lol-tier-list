@@ -7,6 +7,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      # - name: Install Yarn
+      # run: npm install -g yarn
+
+      - name: Build
+        run: yarn build
+
       - name: Cypress run
         uses: cypress-io/github-action@v4.1.0
         with:
