@@ -7,6 +7,7 @@ import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
 import { Button } from '@lpr/ui'
+import Title from '@lpr/ui/src/Title'
 
 import { useSetUser } from 'Contexts/user'
 import { logout } from 'Utils/auth'
@@ -50,9 +51,9 @@ const Settings = ({ user }: { user: User }): ReactElement => {
 
   return (
     <div className="max-w-screen-md pt-10 mx-auto">
-      <h1 className="mb-10 text-5xl font-bold text-center">Settings</h1>
-      <p className="text-md">
-        Email: <b>{user.email}</b>
+      <Title tag="h1">Settings</Title>
+      <p className="text-md mt-10">
+        Email: <span>{user.email}</span>
       </p>
       <hr className="my-6" />
       <div className="flex items-center">
