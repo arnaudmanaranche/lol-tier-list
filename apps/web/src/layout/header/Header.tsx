@@ -10,7 +10,7 @@ import { Button } from '@lpr/ui'
 import TwitterIcon from 'Assets/twitter.svg'
 import UserIcon from 'Assets/user.svg'
 import { useSetUser, useUser } from 'Contexts/user'
-import { checkUser, handleAuthChange, login, logout } from 'Utils/auth'
+import { handleAuthChange, handleLogin, login, logout } from 'Utils/auth'
 import { DEFAULT_TITLE, ROUTES, SUPABASE_EVENTS } from 'Utils/constants'
 import supabase from 'Utils/supabase'
 
@@ -34,7 +34,7 @@ const Header = (): ReactElement => {
       handleAuthChange(event, session)
 
       if (event === SUPABASE_EVENTS.SIGNED_IN) {
-        checkUser(session?.user)
+        handleLogin(session?.user)
         setUser(session?.user)
       }
 

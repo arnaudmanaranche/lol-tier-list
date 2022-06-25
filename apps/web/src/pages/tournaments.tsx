@@ -8,8 +8,8 @@ import type { TOURNAMENT } from '@lpr/types'
 import { Error, Tournament } from '@lpr/ui'
 import Title from '@lpr/ui/src/Title'
 
+import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
-import prisma from 'Utils/prisma'
 
 const parent = {
   show: {
@@ -65,22 +65,11 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
 )
 
 export const getStaticProps: GetStaticProps = async () => {
-  const tournaments = await prisma.tournament.findMany({
-    select: {
-      teams: false,
-      id: true,
-      name: true,
-      pandascoreId: true,
-      status: true,
-      logo: true,
-      base64: true,
-      year: true
-    }
-  })
+  const res = await apiInstance.get('/tournaments')
 
   return {
     props: {
-      tournaments
+      tournaments: res.data
     }
   }
 }

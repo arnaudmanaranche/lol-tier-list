@@ -7,8 +7,8 @@ import type { RANKING } from '@lpr/types'
 import { Button, Error } from '@lpr/ui'
 import Title from '@lpr/ui/src/Title'
 
+import { apiInstance } from 'Utils/api'
 import { ROUTES } from 'Utils/constants'
-import prisma from 'Utils/prisma'
 import supabase from 'Utils/supabase'
 
 const { HOME } = ROUTES
@@ -26,7 +26,7 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
     }
 
     try {
-      await fetch('/api/ranking/delete', ranking)
+      await apiInstance.delete(`/rankings/${rankingId}`)
       router.replace(router.asPath)
     } catch (error) {
       return error
@@ -86,33 +86,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
-  const rankings = await prisma.ranking.findMany({
-    where: {
-      userId: user.id
-    },
-    select: {
-      id: true,
-      tournamentId: true,
-      data: false,
-      tournament: {
-        select: {
-          teams: false,
-          id: true,
-          name: true,
-          pandascoreId: true,
-          status: true,
-          logo: true,
-          base64: true,
-          year: true
-        }
-      },
-      userId: true
-    }
-  })
+  const res = await apiInstance.get<RANKING[]>(`/users/${user.id}/rankings`)
 
   return {
     props: {
-      rankings
+      rankings: res.data
     }
   }
 }
