@@ -20828,11 +20828,7 @@ typescript@4.5.4:
     "@sentry/tracing": 6.16.1
     "@supabase/supabase-js": 1.30.0
     "@svgr/webpack": 5.5.0
-<<<<<<< HEAD
-    clsx: 1.1.1
     cypress: 10.2.0
-=======
->>>>>>> d6ff7b0 (Add hover effect on Tournament component)
     framer-motion: 5.5.5
     ioredis: 4.28.5
     next: 12.1.0
