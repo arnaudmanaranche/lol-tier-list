@@ -10,6 +10,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4.1.0
         with:
-          config-file: apps/web/cypress.config.ts
+          working-directory: apps/web
+          config-file: ./cypress.config.ts
           start: yarn start:e2e
-          spec: apps/web/cypress/e2e/homepage/index.cy.js
+          spec: ./cypress/e2e/**/*.cy.js
