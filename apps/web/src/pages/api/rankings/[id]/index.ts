@@ -11,9 +11,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse<RANKING | null>
 
   switch (req.method) {
     case 'DELETE':
-      const userId = req.query.id as string
+      const rankingId = req.query.id as string
 
-      response = await deleteRanking(userId)
+      response = await deleteRanking(rankingId)
       res.status(204).json(response)
       break
     case 'PATCH':
