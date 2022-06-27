@@ -80,6 +80,14 @@ const securityHeaders = [
   {
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()'
+  },
+  {
+    key: 'Access-Control-Allow-Origin',
+    value: '*'
+  },
+  {
+    key: 'Access-Control-Allow-Methods',
+    value: 'GET,HEAD,PUT,PATCH,POST,DELETE'
   }
 ]
 
