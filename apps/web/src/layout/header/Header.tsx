@@ -1,4 +1,5 @@
 import { Menu, Transition } from '@headlessui/react'
+import { captureException } from '@sentry/nextjs'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -31,7 +32,11 @@ const Header = (): ReactElement => {
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-      handleAuthChange(event, session)
+      try {
+        handleAuthChange(event, session)
+      } catch (error) {
+        console.error(`Error during ${event}: ${error}`)
+      }
 
       if (event === SUPABASE_EVENTS.SIGNED_IN) {
         handleLogin(session?.user)

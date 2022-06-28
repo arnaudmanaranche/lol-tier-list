@@ -14,8 +14,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse<RANKING | null>
         body: { ranking, tournamentId, userId }
       } = req
 
-      response = await createRanking(ranking, tournamentId, userId)
-      res.json(response)
+      try {
+        response = await createRanking(ranking, tournamentId, userId)
+        res.json(response)
+      } catch (error) {
+        console.log(error)
+      }
+
       break
     default:
       throw new Error(`Method ${req.method} is not allowed`)

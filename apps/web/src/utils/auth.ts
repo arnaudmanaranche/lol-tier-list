@@ -22,7 +22,7 @@ const login = async (): Promise<void> => {
 }
 
 const handleAuthChange = async (event: AuthChangeEvent, session: Session): Promise<void> => {
-  await apiInstance.post('/api/auth', {
+  await apiInstance.post('/auth', {
     body: { event, session }
   })
 }
