@@ -4,11 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import supabase from 'Utils/supabase'
 
 function auth(req: NextApiRequest, res: NextApiResponse): void {
-  try {
-    supabase.auth.api.setAuthCookie(req, res)
-  } catch (error) {
-    console.log(error)
-  }
+  supabase.auth.api.setAuthCookie(req, res)
 }
 
 export default withSentry(auth)

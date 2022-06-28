@@ -39,7 +39,9 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
   const createRanking = async () => {
     try {
       const res = await apiInstance.post('/rankings', {
-        body: { ranking, tournamentId: id, userId: user.id }
+        ranking,
+        tournamentId: id,
+        userId: user.id
       })
       const data = res.data
       PanelbearTrack('NewRanking')

@@ -32,11 +32,7 @@ const Header = (): ReactElement => {
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-      try {
-        handleAuthChange(event, session)
-      } catch (error) {
-        console.error(`Error during ${event}: ${error}`)
-      }
+      handleAuthChange(event, session)
 
       if (event === SUPABASE_EVENTS.SIGNED_IN) {
         handleLogin(session?.user)
