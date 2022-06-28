@@ -32,11 +32,7 @@ const Settings = ({ user }: { user: User }): ReactElement => {
   const deleteMyAccount = async () => {
     try {
       await logout()
-      await apiInstance.delete(`/users/${user.id}`, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      await apiInstance.delete(`/users/${user.id}`)
       setUser(null)
       router.push(ROUTES.HOME)
     } catch (error) {

@@ -17,14 +17,6 @@ const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
   const router = useRouter()
 
   const deleteRanking = async (rankingId) => {
-    const ranking = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ rankingId })
-    }
-
     try {
       await apiInstance.delete(`/rankings/${rankingId}`)
       router.replace(router.asPath)

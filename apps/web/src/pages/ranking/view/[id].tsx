@@ -25,12 +25,7 @@ const ViewRanking = ({
 
   const updateRanking = async () => {
     try {
-      const res = await apiInstance.patch('/rankings', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ranking })
-      })
+      const res = await apiInstance.patch('/rankings', { ranking })
       const updatedRanking = res.data
       PanelbearTrack('UpdateRanking')
       return updatedRanking
