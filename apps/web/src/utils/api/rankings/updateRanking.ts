@@ -4,7 +4,7 @@ import type { JsonValue } from 'type-fest'
 import type { RANKING } from '@lpr/types'
 
 import prisma from 'Utils/prisma'
-import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
+import { ONE_YEAR_IN_SECONDS, redis } from 'Utils/redis'
 
 export async function updateRanking(ranking: RANKING): Promise<Ranking> {
   const formattedRanking = ranking as unknown as JsonValue
