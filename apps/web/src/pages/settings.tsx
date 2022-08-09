@@ -12,7 +12,7 @@ import { useSetUser } from 'Contexts/user'
 import { apiInstance } from 'Utils/api'
 import { logout } from 'Utils/auth'
 import { ROUTES } from 'Utils/constants'
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 const LIGHT = 'light'
 const DARK = 'dark'

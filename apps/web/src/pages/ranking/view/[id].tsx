@@ -11,7 +11,7 @@ import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 const ViewRanking = ({
   ranking,

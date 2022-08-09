@@ -8,7 +8,7 @@ import { Button, Error, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { ROUTES } from 'Utils/constants'
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 const { HOME } = ROUTES
 

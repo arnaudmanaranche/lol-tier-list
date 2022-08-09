@@ -12,7 +12,7 @@ import UserIcon from 'Assets/user.svg'
 import { useSetUser, useUser } from 'Contexts/user'
 import { handleAuthChange, handleLogin, login, logout } from 'Utils/auth'
 import { DEFAULT_TITLE, ROUTES, SUPABASE_EVENTS } from 'Utils/constants'
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 const { HOME, TOURNAMENTS, MY_RANKINGS, SETTINGS } = ROUTES
 

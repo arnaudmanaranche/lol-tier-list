@@ -2,7 +2,7 @@ import type { User } from '@supabase/gotrue-js'
 import type { ReactElement, ReactNode } from 'react'
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 export const UserContext = createContext(null)
 export const SetUserContext = createContext(null)
