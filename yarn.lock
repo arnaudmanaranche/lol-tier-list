@@ -15249,7 +15249,7 @@ __metadata:
     autoprefixer: 10.4.7
     clsx: 1.1.1
     eslint: 8.21.0
-    postcss: 8.4.5
+    postcss: 8.4.16
     prettier: 2.5.1
     tailwindcss: 3.1.8
     turbo: 1.1.10
@@ -17515,6 +17515,17 @@ __metadata:
   version: 4.2.0
   resolution: "postcss-value-parser@npm:4.2.0"
   checksum: 819ffab0c9d51cf0acbabf8996dffbfafbafa57afc0e4c98db88b67f2094cb44488758f06e5da95d7036f19556a4a732525e84289a425f4f6fd8e412a9d7442f
+  languageName: node
+  linkType: hard
+
+"postcss@npm:8.4.16":
+  version: 8.4.16
+  resolution: "postcss@npm:8.4.16"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 10eee25efd77868036403858577da0cefaf2e0905feeaba5770d5438ccdddba3d01cba8063e96b8aac4c6daa0ed413dd5ae0554a433a3c4db38df1d134cffc1f
   languageName: node
   linkType: hard
 
