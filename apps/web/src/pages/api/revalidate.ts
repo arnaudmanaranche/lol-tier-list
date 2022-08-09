@@ -7,7 +7,7 @@ async function revalidate(req: NextApiRequest, res: NextApiResponse) {
   }
 
   try {
-    await res.unstable_revalidate(`/${req.query.path}`)
+    await res.revalidate(`/${req.query.path}`)
     return res.json({ status: `Revalidated is done for path ${req.query.path}` })
   } catch (err) {
     return res.status(500).send('Error revalidating')
