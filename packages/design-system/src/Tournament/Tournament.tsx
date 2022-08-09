@@ -1,23 +1,18 @@
-import clsx from "clsx";
-import Image from "next/image";
-import type { ReactElement } from "react";
+import clsx from 'clsx'
+import Image from 'next/image'
+import type { ReactElement } from 'react'
 
-import type { TOURNAMENT } from "@lpr/types";
+import type { TOURNAMENT } from '@lpr/types'
 
-export const Tournament = ({
-  name,
-  logo,
-  status,
-  base64,
-}: TOURNAMENT): ReactElement => {
-  const isActive = status;
+export const Tournament = ({ name, logo, status, base64 }: TOURNAMENT): ReactElement => {
+  const isActive = status
 
   return (
     <div
       className={clsx(
-        "flex flex-col items-center p-2 text-center radius-md relative min-w-[200px] overflow-hidden text-dark bg-white rounded-lg shadow border-[1px] border-transparent transition-colors",
-        !isActive && "cursor-not-allowed",
-        isActive && "hover:border-primary"
+        'flex flex-col items-center p-2 text-center radius-md relative min-w-[200px] overflow-hidden text-dark bg-white rounded-lg shadow border-[1px] border-transparent transition-colors',
+        !isActive && 'cursor-not-allowed',
+        isActive && 'hover:border-primary'
       )}
     >
       {!isActive ? (
@@ -36,5 +31,5 @@ export const Tournament = ({
       />
       <p className="capitalize">{name}</p>
     </div>
-  );
-};
+  )
+}
