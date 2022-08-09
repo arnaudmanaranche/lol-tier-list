@@ -1,5 +1,4 @@
 import { Menu, Transition } from '@headlessui/react'
-import { captureException } from '@sentry/nextjs'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'

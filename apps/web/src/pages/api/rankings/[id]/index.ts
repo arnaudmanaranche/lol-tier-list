@@ -1,7 +1,7 @@
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { RANKING } from '@lpr/types'
+import type { RANKING } from '@lpr/types'
 
 import deleteRanking from 'Utils/api/rankings/deleteRanking'
 import updateRanking from 'Utils/api/rankings/updateRanking'

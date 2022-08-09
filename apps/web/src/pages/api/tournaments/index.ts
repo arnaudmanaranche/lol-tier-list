@@ -1,10 +1,14 @@
-import { Tournament } from '@prisma/client'
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import type { TOURNAMENT } from '@lpr/types'
+
 import findTournaments from 'Utils/api/tournaments/findTournaments'
 
-async function handler(req: NextApiRequest, res: NextApiResponse<any>): Promise<void> {
+async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<TOURNAMENT | null>
+): Promise<void> {
   let response = null
 
   switch (req.method) {

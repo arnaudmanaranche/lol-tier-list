@@ -107,7 +107,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let ranking = null
 
-  let cachedData = await redis.get(id)
+  const cachedData = await redis.get(id)
 
   if (cachedData) {
     ranking = JSON.parse(cachedData)

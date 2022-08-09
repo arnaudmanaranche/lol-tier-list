@@ -1,6 +1,6 @@
 import type { User } from '@supabase/gotrue-js'
 import type { ReactElement, ReactNode } from 'react'
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 
 import supabase from 'Utils/supabase'
 
