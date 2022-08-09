@@ -1,14 +1,15 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, ReactNode } from "react";
+import { Dialog, Transition } from '@headlessui/react'
+import type { ReactElement, ReactNode } from 'react'
+import { Fragment } from 'react'
 
 export interface ModalProps {
-  isOpen: boolean;
-  toggleModal: () => void;
-  title: ReactNode;
-  children: ReactNode;
+  isOpen: boolean
+  toggleModal: () => void
+  title: ReactNode
+  children: ReactNode
 }
 
-export const Modal = ({ isOpen, toggleModal, title, children }: ModalProps) => {
+export const Modal = ({ isOpen, toggleModal, title, children }: ModalProps): ReactElement => {
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog
@@ -30,10 +31,7 @@ export const Modal = ({ isOpen, toggleModal, title, children }: ModalProps) => {
           >
             <Dialog.Overlay className="fixed inset-0" />
           </Transition.Child>
-          <span
-            className="inline-block h-screen align-middle"
-            aria-hidden="true"
-          >
+          <span className="inline-block h-screen align-middle" aria-hidden="true">
             &#8203;
           </span>
           <Transition.Child
@@ -46,10 +44,7 @@ export const Modal = ({ isOpen, toggleModal, title, children }: ModalProps) => {
             leaveTo="opacity-0 scale-95"
           >
             <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-              <Dialog.Title
-                as="h3"
-                className="mb-6 text-lg font-medium leading-6 text-gray-900"
-              >
+              <Dialog.Title as="h3" className="mb-6 text-lg font-medium leading-6 text-gray-900">
                 {title}
               </Dialog.Title>
               {children}
@@ -58,5 +53,5 @@ export const Modal = ({ isOpen, toggleModal, title, children }: ModalProps) => {
         </div>
       </Dialog>
     </Transition>
-  );
-};
+  )
+}

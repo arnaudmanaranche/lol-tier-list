@@ -1,13 +1,13 @@
-import Image from "next/image";
-import type { ReactElement } from "react";
+import Image from 'next/image'
+import type { ReactElement } from 'react'
 
-import type { RANKING_VALUES, TEAM } from "@lpr/types";
+import type { RANKING_VALUES, TEAM } from '@lpr/types'
 
-import { Player } from "../Player";
+import { Player } from '../Player'
 
 export interface TeamProps extends TEAM {
-  onUpdate: (value: RANKING_VALUES, playerId: number) => void;
-  disabled: boolean;
+  onUpdate: (value: RANKING_VALUES, playerId: number) => void
+  disabled: boolean
 }
 
 export const Team = ({
@@ -16,7 +16,7 @@ export const Team = ({
   name,
   players,
   onUpdate,
-  disabled,
+  disabled
 }: TeamProps): ReactElement => {
   return (
     <div className="h-full bg-white border-b-2 border-solid rounded-t border-primary">
@@ -41,10 +41,10 @@ export const Team = ({
           key={playerId}
           id={playerId}
           onUpdate={(value) => {
-            onUpdate(value, playerId);
+            onUpdate(value, playerId)
           }}
         />
       ))}
     </div>
-  );
-};
+  )
+}

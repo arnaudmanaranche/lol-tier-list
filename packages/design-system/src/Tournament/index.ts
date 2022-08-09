@@ -1,3 +1,3 @@
-import { Tournament } from "./Tournament";
+import { Tournament } from './Tournament'
 
-export { Tournament };
+export { Tournament }
