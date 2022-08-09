@@ -1,4 +1,5 @@
 import { track as PanelbearTrack } from '@panelbear/panelbear-js'
+import type { Ranking as RankingType } from '@prisma/client'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -6,8 +7,7 @@ import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
 import type { RANKING_VALUES, TEAM, TOURNAMENT } from '@lpr/types'
-import { Button, Modal, Team } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Button, Modal, Team, Title } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { useUser } from 'Contexts/user'
@@ -39,7 +39,7 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
 
   const createRanking = async () => {
     try {
-      const res = await apiInstance.post('/rankings', {
+      const res = await apiInstance.post<RankingType>('/rankings', {
         ranking,
         tournamentId: id,
         userId: user.id

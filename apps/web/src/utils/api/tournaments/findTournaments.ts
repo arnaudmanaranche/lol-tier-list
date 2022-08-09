@@ -3,7 +3,7 @@ import type { TOURNAMENT } from '@lpr/types'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 
-async function findTournaments(): Promise<Omit<TOURNAMENT, 'teams'>[]> {
+export async function findTournaments(): Promise<Omit<TOURNAMENT, 'teams'>[]> {
   const result = await prisma.tournament.findMany({
     select: {
       teams: false,
@@ -21,5 +21,3 @@ async function findTournaments(): Promise<Omit<TOURNAMENT, 'teams'>[]> {
 
   return result
 }
-
-export default findTournaments

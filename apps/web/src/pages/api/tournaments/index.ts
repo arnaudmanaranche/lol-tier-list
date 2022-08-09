@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import type { TOURNAMENT } from '@lpr/types'
 
-import findTournaments from 'Utils/api/tournaments/findTournaments'
+import { findTournaments } from 'Utils/api'
 
 async function handler(
   req: NextApiRequest,

@@ -3,8 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import type { RANKING } from '@lpr/types'
 
-import deleteRanking from 'Utils/api/rankings/deleteRanking'
-import updateRanking from 'Utils/api/rankings/updateRanking'
+import { deleteRanking, updateRanking } from 'Utils/api'
 
 async function handler(req: NextApiRequest, res: NextApiResponse<RANKING | null>): Promise<void> {
   let response = null

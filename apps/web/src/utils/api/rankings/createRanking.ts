@@ -4,7 +4,7 @@ import type { JsonValue } from 'type-fest'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 
-async function createRanking(
+export async function createRanking(
   ranking: Ranking,
   tournamentId: string,
   userId: string
@@ -23,5 +23,3 @@ async function createRanking(
 
   return result
 }
-
-export default createRanking

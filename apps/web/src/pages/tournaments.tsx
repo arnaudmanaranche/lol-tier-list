@@ -5,8 +5,7 @@ import Link from 'next/link'
 import type { ReactElement } from 'react'
 
 import type { TOURNAMENT } from '@lpr/types'
-import { Error, Tournament } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Error, Title, Tournament } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'

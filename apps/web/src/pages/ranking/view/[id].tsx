@@ -5,8 +5,7 @@ import Image from 'next/image'
 import type { ReactElement } from 'react'
 
 import type { RANKING, RANKING_VALUES } from '@lpr/types'
-import { Button, Team } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Button, Team, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
