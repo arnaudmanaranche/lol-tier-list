@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['next/core-web-vitals', 'prettier'],
+  extends: ['next/core-web-vitals', 'prettier', 'plugin:@typescript-eslint/recommended'],
   plugins: ['simple-import-sort'],
   rules: {
     'simple-import-sort/imports': [
@@ -14,6 +14,7 @@ module.exports = {
         ]
       }
     ],
-    'simple-import-sort/exports': 2
+    'simple-import-sort/exports': 2,
+    '@typescript-eslint/consistent-type-imports': 'error'
   }
 }

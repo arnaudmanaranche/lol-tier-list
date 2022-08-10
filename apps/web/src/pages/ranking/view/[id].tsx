@@ -5,14 +5,13 @@ import Image from 'next/image'
 import type { ReactElement } from 'react'
 
 import type { RANKING, RANKING_VALUES } from '@lpr/types'
-import { Button, Team } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Button, Team, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
-import supabase from 'Utils/supabase'
+import { ONE_YEAR_IN_SECONDS, redis } from 'Utils/redis'
+import { supabase } from 'Utils/supabase'
 
 const ViewRanking = ({
   ranking,
@@ -107,7 +106,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let ranking = null
 
-  let cachedData = await redis.get(id)
+  const cachedData = await redis.get(id)
 
   if (cachedData) {
     ranking = JSON.parse(cachedData)

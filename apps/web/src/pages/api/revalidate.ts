@@ -2,7 +2,7 @@ import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 async function revalidate(req: NextApiRequest, res: NextApiResponse) {
-  if (req.query.secret !== process.env.UNSTABLE_REVALIDATE_SECRET) {
+  if (req.query.secret !== process.env.REVALIDATE_SECRET) {
     return res.status(401).json({ message: 'Invalid unstable revalidate secret' })
   }
 

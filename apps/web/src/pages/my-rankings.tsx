@@ -4,12 +4,11 @@ import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 
 import type { RANKING } from '@lpr/types'
-import { Button, Error } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Button, Error, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { ROUTES } from 'Utils/constants'
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 const { HOME } = ROUTES
 
