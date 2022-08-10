@@ -6,14 +6,13 @@ import { useTheme } from 'next-themes'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
-import { Button } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Button, Title } from '@lpr/ui'
 
 import { useSetUser } from 'Contexts/user'
 import { apiInstance } from 'Utils/api'
 import { logout } from 'Utils/auth'
 import { ROUTES } from 'Utils/constants'
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 const LIGHT = 'light'
 const DARK = 'dark'
