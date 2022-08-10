@@ -1,4 +1,8 @@
-export * from './api'
-export * from './rankings'
-export * from './tournaments'
-export * from './users'
+import axios from 'axios'
+
+import { API_ENDPOINT } from 'Utils/constants'
+
+export const apiInstance = axios.create({
+  baseURL: API_ENDPOINT,
+  withCredentials: true
+})
