@@ -1,9 +1,8 @@
-import { User } from '@prisma/client'
+import type { User } from '@prisma/client'
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { createUser } from 'Utils/api/users/createUser'
-import { deleteUser } from 'Utils/api/users/deleteUser'
+import { createUser, deleteUser } from 'Utils/api/users'
 
 async function handler(req: NextApiRequest, res: NextApiResponse<User | null>): Promise<void> {
   const userId = req.query.id as string

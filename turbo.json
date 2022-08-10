@@ -23,7 +23,7 @@
         "$PANDASCORE_TOKEN",
         "$PRISMA_SERVICE_ROLE",
         "$REDIS_URL",
-        "$UNSTABLE_REVALIDATE_SECRET"
+        "$REVALIDATE_SECRET"
       ],
       "outputs": [".next/**"]
     },

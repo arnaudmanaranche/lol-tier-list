@@ -1,5 +1,5 @@
 import prisma from 'Utils/prisma'
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 export async function deleteUser(id: string): Promise<{ status: string }> {
   await prisma.user.delete({

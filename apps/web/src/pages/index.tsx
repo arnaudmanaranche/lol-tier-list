@@ -2,8 +2,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import { Button } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Button, Title } from '@lpr/ui'
 
 import { REGIONS, ROUTES } from 'Utils/constants'
 
