@@ -44,7 +44,7 @@ const args = {
       role: 'sup'
     }
   ],
-  onUpdate: () => {}
+  onUpdate: () => null
 }
 
 export const Default = Template.bind({})
