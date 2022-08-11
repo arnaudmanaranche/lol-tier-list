@@ -2238,6 +2238,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lpr/ui@workspace:packages/design-system"
   dependencies:
+    "@headlessui/react": 1.4.3
     "@lpr/configs": "*"
     "@lpr/types": "*"
     "@storybook/addon-actions": 6.5.10
@@ -2249,6 +2250,7 @@ __metadata:
     "@storybook/react": 6.5.10
     "@storybook/test-runner": 0.5.0
     "@storybook/testing-library": 0.0.13
+    clsx: 1.2.1
     eslint: 8.21.0
     jest: 27.5.1
     prettier: 2.5.1
@@ -13448,12 +13450,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lol-power-ranking-apps@workspace:."
   dependencies:
-    "@headlessui/react": 1.4.3
     "@types/node": 14.18.23
     "@types/react": 17.0.44
     "@types/tailwindcss": 3.0.11
     autoprefixer: 10.4.7
-    clsx: 1.2.1
     eslint: 8.21.0
     husky: 8.0.0
     lint-staged: 13.0.3
@@ -19453,6 +19453,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:apps/web"
   dependencies:
+    "@headlessui/react": 1.4.3
     "@lpr/configs": "*"
     "@lpr/types": "*"
     "@lpr/ui": "*"
@@ -19463,6 +19464,7 @@ __metadata:
     "@sentry/tracing": 6.16.1
     "@supabase/supabase-js": 1.30.0
     "@svgr/webpack": 5.5.0
+    clsx: 1.2.1
     cypress: 10.2.0
     framer-motion: 5.6.0
     ioredis: 4.28.5
