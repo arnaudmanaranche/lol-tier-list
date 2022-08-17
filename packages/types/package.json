@@ -1,7 +1,19 @@
 {
   "name": "@lpr/types",
   "version": "0.0.0",
-  "files": [
-    "types.ts"
-  ]
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "tsup": "6.2.1"
+  },
+  "tsup": {
+    "entry": [
+      "./index.ts"
+    ],
+    "minify": true,
+    "dts": true
+  }
 }
