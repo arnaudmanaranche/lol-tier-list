@@ -1,6 +1,6 @@
 import type { AuthChangeEvent, Session, User } from '@supabase/gotrue-js'
 
-import supabase from 'Utils/supabase'
+import { supabase } from 'Utils/supabase'
 
 import { apiInstance } from './api'
 

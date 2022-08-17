@@ -11,9 +11,9 @@ import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 import Layout from '../layout/Layout'
 
 import '@lpr/ui/dist/output.css'
-import '../styles/tailwind.css'
 import 'tailwindcss/utilities.css'
 import '../styles/custom.css'
+import '../styles/tailwind.css'
 
 const App = ({ Component, pageProps }: AppProps) => {
   usePanelbear(process.env.NEXT_PUBLIC_PANELBEAR_SITE_ID, {
