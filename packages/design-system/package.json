@@ -1,13 +1,25 @@
 {
   "name": "@lpr/ui",
   "version": "0.0.0",
-  "main": "./index.ts",
   "scripts": {
     "build": "tailwindcss -i ./styles/index.css -o ./dist/output.css",
     "build-storybook": "build-storybook --quiet",
     "dev": "start-storybook --quiet --port 9009",
+    "lint": "yarn lint:prettier && yarn lint:eslint",
+    "lint:eslint": "eslint --fix --cache",
+    "lint:prettier": "prettier --write --check",
     "test": "test-storybook",
     "watch:css": "tailwindcss -i ./styles/index.css -o ./dist/output.css --watch"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "yarn lint:prettier",
+      "yarn lint:eslint"
+    ]
+  },
+  "dependencies": {
+    "@headlessui/react": "1.4.3",
+    "clsx": "1.2.1"
   },
   "devDependencies": {
     "@lpr/configs": "*",
@@ -21,7 +33,9 @@
     "@storybook/react": "6.5.10",
     "@storybook/test-runner": "0.5.0",
     "@storybook/testing-library": "0.0.13",
+    "eslint": "8.21.0",
     "jest": "27.5.1",
+    "prettier": "2.5.1",
     "tailwindcss": "3.1.8"
   }
 }

@@ -12,7 +12,7 @@ export default {
   argTypes: {}
 } as ComponentMeta<typeof Modal>
 
-const Template: ComponentStory<typeof Modal> = (args) => {
+const Template: ComponentStory<typeof Modal> = () => {
   const [isModalOpen, setModalOpen] = useState(false)
 
   const toggleModal = () => setModalOpen((value) => !value)
