@@ -4613,10 +4613,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.18.23, @types/node@npm:^14.14.31":
-  version: 14.18.23
-  resolution: "@types/node@npm:14.18.23"
-  checksum: 119d5ab18426694ade0d3feefbdb42afc5a47b9144e523293f1554f9d34b41c7f21eafc9d0f1295db5700d134aa74e7fd37556e9438f6d64dbeddf791527e1e4
+"@types/node@npm:14.18.24":
+  version: 14.18.24
+  resolution: "@types/node@npm:14.18.24"
+  checksum: 631b86787a2110048bcd45d2555e6b9265594a6c65bcdc9947004cbdf1b4b9c8f84b7f0c4f03e4b0b1d24fd821c8d39b931073e21832c8c29dc74de060efd11d
   languageName: node
   linkType: hard
 
@@ -4624,6 +4624,13 @@ __metadata:
   version: 16.11.47
   resolution: "@types/node@npm:16.11.47"
   checksum: 26811000753fd1bb9a90a563fc72942ac3ad5d5b6c97609a090c1e24210e040597ba060e55a7a46cb22cc84dafee112d741f45652139c6166e8ce0c970b4f05a
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^14.14.31":
+  version: 14.18.23
+  resolution: "@types/node@npm:14.18.23"
+  checksum: 119d5ab18426694ade0d3feefbdb42afc5a47b9144e523293f1554f9d34b41c7f21eafc9d0f1295db5700d134aa74e7fd37556e9438f6d64dbeddf791527e1e4
   languageName: node
   linkType: hard
 
@@ -13733,7 +13740,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lol-power-ranking-apps@workspace:."
   dependencies:
-    "@types/node": 14.18.23
+    "@types/node": 14.18.24
     "@types/react": 18.0.17
     "@types/tailwindcss": 3.0.11
     autoprefixer: 10.4.7
