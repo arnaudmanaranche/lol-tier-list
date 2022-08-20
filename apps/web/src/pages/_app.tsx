@@ -1,5 +1,6 @@
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
 import { withProfiler } from '@sentry/react'
+import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
@@ -33,11 +34,13 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <Script src={process.env.OSANO_URL}></Script>
       <UserProvider>
-        <ThemeProvider attribute="class">
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
+        <LazyMotion features={domAnimation}>
+          <ThemeProvider attribute="class">
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ThemeProvider>
+        </LazyMotion>
       </UserProvider>
     </>
   )
