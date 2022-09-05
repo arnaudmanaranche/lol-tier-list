@@ -15,7 +15,8 @@
   },
   "lint-staged": {
     "*.json": [
-      "sort-package-json package.json apps/**/package.json packages/**/package.json"
+      "sort-package-json package.json apps/**/package.json packages/**/package.json",
+      "prettier --write --check"
     ]
   },
   "devDependencies": {
