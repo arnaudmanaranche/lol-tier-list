@@ -1,4 +1,26 @@
 {
-  "extends": ["config:base"],
-  "baseBranches": ["main"]
+  "baseBranches": [
+    "main",
+    "preview"
+  ],
+  "extends": [
+    "config:base"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    }
+  ]
 }
