@@ -56,3 +56,6 @@ sitemap.xml
 
 # Turbo
 .turbo
+
+# Eslint
+.eslintcache

@@ -1,9 +1,8 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import { Button } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Button, Title } from '@lpr/ui'
 
 import { REGIONS, ROUTES } from 'Utils/constants'
 
@@ -37,14 +36,9 @@ const Home = (): ReactElement => {
           Share easily your League of Legends power rankings
         </Title>
         <Button to={TOURNAMENTS}>CREATE YOURS</Button>
-        <motion.div
-          variants={parent}
-          initial="hidden"
-          animate="show"
-          className="flex mt-20 space-x-20"
-        >
+        <m.div variants={parent} initial="hidden" animate="show" className="flex mt-20 space-x-20">
           {REGIONS.map((region) => (
-            <motion.div variants={stat} key={region} data-testid={region}>
+            <m.div variants={stat} key={region} data-testid={region}>
               <Image
                 src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.in/storage/v1/object/public/${region}/logo.png`}
                 alt={`${region} logo`}
@@ -52,9 +46,9 @@ const Home = (): ReactElement => {
                 height={80}
                 width={80}
               />
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </div>
   )

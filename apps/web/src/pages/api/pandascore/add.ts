@@ -1,4 +1,4 @@
-import { Tournament } from '@prisma/client'
+import type { Tournament } from '@prisma/client'
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
@@ -85,9 +85,7 @@ async function synchronizeTournament(
     }
   })
 
-  await apiInstance.get(
-    `/revalidate?secret=${process.env.UNSTABLE_REVALIDATE_SECRET}&path=tournaments`
-  )
+  await apiInstance.get(`/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=tournaments`)
 
   res.json(tournament)
 }

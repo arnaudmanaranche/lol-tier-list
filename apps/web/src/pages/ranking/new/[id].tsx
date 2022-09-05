@@ -1,20 +1,21 @@
 import { track as PanelbearTrack } from '@panelbear/panelbear-js'
+import type { Ranking as RankingType } from '@prisma/client'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { ReactElement, useEffect, useState } from 'react'
+import type { ReactElement } from 'react'
+import { useEffect, useState } from 'react'
 
 import type { RANKING_VALUES, TEAM, TOURNAMENT } from '@lpr/types'
-import { Button, Modal, Team } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Button, Modal, Team, Title } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { useUser } from 'Contexts/user'
 import { apiInstance } from 'Utils/api'
 import { login } from 'Utils/auth'
-import { API_ENDPOINT, DEFAULT_TITLE } from 'Utils/constants'
+import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
-import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
+import { ONE_YEAR_IN_SECONDS, redis } from 'Utils/redis'
 
 const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
   const { teams, id, logo, name, base64 } = tournament
@@ -38,7 +39,7 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
 
   const createRanking = async () => {
     try {
-      const res = await apiInstance.post('/rankings', {
+      const res = await apiInstance.post<RankingType>('/rankings', {
         ranking,
         tournamentId: id,
         userId: user.id
@@ -145,7 +146,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let tournament = null
 
-  let cachedData = await redis.get(id)
+  const cachedData = await redis.get(id)
 
   if (cachedData) {
     tournament = JSON.parse(cachedData)

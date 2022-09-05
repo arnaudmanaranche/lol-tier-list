@@ -1,12 +1,11 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
 
 import type { TOURNAMENT } from '@lpr/types'
-import { Error, Tournament } from '@lpr/ui'
-import Title from '@lpr/ui/src/Title'
+import { Error, Title, Tournament } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
@@ -38,14 +37,14 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
         <p>Please try again later.</p>
       </Error>
     ) : (
-      <motion.div
+      <m.div
         variants={parent}
         initial="hidden"
         animate="show"
         className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:grid-cols-3"
       >
         {tournaments?.map((tournament) => (
-          <motion.div variants={stat} key={tournament.pandascoreId}>
+          <m.div variants={stat} key={tournament.pandascoreId}>
             {tournament.status ? (
               <Link href={`/ranking/new/${tournament.id}`} prefetch={false}>
                 <a>
@@ -57,9 +56,9 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
                 <Tournament {...tournament} />
               </div>
             )}
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
     )}
   </div>
 )

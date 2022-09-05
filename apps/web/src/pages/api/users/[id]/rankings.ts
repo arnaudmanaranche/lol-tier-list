@@ -1,10 +1,10 @@
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { RANKING, TOURNAMENT } from '@lpr/types'
+import type { RANKING, TOURNAMENT } from '@lpr/types'
 
 import prisma from 'Utils/prisma'
-import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
+import { ONE_YEAR_IN_SECONDS, redis } from 'Utils/redis'
 
 type TOURNAMENT_WITHOUT_TEAM = Omit<TOURNAMENT, 'teams'>
 type RANKING_WITHOUT_TOURNAMENT = Omit<RANKING, 'tournament'>

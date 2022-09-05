@@ -9,24 +9,29 @@
     "build": "turbo run build && turbo run postbuild",
     "build-storybook": "turbo run build-storybook",
     "dev": "turbo run dev --parallel",
+    "postinstall": "husky install",
     "lint": "turbo run lint",
     "test": "turbo run test"
   },
-  "dependencies": {
-    "@headlessui/react": "1.4.3",
-    "clsx": "1.1.1"
+  "lint-staged": {
+    "*.json": [
+      "sort-package-json package.json apps/**/package.json packages/**/package.json"
+    ]
   },
   "devDependencies": {
-    "@types/node": "14.18.21",
-    "@types/react": "17.0.44",
+    "@types/node": "14.18.24",
+    "@types/react": "18.0.17",
     "@types/tailwindcss": "3.0.11",
     "autoprefixer": "10.4.7",
     "eslint": "8.21.0",
-    "postcss": "8.4.5",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
+    "postcss": "8.4.16",
     "prettier": "2.5.1",
+    "sort-package-json": "1.54.0",
     "tailwindcss": "3.1.8",
     "turbo": "1.1.10",
     "typescript": "4.7.4"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.2"
 }
