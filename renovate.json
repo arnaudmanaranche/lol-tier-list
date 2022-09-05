@@ -1,25 +1,13 @@
 {
-  "baseBranches": [
-    "preview",
-    "main"
-  ],
-  "extends": [
-    "config:base"
-  ],
+  "baseBranches": ["preview", "main"],
+  "extends": ["config:base"],
   "lockFileMaintenance": {
     "enabled": true
   },
   "packageRules": [
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
-      ],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     }
   ]
