@@ -54,11 +54,9 @@ Default.args = {
 Default.play = async ({ canvasElement }) => {
   const players = args.players
 
-  players.map(async (player) => {
-    const pickRandom = Math.floor(Math.random() * Object.keys(RANKING_VALUES).length)
-
+  players.map(async (player, index) => {
     const randomRankingValue =
-      RANKING_VALUES[Object.keys(RANKING_VALUES)[pickRandom] as keyof typeof RANKING_VALUES]
+      RANKING_VALUES[Object.keys(RANKING_VALUES)[index] as keyof typeof RANKING_VALUES]
 
     await userEvent.selectOptions(
       await within(canvasElement).findByTestId(`${player.name}_value`),

@@ -4,6 +4,7 @@
   "scripts": {
     "build": "tailwindcss -i ./styles/index.css -o ./dist/output.css",
     "build-storybook": "build-storybook --quiet",
+    "chromatic": "chromatic --exit-zero-on-changes",
     "dev": "start-storybook --quiet --port 9009",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:eslint": "eslint --fix --cache",
@@ -33,6 +34,7 @@
     "@storybook/react": "6.5.10",
     "@storybook/test-runner": "0.5.0",
     "@storybook/testing-library": "0.0.13",
+    "chromatic": "6.9.0",
     "eslint": "8.21.0",
     "jest": "27.5.1",
     "prettier": "2.5.1",
