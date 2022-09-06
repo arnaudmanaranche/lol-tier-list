@@ -14,6 +14,5 @@ jobs:
         run: |
           git fetch --unshallow
           git checkout preview
-          git pull
-          git merge --no-ff master -m "Auto-merge main back to preview"
+          git rebase origin/main
           git push
