@@ -12,6 +12,7 @@ declare namespace NodeJS {
     NEXT_PUBLIC_SENTRY_DSN: string
     NEXT_PUBLIC_SUPABASE_ID: string
     NEXT_PUBLIC_SUPABASE_TOKEN: string
+    NEXT_PUBLIC_VERCEL_URL: string
     PANDASCORE_TOKEN: string
     PRISMA_SERVICE_ROLE: string
     REDIS_URL: string
