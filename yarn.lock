@@ -19943,6 +19943,7 @@ __metadata:
     "@svgr/webpack": 5.5.0
     clsx: 1.2.1
     cypress: 10.2.0
+    eslint: 8.21.0
     framer-motion: 7.0.0
     ioredis: 4.28.5
     next: 12.2.4
