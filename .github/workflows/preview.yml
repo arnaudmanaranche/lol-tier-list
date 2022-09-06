@@ -15,4 +15,4 @@ jobs:
           git fetch --unshallow
           git checkout preview
           git rebase origin/main
-          git push
+          git push --force-with-lease
