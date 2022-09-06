@@ -7,7 +7,7 @@
     "build": "tsup"
   },
   "devDependencies": {
-    "tsup": "6.2.2"
+    "tsup": "6.2.3"
   },
   "tsup": {
     "entry": [
