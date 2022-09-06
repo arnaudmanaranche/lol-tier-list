@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Merge main back to dev preview
+      - name: Merge main back to preview
         run: |
           git fetch --unshallow
-          git checkout dev
+          git checkout preview
           git pull
           git merge --no-ff master -m "Auto-merge main back to preview"
           git push
