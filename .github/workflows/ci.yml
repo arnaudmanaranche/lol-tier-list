@@ -1,5 +1,8 @@
 name: Design system
-on: [push]
+on:
+  push:
+    paths:
+      - 'packages/design-system/src/**/*.tsx'
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
