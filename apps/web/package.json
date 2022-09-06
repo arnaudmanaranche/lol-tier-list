@@ -18,7 +18,7 @@
     ]
   },
   "dependencies": {
-    "@headlessui/react": "1.4.3",
+    "@headlessui/react": "1.6.6",
     "@lpr/ui": "*",
     "@panelbear/panelbear-nextjs": "1.0.4",
     "@prisma/client": "2.26.0",
