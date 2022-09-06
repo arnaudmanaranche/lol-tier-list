@@ -1,11 +1,17 @@
-name: End-to-end tests
-on: [push]
+name: Design system
+on:
+  push:
+    paths:
+      - 'packages/design-system/src/**/*.tsx'
 jobs:
-  cypress-run:
-    runs-on: ubuntu-20.04
+  chromatic-deployment:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v4.1.0
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: packages/design-system
