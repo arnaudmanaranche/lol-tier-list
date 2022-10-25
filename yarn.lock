@@ -2113,6 +2113,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@eslint/eslintrc@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@eslint/eslintrc@npm:1.3.3"
+  dependencies:
+    ajv: ^6.12.4
+    debug: ^4.3.2
+    espree: ^9.4.0
+    globals: ^13.15.0
+    ignore: ^5.2.0
+    import-fresh: ^3.2.1
+    js-yaml: ^4.1.0
+    minimatch: ^3.1.2
+    strip-json-comments: ^3.1.1
+  checksum: f03e9d6727efd3e0719da2051ea80c0c73d20e28c171121527dbb868cd34232ca9c1d0525a66e517a404afea26624b1e47895b6a92474678418c2f50c9566694
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.0.1, @gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
@@ -2154,6 +2171,17 @@ __metadata:
     debug: ^4.1.1
     minimatch: ^3.0.4
   checksum: d480e5d57e6d787565b6cff78e27c3d1b380692d4ffb0ada7d7f5957a56c9032f034da05a3e443065dbd0671ebf4d859036ced34e96b325bbc1badbae3c05300
+  languageName: node
+  linkType: hard
+
+"@humanwhocodes/config-array@npm:^0.11.6":
+  version: 0.11.6
+  resolution: "@humanwhocodes/config-array@npm:0.11.6"
+  dependencies:
+    "@humanwhocodes/object-schema": ^1.2.1
+    debug: ^4.1.1
+    minimatch: ^3.0.4
+  checksum: 2fb7288638968dfeec27f06aef52f043726edd126ac47f24b54256902fdb35b3bf9863d4a4caf0423dccca5dd1354ca5899f3ac047b56774641ca0c4cbedb104
   languageName: node
   linkType: hard
 
@@ -3033,7 +3061,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nodelib/fs.walk@npm:^1.2.3":
+"@nodelib/fs.walk@npm:^1.2.3, @nodelib/fs.walk@npm:^1.2.8":
   version: 1.2.8
   resolution: "@nodelib/fs.walk@npm:1.2.8"
   dependencies:
@@ -6108,6 +6136,17 @@ __metadata:
   checksum: 2ef3aa9d23bbe0f9f2745a634b16f3a2f2b18c43146c0913c7b26c8be410e20d59b8c3808d0bb7fe94d50fc2448b4b91e65dd9f33deb4aed53c14f0dedc3ddd8
   languageName: node
   linkType: hard
+
+"admin@workspace:apps/admin":
+  version: 0.0.0-use.local
+  resolution: "admin@workspace:apps/admin"
+  dependencies:
+    eslint: 8.26.0
+    next: 12.2.4
+    react: 18.2.0
+    react-dom: 18.2.0
+  languageName: unknown
+  linkType: soft
 
 "agent-base@npm:6, agent-base@npm:^6.0.2":
   version: 6.0.2
@@ -10220,6 +10259,55 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint@npm:8.26.0":
+  version: 8.26.0
+  resolution: "eslint@npm:8.26.0"
+  dependencies:
+    "@eslint/eslintrc": ^1.3.3
+    "@humanwhocodes/config-array": ^0.11.6
+    "@humanwhocodes/module-importer": ^1.0.1
+    "@nodelib/fs.walk": ^1.2.8
+    ajv: ^6.10.0
+    chalk: ^4.0.0
+    cross-spawn: ^7.0.2
+    debug: ^4.3.2
+    doctrine: ^3.0.0
+    escape-string-regexp: ^4.0.0
+    eslint-scope: ^7.1.1
+    eslint-utils: ^3.0.0
+    eslint-visitor-keys: ^3.3.0
+    espree: ^9.4.0
+    esquery: ^1.4.0
+    esutils: ^2.0.2
+    fast-deep-equal: ^3.1.3
+    file-entry-cache: ^6.0.1
+    find-up: ^5.0.0
+    glob-parent: ^6.0.2
+    globals: ^13.15.0
+    grapheme-splitter: ^1.0.4
+    ignore: ^5.2.0
+    import-fresh: ^3.0.0
+    imurmurhash: ^0.1.4
+    is-glob: ^4.0.0
+    is-path-inside: ^3.0.3
+    js-sdsl: ^4.1.4
+    js-yaml: ^4.1.0
+    json-stable-stringify-without-jsonify: ^1.0.1
+    levn: ^0.4.1
+    lodash.merge: ^4.6.2
+    minimatch: ^3.1.2
+    natural-compare: ^1.4.0
+    optionator: ^0.9.1
+    regexpp: ^3.2.0
+    strip-ansi: ^6.0.1
+    strip-json-comments: ^3.1.0
+    text-table: ^0.2.0
+  bin:
+    eslint: bin/eslint.js
+  checksum: a2aced939ea060f77d10dcfced5cfeb940f63f383fd7ab1decadea64170ab552582e1c5909db1db641d4283178c9bc569f19b0f8900e00314a5f783e4b3f759d
+  languageName: node
+  linkType: hard
+
 "espree@npm:^9.4.0":
   version: 9.4.0
   resolution: "espree@npm:9.4.0"
@@ -12759,7 +12847,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-path-inside@npm:^3.0.2":
+"is-path-inside@npm:^3.0.2, is-path-inside@npm:^3.0.3":
   version: 3.0.3
   resolution: "is-path-inside@npm:3.0.3"
   checksum: abd50f06186a052b349c15e55b182326f1936c89a78bf6c8f2b707412517c097ce04bc49a0ca221787bc44e1049f51f09a2ffb63d22899051988d3a618ba13e9
@@ -14182,6 +14270,13 @@ __metadata:
   version: 3.1.1
   resolution: "joycon@npm:3.1.1"
   checksum: 8003c9c3fc79c5c7602b1c7e9f7a2df2e9916f046b0dbad862aa589be78c15734d11beb9fe846f5e06138df22cb2ad29961b6a986ba81c4920ce2b15a7f11067
+  languageName: node
+  linkType: hard
+
+"js-sdsl@npm:^4.1.4":
+  version: 4.1.5
+  resolution: "js-sdsl@npm:4.1.5"
+  checksum: 695f657ddc5be462b97cac4e8e60f37de28d628ee0e23016baecff0bb584a18dddb5caeac537a775030f180b5afd62133ac4481e7024c8d03a62d73e4da0713e
   languageName: node
   linkType: hard
 
