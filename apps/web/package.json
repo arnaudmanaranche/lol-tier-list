@@ -9,8 +9,7 @@
     "postinstall": "prisma generate",
     "lint": "next lint --fix",
     "seed:db": "prisma db seed --preview-feature",
-    "start": "next start",
-    "start:e2e": "NODE_ENV=test next dev"
+    "start": "next start"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
@@ -42,7 +41,6 @@
     "@lpr/configs": "*",
     "@lpr/types": "*",
     "@svgr/webpack": "5.5.0",
-    "cypress": "10.7.0",
     "eslint": "8.23.0",
     "next-sitemap": "1.9.12",
     "prisma": "2.26.0"
