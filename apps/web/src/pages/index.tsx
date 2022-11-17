@@ -38,7 +38,7 @@ const Home = (): ReactElement => {
         <Button to={TOURNAMENTS}>CREATE YOURS</Button>
         <m.div variants={parent} initial="hidden" animate="show" className="flex mt-20 space-x-20">
           {REGIONS.map((region) => (
-            <m.div variants={stat} key={region} data-testid={region}>
+            <m.div variants={stat} key={region}>
               <Image
                 src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.in/storage/v1/object/public/${region}/logo.png`}
                 alt={`${region} logo`}
