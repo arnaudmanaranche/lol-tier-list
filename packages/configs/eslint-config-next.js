@@ -8,7 +8,7 @@ module.exports = {
         groups: [
           ['^@?\\w'],
           ['^(@lpr)(/.*|$)'],
-          ['^(Assets|Contexts|Components|Utils)(/.*|$)'],
+          ['^(Assets|Config|Contexts|Components|Utils)(/.*|$)'],
           ['^\\.'],
           ['^.+\\.css$']
         ]

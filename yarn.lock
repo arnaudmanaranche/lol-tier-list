@@ -2715,6 +2715,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@lpr/data@workspace:packages/data-management":
+  version: 0.0.0-use.local
+  resolution: "@lpr/data@workspace:packages/data-management"
+  dependencies:
+    "@lpr/types": "*"
+    "@prisma/client": 2.26.0
+    "@types/node": 14.18.33
+    eslint: 8.23.0
+    ioredis: 4.28.5
+    prisma: 2.26.0
+  languageName: unknown
+  linkType: soft
+
 "@lpr/types@*, @lpr/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@lpr/types@workspace:packages/types"
