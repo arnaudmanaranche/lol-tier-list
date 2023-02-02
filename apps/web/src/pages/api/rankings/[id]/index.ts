@@ -1,27 +1,21 @@
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import type { RANKING } from '@lpr/types'
+import { deleteRanking, updateRanking } from '@lpr/data'
 
-import { deleteRanking, updateRanking } from 'Utils/api/rankings'
-
-async function handler(req: NextApiRequest, res: NextApiResponse<RANKING | null>): Promise<void> {
-  let response = null
-
+async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   switch (req.method) {
     case 'DELETE':
       const rankingId = req.query.id as string
-
-      response = await deleteRanking(rankingId)
-      res.status(204).json(response)
+      await deleteRanking(rankingId)
+      res.status(204).json({ status: 'OK' })
       break
     case 'PATCH':
       const {
         body: { ranking }
       } = req
-
-      response = await updateRanking(ranking)
-      res.status(204).json(response)
+      const updatedRanking = await updateRanking(ranking)
+      res.status(204).json(updatedRanking)
       break
     default:
       throw new Error(`Method ${req.method} is not allowed`)

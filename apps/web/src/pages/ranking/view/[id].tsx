@@ -1,4 +1,5 @@
 import { track as PanelbearTrack } from '@panelbear/panelbear-js'
+import type { Ranking } from '@prisma/client'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -24,8 +25,8 @@ const ViewRanking = ({
 
   const updateRanking = async () => {
     try {
-      const res = await apiInstance.patch('/rankings', { ranking })
-      const updatedRanking = res.data
+      const { data } = await apiInstance.patch<Ranking>('/rankings', { ranking })
+      const updatedRanking = data
       PanelbearTrack('UpdateRanking')
       return updatedRanking
     } catch (error) {
