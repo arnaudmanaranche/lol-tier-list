@@ -1,7 +1,7 @@
 import type { Tournament } from '@prisma/client'
 
-import prisma from 'Config/prisma'
-import { ONE_YEAR_IN_SECONDS, redis } from 'Config/redis'
+import prisma from '../../config/prisma'
+import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
 
 export type TournamentWithoutTeams = Omit<Tournament, 'teams'>
 

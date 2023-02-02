@@ -2,9 +2,14 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import type { TOURNAMENT } from '@lpr/types'
+import type { TournamentWithoutTeams } from '@lpr/data'
 
-export const Tournament = ({ name, logo, status, base64 }: TOURNAMENT): ReactElement => {
+export const Tournament = ({
+  name,
+  logo,
+  status,
+  base64
+}: TournamentWithoutTeams): ReactElement => {
   const isActive = status
 
   return (

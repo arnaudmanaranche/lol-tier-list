@@ -1,5 +1,5 @@
 const { withSentryConfig } = require('@sentry/nextjs')
-const withTM = require('next-transpile-modules')(['@lpr/ui', '@lpr/types'])
+const withTM = require('next-transpile-modules')(['@lpr/ui', '@lpr/types', '@lpr/data'])
 
 // @ts-check
 /**

@@ -1,9 +1,8 @@
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import { getTournaments } from '@lpr/data'
 import type { TOURNAMENT } from '@lpr/types'
-
-import { findTournaments } from 'Utils/api/tournaments'
 
 async function handler(
   req: NextApiRequest,
@@ -13,7 +12,7 @@ async function handler(
 
   switch (req.method) {
     case 'GET':
-      response = await findTournaments()
+      response = await getTournaments()
       res.json(response)
       break
     default:
