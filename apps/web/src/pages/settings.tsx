@@ -31,6 +31,7 @@ const Settings = ({ user }: { user: User }): ReactElement => {
   const deleteMyAccount = async () => {
     try {
       await logout()
+      await supabase.auth.api.deleteUser(user.id)
       await apiInstance.delete(`/users/${user.id}`)
       await supabase.auth.api.deleteUser(user.id)
       setUser(null)
