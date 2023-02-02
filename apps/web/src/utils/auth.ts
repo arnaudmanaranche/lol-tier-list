@@ -29,9 +29,7 @@ const handleAuthChange = async (event: AuthChangeEvent, session: Session): Promi
 }
 
 const handleLogin = async (user: User): Promise<void> => {
-  await apiInstance.post(`/users/${user.id}`, {
-    userId: user.id
-  })
+  await apiInstance.post(`/users/${user.id}`)
 }
 
 export { handleAuthChange, handleLogin, login, logout }

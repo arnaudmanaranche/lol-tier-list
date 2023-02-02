@@ -32,6 +32,7 @@ const Settings = ({ user }: { user: User }): ReactElement => {
     try {
       await logout()
       await apiInstance.delete(`/users/${user.id}`)
+      await supabase.auth.api.deleteUser(user.id)
       setUser(null)
       router.push(ROUTES.HOME)
     } catch (error) {
