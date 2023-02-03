@@ -17,6 +17,6 @@ export const SUPABASE_EVENTS = {
 
 export const API_ENDPOINT = {
   development: 'http://localhost:3000/api',
-  preview: 'https://lol-power-ranking-git-feat-setup-package-data-management-muxu.vercel.app/api',
+  preview: `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`,
   production: 'https://lol-power-ranking.app/api'
 }[process.env.NEXT_PUBLIC_APP_ENV]
