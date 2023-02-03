@@ -3,7 +3,7 @@ import type { Ranking, Tournament } from '@prisma/client'
 import prisma from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
 
-type TournamentWithoutTeams = Omit<Tournament, 'teams'>
+export type TournamentWithoutTeams = Omit<Tournament, 'teams'>
 type RankingWithoutTournament = Omit<Ranking, 'tournament' | 'data' | 'createdAt' | 'updatedAt'>
 
 export interface UserRankings extends RankingWithoutTournament {

@@ -1,9 +1,6 @@
-import type { Tournament } from '@prisma/client'
-
 import prisma from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
-
-export type TournamentWithoutTeams = Omit<Tournament, 'teams'>
+import type { TournamentWithoutTeams } from '../users'
 
 export async function getTournaments(): Promise<TournamentWithoutTeams[]> {
   const tournaments = await prisma.tournament.findMany({

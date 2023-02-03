@@ -5,20 +5,21 @@ import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import type { RANKING, RANKING_VALUES } from '@lpr/types'
+import type { RankingWithTournament } from '@lpr/data'
+import { getRanking, getTournament } from '@lpr/data'
+import type { RANKING_VALUES } from '@lpr/types'
 import { Button, Team, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
-import prisma from 'Utils/prisma'
-import { ONE_YEAR_IN_SECONDS, redis } from 'Utils/redis'
+import { redis } from 'Utils/redis'
 import { supabase } from 'Utils/supabase'
 
 const ViewRanking = ({
   ranking,
   isEditMode
 }: {
-  ranking: RANKING
+  ranking: RankingWithTournament
   isEditMode: boolean
 }): ReactElement => {
   const copyRanking = Object.assign({}, ranking)
@@ -35,6 +36,8 @@ const ViewRanking = ({
   }
 
   const onUpdate = (value: RANKING_VALUES, playerId: number, teamId: number) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const team = copyRanking.data.find((t) => t.id === teamId)
 
     const player = team?.players.find((p) => p.id === playerId)
@@ -71,6 +74,8 @@ const ViewRanking = ({
         </Title>
       </div>
       <div className="grid gap-10 mx-auto sm:grid-cols-2 md:grid-cols-3">
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-expect-error */}
         {copyRanking?.data?.map(({ id: teamId, logo, name, players, base64 }) => (
           <Team
             onUpdate={(value, playerId) => {
@@ -113,37 +118,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     ranking = JSON.parse(cachedData)
 
     // TODO: tournament name and logo are not cached, so we need to fetch them again.
-    const tournament = await prisma.tournament.findUnique({
-      where: { id: ranking.tournamentId }
-    })
+    const tournament = await getTournament(ranking.tournamentId)
 
     ranking.tournament = tournament
   } else {
-    ranking = await prisma.ranking.findUnique({
-      where: {
-        id: id as string
-      },
-      select: {
-        id: true,
-        tournamentId: true,
-        data: true,
-        tournament: {
-          select: {
-            teams: false,
-            id: true,
-            name: true,
-            pandascoreId: true,
-            status: true,
-            logo: true,
-            base64: true,
-            year: true
-          }
-        },
-        userId: true
-      }
-    })
-
-    redis.set(id, JSON.stringify(ranking), 'ex', ONE_YEAR_IN_SECONDS)
+    ranking = getRanking(id as string)
   }
 
   if (!ranking) {
