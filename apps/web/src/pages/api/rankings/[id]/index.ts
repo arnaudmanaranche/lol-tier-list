@@ -1,20 +1,25 @@
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { deleteRanking, updateRanking } from '@lpr/data'
+import { deleteRanking, getRanking, updateRanking } from '@lpr/data'
 
 async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+  const rankingId = req.query.id as string
+
   switch (req.method) {
+    case 'GET':
+      const ranking = await getRanking(rankingId)
+      res.status(200).json(ranking)
+      break
     case 'DELETE':
-      const rankingId = req.query.id as string
       await deleteRanking(rankingId)
       res.status(204).json({ status: 'OK' })
       break
     case 'PATCH':
       const {
-        body: { ranking }
+        body: { ranking: rankingData }
       } = req
-      const updatedRanking = await updateRanking(ranking)
+      const updatedRanking = await updateRanking(rankingData)
       res.status(204).json(updatedRanking)
       break
     default:

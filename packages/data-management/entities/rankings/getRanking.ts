@@ -2,6 +2,7 @@ import type { Ranking } from '@prisma/client'
 
 import prisma from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
+import { getTournamentWitoutTeams } from '../tournaments'
 import type { TournamentWithoutTeams } from '../users'
 
 type RankingWithoutDates = Omit<Ranking, 'createdAt' | 'updatedAt'>
@@ -14,7 +15,17 @@ export async function getRanking(rankingId: string): Promise<RankingWithTourname
   const cachedData = await redis.get(rankingId)
 
   if (cachedData) {
-    return JSON.parse(cachedData)
+    const cachedRanking = JSON.parse(cachedData)
+
+    // TODO: tournament name and logo are not cached, so we need to fetch them again.
+    const tournament = await getTournamentWitoutTeams(cachedRanking.tournamentId)
+
+    if (tournament) {
+      cachedRanking.tournament = tournament
+      return cachedRanking
+    }
+
+    return null
   } else {
     const ranking = await prisma.ranking.findUnique({
       where: {
