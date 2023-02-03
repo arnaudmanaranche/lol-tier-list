@@ -7,11 +7,11 @@ import type { TournamentWithoutTeams } from '../users'
 
 type RankingWithoutDates = Omit<Ranking, 'createdAt' | 'updatedAt'>
 
-export interface RankingWithTournament extends RankingWithoutDates {
+export interface RankingWithTournamentTeams extends RankingWithoutDates {
   tournament: TournamentWithoutTeams
 }
 
-export async function getRanking(rankingId: string): Promise<RankingWithTournament | null> {
+export async function getRanking(rankingId: string): Promise<RankingWithTournamentTeams | null> {
   const cachedData = await redis.get(rankingId)
 
   if (cachedData) {

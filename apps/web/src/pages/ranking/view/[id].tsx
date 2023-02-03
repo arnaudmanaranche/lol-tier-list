@@ -5,21 +5,19 @@ import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
-import type { RankingWithTournament } from '@lpr/data'
-import { getRanking, getTournament } from '@lpr/data'
+import type { RankingWithTournamentTeams } from '@lpr/data'
 import type { RANKING_VALUES } from '@lpr/types'
 import { Button, Team, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
-import { redis } from 'Utils/redis'
 import { supabase } from 'Utils/supabase'
 
 const ViewRanking = ({
   ranking,
   isEditMode
 }: {
-  ranking: RankingWithTournament
+  ranking: RankingWithTournamentTeams
   isEditMode: boolean
 }): ReactElement => {
   const copyRanking = Object.assign({}, ranking)
@@ -110,22 +108,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     query: { edit }
   } = context
 
-  let ranking = null
+  const { data } = await apiInstance.get<RankingWithTournamentTeams>(`/rankings/${id}`)
 
-  const cachedData = await redis.get(id)
-
-  if (cachedData) {
-    ranking = JSON.parse(cachedData)
-
-    // TODO: tournament name and logo are not cached, so we need to fetch them again.
-    const tournament = await getTournament(ranking.tournamentId)
-
-    ranking.tournament = tournament
-  } else {
-    ranking = getRanking(id as string)
-  }
-
-  if (!ranking) {
+  if (!data) {
     return {
       notFound: true
     }
@@ -133,8 +118,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      ranking,
-      isEditMode: edit !== undefined && user?.id === ranking.userId
+      ranking: data,
+      isEditMode: edit !== undefined && user?.id === data.userId
     }
   }
 }
