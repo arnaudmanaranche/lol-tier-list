@@ -1,19 +1,25 @@
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { getTournaments } from '@lpr/data'
-import type { TOURNAMENT } from '@lpr/types'
+import { createTournament, getTournaments } from '@lpr/data'
 
-async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<TOURNAMENT | null>
-): Promise<void> {
-  let response = null
-
+async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   switch (req.method) {
     case 'GET':
-      response = await getTournaments()
-      res.json(response)
+      const tournaments = await getTournaments()
+      res.json(tournaments)
+      break
+    case 'POST':
+      const { tournamentId, tournamentRegion, tournamentLogo, tournamentEvent, tournamentYear } =
+        req.body
+      await createTournament({
+        tournamentId,
+        tournamentRegion,
+        tournamentLogo,
+        tournamentEvent,
+        tournamentYear
+      })
+      res.json({ status: 'OK' })
       break
     default:
       throw new Error(`Method ${req.method} is not allowed`)
