@@ -18,7 +18,7 @@ export interface TEAM {
   id: number
   acronym?: string
   logo: string
-  base64: string
+  logo_base64: string
   name: string
   players: PLAYER[]
 }

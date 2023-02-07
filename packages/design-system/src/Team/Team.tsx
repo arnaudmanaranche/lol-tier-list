@@ -11,7 +11,7 @@ export interface TeamProps extends TEAM {
 }
 
 export const Team = ({
-  base64,
+  logo_base64,
   logo,
   name,
   players,
@@ -28,7 +28,7 @@ export const Team = ({
           width={60}
           id={name}
           placeholder="blur"
-          blurDataURL={base64}
+          blurDataURL={logo_base64}
         />
         <p className="m-2 font-bold text-black dark:text-black">{name}</p>
       </div>

@@ -38,14 +38,14 @@ const MyRankings = ({ rankings }: { rankings: UserRankings[] }): ReactElement =>
               <div className="flex items-center w-[30%]">
                 <Image
                   src={ranking.tournament.logo}
-                  alt={`${ranking.tournament.name} logo`}
+                  alt={`${ranking.tournament.region} logo`}
                   height={60}
                   width={60}
-                  id={ranking.tournament.name}
+                  id={`${ranking.tournament.region}_${ranking.tournament.event}_${ranking.tournament.year}`}
                   placeholder="blur"
-                  blurDataURL={ranking.tournament.base64}
+                  blurDataURL={ranking.tournament.logo_base64}
                 />
-                <span>{ranking.tournament.name}</span>
+                <span>{`${ranking.tournament.region} ${ranking.tournament.event} - ${ranking.tournament.year}`}</span>
               </div>
               <div className="flex justify-end w-[70%] space-x-4">
                 <Button

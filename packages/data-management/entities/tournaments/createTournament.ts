@@ -17,7 +17,7 @@ export interface TournamentData {
 
 export async function createTournament(data: TournamentData): Promise<Tournament> {
   // TODO: type teams
-  const organizedTeams = []
+  const organizedTeams: any = []
 
   const unorganizedTeams = await fetch(
     `https://api.pandascore.co/tournaments/${data.tournamentId}/rosters?token=${process.env.PANDASCORE_TOKEN}`
@@ -64,7 +64,7 @@ export async function createTournament(data: TournamentData): Promise<Tournament
           name,
           players: organizedPlayers,
           logo: teamLogo,
-          base64
+          logo_base64: base64
         })
       }
     )
@@ -74,12 +74,13 @@ export async function createTournament(data: TournamentData): Promise<Tournament
 
   const tournament = await prisma.tournament.create({
     data: {
-      name: `${data.tournamentRegion} - ${data.tournamentEvent} (${data.tournamentYear})`,
-      pandascoreId: parseInt(data.tournamentId),
+      event: data.tournamentEvent,
+      region: data.tournamentRegion,
+      pandascore_id: parseInt(data.tournamentId),
       teams: organizedTeams,
       logo: data.tournamentLogo,
       year: data.tournamentYear,
-      base64
+      logo_base64: base64
     }
   })
 

@@ -6,5 +6,5 @@ export async function deleteRanking(id: string): Promise<void> {
     where: { id }
   })
 
-  redis.del(ranking.id)
+  redis.del(`ranking_${ranking.id}`)
 }

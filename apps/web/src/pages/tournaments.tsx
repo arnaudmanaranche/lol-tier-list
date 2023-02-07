@@ -44,8 +44,8 @@ const Tournaments = ({ tournaments }: { tournaments: TournamentWithoutTeams[] })
         className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:grid-cols-3"
       >
         {tournaments?.map((tournament) => (
-          <m.div variants={stat} key={tournament.pandascoreId}>
-            {tournament.status ? (
+          <m.div variants={stat} key={tournament.pandascore_id}>
+            {tournament.active ? (
               <Link href={`/ranking/new/${tournament.id}`} prefetch={false}>
                 <a>
                   <Tournament {...tournament} />

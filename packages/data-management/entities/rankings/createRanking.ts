@@ -1,5 +1,4 @@
-import type { Ranking } from '@prisma/client'
-import type { JsonValue } from 'type-fest'
+import type { Prisma, Ranking } from '@prisma/client'
 
 import prisma from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
@@ -9,17 +8,20 @@ export async function createRanking(
   tournamentId: string,
   userId: string
 ): Promise<Ranking> {
-  const formattedRanking = ranking as unknown as JsonValue
-
   const createdRanking = await prisma.ranking.create({
     data: {
-      data: formattedRanking,
+      data: ranking as unknown as Prisma.InputJsonValue,
       userId,
       tournamentId: tournamentId
     }
   })
 
-  redis.set(createdRanking.id, JSON.stringify(createdRanking), 'EX', ONE_YEAR_IN_SECONDS)
+  redis.set(
+    `ranking_${createdRanking.id}`,
+    JSON.stringify(createdRanking),
+    'EX',
+    ONE_YEAR_IN_SECONDS
+  )
 
   return createdRanking
 }

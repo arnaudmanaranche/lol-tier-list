@@ -12,7 +12,7 @@ export interface RankingWithTournamentTeams extends RankingWithoutDates {
 }
 
 export async function getRanking(rankingId: string): Promise<RankingWithTournamentTeams | null> {
-  const cachedData = await redis.get(rankingId)
+  const cachedData = await redis.get(`ranking_${rankingId}`)
 
   if (cachedData) {
     const cachedRanking = JSON.parse(cachedData)
@@ -39,11 +39,12 @@ export async function getRanking(rankingId: string): Promise<RankingWithTourname
           select: {
             teams: false,
             id: true,
-            name: true,
-            pandascoreId: true,
-            status: true,
+            event: true,
+            region: true,
+            pandascore_id: true,
+            active: true,
             logo: true,
-            base64: true,
+            logo_base64: true,
             year: true
           }
         },
@@ -52,7 +53,7 @@ export async function getRanking(rankingId: string): Promise<RankingWithTourname
     })
 
     if (ranking) {
-      redis.set(rankingId, JSON.stringify(ranking), 'EX', ONE_YEAR_IN_SECONDS)
+      redis.set(`ranking_${rankingId}`, JSON.stringify(ranking), 'EX', ONE_YEAR_IN_SECONDS)
 
       return ranking
     }

@@ -1,7 +1,6 @@
 import type { Ranking, Tournament } from '@prisma/client'
 
 import prisma from '../../config/prisma'
-import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
 
 export type TournamentWithoutTeams = Omit<Tournament, 'teams'>
 type RankingWithoutTournament = Omit<Ranking, 'tournament' | 'data' | 'createdAt' | 'updatedAt'>
@@ -11,37 +10,30 @@ export interface UserRankings extends RankingWithoutTournament {
 }
 
 export async function getUserRankings(userId: string): Promise<UserRankings[]> {
-  const cachedData = await redis.get(`${userId}_rankings`)
-
-  if (cachedData) {
-    return JSON.parse(cachedData)
-  } else {
-    const rankings = await prisma.ranking.findMany({
-      where: {
-        userId
-      },
-      select: {
-        id: true,
-        tournamentId: true,
-        data: false,
-        userId: true,
-        tournament: {
-          select: {
-            teams: false,
-            id: true,
-            name: true,
-            pandascoreId: true,
-            status: true,
-            logo: true,
-            base64: true,
-            year: true
-          }
+  const rankings = await prisma.ranking.findMany({
+    where: {
+      userId
+    },
+    select: {
+      id: true,
+      tournamentId: true,
+      data: false,
+      userId: true,
+      tournament: {
+        select: {
+          teams: false,
+          id: true,
+          event: true,
+          region: true,
+          pandascore_id: true,
+          active: true,
+          logo: true,
+          logo_base64: true,
+          year: true
         }
       }
-    })
+    }
+  })
 
-    redis.set(`${userId}_rankings`, JSON.stringify(rankings), 'EX', ONE_YEAR_IN_SECONDS)
-
-    return rankings
-  }
+  return rankings
 }

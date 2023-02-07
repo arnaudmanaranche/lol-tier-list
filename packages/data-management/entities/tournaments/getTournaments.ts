@@ -14,11 +14,12 @@ export async function getTournaments(): Promise<TournamentWithoutTeams[]> {
       select: {
         teams: false,
         id: true,
-        name: true,
-        pandascoreId: true,
-        status: true,
+        event: true,
+        pandascore_id: true,
+        active: true,
+        region: true,
         logo: true,
-        base64: true,
+        logo_base64: true,
         year: true
       }
     })

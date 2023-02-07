@@ -16,7 +16,7 @@ import { login } from 'Utils/auth'
 import { DEFAULT_TITLE } from 'Utils/constants'
 
 const Ranking = ({ tournament }: { tournament: Tournament }): ReactElement => {
-  const { teams, id, logo, name, base64 } = tournament
+  const { teams, id, logo, event, region, year, logo_base64 } = tournament
 
   const user = useUser()
   const [isModalOpen, setModalOpen] = useState(false)
@@ -72,36 +72,36 @@ const Ranking = ({ tournament }: { tournament: Tournament }): ReactElement => {
   return (
     <div className="max-w-screen-xl pt-10 mx-auto">
       <Head>
-        <title>{`${name} - ${DEFAULT_TITLE}`}</title>
+        <title>{`${region} - ${DEFAULT_TITLE}`}</title>
         <meta property="og:image" content={logo} key="og:image" />
         <meta property="og:image:secure_url" content={logo} />
         <meta property="og:image:width" content="200" />
         <meta property="og:image:height" content="200" />
-        <meta property="og:image:alt" content={`${name} logo`} />
+        <meta property="og:image:alt" content={`${region} logo`} />
       </Head>
       <div className="flex justify-center items-center mb-10">
         <Image
           src={logo}
-          alt={`${name} logo`}
+          alt={`${region} logo`}
           height={70}
           width={70}
-          id={name}
+          id={`${region}_${event}_${year}`}
           placeholder="blur"
-          blurDataURL={base64}
+          blurDataURL={logo_base64}
         />
         <Title tag="h1" className="capitalize">
-          {name}
+          {`${region} ${event} - ${year}`}
         </Title>
       </div>
       <div className="grid gap-10 px-6 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:px-0">
-        {ranking?.map(({ id: teamId, logo, name, players, base64 }) => (
+        {ranking?.map(({ id: teamId, logo, name, players, logo_base64 }) => (
           <Team
             key={teamId}
             id={teamId}
             disabled={false}
             logo={logo}
             name={name}
-            base64={base64}
+            logo_base64={logo_base64}
             players={players}
             onUpdate={(value, playerId) => {
               onChangePlayerValue(value, playerId, teamId)

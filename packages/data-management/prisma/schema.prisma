@@ -1,6 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialActions"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -9,31 +8,32 @@ datasource db {
 }
 
 model Tournament {
-  id           String    @id @default(uuid())
-  name         String
-  pandascoreId Int
-  teams        Json
-  status       Boolean   @default(true)
-  logo         String
-  base64       String
-  year         Int
-  Ranking      Ranking[]
+  id            String    @id @default(uuid())
+  event         String
+  region        String
+  pandascore_id Int
+  teams         Json
+  active        Boolean   @default(true)
+  logo          String
+  logo_base64   String
+  year          Int
+  Ranking       Ranking[]
 }
 
 model Ranking {
   id           String     @id @default(uuid())
   data         Json
-  createdAt    DateTime   @default(now()) @map(name: "created_at")
-  updatedAt    DateTime   @updatedAt @map(name: "updated_at")
-  tournament   Tournament @relation(fields: [tournamentId], references: [id])
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
   tournamentId String
-  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId       String
+  tournament   Tournament @relation(fields: [tournamentId], references: [id])
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
   id        String    @id @default(uuid())
-  createdAt DateTime  @default(now()) @map(name: "created_at")
-  updatedAt DateTime  @updatedAt @map(name: "updated_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
   Ranking   Ranking[]
 }
