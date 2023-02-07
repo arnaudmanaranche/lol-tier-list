@@ -2,6 +2,10 @@
   "name": "@lpr/data",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "postinstall": "prisma generate",
+    "seed:db": "prisma db seed --preview-feature"
+  },
   "dependencies": {
     "@prisma/client": "2.26.0",
     "ioredis": "4.28.5",
@@ -13,5 +17,8 @@
     "@types/node": "14.18.33",
     "eslint": "8.23.0",
     "prisma": "2.26.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   }
 }

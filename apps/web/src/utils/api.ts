@@ -1,12 +1,10 @@
 import axios from 'axios'
 
-console.log(process.env.NEXT_PUBLIC_VERCEL_URL)
-console.log(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`)
-
+// TODO[>0]: temporary
 const API_ENDPOINT = {
   development: 'http://localhost:3000/api',
-  preview: `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`,
-  production: 'https://lol-power-ranking.app/api'
+  preview: `https://lol-power-ranking.vercel.app/api`,
+  production: 'https://lol-power-ranking.vercel.app/api'
 }[process.env.NEXT_PUBLIC_APP_ENV]
 
 export const apiInstance = axios.create({

@@ -20327,7 +20327,6 @@ __metadata:
     "@lpr/types": "*"
     "@lpr/ui": "*"
     "@panelbear/panelbear-nextjs": 1.0.4
-    "@prisma/client": 2.26.0
     "@sentry/nextjs": 6.17.6
     "@sentry/react": 6.16.1
     "@sentry/tracing": 6.16.1
@@ -20336,12 +20335,10 @@ __metadata:
     clsx: 1.2.1
     eslint: 8.23.0
     framer-motion: 7.0.0
-    ioredis: 4.28.5
     next: 12.2.4
     next-sitemap: 1.9.12
     next-themes: 0.2.0
     next-transpile-modules: 9.0.0
-    prisma: 2.26.0
     react: 18.2.0
     react-dom: 18.2.0
     type-fest: 2.14.0
