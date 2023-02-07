@@ -2713,7 +2713,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lpr/configs@workspace:packages/configs"
   dependencies:
-    "@tailwindcss/typography": 0.5.7
+    "@tailwindcss/typography": 0.5.9
     "@typescript-eslint/eslint-plugin": 5.36.2
     "@typescript-eslint/parser": 5.36.2
     eslint-config-next: 12.2.4
@@ -4913,9 +4913,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:0.5.7":
-  version: 0.5.7
-  resolution: "@tailwindcss/typography@npm:0.5.7"
+"@tailwindcss/typography@npm:0.5.9":
+  version: 0.5.9
+  resolution: "@tailwindcss/typography@npm:0.5.9"
   dependencies:
     lodash.castarray: ^4.4.0
     lodash.isplainobject: ^4.0.6
@@ -4923,7 +4923,7 @@ __metadata:
     postcss-selector-parser: 6.0.10
   peerDependencies:
     tailwindcss: "*"
-  checksum: 27686a455d13367c6ee4473e0579f1fc0e9de1de4606845101f8943eb94c5d00a18fecac60111028b9cb2f3253ea16a9a6f889d3711214b5baaa153f021fbc47
+  checksum: b98e21bdd1798d7e4683499893c5c20ad43fcc8955d5d6eefbe1d30e98e9b6c28949ae8f276d39be9a66fafe843597717196bc5a0a2ac0f87ef86aa051ab9611
   languageName: node
   linkType: hard
 
