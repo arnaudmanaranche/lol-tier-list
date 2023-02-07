@@ -1,5 +1,5 @@
 import { m } from 'framer-motion'
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
@@ -63,7 +63,7 @@ const Tournaments = ({ tournaments }: { tournaments: TournamentWithoutTeams[] })
   </div>
 )
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { data } = await apiInstance.get<TournamentWithoutTeams[]>('/tournaments')
 
   return {
