@@ -2,7 +2,7 @@ import type { Ranking } from '@prisma/client'
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { createRanking } from 'Utils/api/rankings'
+import { createRanking } from '@lpr/data'
 
 async function handler(req: NextApiRequest, res: NextApiResponse<Ranking>): Promise<void> {
   let response: Ranking = null

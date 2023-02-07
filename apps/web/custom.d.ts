@@ -13,7 +13,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_SUPABASE_ID: string
     NEXT_PUBLIC_SUPABASE_TOKEN: string
     PANDASCORE_TOKEN: string
-    PRISMA_SERVICE_ROLE: string
     REDIS_URL: string
     REVALIDATE_SECRET: string
   }

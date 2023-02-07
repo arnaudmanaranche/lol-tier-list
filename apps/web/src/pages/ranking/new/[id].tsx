@@ -1,12 +1,12 @@
 import { track as PanelbearTrack } from '@panelbear/panelbear-js'
-import type { Ranking as RankingType } from '@prisma/client'
+import type { Ranking as RankingType, Tournament } from '@prisma/client'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
-import type { RANKING_VALUES, TEAM, TOURNAMENT } from '@lpr/types'
+import type { RANKING_VALUES, TEAM } from '@lpr/types'
 import { Button, Modal, Team, Title } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
@@ -14,10 +14,8 @@ import { useUser } from 'Contexts/user'
 import { apiInstance } from 'Utils/api'
 import { login } from 'Utils/auth'
 import { DEFAULT_TITLE } from 'Utils/constants'
-import prisma from 'Utils/prisma'
-import { ONE_YEAR_IN_SECONDS, redis } from 'Utils/redis'
 
-const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
+const Ranking = ({ tournament }: { tournament: Tournament }): ReactElement => {
   const { teams, id, logo, name, base64 } = tournament
 
   const user = useUser()
@@ -33,7 +31,7 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
     if (hasUnsavedRanking) {
       setRanking(JSON.parse(hasUnsavedRanking))
     } else {
-      setRanking(teams)
+      setRanking(teams as unknown as TEAM[])
     }
   }, [teams, tournament.id])
 
@@ -144,23 +142,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     params: { id }
   } = context
 
-  let tournament = null
+  const { data } = await apiInstance.get<Tournament>(`/tournaments/${id}`)
 
-  const cachedData = await redis.get(id)
-
-  if (cachedData) {
-    tournament = JSON.parse(cachedData)
-  } else {
-    tournament = await prisma.tournament.findUnique({
-      where: {
-        id: id as string
-      }
-    })
-
-    redis.set(id, JSON.stringify(tournament), 'ex', ONE_YEAR_IN_SECONDS)
-  }
-
-  if (!tournament) {
+  if (!data) {
     return {
       notFound: true
     }
@@ -168,7 +152,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      tournament
+      tournament: data
     }
   }
 }

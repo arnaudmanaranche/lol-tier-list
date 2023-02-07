@@ -1,28 +1,26 @@
 import type { Tournament } from '@prisma/client'
-import { withSentry } from '@sentry/nextjs'
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
 
 import type { PLAYER } from '@lpr/types'
 
-import { apiInstance } from 'Utils/api'
-import { LINEUP_ORDER } from 'Utils/constants'
-import prisma from 'Utils/prisma'
+import prisma from '../../config/prisma'
 
-async function synchronizeTournament(
-  req: NextApiRequest,
-  res: NextApiResponse<Tournament>
-): Promise<void> {
-  const tournamentId: string = req.body.pandascoreId
-  const tournamentRegion: string = req.body.region
-  const tournamentLogo: string = req.body.logo
-  const tournamentEvent: string = req.body.event
-  const tournamentYear: number = req.body.year
+export const LINEUP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
 
-  const organizedTeams = []
+export interface TournamentData {
+  tournamentId: string
+  tournamentRegion: string
+  tournamentLogo: string
+  tournamentEvent: string
+  tournamentYear: number
+}
+
+export async function createTournament(data: TournamentData): Promise<Tournament> {
+  // TODO: type teams
+  const organizedTeams: any = []
 
   const unorganizedTeams = await fetch(
-    `https://api.pandascore.co/tournaments/${tournamentId}/rosters?token=${process.env.PANDASCORE_TOKEN}`
+    `https://api.pandascore.co/tournaments/${data.tournamentId}/rosters?token=${process.env.PANDASCORE_TOKEN}`
   ).then((response) => response.json())
 
   await Promise.all(
@@ -54,7 +52,7 @@ async function synchronizeTournament(
 
         const teamLogo = `https://${
           process.env.NEXT_PUBLIC_SUPABASE_ID
-        }.supabase.co/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${
+        }.supabase.co/storage/v1/object/public/${data.tournamentRegion.toLowerCase()}/${
           acronym ? acronym.toLowerCase() : ''.toLowerCase()
         }.png`
 
@@ -72,22 +70,20 @@ async function synchronizeTournament(
     )
   )
 
-  const { base64 } = await getPlaiceholder(tournamentLogo)
+  const { base64 } = await getPlaiceholder(data.tournamentLogo)
 
   const tournament = await prisma.tournament.create({
     data: {
-      name: `${tournamentRegion} - ${tournamentEvent} (${tournamentYear})`,
-      pandascoreId: parseInt(tournamentId),
+      name: `${data.tournamentRegion} - ${data.tournamentEvent} (${data.tournamentYear})`,
+      pandascoreId: parseInt(data.tournamentId),
       teams: organizedTeams,
-      logo: tournamentLogo,
-      year: tournamentYear,
+      logo: data.tournamentLogo,
+      year: data.tournamentYear,
       base64
     }
   })
 
-  await apiInstance.get(`/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=tournaments`)
+  // await apiInstance.get(`/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=tournaments`)
 
-  res.json(tournament)
+  return tournament
 }
-
-export default withSentry(synchronizeTournament)

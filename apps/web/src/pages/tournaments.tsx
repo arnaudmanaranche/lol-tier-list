@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
 
-import type { TOURNAMENT } from '@lpr/types'
+import type { TournamentWithoutTeams } from '@lpr/data'
 import { Error, Title, Tournament } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
@@ -23,7 +23,7 @@ const stat = {
   show: { opacity: 1 }
 }
 
-const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactElement => (
+const Tournaments = ({ tournaments }: { tournaments: TournamentWithoutTeams[] }): ReactElement => (
   <div className="max-w-screen-md pt-10 mx-auto text-center">
     <Head>
       <title>{`Tournaments - ${DEFAULT_TITLE}`}</title>
@@ -64,11 +64,11 @@ const Tournaments = ({ tournaments }: { tournaments: TOURNAMENT[] }): ReactEleme
 )
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await apiInstance.get('/tournaments')
+  const { data } = await apiInstance.get<TournamentWithoutTeams[]>('/tournaments')
 
   return {
     props: {
-      tournaments: res.data
+      tournaments: data
     }
   }
 }

@@ -22,21 +22,3 @@ export interface TEAM {
   name: string
   players: PLAYER[]
 }
-
-export interface RANKING {
-  id: string
-  data: TEAM[]
-  tournamentId: string
-  tournament: TOURNAMENT
-}
-
-export interface TOURNAMENT {
-  id: string
-  logo: string
-  name: string
-  status: boolean
-  base64: string
-  year: number
-  pandascoreId: number
-  teams: TEAM[]
-}

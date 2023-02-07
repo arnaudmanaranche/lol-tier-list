@@ -21,7 +21,6 @@
         "$NEXT_PUBLIC_SUPABASE_TOKEN",
         "$OSANO_URL",
         "$PANDASCORE_TOKEN",
-        "$PRISMA_SERVICE_ROLE",
         "$REDIS_URL",
         "$REVALIDATE_SECRET"
       ],

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 
-import type { RANKING } from '@lpr/types'
+import type { UserRankings } from '@lpr/data'
 import { Button, Error, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
@@ -12,7 +12,7 @@ import { supabase } from 'Utils/supabase'
 
 const { HOME } = ROUTES
 
-const MyRankings = ({ rankings }: { rankings: RANKING[] }): ReactElement => {
+const MyRankings = ({ rankings }: { rankings: UserRankings[] }): ReactElement => {
   const router = useRouter()
 
   const deleteRanking = async (rankingId) => {
@@ -77,11 +77,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
-  const res = await apiInstance.get<RANKING[]>(`/users/${user.id}/rankings`)
+  const { data } = await apiInstance.get<UserRankings[]>(`/users/${user.id}/rankings`)
 
   return {
     props: {
-      rankings: res.data
+      rankings: data
     }
   }
 }

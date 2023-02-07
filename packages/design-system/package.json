@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@lpr/configs": "*",
+    "@lpr/data": "*",
     "@lpr/types": "*",
     "@storybook/addon-actions": "6.5.10",
     "@storybook/addon-essentials": "6.5.10",

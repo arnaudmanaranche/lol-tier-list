@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "lib": ["ES2015", "DOM"],
+    "module": "esnext",
+    "target": "es6",
+    "jsx": "react-jsx"
+  },
+  "display": "Data Management",
+  "exclude": ["dist", "build", "node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
+}
