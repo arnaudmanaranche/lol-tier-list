@@ -16,7 +16,7 @@ export async function updateRanking(ranking: Ranking): Promise<Ranking> {
     }
   })
 
-  redis.set(updatedRanking.id, JSON.stringify(updatedRanking), 'ex', ONE_YEAR_IN_SECONDS)
+  redis.set(updatedRanking.id, JSON.stringify(updatedRanking), 'EX', ONE_YEAR_IN_SECONDS)
 
   return updatedRanking
 }

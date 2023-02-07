@@ -17,7 +17,7 @@ export interface TournamentData {
 
 export async function createTournament(data: TournamentData): Promise<Tournament> {
   // TODO: type teams
-  const organizedTeams: any = []
+  const organizedTeams = []
 
   const unorganizedTeams = await fetch(
     `https://api.pandascore.co/tournaments/${data.tournamentId}/rosters?token=${process.env.PANDASCORE_TOKEN}`

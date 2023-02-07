@@ -19,7 +19,7 @@ export async function createRanking(
     }
   })
 
-  redis.set(createdRanking.id, JSON.stringify(createdRanking), 'ex', ONE_YEAR_IN_SECONDS)
+  redis.set(createdRanking.id, JSON.stringify(createdRanking), 'EX', ONE_YEAR_IN_SECONDS)
 
   return createdRanking
 }

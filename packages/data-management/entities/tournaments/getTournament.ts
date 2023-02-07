@@ -17,7 +17,7 @@ export async function getTournament(tournamentId: string): Promise<Tournament | 
     })
 
     if (tournament) {
-      redis.set(tournamentId, JSON.stringify(tournament), 'ex', ONE_YEAR_IN_SECONDS)
+      redis.set(tournamentId, JSON.stringify(tournament), 'EX', ONE_YEAR_IN_SECONDS)
 
       return tournament
     }
@@ -54,7 +54,7 @@ export async function getTournamentWitoutTeams(
       redis.set(
         `${tournamentId}_withoutTeams`,
         JSON.stringify(tournament),
-        'ex',
+        'EX',
         ONE_YEAR_IN_SECONDS
       )
 

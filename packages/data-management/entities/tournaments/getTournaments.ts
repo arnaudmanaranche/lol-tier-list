@@ -2,21 +2,29 @@ import prisma from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
 import type { TournamentWithoutTeams } from '../users'
 
+const REDIS_CACHE_KEY = 'tournamentsList'
+
 export async function getTournaments(): Promise<TournamentWithoutTeams[]> {
-  const tournaments = await prisma.tournament.findMany({
-    select: {
-      teams: false,
-      id: true,
-      name: true,
-      pandascoreId: true,
-      status: true,
-      logo: true,
-      base64: true,
-      year: true
-    }
-  })
+  const cachedData = await redis.get(REDIS_CACHE_KEY)
 
-  redis.set('tournamentsList', JSON.stringify(tournaments), 'ex', ONE_YEAR_IN_SECONDS)
+  if (cachedData) {
+    return JSON.parse(cachedData)
+  } else {
+    const tournaments = await prisma.tournament.findMany({
+      select: {
+        teams: false,
+        id: true,
+        name: true,
+        pandascoreId: true,
+        status: true,
+        logo: true,
+        base64: true,
+        year: true
+      }
+    })
 
-  return tournaments
+    redis.set(REDIS_CACHE_KEY, JSON.stringify(tournaments), 'EX', ONE_YEAR_IN_SECONDS)
+
+    return tournaments
+  }
 }
