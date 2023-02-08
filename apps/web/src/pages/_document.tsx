@@ -30,14 +30,14 @@ class AppDocument extends Document {
             href="/fonts/cabin-bold.woff2"
             as="font"
             type="font/woff2"
-            crossOrigin="true"
+            crossOrigin=""
           />
           <link
             rel="preload"
             href="/fonts/cabin-regular.woff2"
             as="font"
             type="font/woff2"
-            crossOrigin="true"
+            crossOrigin=""
           />
         </Head>
         <body className="font-body antialiased">
