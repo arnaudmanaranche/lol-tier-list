@@ -1,13 +1,18 @@
-name: Design system
+name: design-system
+
 on:
   push:
     paths:
       - 'packages/design-system/src/**/*.tsx'
+
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache
       - name: Publish to Chromatic
