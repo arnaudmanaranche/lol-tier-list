@@ -2,7 +2,7 @@ import { ImageResponse } from '@vercel/og'
 import type { NextApiRequest } from 'next'
 
 // TODO: import from index should not import all files - https://github.com/vercel/next.js/issues/12557
-import { getTournament } from '@lpr/data/entities/tournaments/getTournament'
+import { getTournamentEdge } from '@lpr/data/entities/tournaments/getTournamentEdge'
 
 export const config = {
   runtime: 'experimental-edge'
@@ -11,7 +11,7 @@ export const config = {
 async function handler(req: NextApiRequest) {
   const tournamentId = req.query.id as string
 
-  const data = await getTournament(tournamentId)
+  const data = await getTournamentEdge(tournamentId)
 
   return new ImageResponse(
     (
