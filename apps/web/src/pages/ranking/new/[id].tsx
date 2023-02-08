@@ -1,11 +1,12 @@
 import { track as PanelbearTrack } from '@panelbear/panelbear-js'
-import type { Ranking as RankingType, Tournament } from '@prisma/client'
-import type { GetServerSideProps } from 'next'
+import type { Ranking, Tournament } from '@prisma/client'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
+import type { TournamentWithoutTeams } from '@lpr/data'
 import type { RANKING_VALUES, TEAM } from '@lpr/types'
 import { Button, Modal, Team, Title } from '@lpr/ui'
 
@@ -15,7 +16,7 @@ import { apiInstance } from 'Utils/api'
 import { login } from 'Utils/auth'
 import { DEFAULT_TITLE } from 'Utils/constants'
 
-const Ranking = ({ tournament }: { tournament: Tournament }): ReactElement => {
+const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactElement => {
   const { teams, id, logo, event, region, year, logo_base64 } = tournament
 
   const user = useUser()
@@ -35,38 +36,39 @@ const Ranking = ({ tournament }: { tournament: Tournament }): ReactElement => {
     }
   }, [teams, tournament.id])
 
-  const createRanking = async () => {
+  const handleCreateRanking = async () => {
     try {
-      const res = await apiInstance.post<RankingType>('/rankings', {
+      const { data } = await apiInstance.post<Ranking>('/rankings', {
         ranking,
         tournamentId: id,
         userId: user.id
       })
-      const data = res.data
       PanelbearTrack('NewRanking')
       setRankingId(data.id)
       toggleModal()
-      return data
+      window.localStorage.removeItem(tournament.id)
     } catch (error) {
+      // TODO: display a notification
       return error
     }
   }
 
-  const onChangePlayerValue = (value: RANKING_VALUES, playerId: number, teamId: number) => {
-    const hasUnsavedRanking = window.localStorage.getItem(rankingId)
-    const team = ranking.find((t) => t.id === teamId)
+  const handleChangePlayerValue = (value: RANKING_VALUES, playerId: number, teamId: number) => {
+    const team = ranking.find(({ id }) => id === teamId)
 
-    const player = team?.players.find((p) => p.id === playerId)
+    if (team) {
+      const player = team.players.find(({ id }) => id === playerId)
 
-    if (player) {
-      player.value = value
+      if (player) {
+        player.value = value
+      }
     }
+
+    const hasUnsavedRanking = window.localStorage.getItem(rankingId)
 
     if (!hasUnsavedRanking) {
       window.localStorage.setItem(tournament.id, JSON.stringify(ranking))
     }
-
-    return
   }
 
   return (
@@ -104,14 +106,14 @@ const Ranking = ({ tournament }: { tournament: Tournament }): ReactElement => {
             logo_base64={logo_base64}
             players={players}
             onUpdate={(value, playerId) => {
-              onChangePlayerValue(value, playerId, teamId)
+              handleChangePlayerValue(value, playerId, teamId)
             }}
           />
         ))}
       </div>
       <div className="flex justify-center m-6">
         {user?.id ? (
-          <Button onClick={createRanking}>{`Create my ${name} power ranking`}</Button>
+          <Button onClick={handleCreateRanking}>Create my power ranking</Button>
         ) : (
           <Button onClick={login}>
             Login with Twitter <TwitterIcon className="w-5 h-5 ml-2" />
@@ -137,24 +139,31 @@ const Ranking = ({ tournament }: { tournament: Tournament }): ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await apiInstance.get<TournamentWithoutTeams[]>('/tournaments')
+
+  const paths = data.map(({ id }) => ({
+    params: { id }
+  }))
+
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
   const {
     params: { id }
   } = context
 
-  const { data } = await apiInstance.get<Tournament>(`/tournaments/${id}`)
-
-  if (!data) {
-    return {
-      notFound: true
-    }
-  }
+  const { data: tournament } = await apiInstance.get<Tournament>(`/tournaments/${id}`)
 
   return {
     props: {
-      tournament: data
+      tournament
     }
   }
 }
 
-export default Ranking
+export default CreateRankingPage
