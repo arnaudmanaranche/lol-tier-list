@@ -1,7 +1,8 @@
 import { ImageResponse } from '@vercel/og'
 import type { NextApiRequest } from 'next'
 
-import { getTournament } from '@lpr/data'
+// TODO: import from index should not import all files - https://github.com/vercel/next.js/issues/12557
+import { getTournament } from '@lpr/data/entities/tournaments/getTournament'
 
 export const config = {
   runtime: 'experimental-edge'
