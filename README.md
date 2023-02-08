@@ -16,16 +16,17 @@ Would you like to contribute? Awesome! 👏
 Install dependencies
 
     $ cd lol-power-ranking
-    $ yarn
+    $ yarn install
 
-Copy example dotenv file without the .example extension
+Copy example env files without the .example extension
 
     $ cp apps/web/.env.example apps/web/.env
+    $ cp packages/data-management/.env.example packages/data-management/.env
 
 Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
     $ nvm use
 
-Start Webapp and Storybook by running the following command
+Start the webapp and the storybook project by running the following command
 
     $ yarn dev
