@@ -38,7 +38,7 @@
     "chromatic": "6.17.0",
     "eslint": "8.33.0",
     "jest": "27.5.1",
-    "prettier": "2.7.1",
+    "prettier": "2.8.4",
     "tailwindcss": "3.1.8"
   }
 }
