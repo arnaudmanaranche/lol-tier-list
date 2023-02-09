@@ -35,7 +35,7 @@
     "@lpr/configs": "*",
     "@lpr/types": "*",
     "@svgr/webpack": "5.5.0",
-    "eslint": "8.23.0",
+    "eslint": "8.33.0",
     "next-sitemap": "1.9.12"
   }
 }

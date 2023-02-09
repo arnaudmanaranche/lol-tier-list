@@ -36,7 +36,7 @@
     "@storybook/test-runner": "0.9.4",
     "@storybook/testing-library": "0.0.13",
     "chromatic": "6.17.0",
-    "eslint": "8.23.0",
+    "eslint": "8.33.0",
     "jest": "27.5.1",
     "prettier": "2.7.1",
     "tailwindcss": "3.1.8"
