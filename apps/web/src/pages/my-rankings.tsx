@@ -55,7 +55,7 @@ const MyRankings = ({ rankings }: { rankings: UserRankings[] }): ReactElement =>
                 >
                   Delete
                 </Button>
-                <Button to={`/ranking/view/${ranking.id}?edit`}>Edit</Button>
+                <Button to={`/rankings/${ranking.id}?edit`}>Edit</Button>
               </div>
             </li>
           ))}

@@ -124,12 +124,12 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
         <p className="mb-3">It&apos;s time to share it !</p>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           <Button
-            href={`https://www.facebook.com/sharer/sharer.php?u=https://lol-power-ranking.app/ranking/view/${rankingId}`}
+            href={`https://www.facebook.com/sharer/sharer.php?u=https://lol-power-ranking.app/rankings/${rankingId}`}
           >
             Share on Facebook
           </Button>
           <Button
-            href={`https://twitter.com/intent/tweet?url=https://lol-power-ranking.app/ranking/view/${rankingId}`}
+            href={`https://twitter.com/intent/tweet?url=https://lol-power-ranking.app/rankings/${rankingId}`}
           >
             Share on Twitter
           </Button>
