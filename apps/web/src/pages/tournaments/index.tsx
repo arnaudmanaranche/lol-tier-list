@@ -47,9 +47,7 @@ const Tournaments = ({ tournaments }: { tournaments: TournamentWithoutTeams[] })
           <m.div variants={stat} key={tournament.pandascore_id}>
             {tournament.active ? (
               <Link href={`/tournaments/${tournament.id}`} prefetch={false}>
-                <a>
-                  <Tournament {...tournament} />
-                </a>
+                <Tournament {...tournament} />
               </Link>
             ) : (
               <div className="opacity-50 cursor-not-allowed">
