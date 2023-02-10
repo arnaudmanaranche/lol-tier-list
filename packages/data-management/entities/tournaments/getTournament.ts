@@ -1,6 +1,6 @@
 import type { Tournament } from '@prisma/client'
 
-import prisma from '../../config/prisma'
+import { prismaClient } from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
 import type { TournamentWithoutTeams } from '../users'
 
@@ -10,7 +10,7 @@ export async function getTournament(tournamentId: string): Promise<Tournament | 
   if (cachedData) {
     return JSON.parse(cachedData)
   } else {
-    const tournament = await prisma.tournament.findUnique({
+    const tournament = await prismaClient.tournament.findUnique({
       where: {
         id: tournamentId
       }
@@ -34,7 +34,7 @@ export async function getTournamentWitoutTeams(
   if (cachedData) {
     return JSON.parse(cachedData)
   } else {
-    const tournament = await prisma.tournament.findUnique({
+    const tournament = await prismaClient.tournament.findUnique({
       where: {
         id: tournamentId
       },

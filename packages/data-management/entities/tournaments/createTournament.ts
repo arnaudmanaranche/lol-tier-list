@@ -3,7 +3,7 @@ import { getPlaiceholder } from 'plaiceholder'
 
 import type { PLAYER } from '@lpr/types'
 
-import prisma from '../../config/prisma'
+import { prismaClient } from '../../config/prisma'
 
 export const LINEUP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
 
@@ -72,7 +72,7 @@ export async function createTournament(data: TournamentData): Promise<Tournament
 
   const { base64 } = await getPlaiceholder(data.tournamentLogo)
 
-  const tournament = await prisma.tournament.create({
+  const tournament = await prismaClient.tournament.create({
     data: {
       event: data.tournamentEvent,
       region: data.tournamentRegion,

@@ -1,6 +1,6 @@
 import type { Ranking } from '@prisma/client'
 
-import prisma from '../../config/prisma'
+import { prismaClient } from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
 import { getTournamentWitoutTeams } from '../tournaments'
 import type { TournamentWithoutTeams } from '../users'
@@ -27,7 +27,7 @@ export async function getRanking(rankingId: string): Promise<RankingWithTourname
 
     return null
   } else {
-    const ranking = await prisma.ranking.findUnique({
+    const ranking = await prismaClient.ranking.findUnique({
       where: {
         id: rankingId
       },

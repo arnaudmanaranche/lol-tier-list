@@ -1,4 +1,4 @@
-import prisma from '../../config/prisma'
+import { prismaClient } from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
 import type { TournamentWithoutTeams } from '../users'
 
@@ -10,7 +10,7 @@ export async function getTournaments(): Promise<TournamentWithoutTeams[]> {
   if (cachedData) {
     return JSON.parse(cachedData)
   } else {
-    const tournaments = await prisma.tournament.findMany({
+    const tournaments = await prismaClient.tournament.findMany({
       select: {
         teams: false,
         id: true,

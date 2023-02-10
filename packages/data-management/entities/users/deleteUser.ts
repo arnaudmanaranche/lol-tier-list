@@ -1,7 +1,7 @@
-import prisma from '../../config/prisma'
+import { prismaClient } from '../../config/prisma'
 
 export async function deleteUser(id: string): Promise<void> {
-  await prisma.user.delete({
+  await prismaClient.user.delete({
     where: { id }
   })
 }

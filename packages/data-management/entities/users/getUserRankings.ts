@@ -1,6 +1,6 @@
 import type { Ranking, Tournament } from '@prisma/client'
 
-import prisma from '../../config/prisma'
+import { prismaClient } from '../../config/prisma'
 
 export type TournamentWithoutTeams = Omit<Tournament, 'teams'>
 type RankingWithoutTournament = Omit<Ranking, 'tournament' | 'data' | 'createdAt' | 'updatedAt'>
@@ -10,7 +10,7 @@ export interface UserRankings extends RankingWithoutTournament {
 }
 
 export async function getUserRankings(userId: string): Promise<UserRankings[]> {
-  const rankings = await prisma.ranking.findMany({
+  const rankings = await prismaClient.ranking.findMany({
     where: {
       userId
     },

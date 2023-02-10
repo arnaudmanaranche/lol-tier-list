@@ -1,6 +1,6 @@
 import type { Prisma, Ranking } from '@prisma/client'
 
-import prisma from '../../config/prisma'
+import { prismaClient } from '../../config/prisma'
 import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
 
 export async function createRanking(
@@ -8,7 +8,7 @@ export async function createRanking(
   tournamentId: string,
   userId: string
 ): Promise<Ranking> {
-  const createdRanking = await prisma.ranking.create({
+  const createdRanking = await prismaClient.ranking.create({
     data: {
       data: ranking as unknown as Prisma.InputJsonValue,
       userId,
