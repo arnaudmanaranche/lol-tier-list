@@ -1,0 +1,8 @@
+{
+  "name": "tailwind-config-lpr",
+  "version": "0.0.0",
+  "main": "tailwind-config.js",
+  "devDependencies": {
+    "@tailwindcss/typography": "0.5.9"
+  }
+}

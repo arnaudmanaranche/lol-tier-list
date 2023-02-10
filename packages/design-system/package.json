@@ -37,6 +37,7 @@
     "chromatic": "6.17.0",
     "eslint-config-lpr": "workspace:*",
     "jest": "27.5.1",
+    "tailwind-config-lpr": "workspace:*",
     "tailwindcss": "3.2.6"
   }
 }

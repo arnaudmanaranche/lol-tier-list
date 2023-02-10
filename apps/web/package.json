@@ -33,11 +33,11 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@lpr/configs": "*",
     "@lpr/types": "*",
     "@svgr/webpack": "5.5.0",
     "eslint-config-lpr": "workspace:*",
     "eslint-config-next": "13.1.6",
-    "next-sitemap": "1.9.12"
+    "next-sitemap": "1.9.12",
+    "tailwind-config-lpr": "workspace:*"
   }
 }

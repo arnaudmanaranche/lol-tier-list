@@ -3104,14 +3104,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lpr/configs@*, @lpr/configs@workspace:packages/configs":
-  version: 0.0.0-use.local
-  resolution: "@lpr/configs@workspace:packages/configs"
-  dependencies:
-    "@tailwindcss/typography": 0.5.9
-  languageName: unknown
-  linkType: soft
-
 "@lpr/data@*, @lpr/data@workspace:packages/data-management":
   version: 0.0.0-use.local
   resolution: "@lpr/data@workspace:packages/data-management"
@@ -3154,6 +3146,7 @@ __metadata:
     clsx: 1.2.1
     eslint-config-lpr: "workspace:*"
     jest: 27.5.1
+    tailwind-config-lpr: "workspace:*"
     tailwindcss: 3.2.6
   languageName: unknown
   linkType: soft
@@ -20595,6 +20588,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwind-config-lpr@workspace:*, tailwind-config-lpr@workspace:packages/tailwind-config-lpr":
+  version: 0.0.0-use.local
+  resolution: "tailwind-config-lpr@workspace:packages/tailwind-config-lpr"
+  dependencies:
+    "@tailwindcss/typography": 0.5.9
+  languageName: unknown
+  linkType: soft
+
 "tailwindcss@npm:3.2.6":
   version: 3.2.6
   resolution: "tailwindcss@npm:3.2.6"
@@ -22071,7 +22072,6 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@headlessui/react": 1.6.6
-    "@lpr/configs": "*"
     "@lpr/data": "*"
     "@lpr/types": "*"
     "@lpr/ui": "*"
@@ -22090,6 +22090,7 @@ __metadata:
     next-themes: 0.2.0
     react: 18.2.0
     react-dom: 18.2.0
+    tailwind-config-lpr: "workspace:*"
   languageName: unknown
   linkType: soft
 

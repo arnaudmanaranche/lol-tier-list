@@ -1,1 +1,1 @@
-module.exports = require('@lpr/configs/tailwind-config')
+module.exports = require('tailwind-config-lpr')
