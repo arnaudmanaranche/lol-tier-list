@@ -10421,7 +10421,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.10.0, enhanced-resolve@npm:^5.7.0":
+"enhanced-resolve@npm:^5.10.0":
   version: 5.10.0
   resolution: "enhanced-resolve@npm:5.10.0"
   dependencies:
@@ -16597,16 +16597,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-transpile-modules@npm:9.0.0":
-  version: 9.0.0
-  resolution: "next-transpile-modules@npm:9.0.0"
-  dependencies:
-    enhanced-resolve: ^5.7.0
-    escalade: ^3.1.1
-  checksum: 9a5d86d80cedc2404b2b1d5bd4994f2f7bf60e5e20f24e8cc5cfec34da1418b4a439916f37a95ca336bcf6d81094c3647354ac6a0c6737b3df59e62b6380507d
-  languageName: node
-  linkType: hard
-
 "next@npm:13.1.6":
   version: 13.1.6
   resolution: "next@npm:13.1.6"
@@ -22238,7 +22228,6 @@ __metadata:
     next: 13.1.6
     next-sitemap: 1.9.12
     next-themes: 0.2.0
-    next-transpile-modules: 9.0.0
     react: 18.2.0
     react-dom: 18.2.0
   languageName: unknown
