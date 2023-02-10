@@ -1,1 +1,3 @@
-module.exports = require('@lpr/configs/eslint-config-next')
+module.exports = {
+  extends: ['lpr', 'next/core-web-vitals']
+}

@@ -2,7 +2,7 @@ import { track as PanelbearTrack } from '@panelbear/panelbear-js'
 import type { Ranking } from '@prisma/client'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import type { ReactElement } from 'react'
 
 import type { RankingWithTournamentTeams } from '@lpr/data'
@@ -36,8 +36,7 @@ const ViewRanking = ({
   }
 
   const onUpdate = (value: RANKING_VALUES, playerId: number, teamId: number) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
+    // @ts-expect-error TODO: type Prisma.JsonValue
     const team = copyRanking.data.find((t) => t.id === teamId)
 
     const player = team?.players.find((p) => p.id === playerId)
@@ -74,8 +73,7 @@ const ViewRanking = ({
         </Title>
       </div>
       <div className="grid gap-10 mx-auto sm:grid-cols-2 md:grid-cols-3">
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-expect-error */}
+        {/* @ts-expect-error TODO: type Prisma.JsonValue */}
         {copyRanking.data.map(({ id: teamId, logo, name, players, logo_base64 }) => (
           <Team
             onUpdate={(value, playerId) => {

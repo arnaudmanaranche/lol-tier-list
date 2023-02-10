@@ -8,7 +8,7 @@
     "dev": "start-storybook --quiet --port 9009",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:eslint": "eslint --fix --cache",
-    "lint:prettier": "prettier --write --check",
+    "lint:prettier": "prettier --write --check --ignore-path=../../.prettierignore .",
     "test": "test-storybook",
     "watch:css": "tailwindcss -i ./styles/index.css -o ./dist/output.css --watch"
   },
@@ -23,7 +23,6 @@
     "clsx": "1.2.1"
   },
   "devDependencies": {
-    "@lpr/configs": "*",
     "@lpr/data": "*",
     "@lpr/types": "*",
     "@storybook/addon-actions": "6.5.16",
@@ -36,9 +35,8 @@
     "@storybook/test-runner": "0.9.4",
     "@storybook/testing-library": "0.0.13",
     "chromatic": "6.17.0",
-    "eslint": "8.33.0",
+    "eslint-config-lpr": "workspace:*",
     "jest": "27.5.1",
-    "prettier": "2.8.4",
     "tailwindcss": "3.2.6"
   }
 }

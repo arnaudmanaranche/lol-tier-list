@@ -1,5 +1,5 @@
 import type { GetServerSideProps } from 'next'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 

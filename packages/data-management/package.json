@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@lpr/types": "*",
-    "eslint": "8.33.0",
+    "eslint-config-lpr": "workspace:*",
     "prisma": "4.9.0"
   }
 }

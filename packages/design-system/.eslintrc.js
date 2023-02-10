@@ -1,1 +1,8 @@
-module.exports = require('@lpr/configs/eslint-config-ui')
+module.exports = {
+  extends: ['lpr'],
+  overrides: [
+    {
+      files: ['./src/**/*.stories.@(js|jsx|ts|tsx)']
+    }
+  ]
+}

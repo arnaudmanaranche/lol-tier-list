@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['next/core-web-vitals', 'prettier', 'plugin:@typescript-eslint/recommended'],
+  extends: ['prettier', 'plugin:@typescript-eslint/recommended'],
   plugins: ['simple-import-sort'],
   rules: {
     'simple-import-sort/imports': [

@@ -6,7 +6,9 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "dev": "next dev",
-    "lint": "next lint --fix",
+    "lint": "yarn lint:prettier && yarn lint:eslint",
+    "lint:eslint": "next lint --fix",
+    "lint:prettier": "prettier --write --check --ignore-path=../../.prettierignore .",
     "start": "next start"
   },
   "lint-staged": {
@@ -24,7 +26,6 @@
     "@sentry/tracing": "6.16.1",
     "@supabase/supabase-js": "1.30.0",
     "clsx": "1.2.1",
-    "eslint-config-next": "13.1.6",
     "framer-motion": "7.0.0",
     "next": "13.1.6",
     "next-themes": "0.2.0",
@@ -35,7 +36,8 @@
     "@lpr/configs": "*",
     "@lpr/types": "*",
     "@svgr/webpack": "5.5.0",
-    "eslint": "8.33.0",
+    "eslint-config-lpr": "workspace:*",
+    "eslint-config-next": "13.1.6",
     "next-sitemap": "1.9.12"
   }
 }

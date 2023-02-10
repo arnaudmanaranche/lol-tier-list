@@ -2,17 +2,10 @@
   "name": "@lpr/configs",
   "version": "0.0.0",
   "files": [
-    "eslint-config-next.js",
-    "eslint-config-ui.js",
     "prettier-config.js",
     "tailwind-config.js"
   ],
   "devDependencies": {
-    "@tailwindcss/typography": "0.5.9",
-    "@typescript-eslint/eslint-plugin": "5.36.2",
-    "@typescript-eslint/parser": "5.36.2",
-    "eslint-config-next": "12.2.4",
-    "eslint-config-prettier": "8.6.0",
-    "eslint-plugin-simple-import-sort": "7.0.0"
+    "@tailwindcss/typography": "0.5.9"
   }
 }

@@ -2,7 +2,7 @@ import { track as PanelbearTrack } from '@panelbear/panelbear-js'
 import type { Ranking, Tournament } from '@prisma/client'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
