@@ -1,7 +1,7 @@
 import type { Prisma, Ranking } from '@prisma/client'
 
 import { prismaClient } from '../../config/prisma'
-import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
+import { ONE_YEAR_IN_SECONDS, redisClient } from '../../config/redis'
 
 export async function updateRanking(ranking: Ranking): Promise<Ranking> {
   const updatedRanking = await prismaClient.ranking.update({
@@ -13,7 +13,7 @@ export async function updateRanking(ranking: Ranking): Promise<Ranking> {
     }
   })
 
-  redis.set(
+  redisClient.set(
     `ranking_${updatedRanking.id}`,
     JSON.stringify(updatedRanking),
     'EX',

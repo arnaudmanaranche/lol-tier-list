@@ -1,11 +1,11 @@
 import type { Tournament } from '@prisma/client'
 
 import { prismaClient } from '../../config/prisma'
-import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
+import { ONE_YEAR_IN_SECONDS, redisClient } from '../../config/redis'
 import type { TournamentWithoutTeams } from '../users'
 
 export async function getTournament(tournamentId: string): Promise<Tournament | null> {
-  const cachedData = await redis.get(`tournament_${tournamentId}`)
+  const cachedData = await redisClient.get(`tournament_${tournamentId}`)
 
   if (cachedData) {
     return JSON.parse(cachedData)
@@ -17,7 +17,12 @@ export async function getTournament(tournamentId: string): Promise<Tournament | 
     })
 
     if (tournament) {
-      redis.set(`tournament_${tournamentId}`, JSON.stringify(tournament), 'EX', ONE_YEAR_IN_SECONDS)
+      redisClient.set(
+        `tournament_${tournamentId}`,
+        JSON.stringify(tournament),
+        'EX',
+        ONE_YEAR_IN_SECONDS
+      )
 
       return tournament
     }
@@ -29,7 +34,7 @@ export async function getTournament(tournamentId: string): Promise<Tournament | 
 export async function getTournamentWitoutTeams(
   tournamentId: string
 ): Promise<TournamentWithoutTeams | null> {
-  const cachedData = await redis.get(`tournament_${tournamentId}_withoutTeams`)
+  const cachedData = await redisClient.get(`tournament_${tournamentId}_withoutTeams`)
 
   if (cachedData) {
     return JSON.parse(cachedData)
@@ -52,7 +57,7 @@ export async function getTournamentWitoutTeams(
     })
 
     if (tournament) {
-      redis.set(
+      redisClient.set(
         `tournament_${tournamentId}_withoutTeams`,
         JSON.stringify(tournament),
         'EX',

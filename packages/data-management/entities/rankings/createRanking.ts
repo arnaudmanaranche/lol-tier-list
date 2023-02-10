@@ -1,7 +1,7 @@
 import type { Prisma, Ranking } from '@prisma/client'
 
 import { prismaClient } from '../../config/prisma'
-import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
+import { ONE_YEAR_IN_SECONDS, redisClient } from '../../config/redis'
 
 export async function createRanking(
   ranking: Ranking,
@@ -16,7 +16,7 @@ export async function createRanking(
     }
   })
 
-  redis.set(
+  redisClient.set(
     `ranking_${createdRanking.id}`,
     JSON.stringify(createdRanking),
     'EX',

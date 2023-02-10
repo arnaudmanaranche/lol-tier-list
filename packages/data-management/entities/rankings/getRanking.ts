@@ -1,7 +1,7 @@
 import type { Ranking } from '@prisma/client'
 
 import { prismaClient } from '../../config/prisma'
-import { ONE_YEAR_IN_SECONDS, redis } from '../../config/redis'
+import { ONE_YEAR_IN_SECONDS, redisClient } from '../../config/redis'
 import { getTournamentWitoutTeams } from '../tournaments'
 import type { TournamentWithoutTeams } from '../users'
 
@@ -12,7 +12,7 @@ export interface RankingWithTournamentTeams extends RankingWithoutDates {
 }
 
 export async function getRanking(rankingId: string): Promise<RankingWithTournamentTeams | null> {
-  const cachedData = await redis.get(`ranking_${rankingId}`)
+  const cachedData = await redisClient.get(`ranking_${rankingId}`)
 
   if (cachedData) {
     const cachedRanking = JSON.parse(cachedData)
@@ -53,7 +53,7 @@ export async function getRanking(rankingId: string): Promise<RankingWithTourname
     })
 
     if (ranking) {
-      redis.set(`ranking_${rankingId}`, JSON.stringify(ranking), 'EX', ONE_YEAR_IN_SECONDS)
+      redisClient.set(`ranking_${rankingId}`, JSON.stringify(ranking), 'EX', ONE_YEAR_IN_SECONDS)
 
       return ranking
     }
