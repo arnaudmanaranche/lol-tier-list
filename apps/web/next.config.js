@@ -1,12 +1,11 @@
 const { withSentryConfig } = require('@sentry/nextjs')
-const withTM = require('next-transpile-modules')(['@lpr/ui', '@lpr/types', '@lpr/data'])
 
 // @ts-check
 /**
  * @type {import('next').NextConfig}
  */
 const moduleExports = {
-  swcMinify: true,
+  transpilePackages: ['@lpr/ui', '@lpr/types', '@lpr/data'],
   reactStrictMode: true,
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
@@ -102,4 +101,4 @@ const sentryWebpackPluginOptions = {
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = withTM(withSentryConfig(moduleExports, sentryWebpackPluginOptions))
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)

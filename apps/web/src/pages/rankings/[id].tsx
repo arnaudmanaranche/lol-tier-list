@@ -2,7 +2,7 @@ import { track as PanelbearTrack } from '@panelbear/panelbear-js'
 import type { Ranking } from '@prisma/client'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import type { ReactElement } from 'react'
 
 import type { RankingWithTournamentTeams } from '@lpr/data'

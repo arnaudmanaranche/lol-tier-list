@@ -14,16 +14,14 @@ export const Button = ({ children, onClick, href, to }: ButtonProps): ReactEleme
 
   if (href) {
     return (
-      <Link href={href}>
-        <a className={className} target="_blank" rel="noreferrer noopener">
-          {children}
-        </a>
+      <Link href={href} className={className} target="_blank" rel="noreferrer noopener">
+        {children}
       </Link>
     )
   } else if (to) {
     return (
-      <Link href={to} prefetch={false}>
-        <a className={className}>{children}</a>
+      <Link href={to} prefetch={false} className={className}>
+        {children}
       </Link>
     )
   } else {
