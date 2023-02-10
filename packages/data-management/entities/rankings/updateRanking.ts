@@ -9,7 +9,7 @@ export async function updateRanking(ranking: Ranking): Promise<Ranking> {
       id: ranking.id
     },
     data: {
-      data: ranking as unknown as Prisma.InputJsonValue
+      data: ranking.data as unknown as Prisma.InputJsonValue
     }
   })
 

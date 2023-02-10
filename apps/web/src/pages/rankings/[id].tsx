@@ -24,7 +24,9 @@ const ViewRanking = ({
 
   const updateRanking = async () => {
     try {
-      const { data } = await apiInstance.patch<Ranking>('/rankings', { ranking })
+      const { data } = await apiInstance.patch<Ranking>(`/rankings/${copyRanking.id}`, {
+        ranking: copyRanking
+      })
       const updatedRanking = data
       PanelbearTrack('UpdateRanking')
       return updatedRanking
