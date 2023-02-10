@@ -1,6 +1,6 @@
 import type { User } from '@prisma/client'
 
-import { prismaClient } from '../../config/prisma'
+import { prismaClient } from 'Clients/prisma'
 
 export async function createUser(id: string): Promise<User> {
   const user = await prismaClient.user.upsert({

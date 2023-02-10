@@ -1,6 +1,6 @@
-import { prismaClient } from '../../config/prisma'
-import { ONE_YEAR_IN_SECONDS, redisClient } from '../../config/redis'
-import type { TournamentWithoutTeams } from '../users'
+import { prismaClient } from 'Clients/prisma'
+import { ONE_YEAR_IN_SECONDS, redisClient } from 'Clients/redis'
+import type { TournamentWithoutTeams } from 'Entities/users'
 
 const REDIS_CACHE_KEY = 'tournamentsList'
 

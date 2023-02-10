@@ -1,7 +1,7 @@
 import type { Prisma, Ranking } from '@prisma/client'
 
-import { prismaClient } from '../../config/prisma'
-import { ONE_YEAR_IN_SECONDS, redisClient } from '../../config/redis'
+import { prismaClient } from 'Clients/prisma'
+import { ONE_YEAR_IN_SECONDS, redisClient } from 'Clients/redis'
 
 export async function createRanking(
   ranking: Ranking,

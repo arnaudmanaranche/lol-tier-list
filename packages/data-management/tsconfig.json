@@ -17,7 +17,12 @@
     "lib": ["ES2015", "DOM"],
     "module": "esnext",
     "target": "es6",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "Clients/*": ["clients/*"],
+      "Entities/*": ["entities/*"]
+    }
   },
   "display": "Data Management",
   "exclude": ["dist", "build", "node_modules"],

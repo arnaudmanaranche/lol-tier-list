@@ -3,7 +3,7 @@ import { getPlaiceholder } from 'plaiceholder'
 
 import type { PLAYER } from '@lpr/types'
 
-import { prismaClient } from '../../config/prisma'
+import { prismaClient } from 'Clients/prisma'
 
 export const LINEUP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
 
