@@ -6,6 +6,9 @@ const { withSentryConfig } = require('@sentry/nextjs')
  */
 const moduleExports = {
   transpilePackages: ['@lpr/ui', '@lpr/types', '@lpr/data'],
+  sentry: {
+    hideSourceMaps: true
+  },
   reactStrictMode: true,
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({

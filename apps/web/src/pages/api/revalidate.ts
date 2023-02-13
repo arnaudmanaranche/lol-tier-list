@@ -1,4 +1,4 @@
-import { withSentry } from '@sentry/nextjs'
+import { wrapApiHandlerWithSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 async function revalidate(req: NextApiRequest, res: NextApiResponse) {
@@ -14,4 +14,4 @@ async function revalidate(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export default withSentry(revalidate)
+export default wrapApiHandlerWithSentry(revalidate, '/api/revalidate')
