@@ -25,20 +25,6 @@ class AppDocument extends Document {
           <meta name="twitter:url" content="https://lol-power-ranking.app" />
           <meta name="twitter:site" content="@a_manaranche" />
           <link rel="manifest" href="/manifest.json" />
-          <link
-            rel="preload"
-            href="/fonts/cabin-bold.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="/fonts/cabin-regular.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin=""
-          />
         </Head>
         <body className="antialiased bg-gunmetalDark">
           <Main />
