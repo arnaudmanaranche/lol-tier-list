@@ -2,7 +2,7 @@ import type { User } from '@supabase/gotrue-js'
 import type { ReactElement, ReactNode } from 'react'
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 
-import { supabase } from 'Utils/supabase'
+import { supabaseClient } from 'Utils/supabase'
 
 export const UserContext = createContext(null)
 export const SetUserContext = createContext(null)
@@ -11,7 +11,7 @@ export function UserProvider({ children }: { children: NonNullable<ReactNode> })
   const [user, setUser] = useState(null)
 
   async function checkUser() {
-    const user = await supabase.auth.user()
+    const user = await supabaseClient.auth.user()
 
     if (user) {
       setUser(user)

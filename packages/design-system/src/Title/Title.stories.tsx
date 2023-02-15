@@ -11,6 +11,3 @@ export default {
 const Template: ComponentStory<typeof Title> = (args) => <Title {...args}>Hello world</Title>
 
 export const Default = Template.bind({})
-Default.args = {
-  tag: 'h1'
-}

@@ -14,20 +14,22 @@ export const Default = Template.bind({})
 Default.args = {
   id: '1',
   logo: 'https://fakeimg.pl/440x320/282828/eae0d0/',
-  name: `LEC - summer (${new Date().getFullYear()})`,
-  status: true,
-  base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
+  region: 'LEC',
+  event: 'summer',
+  active: true,
+  logo_base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
   year: new Date().getFullYear(),
-  pandascoreId: 1
+  pandascore_id: 1
 }
 
-export const Soon = Template.bind({})
-Soon.args = {
+export const Disabled = Template.bind({})
+Disabled.args = {
   id: '1',
   logo: 'https://fakeimg.pl/440x320/282828/eae0d0/',
-  name: `LEC - summer (${new Date().getFullYear()})`,
-  status: false,
-  base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
+  region: 'LEC',
+  event: 'summer',
+  active: false,
+  logo_base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
   year: new Date().getFullYear(),
-  pandascoreId: 1
+  pandascore_id: 1
 }

@@ -1,3 +1,5 @@
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
   content: ['./src/**/*.tsx', '/packages/design-system/src/**/*.{js,ts,jsx,tsx}'],
@@ -5,10 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#03acbf',
-        primaryDark: '#027F8D',
+        gunmetal: '#292E41',
+        gunmetalDark: '#1B2030',
+        brightGray: '#ebebef14',
+        charcoal: '#383d51',
         dark: '#0e0e10',
-        backgroundColor: '#f7f7f8',
         gTier: '#ff1902',
         sTier: '#f9be22',
         aTier: '#ff9a01',
@@ -17,8 +20,7 @@ module.exports = {
         dTier: '#8b7fc5'
       },
       fontFamily: {
-        title: ['CabinBold'],
-        body: ['CabinRegular']
+        sans: ['var(--font-inter)', ...fontFamily.sans]
       }
     }
   },

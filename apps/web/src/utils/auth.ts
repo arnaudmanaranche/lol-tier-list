@@ -1,17 +1,17 @@
 import type { AuthChangeEvent, Session, User } from '@supabase/gotrue-js'
 
-import { supabase } from 'Utils/supabase'
+import { supabaseClient } from 'Utils/supabase'
 
 import { apiInstance } from './api'
 
 const logout = async (): Promise<void> => {
-  await supabase.auth.signOut()
+  await supabaseClient.auth.signOut()
 }
 
 const login = async (): Promise<void> => {
   const redirectTo = window.location.href
 
-  await supabase.auth.signIn(
+  await supabaseClient.auth.signIn(
     {
       provider: 'twitter'
     },

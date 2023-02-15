@@ -19,18 +19,18 @@ export const Team = ({
   disabled
 }: TeamProps): ReactElement => {
   return (
-    <div className="h-full bg-white border-b-2 border-solid rounded-t border-primary">
-      <div className="flex flex-row items-center p-2 rounded-t bg-primary">
+    <div className="bg-white">
+      <div className="flex items-center text-white p-2 bg-gunmetal border border-b-0 border-brightGray">
         <Image
           src={logo}
-          alt={`${name} logo`}
+          alt={`${name} team logo`}
           height={60}
           width={60}
           id={name}
           placeholder="blur"
           blurDataURL={logo_base64}
         />
-        <p className="m-2 font-bold text-black dark:text-black">{name}</p>
+        <p className="m-2 font-bold">{name}</p>
       </div>
       {players.map(({ name: playerName, role, id: playerId, value }) => (
         <Player

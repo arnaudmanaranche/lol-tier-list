@@ -8,12 +8,13 @@ import { useEffect, useState } from 'react'
 
 import type { TournamentWithoutTeams } from '@lpr/data'
 import type { RANKING_VALUES, TEAM } from '@lpr/types'
-import { Button, Modal, Team, Title } from '@lpr/ui'
+import { Button, Modal, PageHeaderWrapper, Team, Title } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { useUser } from 'Contexts/user'
 import { apiInstance } from 'Utils/api'
 import { login } from 'Utils/auth'
+import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE } from 'Utils/constants'
 
 const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactElement => {
@@ -72,30 +73,28 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
   }
 
   return (
-    <div className="max-w-screen-xl pt-10 mx-auto">
+    <>
       <Head>
-        <title>{`${region} - ${DEFAULT_TITLE}`}</title>
+        <title>{`${region} - ${event} - ${year} - ${DEFAULT_TITLE}`}</title>
         <meta property="og:image" content={logo} key="og:image" />
         <meta property="og:image:secure_url" content={logo} />
         <meta property="og:image:width" content="200" />
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${region} logo`} />
       </Head>
-      <div className="flex justify-center items-center mb-10">
+      <PageHeaderWrapper>
         <Image
           src={logo}
           alt={`${region} logo`}
-          height={70}
-          width={70}
+          height={100}
+          width={100}
           id={`${region}_${event}_${year}`}
           placeholder="blur"
           blurDataURL={logo_base64}
         />
-        <Title tag="h1" className="capitalize">
-          {`${region} ${event} - ${year}`}
-        </Title>
-      </div>
-      <div className="grid gap-10 px-6 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:px-0">
+        <Title>{`${region} ${capitalizeFirstLetter(event)} - ${year}`}</Title>
+      </PageHeaderWrapper>
+      <div className="grid gap-10 md:grid-cols-3 mx-auto w-full max-w-7xl px-4 md:px-6">
         {ranking?.map(({ id: teamId, logo, name, players, logo_base64 }) => (
           <Team
             key={teamId}
@@ -111,18 +110,23 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
           />
         ))}
       </div>
-      <div className="flex justify-center m-6">
+      <div className="flex justify-center my-20">
         {user?.id ? (
           <Button onClick={handleCreateRanking}>Create my power ranking</Button>
         ) : (
-          <Button onClick={login}>
-            Login with Twitter <TwitterIcon className="w-5 h-5 ml-2" />
-          </Button>
+          <div className="flex flex-col items-center">
+            <Button onClick={login}>
+              Sign in <TwitterIcon className="w-5 h-5 ml-2 fill-white" />
+            </Button>
+            <p className="mt-4 text-sm">An account is required to save your ranking</p>
+          </div>
         )}
       </div>
       <Modal title="Your power ranking was created" toggleModal={toggleModal} isOpen={isModalOpen}>
-        <p className="mb-3">It&apos;s time to share it !</p>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <p className="mb-10 text-white">
+          Creating ranking is always exciting, but sharing it with others is even more fulfilling !
+        </p>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 ">
           <Button
             href={`https://www.facebook.com/sharer/sharer.php?u=https://lol-power-ranking.app/rankings/${rankingId}`}
           >
@@ -135,7 +139,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
           </Button>
         </div>
       </Modal>
-    </div>
+    </>
   )
 }
 

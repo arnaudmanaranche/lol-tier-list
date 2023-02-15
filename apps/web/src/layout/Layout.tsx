@@ -1,16 +1,17 @@
 import type { ReactElement, ReactNode } from 'react'
 
-import Footer from './footer'
-import Header from './header'
+import { Header } from './header'
 
-const Layout = ({ children }: { children: ReactNode }): ReactElement => (
-  <div className="bg-slate-100 dark:bg-gray-500">
-    <Header />
-    <div className="flex flex-col w-full min-h-screen">
-      <main>{children}</main>
+export const Layout = ({ children }: { children: ReactNode }): ReactElement => (
+  <>
+    <div className="pointer-events-none absolute inset-0 flex justify-center">
+      <div className="hidden h-full w-full max-w-7xl grid-cols-3 gap-3.5 px-4 lg:grid">
+        <div className="border-x border-white/5"></div>
+        <div className="border-x border-white/5"></div>
+        <div className="border-x border-white/5"></div>
+      </div>
     </div>
-    <Footer />
-  </div>
+    <Header />
+    <main className="relative">{children}</main>
+  </>
 )
-
-export default Layout

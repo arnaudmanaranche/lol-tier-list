@@ -7,13 +7,14 @@ import type { ReactElement } from 'react'
 
 import type { RankingWithTournamentTeams } from '@lpr/data'
 import type { RANKING_VALUES } from '@lpr/types'
-import { Button, Team, Title } from '@lpr/ui'
+import { Button, PageHeaderWrapper, Team, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
+import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE } from 'Utils/constants'
-import { supabase } from 'Utils/supabase'
+import { supabaseClient } from 'Utils/supabase'
 
-const ViewRanking = ({
+const ViewRankingPage = ({
   ranking,
   isEditMode
 }: {
@@ -49,7 +50,7 @@ const ViewRanking = ({
   }
 
   return (
-    <div className="max-w-screen-xl pt-10 mx-auto">
+    <>
       <Head>
         <title>{`${ranking.tournament.region} - ${DEFAULT_TITLE}`}</title>
         <meta property="og:image" content={ranking?.tournament?.logo} key="og:image" />
@@ -58,21 +59,23 @@ const ViewRanking = ({
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${ranking.tournament.region} logo`} />
       </Head>
-      <div className="flex justify-center items-center mb-10">
+      <PageHeaderWrapper>
         <Image
           src={ranking.tournament.logo}
           alt={`${ranking.tournament.region} logo`}
-          height={60}
-          width={60}
+          height={100}
+          width={100}
           id={`${ranking.tournament.region}_${ranking.tournament.event}_${ranking.tournament.year}`}
           placeholder="blur"
           blurDataURL={ranking.tournament.logo_base64}
         />
-        <Title tag="h1" className="capitalize">
-          {`${ranking.tournament.region} ${ranking.tournament.event} - ${ranking.tournament.year}`}
+        <Title>
+          {`${ranking.tournament.region} ${capitalizeFirstLetter(ranking.tournament.event)} - ${
+            ranking.tournament.year
+          }`}
         </Title>
-      </div>
-      <div className="grid gap-10 mx-auto sm:grid-cols-2 md:grid-cols-3">
+      </PageHeaderWrapper>
+      <div className="grid gap-10 md:grid-cols-3 mx-auto w-full max-w-7xl px-4 md:px-6">
         {/* @ts-expect-error TODO: type Prisma.JsonValue */}
         {copyRanking.data.map(({ id: teamId, logo, name, players, logo_base64 }) => (
           <Team
@@ -96,12 +99,12 @@ const ViewRanking = ({
           >{`Update my ${ranking.tournament.region} power ranking`}</Button>
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { user } = await supabase.auth.api.getUserByCookie(context.req)
+  const { user } = await supabaseClient.auth.api.getUserByCookie(context.req)
 
   const {
     params: { id },
@@ -124,4 +127,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-export default ViewRanking
+export default ViewRankingPage

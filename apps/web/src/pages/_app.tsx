@@ -1,20 +1,25 @@
+import { Inter } from '@next/font/google'
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
 import { withProfiler } from '@sentry/react'
 import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
-import { ThemeProvider } from 'next-themes'
 
 import { UserProvider } from 'Contexts/user'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
-import Layout from '../layout/Layout'
+import { Layout } from '../layout/Layout'
 
 import '@lpr/ui/dist/output.css'
 import 'tailwindcss/utilities.css'
 import '../styles/custom.css'
 import '../styles/tailwind.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter'
+})
 
 const App = ({ Component, pageProps }: AppProps) => {
   usePanelbear(process.env.NEXT_PUBLIC_PANELBEAR_SITE_ID, {
@@ -35,11 +40,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Script src={process.env.OSANO_URL}></Script>
       <UserProvider>
         <LazyMotion features={domAnimation}>
-          <ThemeProvider attribute="class">
+          <div className={`${inter.variable} font-sans`}>
             <Layout>
               <Component {...pageProps} />
             </Layout>
-          </ThemeProvider>
+          </div>
         </LazyMotion>
       </UserProvider>
     </>

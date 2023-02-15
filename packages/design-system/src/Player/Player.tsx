@@ -39,25 +39,25 @@ export const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactE
   }
 
   return (
-    <div className="flex items-center justify-between text-black">
-      <p className="pl-3 uppercase">{role}</p>
-      <p className="text-center grow">{name}</p>
+    <div className="flex items-center">
+      <span className="pl-3 capitalize">{role}</span>
+      <span className="text-center grow">{name}</span>
       {disabled ? (
-        <p
+        <span
           className={clsx(
             'py-2 flex uppercase items-center justify-center h-full min-w-[60px]',
-            currentClassname ? currentClassname : 'bg-white'
+            currentClassname ?? 'bg-white'
           )}
         >
           {currentValue ?? 'N/A'}
-        </p>
+        </span>
       ) : (
         <select
           data-testid={`${name}_value`}
           disabled={disabled}
           className={clsx(
-            'flex uppercase items-center justify-center h-[40px] border-0 py-2 outline-none min-w-[60px]',
-            currentClassname ? currentClassname : 'bg-white'
+            'h-[40px] min-w-[60px] text-center outline-none',
+            currentClassname ?? 'bg-white/5'
           )}
           onChange={(e) => {
             onUpdate(e.target.value as RANKING_VALUES)

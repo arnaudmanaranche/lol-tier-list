@@ -40,7 +40,7 @@ class AppDocument extends Document {
             crossOrigin=""
           />
         </Head>
-        <body className="font-body antialiased">
+        <body className="antialiased bg-gunmetalDark">
           <Main />
           <NextScript />
         </body>

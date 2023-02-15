@@ -2512,6 +2512,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@heroicons/react@npm:2.0.15":
+  version: 2.0.15
+  resolution: "@heroicons/react@npm:2.0.15"
+  peerDependencies:
+    react: ">= 16"
+  checksum: 11ec68629e73cb8ffe893090594ca5c02f4369dd964f1c95445bd83769d45df4df85cd12b021519c2bd14fdb38e3ce2ac6f2752e7c6dd578c26dc0ec75a5a35a
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.8":
   version: 0.11.8
   resolution: "@humanwhocodes/config-array@npm:0.11.8"
@@ -3138,10 +3147,12 @@ __metadata:
     "@storybook/addon-interactions": 6.5.16
     "@storybook/addon-links": 6.5.16
     "@storybook/addon-postcss": 2.0.0
+    "@storybook/addons": 6.5.16
     "@storybook/jest": 0.0.10
     "@storybook/react": 6.5.16
     "@storybook/test-runner": 0.9.4
     "@storybook/testing-library": 0.0.13
+    "@storybook/theming": 6.5.16
     chromatic: 6.17.0
     clsx: 1.2.1
     eslint-config-lpr: "workspace:*"
@@ -3282,6 +3293,13 @@ __metadata:
   dependencies:
     glob: 7.1.7
   checksum: 15d3b5913a56d40c7ad33c77f5285a2388a3a4b4da2eb80a3899ac4b871c7bfca74fd45f98fcac3d6a91c8dce738da2661cf71e7e3116a14d5da0d5b68939e8d
+  languageName: node
+  linkType: hard
+
+"@next/font@npm:13.1.6":
+  version: 13.1.6
+  resolution: "@next/font@npm:13.1.6"
+  checksum: 06499c9361d8ecf1bca47f20dfb226b6e9f77668afe967809cd8a4eade1b8620f9d723032098b2a0a9df2d2e2df96ad17e8128fcb7f494c99951ee8a61027966
   languageName: node
   linkType: hard
 
@@ -16339,17 +16357,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-themes@npm:0.2.0":
-  version: 0.2.0
-  resolution: "next-themes@npm:0.2.0"
-  peerDependencies:
-    next: "*"
-    react: "*"
-    react-dom: "*"
-  checksum: cee02db16bee471856557db9572ffa041b1d77254798e345fad09e1bd8b878e937cdacc73bb73c598eb3b042f20fff0201bd73d2de42e2061fa818585415e857
-  languageName: node
-  linkType: hard
-
 "next-tick@npm:^1.1.0":
   version: 1.1.0
   resolution: "next-tick@npm:1.1.0"
@@ -20504,6 +20511,7 @@ __metadata:
   resolution: "tailwind-config-lpr@workspace:packages/tailwind-config-lpr"
   dependencies:
     "@tailwindcss/typography": 0.5.9
+    eslint-config-lpr: "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -21903,9 +21911,11 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@headlessui/react": 1.6.6
+    "@heroicons/react": 2.0.15
     "@lpr/data": "*"
     "@lpr/types": "*"
     "@lpr/ui": "*"
+    "@next/font": 13.1.6
     "@panelbear/panelbear-nextjs": 1.0.5
     "@sentry/nextjs": 7.37.1
     "@sentry/react": 7.37.1
@@ -21918,7 +21928,6 @@ __metadata:
     framer-motion: 7.0.0
     next: 13.1.6
     next-sitemap: 1.9.12
-    next-themes: 0.2.0
     react: 18.2.0
     react-dom: 18.2.0
     tailwind-config-lpr: "workspace:*"

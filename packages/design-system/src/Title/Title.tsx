@@ -1,21 +1,13 @@
-import clsx from 'clsx'
 import type { ReactElement, ReactNode } from 'react'
-import { createElement } from 'react'
 
 export interface TitleProps {
-  tag: 'h1' | 'h2' | 'h3'
   children: ReactNode
-  className?: string
 }
 
-export const Title = ({ tag, children, className }: TitleProps): ReactElement => {
-  const titleTag = createElement(
-    tag,
-    {
-      className: clsx('font-title dark:text-white font-bold text-5xl', className)
-    },
-    children
+export const Title = ({ children }: TitleProps): ReactElement => {
+  return (
+    <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-[40px] md:leading-[1.1] lg:col-span-2 lg:text-[64px] lg:leading-[1.125em] lg:tracking-[-0.0375em]">
+      {children}
+    </h1>
   )
-
-  return titleTag
 }

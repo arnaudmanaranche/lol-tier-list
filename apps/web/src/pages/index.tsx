@@ -1,48 +1,53 @@
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 import { m } from 'framer-motion'
 import Image from 'next/legacy/image'
+import Link from 'next/link'
 import type { ReactElement } from 'react'
 
-import { Button, Title } from '@lpr/ui'
+import { PageHeaderWrapper, Title } from '@lpr/ui'
 
-import { REGIONS, ROUTES } from 'Utils/constants'
+import { ROUTES, SUPPORTED_REGIONS } from 'Utils/constants'
+import { parent, stat } from 'Utils/framerMotion'
 
-const { TOURNAMENTS } = ROUTES
-
-const parent = {
-  show: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-const stat = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 }
-}
-
-const Home = (): ReactElement => {
+const HomePage = (): ReactElement => {
   return (
-    <div className="flex flex-col items-center text-center">
-      <div className="flex flex-col items-center w-full h-screen">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path
-            fill="#03acbf"
-            fillOpacity="1"
-            d="M0,128L21.8,112C43.6,96,87,64,131,85.3C174.5,107,218,181,262,224C305.5,267,349,277,393,272C436.4,267,480,245,524,250.7C567.3,256,611,288,655,288C698.2,288,742,256,785,229.3C829.1,203,873,181,916,170.7C960,160,1004,160,1047,138.7C1090.9,117,1135,75,1178,64C1221.8,53,1265,75,1309,106.7C1352.7,139,1396,181,1418,202.7L1440,224L1440,0L1418.2,0C1396.4,0,1353,0,1309,0C1265.5,0,1222,0,1178,0C1134.5,0,1091,0,1047,0C1003.6,0,960,0,916,0C872.7,0,829,0,785,0C741.8,0,698,0,655,0C610.9,0,567,0,524,0C480,0,436,0,393,0C349.1,0,305,0,262,0C218.2,0,175,0,131,0C87.3,0,44,0,22,0L0,0Z"
-          ></path>
-        </svg>
-        <Title className="my-10" tag="h1">
-          Share easily your League of Legends power rankings
+    <>
+      <div className="absolute inset-0 -top-[90px] -z-10 bgGradient opacity-20 blur-3xl" />
+      <PageHeaderWrapper>
+        <Title>
+          The ultimate destination
+          <br />
+          for League of Legends enthusiasts.
         </Title>
-        <Button to={TOURNAMENTS}>CREATE YOURS</Button>
-        <m.div variants={parent} initial="hidden" animate="show" className="flex mt-20 space-x-20">
-          {REGIONS.map((region) => (
-            <m.div variants={stat} key={region}>
+        <div className="mt-8 max-w-lg space-y-6 text-lg leading-[1.4] text-gray-300 md:max-w-xl lg:text-xl">
+          <p className="mb-10">
+            Dedicated platform to create and share your own rankings of yours favorites tournaments.
+            Join now.
+          </p>
+          <Link href={ROUTES.TOURNAMENTS} className="flex items-center">
+            <span>See tournaments</span>
+            <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5 text-white" />
+          </Link>
+        </div>
+      </PageHeaderWrapper>
+      <div className="mx-auto max-w-7xl px-4 md:px-6 mt-20">
+        <span className="rounded-full text-lg font-semibold text-white">Supported regions</span>
+        <m.div
+          variants={parent}
+          initial="hidden"
+          animate="show"
+          className="max-w-7xl pt-6 pb-20 grid lg:grid-cols-5 md:gap-8 grid-cols-2 gap-4"
+        >
+          {SUPPORTED_REGIONS.map((region) => (
+            <m.div
+              variants={stat}
+              key={region}
+              className="flex justify-center rounded-lg p-10 border-white/20 transition-colors border-[1px] backdrop-opacity-10 backdrop-invert bg-white/5"
+              tabIndex={0}
+            >
               <Image
                 src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.in/storage/v1/object/public/${region}/logo.png`}
                 alt={`${region} logo`}
-                className="drop-shadow-lg"
                 height={80}
                 width={80}
               />
@@ -50,8 +55,27 @@ const Home = (): ReactElement => {
           ))}
         </m.div>
       </div>
-    </div>
+      <div className="mx-auto max-w-7xl px-4 md:px-6 justify-center flex">
+        <div className="flex flex-col md:flex-row items-center text-white">
+          <p>Data provided by</p>
+          <Link
+            href="https://pandascore.co/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="pb-1"
+          >
+            <Image
+              src="/pandascore.png"
+              alt="PandaScore logo"
+              layout="fixed"
+              height="50"
+              width="200"
+            />
+          </Link>
+        </div>
+      </div>
+    </>
   )
 }
 
-export default Home
+export default HomePage
