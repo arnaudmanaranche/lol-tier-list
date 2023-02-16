@@ -1,12 +1,15 @@
 import { useCronitor } from '@cronitorio/cronitor-rum-nextjs'
 import { Inter } from '@next/font/google'
 import { withProfiler } from '@sentry/react'
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import type { Session } from '@supabase/auth-helpers-react'
+import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
+import { useState } from 'react'
 
-import { UserProvider } from 'Contexts/user'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
 import { Layout } from '../layout/Layout'
@@ -21,10 +24,17 @@ const inter = Inter({
   variable: '--font-inter'
 })
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({
+  Component,
+  pageProps
+}: AppProps<{
+  initialSession: Session
+}>) => {
   useCronitor(process.env.NEXT_PUBLIC_CRONITOR_API_KEY, {
     debug: process.env.NODE_ENV === 'development'
   })
+
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient())
 
   return (
     <>
@@ -38,7 +48,10 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="twitter:description" content={DEFAULT_DESCRIPTION} key="twitter:description" />
       </Head>
       <Script src={process.env.OSANO_URL}></Script>
-      <UserProvider>
+      <SessionContextProvider
+        supabaseClient={supabaseClient}
+        initialSession={pageProps.initialSession}
+      >
         <LazyMotion features={domAnimation}>
           <div className={`${inter.variable} font-sans`}>
             <Layout>
@@ -46,7 +59,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             </Layout>
           </div>
         </LazyMotion>
-      </UserProvider>
+      </SessionContextProvider>
     </>
   )
 }

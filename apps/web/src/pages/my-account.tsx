@@ -1,6 +1,8 @@
 import { Tab } from '@headlessui/react'
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
-import type { User } from '@supabase/gotrue-js'
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import type { User } from '@supabase/auth-helpers-react'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import type { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,11 +14,8 @@ import type { UserRankings } from '@lpr/data'
 import { Button, PageHeaderWrapper, Title } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
-import { useSetUser } from 'Contexts/user'
 import { apiInstance } from 'Utils/api'
-import { logout } from 'Utils/auth'
 import { ROUTES } from 'Utils/constants'
-import { supabaseClient } from 'Utils/supabase'
 
 const MyAccountPage = ({
   user,
@@ -25,16 +24,13 @@ const MyAccountPage = ({
   user: User
   rankings: UserRankings[]
 }): ReactElement => {
+  const supabaseClient = useSupabaseClient()
   const router = useRouter()
-  const setUser = useSetUser()
 
   const deleteMyAccount = async () => {
     try {
-      await logout()
-      await supabaseClient.auth.api.deleteUser(user.id)
+      await supabaseClient.auth.signOut()
       await apiInstance.delete(`/users/${user.id}`)
-      await supabaseClient.auth.api.deleteUser(user.id)
-      setUser(null)
       router.push(ROUTES.HOME)
     } catch (error) {
       return error
@@ -51,8 +47,7 @@ const MyAccountPage = ({
   }
 
   const handleLogout = async () => {
-    await logout()
-    setUser(null)
+    await supabaseClient.auth.signOut()
     router.push(ROUTES.HOME)
   }
 
@@ -181,7 +176,11 @@ const MyAccountPage = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { user } = await supabaseClient.auth.api.getUserByCookie(context.req)
+  const supabase = createServerSupabaseClient(context)
+
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
 
   if (!user) {
     return {

@@ -21,7 +21,6 @@
     "paths": {
       "Assets/*": ["src/svgs/*"],
       "Clients/*": ["../../packages/data-management/clients/*"],
-      "Contexts/*": ["src/contexts/*"],
       "Entities/*": ["../../packages/data-management/entities/*"],
       "Utils/*": ["src/utils/*"]
     }

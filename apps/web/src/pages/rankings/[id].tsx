@@ -1,5 +1,6 @@
 import { track as CronitorTrack } from '@cronitorio/cronitor-rum-js'
 import type { Ranking } from '@prisma/client'
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/legacy/image'
@@ -12,7 +13,6 @@ import { Button, PageHeaderWrapper, Team, Title } from '@lpr/ui'
 import { apiInstance } from 'Utils/api'
 import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE } from 'Utils/constants'
-import { supabaseClient } from 'Utils/supabase'
 
 const ViewRankingPage = ({
   ranking,
@@ -104,7 +104,11 @@ const ViewRankingPage = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { user } = await supabaseClient.auth.api.getUserByCookie(context.req)
+  const supabase = createServerSupabaseClient(context)
+
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
 
   const {
     params: { id },
