@@ -3,11 +3,11 @@ import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
-import { useLogin } from 'src/hooks/useLogin'
 
 import { Button } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
+import { useLogin } from 'Hooks/useLogin'
 import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE, ROUTES } from 'Utils/constants'
 

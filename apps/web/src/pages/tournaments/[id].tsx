@@ -12,14 +12,15 @@ import type { RANKING_VALUES, TEAM } from '@lpr/types'
 import { Button, Modal, PageHeaderWrapper, Team, Title } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
+import { useLogin } from 'Hooks/useLogin'
 import { apiInstance } from 'Utils/api'
-import { login } from 'Utils/auth'
 import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE } from 'Utils/constants'
 
 const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactElement => {
   const { teams, id, logo, event, region, year, logo_base64 } = tournament
 
+  const handleLogin = useLogin()
   const user = useUser()
   const [isModalOpen, setModalOpen] = useState(false)
   const [rankingId, setRankingId] = useState('')
@@ -115,7 +116,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
           <Button onClick={handleCreateRanking}>Create my power ranking</Button>
         ) : (
           <div className="flex flex-col items-center">
-            <Button onClick={login}>
+            <Button onClick={handleLogin}>
               Sign in <TwitterIcon className="w-5 h-5 ml-2 fill-white" />
             </Button>
             <p className="mt-4 text-sm">An account is required to save your ranking</p>
