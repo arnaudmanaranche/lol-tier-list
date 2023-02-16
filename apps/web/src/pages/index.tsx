@@ -24,7 +24,7 @@ const HomePage = (): ReactElement => {
             Dedicated platform to create and share your own rankings of yours favorites tournaments.
             Join now.
           </p>
-          <Link href={ROUTES.TOURNAMENTS} className="flex items-center">
+          <Link href={ROUTES.TOURNAMENTS} className="flex items-center w-fit">
             <span>See tournaments</span>
             <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5 text-white" />
           </Link>
