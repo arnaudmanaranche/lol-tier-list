@@ -1,5 +1,5 @@
+import { useCronitor } from '@cronitorio/cronitor-rum-nextjs'
 import { Inter } from '@next/font/google'
-import { usePanelbear } from '@panelbear/panelbear-nextjs'
 import { withProfiler } from '@sentry/react'
 import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
@@ -22,7 +22,7 @@ const inter = Inter({
 })
 
 const App = ({ Component, pageProps }: AppProps) => {
-  usePanelbear(process.env.NEXT_PUBLIC_PANELBEAR_SITE_ID, {
+  useCronitor(process.env.NEXT_PUBLIC_CRONITOR_API_KEY, {
     debug: process.env.NODE_ENV === 'development'
   })
 

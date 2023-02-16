@@ -1,4 +1,4 @@
-import { track as PanelbearTrack } from '@panelbear/panelbear-js'
+import { track as CronitorTrack } from '@cronitorio/cronitor-rum-js'
 import type { Ranking, Tournament } from '@prisma/client'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -44,7 +44,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
         tournamentId: id,
         userId: user.id
       })
-      PanelbearTrack('NewRanking')
+      CronitorTrack('NewRanking')
       setRankingId(data.id)
       toggleModal()
       window.localStorage.removeItem(tournament.id)

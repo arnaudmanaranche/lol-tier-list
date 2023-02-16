@@ -1,4 +1,4 @@
-import { track as PanelbearTrack } from '@panelbear/panelbear-js'
+import { track as CronitorTrack } from '@cronitorio/cronitor-rum-js'
 import type { Ranking } from '@prisma/client'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
@@ -29,7 +29,7 @@ const ViewRankingPage = ({
         ranking: copyRanking
       })
       const updatedRanking = data
-      PanelbearTrack('UpdateRanking')
+      CronitorTrack('UpdateRanking')
       return updatedRanking
     } catch (error) {
       return error

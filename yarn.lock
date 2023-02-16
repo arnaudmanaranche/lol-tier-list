@@ -2219,6 +2219,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cronitorio/cronitor-rum-js@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@cronitorio/cronitor-rum-js@npm:0.1.0"
+  checksum: f37bb0643c6cc3b17ef60398ec36a796c80e265fe501ca9d52addddaa5eb04d591a05ad32b2bc62840e4851e9ac12c65a985ec9f5386245507dd17107ba37e76
+  languageName: node
+  linkType: hard
+
+"@cronitorio/cronitor-rum-nextjs@npm:0.2.0":
+  version: 0.2.0
+  resolution: "@cronitorio/cronitor-rum-nextjs@npm:0.2.0"
+  dependencies:
+    "@cronitorio/cronitor-rum-js": ^0.1.0
+  peerDependencies:
+    next: ^13
+    react: ^18
+  checksum: 25b9370bd249e5cfd67bc468cd1c3e54ab9a166116db7b2e4c7e08a0aa023aef9e7cc749865b0d83f9516929297ceea9312a421d16a7b481a79ca72a86d55e9c
+  languageName: node
+  linkType: hard
+
 "@design-systems/utils@npm:2.12.0":
   version: 2.12.0
   resolution: "@design-systems/utils@npm:2.12.0"
@@ -3465,25 +3484,6 @@ __metadata:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: 1388777b507b0c592d53f41b9d182e1a8de7763bc625fc07999b8edbc22325f074e5b3ec90af79c89d6987fdb2325bc66d59f483258543c14a43661621f841b0
-  languageName: node
-  linkType: hard
-
-"@panelbear/panelbear-js@npm:^1.3.3":
-  version: 1.3.3
-  resolution: "@panelbear/panelbear-js@npm:1.3.3"
-  checksum: acd28dd5c5e94b39b9e825d6b39f39a1ac138100729c3b9dbc931e9cb80ac73ae187d4884a457de3ce91ee3f58bbbdedd23135338c41b57bda9305288a4f6c69
-  languageName: node
-  linkType: hard
-
-"@panelbear/panelbear-nextjs@npm:1.0.5":
-  version: 1.0.5
-  resolution: "@panelbear/panelbear-nextjs@npm:1.0.5"
-  dependencies:
-    "@panelbear/panelbear-js": ^1.3.3
-  peerDependencies:
-    next: ^10 || ^11 || ^12 || ^13
-    react: ^16 || ^17 || ^18
-  checksum: 765788c81994d580b572b310ae4822fc1bb16fc11a0475b1f368671cb75692a0ce6c7ed1d56eba1d5298cf8da446695df7916a890f789774e00f485264e66285
   languageName: node
   linkType: hard
 
@@ -21910,13 +21910,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:apps/web"
   dependencies:
+    "@cronitorio/cronitor-rum-nextjs": 0.2.0
     "@headlessui/react": 1.6.6
     "@heroicons/react": 2.0.15
     "@lpr/data": "*"
     "@lpr/types": "*"
     "@lpr/ui": "*"
     "@next/font": 13.1.6
-    "@panelbear/panelbear-nextjs": 1.0.5
     "@sentry/nextjs": 7.37.1
     "@sentry/react": 7.37.1
     "@sentry/tracing": 7.37.1
