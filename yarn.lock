@@ -2212,10 +2212,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@corex/deepmerge@npm:^2.6.148":
-  version: 2.6.148
-  resolution: "@corex/deepmerge@npm:2.6.148"
-  checksum: b80b6b3e408901151de26e27b519a43cda1771a81e5390ff10cd6b47add0139bb315ca44112ff076d68ac887d7cfe237c9fb33868efb04839c4afb7c38864385
+"@corex/deepmerge@npm:^4.0.29":
+  version: 4.0.37
+  resolution: "@corex/deepmerge@npm:4.0.37"
+  checksum: f6f5daf29762f691dbc1104c092639897d65219e809f7c1028f7797e361c7787bd247bfd09e81f31b70386f1611ed9c4c137dd45c404b4da2f606a6cca51c6d8
   languageName: node
   linkType: hard
 
@@ -16086,6 +16086,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimist@npm:^1.2.7":
+  version: 1.2.8
+  resolution: "minimist@npm:1.2.8"
+  checksum: 75a6d645fb122dad29c06a7597bddea977258957ed88d7a6df59b5cd3fe4a527e253e9bbf2e783e4b73657f9098b96a5fe96ab8a113655d4109108577ecf85b0
+  languageName: node
+  linkType: hard
+
 "minipass-collect@npm:^1.0.2":
   version: 1.0.2
   resolution: "minipass-collect@npm:1.0.2"
@@ -16343,17 +16350,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:1.9.12":
-  version: 1.9.12
-  resolution: "next-sitemap@npm:1.9.12"
+"next-sitemap@npm:3.1.52":
+  version: 3.1.52
+  resolution: "next-sitemap@npm:3.1.52"
   dependencies:
-    "@corex/deepmerge": ^2.6.148
-    minimist: ^1.2.5
+    "@corex/deepmerge": ^4.0.29
+    minimist: ^1.2.7
   peerDependencies:
+    "@next/env": "*"
     next: "*"
   bin:
-    next-sitemap: bin/next-sitemap
-  checksum: 069b3c2c26dadc970b0768f6bc525784a4a75d9b3ab6ea6da6024034d078a0ac4954251040ffa9dd089f4960ff15aa02d572cfe9064e24b7101f2d423e405e73
+    next-sitemap: bin/next-sitemap.mjs
+    next-sitemap-cjs: bin/next-sitemap.cjs
+  checksum: e82ae8652f3cc9a66ae585eb059f00e15247dc1306344b8d1f53438b211e40b8744a64768d2c7bf88d167d791e0da40877ab2c4b6655e33a0d1cf918f3ac385b
   languageName: node
   linkType: hard
 
@@ -21927,7 +21936,7 @@ __metadata:
     eslint-config-next: 13.1.6
     framer-motion: 7.0.0
     next: 13.1.6
-    next-sitemap: 1.9.12
+    next-sitemap: 3.1.52
     react: 18.2.0
     react-dom: 18.2.0
     tailwind-config-lpr: "workspace:*"
