@@ -1,5 +1,5 @@
 import '../styles/index.css'
-import * as nextImage from 'next/image'
+import * as nextImage from 'next/legacy/image'
 
 // https://github.com/vercel/next.js/issues/18393#issuecomment-750910068
 Object.defineProperty(nextImage, 'default', {

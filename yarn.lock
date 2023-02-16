@@ -3211,6 +3211,7 @@ __metadata:
     clsx: 1.2.1
     eslint-config-lpr: "workspace:*"
     jest: 27.5.1
+    next: 13.1.6
     react: 17.0.2
     react-dom: 17.0.2
     require-from-string: 2.0.2
