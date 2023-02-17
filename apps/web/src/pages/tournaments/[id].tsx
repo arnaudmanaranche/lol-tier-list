@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 
 import type { TournamentWithoutTeams } from '@lpr/data'
 import type { RANKING_VALUES, TEAM } from '@lpr/types'
-import { Button, Modal, PageHeaderWrapper, Team, Title } from '@lpr/ui'
+import { Button, Modal, PageHeaderWrapper, RankingLegend, Team, Title } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { useLogin } from 'Hooks/useLogin'
@@ -83,6 +83,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${region} logo`} />
       </Head>
+      <RankingLegend />
       <PageHeaderWrapper>
         <Image
           src={logo}
@@ -119,7 +120,6 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
             <Button onClick={handleLogin}>
               Sign in <TwitterIcon className="w-5 h-5 ml-2 fill-white" />
             </Button>
-            <p className="mt-4 text-sm">An account is required to save your ranking</p>
           </div>
         )}
       </div>

@@ -8,7 +8,7 @@ import type { ReactElement } from 'react'
 
 import type { RankingWithTournamentTeams } from '@lpr/data'
 import type { RANKING_VALUES } from '@lpr/types'
-import { Button, PageHeaderWrapper, Team, Title } from '@lpr/ui'
+import { Button, PageHeaderWrapper, RankingLegend, Team, Title } from '@lpr/ui'
 
 import { apiInstance } from 'Utils/api'
 import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'
@@ -59,6 +59,7 @@ const ViewRankingPage = ({
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${ranking.tournament.region} logo`} />
       </Head>
+      <RankingLegend />
       <PageHeaderWrapper>
         <Image
           src={ranking.tournament.logo}
