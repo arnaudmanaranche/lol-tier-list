@@ -9,7 +9,6 @@
     "build": "turbo run build && turbo run postbuild",
     "build-storybook": "turbo run build-storybook",
     "dev": "turbo run dev --parallel",
-    "postinstall": "husky install",
     "lint": "turbo run lint",
     "test": "turbo run test"
   },
@@ -19,7 +18,7 @@
       "prettier --write --check"
     ]
   },
-  "devDependencies": {
+  "dependencies": {
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
     "@types/tailwindcss": "3.0.11",
