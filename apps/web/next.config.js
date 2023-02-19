@@ -40,10 +40,7 @@ const moduleExports = {
     ]
   },
   images: {
-    domains: [
-      `${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.in`,
-      `${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.co`
-    ]
+    domains: [`${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.co`]
   }
 }
 

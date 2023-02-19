@@ -46,7 +46,7 @@ const HomePage = (): ReactElement => {
               tabIndex={0}
             >
               <Image
-                src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.in/storage/v1/object/public/${region}/logo.png`}
+                src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.co/storage/v1/object/public/${region}/logo.png`}
                 alt={`${region} logo`}
                 height={80}
                 width={80}
