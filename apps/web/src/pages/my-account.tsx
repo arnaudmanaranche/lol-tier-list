@@ -57,14 +57,14 @@ const MyAccountPage = ({
         <Title>My Account</Title>
       </PageHeaderWrapper>
       <Tab.Group defaultIndex={0}>
-        <div className="mx-auto w-full max-w-7xl px-4 md:px-6 mb-12">
-          <Tab.List className="flex space-x-4 bg-gunmetal p-2 text-white rounded-md">
+        <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
+          <Tab.List className="flex space-x-4 rounded-md bg-gunmetal p-2 text-white">
             <Tab as={Fragment}>
               {({ selected }) => (
                 <div
                   className={
                     selected
-                      ? 'p-2 cursor-pointer bg-gunmetalDark rounded-md'
+                      ? 'cursor-pointer rounded-md bg-gunmetalDark p-2'
                       : 'cursor-pointer p-2 transition-all'
                   }
                 >
@@ -77,7 +77,7 @@ const MyAccountPage = ({
                 <div
                   className={
                     selected
-                      ? 'cursor-pointer bg-gunmetalDark rounded-md p-2'
+                      ? 'cursor-pointer rounded-md bg-gunmetalDark p-2'
                       : 'cursor-pointer p-2 transition-all'
                   }
                 >
@@ -93,10 +93,10 @@ const MyAccountPage = ({
               {rankings.length <= 0 ? (
                 <p className="text-center text-white">You haven&apos;t created any rankings yet.</p>
               ) : (
-                <ul className="bg-gunmetal rounded-sm border border-brightGray">
+                <ul className="rounded-sm border border-brightGray bg-gunmetal">
                   {rankings?.map((ranking) => (
                     <li className="flex items-center p-6 text-white" key={ranking.id}>
-                      <div className="flex items-center grow">
+                      <div className="flex grow items-center">
                         <Image
                           src={ranking.tournament.logo}
                           alt={`${ranking.tournament.region} logo`}
@@ -106,12 +106,12 @@ const MyAccountPage = ({
                           placeholder="blur"
                           blurDataURL={ranking.tournament.logo_base64}
                         />
-                        <span className="capitalize ml-2">{`${ranking.tournament.region} ${ranking.tournament.event} - ${ranking.tournament.year}`}</span>
+                        <span className="ml-2 capitalize">{`${ranking.tournament.region} ${ranking.tournament.event} - ${ranking.tournament.year}`}</span>
                       </div>
                       <div className="flex justify-end space-x-4">
                         <Button to={`/rankings/${ranking.id}?edit`}>
                           <span className="hidden md:flex">Edit</span>
-                          <PencilIcon className="w-5 h-5 md:ml-2" />
+                          <PencilIcon className="h-5 w-5 md:ml-2" />
                         </Button>
                         <Button
                           onClick={() => {
@@ -119,7 +119,7 @@ const MyAccountPage = ({
                           }}
                         >
                           <span className="hidden md:flex">Delete</span>
-                          <TrashIcon className="w-5 h-5 md:ml-2" />
+                          <TrashIcon className="h-5 w-5 md:ml-2" />
                         </Button>
                       </div>
                     </li>
@@ -129,11 +129,11 @@ const MyAccountPage = ({
             </div>
           </Tab.Panel>
           <Tab.Panel>
-            <div className="mx-auto w-full max-w-7xl px-4 md:px-6 mb-12">
-              <div className="border border-brightGray rounded-md text-white md:w-4/5 bg-gunmetal">
-                <h2 className="text-xl p-5">Login Connection</h2>
+            <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
+              <div className="rounded-md border border-brightGray bg-gunmetal text-white md:w-4/5">
+                <h2 className="p-5 text-xl">Login Connection</h2>
                 <div className="flex items-center p-4">
-                  <TwitterIcon className="w-5 h-5 fill-white" />
+                  <TwitterIcon className="h-5 w-5 fill-white" />
                   <div className="flex flex-col justify-center p-4">
                     <span>Twitter</span>
                     <p className="text-md text-white">
@@ -151,19 +151,19 @@ const MyAccountPage = ({
               </div>
             </div>
             <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-              <div className="border border-red-600 rounded-md text-white md:w-4/5">
-                <h2 className="text-xl p-5">Delete Personal Account</h2>
-                <p className="text-base p-4">
+              <div className="rounded-md border border-red-600 text-white md:w-4/5">
+                <h2 className="p-5 text-xl">Delete Personal Account</h2>
+                <p className="p-4 text-base">
                   Permanently remove your Personal Account and all of its contents from the LoL
                   Power Ranking platform. This action is not reversible, so please continue with
                   caution.
                 </p>
-                <div className="flex flex-row-reverse px-6 py-3 rounded-b-md">
+                <div className="flex flex-row-reverse rounded-b-md px-6 py-3">
                   <Button onClick={deleteMyAccount}>Delete my account</Button>
                 </div>
               </div>
             </div>
-            <div className="mx-auto w-full max-w-7xl px-4 md:px-6 my-20">
+            <div className="mx-auto my-20 w-full max-w-7xl px-4 md:px-6">
               <div className="md:w-4/5">
                 <Button onClick={handleLogout}>Log out</Button>
               </div>

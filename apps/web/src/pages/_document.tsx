@@ -26,7 +26,7 @@ class AppDocument extends Document {
           <meta name="twitter:site" content="@a_manaranche" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
-        <body className="antialiased bg-gunmetalDark">
+        <body className="bg-gunmetalDark antialiased">
           <Main />
           <NextScript />
         </body>

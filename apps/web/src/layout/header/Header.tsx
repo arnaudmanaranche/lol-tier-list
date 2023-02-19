@@ -33,23 +33,23 @@ export const Header = (): ReactElement => {
   }, [supabaseClient.auth])
   return (
     <header className="mx-auto w-full max-w-7xl px-4 md:px-6">
-      <div className="container flex justify-between items-center p-3 md:p-5 mx-auto md:flex-row">
+      <div className="container mx-auto flex items-center justify-between p-3 md:flex-row md:p-5">
         <Link
           href={ROUTES.HOME}
           prefetch={false}
-          className="md:flex-1 font-bold text-center lg:flex-none text-white md:text-2xl"
+          className="text-center font-bold text-white md:flex-1 md:text-2xl lg:flex-none"
         >
           {DEFAULT_TITLE}
         </Link>
         {!session ? (
           <Button onClick={handleLogin}>
             Sign in
-            <TwitterIcon className="w-5 h-5 ml-2 fill-white" />
+            <TwitterIcon className="ml-2 h-5 w-5 fill-white" />
           </Button>
         ) : (
           <Button to={ROUTES.MY_ACCOUNT}>
             My Account
-            <UserIcon className="w-5 h-5 ml-2" />
+            <UserIcon className="ml-2 h-5 w-5" />
           </Button>
         )}
       </div>

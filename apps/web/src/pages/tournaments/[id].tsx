@@ -96,7 +96,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
         />
         <Title>{`${region} ${capitalizeFirstLetter(event)} - ${year}`}</Title>
       </PageHeaderWrapper>
-      <div className="grid gap-10 md:grid-cols-3 mx-auto w-full max-w-7xl px-4 md:px-6">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:grid-cols-3 md:px-6">
         {ranking?.map(({ id: teamId, logo, name, players, logo_base64 }) => (
           <Team
             key={teamId}
@@ -112,13 +112,13 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
           />
         ))}
       </div>
-      <div className="flex justify-center my-20">
+      <div className="my-20 flex justify-center">
         {user?.id ? (
           <Button onClick={handleCreateRanking}>Create my power ranking</Button>
         ) : (
           <div className="flex flex-col items-center">
             <Button onClick={handleLogin}>
-              Sign in <TwitterIcon className="w-5 h-5 ml-2 fill-white" />
+              Sign in <TwitterIcon className="ml-2 h-5 w-5 fill-white" />
             </Button>
           </div>
         )}

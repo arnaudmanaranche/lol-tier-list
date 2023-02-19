@@ -14,7 +14,7 @@ export const Modal = ({ isOpen, toggleModal, title, children }: ModalProps): Rea
     <Transition show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 z-10 overflow-y-auto bg-opacity-75 bg-dark"
+        className="fixed inset-0 z-10 overflow-y-auto bg-dark bg-opacity-75"
         static
         open={isOpen}
         onClose={toggleModal}
@@ -43,7 +43,7 @@ export const Modal = ({ isOpen, toggleModal, title, children }: ModalProps): Rea
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-gunmetalDark rounded-2xl">
+            <div className="my-8 inline-block w-full max-w-lg transform overflow-hidden rounded-2xl bg-gunmetalDark p-6 text-left align-middle transition-all">
               <Dialog.Title as="h3" className="mb-6 text-lg font-medium leading-6 text-white">
                 {title}
               </Dialog.Title>

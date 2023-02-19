@@ -8,7 +8,7 @@ import { legend } from './RankingLegend.helper'
 // This component is hidden on small device. Need to think how we can improve mobile rendering.
 export const RankingLegend = () => {
   return (
-    <div className="fixed bottom-10 right-10 bg-charcoal rounded-full p-2 z-10 hidden md:flex">
+    <div className="fixed bottom-10 right-10 z-10 hidden rounded-full bg-charcoal p-2 md:flex">
       <Popover className="relative z-50">
         <Popover.Button as={Fragment}>
           <LightBulbIcon
@@ -17,12 +17,12 @@ export const RankingLegend = () => {
           />
         </Popover.Button>
         <Popover.Overlay className="fixed inset-0 bg-dark opacity-50" />
-        <Popover.Panel className="absolute bottom-20 right-0 bg-white min-w-[400px] rounded-md">
+        <Popover.Panel className="absolute bottom-20 right-0 min-w-[400px] rounded-md bg-white">
           <div className="flex flex-col p-4">
             {legend.map(({ value, bgColor, description }) => (
               <div className="flex items-center" key={value}>
-                <span className={clsx('p-2 min-w-[50px] text-center', bgColor)}>{value}</span>
-                <p className="grow ml-2">{description}</p>
+                <span className={clsx('min-w-[50px] p-2 text-center', bgColor)}>{value}</span>
+                <p className="ml-2 grow">{description}</p>
               </div>
             ))}
           </div>

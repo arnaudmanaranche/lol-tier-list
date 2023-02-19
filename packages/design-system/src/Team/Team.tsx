@@ -20,7 +20,7 @@ export const Team = ({
 }: TeamProps): ReactElement => {
   return (
     <div className="bg-white">
-      <div className="flex items-center text-white p-2 bg-gunmetal border border-b-0 border-brightGray">
+      <div className="flex items-center border border-b-0 border-brightGray bg-gunmetal p-2 text-white">
         <Image
           src={logo}
           alt={`${name} team logo`}

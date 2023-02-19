@@ -76,7 +76,7 @@ const ViewRankingPage = ({
           }`}
         </Title>
       </PageHeaderWrapper>
-      <div className="grid gap-10 md:grid-cols-3 mx-auto w-full max-w-7xl px-4 md:px-6">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:grid-cols-3 md:px-6">
         {/* @ts-expect-error TODO: type Prisma.JsonValue */}
         {copyRanking.data.map(({ id: teamId, logo, name, players, logo_base64 }) => (
           <Team
@@ -94,7 +94,7 @@ const ViewRankingPage = ({
         ))}
       </div>
       {isEditMode ? (
-        <div className="flex justify-center m-6">
+        <div className="m-6 flex justify-center">
           <Button
             onClick={updateRanking}
           >{`Update my ${ranking.tournament.region} power ranking`}</Button>

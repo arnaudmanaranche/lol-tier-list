@@ -15,12 +15,12 @@ export const Tournament = ({
   return (
     <div
       className={clsx(
-        'flex flex-col items-center p-2 relative min-w-[200px] overflow-hidden bg-gunmetal rounded-sm border border-brightGray transition-colors',
+        'relative flex min-w-[200px] flex-col items-center overflow-hidden rounded-sm border border-brightGray bg-gunmetal p-2 transition-colors',
         !active ? 'cursor-not-allowed' : 'hover:border-white/20'
       )}
     >
       {!active ? (
-        <div className="absolute top-0 right-0 w-24 mt-4 -mr-5 pl-6 text-xs bg-brightGray text-white rotate-[45deg]">
+        <div className="absolute top-0 right-0 mt-4 -mr-5 w-24 rotate-[45deg] bg-brightGray pl-6 text-xs text-white">
           <span>Disabled</span>
         </div>
       ) : null}
@@ -33,7 +33,7 @@ export const Tournament = ({
         placeholder="blur"
         blurDataURL={logo_base64}
       />
-      <p className="capitalize text-white font-bold">{`${region} ${event} - ${year}`}</p>
+      <p className="font-bold capitalize text-white">{`${region} ${event} - ${year}`}</p>
     </div>
   )
 }

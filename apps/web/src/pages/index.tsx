@@ -12,7 +12,7 @@ import { parent, stat } from 'Utils/framerMotion'
 const HomePage = (): ReactElement => {
   return (
     <>
-      <div className="absolute inset-0 -top-[90px] -z-10 bgGradient opacity-20 blur-3xl" />
+      <div className="bgGradient absolute inset-0 -top-[90px] -z-10 opacity-20 blur-3xl" />
       <PageHeaderWrapper>
         <Title>
           The ultimate destination
@@ -24,25 +24,25 @@ const HomePage = (): ReactElement => {
             Dedicated platform to create and share your own rankings of yours favorites tournaments.
             Join now.
           </p>
-          <Link href={ROUTES.TOURNAMENTS} className="flex items-center w-fit">
+          <Link href={ROUTES.TOURNAMENTS} className="flex w-fit items-center">
             <span>See tournaments</span>
             <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5 text-white" />
           </Link>
         </div>
       </PageHeaderWrapper>
-      <div className="mx-auto max-w-7xl px-4 md:px-6 mt-20">
+      <div className="mx-auto mt-20 max-w-7xl px-4 md:px-6">
         <span className="rounded-full text-lg font-semibold text-white">Supported regions</span>
         <m.div
           variants={parent}
           initial="hidden"
           animate="show"
-          className="max-w-7xl pt-6 pb-20 grid lg:grid-cols-5 md:gap-8 grid-cols-2 gap-4"
+          className="grid max-w-7xl grid-cols-2 gap-4 pt-6 pb-20 md:gap-8 lg:grid-cols-5"
         >
           {SUPPORTED_REGIONS.map((region) => (
             <m.div
               variants={stat}
               key={region}
-              className="flex justify-center rounded-lg p-10 border-white/20 transition-colors border-[1px] backdrop-opacity-10 backdrop-invert bg-white/5"
+              className="flex justify-center rounded-lg border-[1px] border-white/20 bg-white/5 p-10 backdrop-invert backdrop-opacity-10 transition-colors"
               tabIndex={0}
             >
               <Image
@@ -55,8 +55,8 @@ const HomePage = (): ReactElement => {
           ))}
         </m.div>
       </div>
-      <div className="mx-auto max-w-7xl px-4 md:px-6 justify-center flex">
-        <div className="flex flex-col md:flex-row items-center text-white">
+      <div className="mx-auto flex max-w-7xl justify-center px-4 md:px-6">
+        <div className="flex flex-col items-center text-white md:flex-row">
           <p>Data provided by</p>
           <Link
             href="https://pandascore.co/"

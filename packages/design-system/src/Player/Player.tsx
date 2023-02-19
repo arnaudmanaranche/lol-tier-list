@@ -41,11 +41,11 @@ export const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactE
   return (
     <div className="flex items-center">
       <span className="pl-3 capitalize">{role}</span>
-      <span className="text-center grow">{name}</span>
+      <span className="grow text-center">{name}</span>
       {disabled ? (
         <span
           className={clsx(
-            'py-2 flex uppercase items-center justify-center h-full min-w-[60px]',
+            'flex h-full min-w-[60px] items-center justify-center py-2 uppercase',
             currentClassname ?? 'bg-white'
           )}
         >

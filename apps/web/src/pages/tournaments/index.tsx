@@ -27,7 +27,7 @@ const TournamentsListPage = ({
       variants={parent}
       initial="hidden"
       animate="show"
-      className="mx-auto w-full max-w-7xl px-4 md:px-6 mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+      className="mx-auto mt-10 grid w-full max-w-7xl grid-cols-1 gap-4 px-4 md:grid-cols-2 md:px-6 lg:grid-cols-4"
     >
       {tournaments?.map((tournament) => (
         <m.div variants={stat} key={tournament.pandascore_id}>
@@ -36,7 +36,7 @@ const TournamentsListPage = ({
               <Tournament {...tournament} />
             </Link>
           ) : (
-            <div className="opacity-50 cursor-not-allowed">
+            <div className="cursor-not-allowed opacity-50">
               <Tournament {...tournament} />
             </div>
           )}

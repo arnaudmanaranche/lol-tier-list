@@ -7,7 +7,7 @@ import { ROUTES } from 'Utils/constants'
 const Page404 = (): ReactElement => {
   return (
     <>
-      <div className="absolute inset-0 -top-[90px] -z-10 bgGradient opacity-20 blur-3xl" />
+      <div className="bgGradient absolute inset-0 -top-[90px] -z-10 opacity-20 blur-3xl" />
       <PageHeaderWrapper>
         <Title>Page not found</Title>
         <div className="mt-8 max-w-lg space-y-6 text-lg leading-[1.4] text-gray-300 md:max-w-xl lg:text-xl">
@@ -16,7 +16,7 @@ const Page404 = (): ReactElement => {
             or return home.
           </p>
         </div>
-        <div className="flex mt-10">
+        <div className="mt-10 flex">
           <Button to={ROUTES.HOME}>Return to home</Button>
         </div>
       </PageHeaderWrapper>
