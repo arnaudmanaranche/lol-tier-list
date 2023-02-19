@@ -1,3 +1,4 @@
 next.config.js
 dist
 .yarn
+jest.config.js
