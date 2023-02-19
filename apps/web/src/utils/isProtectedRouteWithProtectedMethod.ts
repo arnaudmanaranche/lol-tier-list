@@ -1,4 +1,4 @@
-export const isProtectedRouteWithProectedMethod = (pathname: string, method: string) => {
+export const isProtectedRouteWithProtectedMethod = (pathname: string, method: string) => {
   switch (true) {
     case pathname.startsWith('/api/users') && method === 'GET':
     case pathname.startsWith('/api/users') && method === 'DELETE':

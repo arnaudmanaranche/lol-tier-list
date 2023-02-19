@@ -1,6 +1,6 @@
-import { isProtectedRouteWithProectedMethod } from './isProtectedRouteWithProectedMethod'
+import { isProtectedRouteWithProtectedMethod } from './isProtectedRouteWithProtectedMethod'
 
-describe('isProtectedRouteWithProectedMethod', () => {
+describe('isProtectedRouteWithProtectedMethod', () => {
   it.each([
     [true, '/api/users', 'GET'],
     [true, '/api/users', 'DELETE'],
@@ -10,6 +10,6 @@ describe('isProtectedRouteWithProectedMethod', () => {
     [true, '/api/rankings', 'PATCH'],
     [false, '/api/rankings', 'GET']
   ])('should return %s for %s and %s', (expected, pathname, method) => {
-    expect(isProtectedRouteWithProectedMethod(pathname, method)).toEqual(expected)
+    expect(isProtectedRouteWithProtectedMethod(pathname, method)).toEqual(expected)
   })
 })
