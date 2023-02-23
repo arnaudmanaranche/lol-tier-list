@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 
 import type { RANKING_VALUES, TEAM } from '@lpr/types'
 
-import { Player } from '../Player'
+import { Player } from './Player'
 
 export interface TeamProps extends TEAM {
   onUpdate: (value: RANKING_VALUES, playerId: number) => void

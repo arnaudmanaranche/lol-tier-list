@@ -1,0 +1,45 @@
+{
+  "npm.packageManager": "yarn",
+  "typescript.tsc.autoDetect": "off",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/storybook-static": true,
+    "**/yarn-error.log": true,
+    "**/yarn.lock": true
+  },
+
+  // save config
+  "editor.formatOnSave": true,
+  "eslint.codeActionsOnSave.mode": "all",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": false
+  },
+
+  // eslint config
+  "eslint.workingDirectories": ["."],
+  "eslint.useESLintClass": true,
+  "eslint.options": {
+    "resolvePluginsRelativeTo": ".",
+    "reportUnusedDisableDirectives": "error"
+  },
+  "eslint.lintTask.enable": true,
+
+  // eslint & prettier formatter
+  "eslint.format.enable": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts, ${capture}.*.tsx, ${capture}.*.ts, ${capture}*.tsx, , ${capture}*.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "yarn.lock"
+  }
+}

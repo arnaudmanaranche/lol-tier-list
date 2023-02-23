@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react'
 import { userEvent, waitFor, within } from '@storybook/testing-library'
 import { useState } from 'react'
 
-import { Button } from '../Button'
+import { Button } from './Button'
 import { Modal } from './Modal'
 
 export default {

@@ -2,7 +2,7 @@ import { expect } from '@storybook/jest'
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
 import { userEvent, waitFor, within } from '@storybook/testing-library'
 
-import { RankingLegend } from './RankingLegend'
+import { RankingLegend } from '../RankingLegend'
 import { legend } from './RankingLegend.helper'
 
 export default {

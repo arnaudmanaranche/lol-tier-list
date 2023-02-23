@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react'
 
-export interface TitleProps {
+interface TitleProps {
   children: ReactNode
 }
 
