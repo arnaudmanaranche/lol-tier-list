@@ -16,12 +16,9 @@ export async function createRanking(
     }
   })
 
-  redisClient.set(
-    `ranking_${createdRanking.id}`,
-    JSON.stringify(createdRanking),
-    'EX',
-    ONE_YEAR_IN_SECONDS
-  )
+  await redisClient.set(`ranking_${createdRanking.id}`, JSON.stringify(createdRanking), {
+    ex: ONE_YEAR_IN_SECONDS
+  })
 
   return createdRanking
 }

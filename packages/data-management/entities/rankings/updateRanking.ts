@@ -13,12 +13,9 @@ export async function updateRanking(ranking: Ranking): Promise<Ranking> {
     }
   })
 
-  redisClient.set(
-    `ranking_${updatedRanking.id}`,
-    JSON.stringify(updatedRanking),
-    'EX',
-    ONE_YEAR_IN_SECONDS
-  )
+  await redisClient.set(`ranking_${updatedRanking.id}`, JSON.stringify(updatedRanking), {
+    ex: ONE_YEAR_IN_SECONDS
+  })
 
   return updatedRanking
 }

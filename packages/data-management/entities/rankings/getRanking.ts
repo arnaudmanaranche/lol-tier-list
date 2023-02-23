@@ -53,7 +53,9 @@ export async function getRanking(rankingId: string): Promise<RankingWithTourname
     })
 
     if (ranking) {
-      redisClient.set(`ranking_${rankingId}`, JSON.stringify(ranking), 'EX', ONE_YEAR_IN_SECONDS)
+      await redisClient.set(`ranking_${rankingId}`, JSON.stringify(ranking), {
+        ex: ONE_YEAR_IN_SECONDS
+      })
 
       return ranking
     }

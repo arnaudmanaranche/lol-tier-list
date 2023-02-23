@@ -5,7 +5,7 @@ import { ONE_YEAR_IN_SECONDS, redisClient } from 'Clients/redis'
 import type { TournamentWithoutTeams } from 'Entities/users'
 
 export async function getTournament(tournamentId: string): Promise<Tournament | null> {
-  const cachedData = await redisClient.get(`tournament_${tournamentId}`)
+  const cachedData = await redisClient.get<string>(`tournament_${tournamentId}`)
 
   if (cachedData) {
     return JSON.parse(cachedData)
@@ -17,12 +17,9 @@ export async function getTournament(tournamentId: string): Promise<Tournament | 
     })
 
     if (tournament) {
-      redisClient.set(
-        `tournament_${tournamentId}`,
-        JSON.stringify(tournament),
-        'EX',
-        ONE_YEAR_IN_SECONDS
-      )
+      await redisClient.set(`tournament_${tournamentId}`, JSON.stringify(tournament), {
+        ex: ONE_YEAR_IN_SECONDS
+      })
 
       return tournament
     }
@@ -34,7 +31,7 @@ export async function getTournament(tournamentId: string): Promise<Tournament | 
 export async function getTournamentWitoutTeams(
   tournamentId: string
 ): Promise<TournamentWithoutTeams | null> {
-  const cachedData = await redisClient.get(`tournament_${tournamentId}_withoutTeams`)
+  const cachedData = await redisClient.get<string>(`tournament_${tournamentId}_withoutTeams`)
 
   if (cachedData) {
     return JSON.parse(cachedData)
@@ -57,12 +54,9 @@ export async function getTournamentWitoutTeams(
     })
 
     if (tournament) {
-      redisClient.set(
-        `tournament_${tournamentId}_withoutTeams`,
-        JSON.stringify(tournament),
-        'EX',
-        ONE_YEAR_IN_SECONDS
-      )
+      await redisClient.set(`tournament_${tournamentId}_withoutTeams`, JSON.stringify(tournament), {
+        ex: ONE_YEAR_IN_SECONDS
+      })
 
       return tournament
     }

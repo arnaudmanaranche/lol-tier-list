@@ -22,7 +22,8 @@
         "NEXT_PUBLIC_SUPABASE_ANON_KEY",
         "OSANO_URL",
         "PANDASCORE_TOKEN",
-        "REDIS_URL",
+        "UPSTASH_REDIS_REST_URL",
+        "UPSTASH_REDIS_REST_TOKEN",
         "REVALIDATE_SECRET"
       ]
     },

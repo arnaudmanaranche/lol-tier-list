@@ -6,5 +6,5 @@ export async function deleteRanking(id: string): Promise<void> {
     where: { id }
   })
 
-  redisClient.del(`ranking_${ranking.id}`)
+  await redisClient.del(`ranking_${ranking.id}`)
 }
