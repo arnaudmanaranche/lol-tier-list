@@ -27,10 +27,14 @@ const Template: ComponentStory<typeof Modal> = () => {
         Open modal
       </Button>
       <Modal title="Modal title" isOpen={isModalOpen} toggleModal={toggleModal}>
-        Hello world
+        <p className="text-white">Hello world</p>
       </Modal>
-      {/* Useful for @storybook/testing-library  */}
-      <div id="headlessui-portal-root"></div>
+      {/* Workaround for https://github.com/tailwindlabs/headlessui/discussions/666 */}
+      <div id="headlessui-portal-root">
+        {/* It needs at least one child, so that HeadlessUI doesn't remove this portal root workaround
+        ( https://github.com/tailwindlabs/headlessui/blob/main/packages/@headlessui-react/src/components/portal/portal.tsx#L84 ) */}
+        <div />
+      </div>
     </>
   )
 }
