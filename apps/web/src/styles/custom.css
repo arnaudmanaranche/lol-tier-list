@@ -8,3 +8,10 @@
     radial-gradient(at 63% 81%, rgb(14, 116, 144) 0, transparent 21%),
     radial-gradient(at 47% 41%, rgb(214, 211, 209) 0, transparent 44%);
 }
+
+#__next {
+  position: relative;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+}

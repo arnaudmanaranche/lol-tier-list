@@ -21,6 +21,19 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans]
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: 'white',
+            h2: {
+              color: 'white'
+            },
+            p: {
+              color: 'white'
+            }
+          }
+        }
       }
     }
   },
