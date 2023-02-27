@@ -5,10 +5,10 @@ import { ONE_YEAR_IN_SECONDS, redisClient } from 'Clients/redis'
 import type { TournamentWithoutTeams } from 'Entities/users'
 
 export async function getTournament(tournamentId: string): Promise<Tournament | null> {
-  const cachedData = await redisClient.get<string>(`tournament_${tournamentId}`)
+  const cachedData = await redisClient.get<Tournament>(`tournament_${tournamentId}`)
 
   if (cachedData) {
-    return JSON.parse(cachedData)
+    return cachedData
   } else {
     const tournament = await prismaClient.tournament.findUnique({
       where: {
@@ -31,10 +31,12 @@ export async function getTournament(tournamentId: string): Promise<Tournament | 
 export async function getTournamentWitoutTeams(
   tournamentId: string
 ): Promise<TournamentWithoutTeams | null> {
-  const cachedData = await redisClient.get<string>(`tournament_${tournamentId}_withoutTeams`)
+  const cachedData = await redisClient.get<TournamentWithoutTeams>(
+    `tournament_${tournamentId}_withoutTeams`
+  )
 
   if (cachedData) {
-    return JSON.parse(cachedData)
+    return cachedData
   } else {
     const tournament = await prismaClient.tournament.findUnique({
       where: {

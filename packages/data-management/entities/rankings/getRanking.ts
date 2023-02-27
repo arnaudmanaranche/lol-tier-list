@@ -12,10 +12,10 @@ export interface RankingWithTournamentTeams extends RankingWithoutDates {
 }
 
 export async function getRanking(rankingId: string): Promise<RankingWithTournamentTeams | null> {
-  const cachedData = await redisClient.get(`ranking_${rankingId}`)
+  const cachedData = await redisClient.get<RankingWithTournamentTeams>(`ranking_${rankingId}`)
 
   if (cachedData) {
-    const cachedRanking = JSON.parse(cachedData)
+    const cachedRanking = cachedData
 
     // TODO: tournament name and logo are not cached, so we need to fetch them again.
     const tournament = await getTournamentWitoutTeams(cachedRanking.tournamentId)

@@ -5,10 +5,10 @@ import type { TournamentWithoutTeams } from 'Entities/users'
 const REDIS_CACHE_KEY = 'tournamentsList'
 
 export async function getTournaments(): Promise<TournamentWithoutTeams[]> {
-  const cachedData = await redisClient.get<string>(REDIS_CACHE_KEY)
+  const cachedData = await redisClient.get<TournamentWithoutTeams[]>(REDIS_CACHE_KEY)
 
   if (cachedData) {
-    return JSON.parse(cachedData)
+    return cachedData
   } else {
     const tournaments = await prismaClient.tournament.findMany({
       select: {
