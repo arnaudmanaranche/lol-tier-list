@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import Link from 'next/link'
 import type { ReactElement, ReactNode } from 'react'
 
@@ -6,9 +7,10 @@ export interface ButtonProps {
   onClick?: () => unknown
   href?: string
   to?: string
+  isDisabled?: boolean
 }
 
-export const Button = ({ children, onClick, href, to }: ButtonProps): ReactElement => {
+export const Button = ({ children, onClick, href, to, isDisabled }: ButtonProps): ReactElement => {
   const className =
     'flex items-center justify-center rounded-md border-[1px] border-brightGray bg-charcoal px-4 py-2 text-white backdrop-invert backdrop-opacity-10 transition-colors hover:border-white'
 
@@ -32,7 +34,15 @@ export const Button = ({ children, onClick, href, to }: ButtonProps): ReactEleme
     )
   } else {
     return (
-      <button onClick={onClick} className={className}>
+      <button
+        onClick={onClick}
+        className={clsx(
+          className,
+          isDisabled &&
+            'disabled:cursor-not-allowed disabled:border-transparent disabled:hover:border-transparent'
+        )}
+        disabled={isDisabled}
+      >
         {children}
       </button>
     )

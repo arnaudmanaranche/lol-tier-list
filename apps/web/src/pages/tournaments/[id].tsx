@@ -6,6 +6,7 @@ import Head from 'next/head'
 import Image from 'next/legacy/image'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import type { TournamentWithoutTeams } from '@lpr/data'
 import type { RANKING_VALUES, TEAM } from '@lpr/types'
@@ -16,6 +17,7 @@ import { useLogin } from 'Hooks/useLogin'
 import { apiInstance } from 'Utils/api'
 import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE } from 'Utils/constants'
+import { getShareableFacebookLink, getShareableTwitterLink } from 'Utils/getShareabaleLinks'
 
 const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactElement => {
   const { teams, id, logo, event, region, year, logo_base64 } = tournament
@@ -24,6 +26,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
   const user = useUser()
   const [isModalOpen, setModalOpen] = useState(false)
   const [rankingId, setRankingId] = useState('')
+  const [isRankingCreation, setIsRankingCreation] = useState(false)
   const [ranking, setRanking] = useState<TEAM[] | null>(null)
 
   const toggleModal = () => setModalOpen((value) => !value)
@@ -39,6 +42,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
   }, [teams, tournament.id])
 
   const handleCreateRanking = async () => {
+    setIsRankingCreation(true)
     try {
       const { data } = await apiInstance.post<Ranking>('/rankings', {
         ranking,
@@ -50,8 +54,9 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
       toggleModal()
       window.localStorage.removeItem(tournament.id)
     } catch (error) {
-      // TODO: display a notification
-      return error
+      toast.error('An error occured during the power ranking creation.')
+    } finally {
+      setIsRankingCreation(false)
     }
   }
 
@@ -114,7 +119,9 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
       </div>
       <div className="my-20 flex justify-center">
         {user?.id ? (
-          <Button onClick={handleCreateRanking}>Create my power ranking</Button>
+          <Button isDisabled={isRankingCreation} onClick={handleCreateRanking}>
+            Create my power ranking
+          </Button>
         ) : (
           <div className="flex flex-col items-center">
             <Button onClick={handleLogin}>
@@ -125,19 +132,11 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
       </div>
       <Modal title="Your power ranking was created" toggleModal={toggleModal} isOpen={isModalOpen}>
         <p className="mb-10 text-white">
-          Creating ranking is always exciting, but sharing it with others is even more fulfilling !
+          Creating ranking is always exciting, but sharing it with others is even more fulfilling!
         </p>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2 ">
-          <Button
-            href={`https://www.facebook.com/sharer/sharer.php?u=https://lol-power-ranking.app/rankings/${rankingId}`}
-          >
-            Share on Facebook
-          </Button>
-          <Button
-            href={`https://twitter.com/intent/tweet?url=https://lol-power-ranking.app/rankings/${rankingId}`}
-          >
-            Share on Twitter
-          </Button>
+          <Button href={getShareableFacebookLink(rankingId)}>Share on Facebook</Button>
+          <Button href={getShareableTwitterLink(rankingId)}>Share on Twitter</Button>
         </div>
       </Modal>
     </>

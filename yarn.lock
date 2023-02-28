@@ -20851,6 +20851,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sonner@npm:0.1.1":
+  version: 0.1.1
+  resolution: "sonner@npm:0.1.1"
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 57f84f94934322c851b2301b2ffea3b3c449c50fc5ad817f4711762b4d3c22ad94fd642ae471e9fa382f6d6cbce378e48dc10d246a0cc8d1c58d288664973df5
+  languageName: node
+  linkType: hard
+
 "sort-object-keys@npm:^1.1.3":
   version: 1.1.3
   resolution: "sort-object-keys@npm:1.1.3"
@@ -23134,6 +23143,7 @@ __metadata:
     next-sitemap: 3.1.52
     react: 18.2.0
     react-dom: 18.2.0
+    sonner: 0.1.1
     tailwind-config-lpr: 0.0.0
   languageName: unknown
   linkType: soft

@@ -9,6 +9,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
 import { useState } from 'react'
+import { Toaster } from 'sonner'
 
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
@@ -55,6 +56,7 @@ const App = ({
         <LazyMotion features={domAnimation}>
           <div className={`${inter.variable} font-sans`}>
             <Layout>
+              <Toaster richColors />
               <Component {...pageProps} />
             </Layout>
           </div>

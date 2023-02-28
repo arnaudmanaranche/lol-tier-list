@@ -5,6 +5,8 @@ import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/legacy/image'
 import type { ReactElement } from 'react'
+import { useState } from 'react'
+import { toast } from 'sonner'
 
 import type { RankingWithTournamentTeams } from '@lpr/data'
 import type { RANKING_VALUES } from '@lpr/types'
@@ -21,18 +23,22 @@ const ViewRankingPage = ({
   ranking: RankingWithTournamentTeams
   isEditMode: boolean
 }): ReactElement => {
+  const [isRankingCreation, setIsRankingCreation] = useState(false)
+
   const copyRanking = Object.assign({}, ranking)
 
   const updateRanking = async () => {
+    setIsRankingCreation(true)
     try {
-      const { data } = await apiInstance.patch<Ranking>(`/rankings/${copyRanking.id}`, {
+      await apiInstance.patch<Ranking>(`/rankings/${copyRanking.id}`, {
         ranking: copyRanking
       })
-      const updatedRanking = data
+      toast('Your power ranking was successfully updated.')
       CronitorTrack('UpdateRanking')
-      return updatedRanking
     } catch (error) {
-      return error
+      toast.error('An error occured during the power ranking update.')
+    } finally {
+      setIsRankingCreation(false)
     }
   }
 
@@ -40,6 +46,7 @@ const ViewRankingPage = ({
     // @ts-expect-error TODO: type Prisma.JsonValue
     const team = copyRanking.data.find((t) => t.id === teamId)
 
+    // @ts-expect-error TODO: type Prisma.JsonValue
     const player = team?.players.find((p) => p.id === playerId)
 
     if (player) {
@@ -94,8 +101,9 @@ const ViewRankingPage = ({
         ))}
       </div>
       {isEditMode ? (
-        <div className="m-6 flex justify-center">
+        <div className="my-20 flex justify-center">
           <Button
+            isDisabled={isRankingCreation}
             onClick={updateRanking}
           >{`Update my ${ranking.tournament.region} power ranking`}</Button>
         </div>
