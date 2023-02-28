@@ -4,7 +4,7 @@ import { getServerSideSitemapIndex } from 'next-sitemap'
 import { apiInstance } from 'Utils/api'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const urls = []
+  const urls: string[] = []
 
   const { data } = await apiInstance.get<{ id: string }[]>('/rankings')
 

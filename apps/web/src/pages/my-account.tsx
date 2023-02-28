@@ -37,7 +37,7 @@ const MyAccountPage = ({
     }
   }
 
-  const deleteRanking = async (rankingId) => {
+  const deleteRanking = async (rankingId: string) => {
     try {
       await apiInstance.delete(`/rankings/${rankingId}`)
       router.replace(router.asPath)

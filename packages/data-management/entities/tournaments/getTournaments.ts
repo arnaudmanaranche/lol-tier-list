@@ -24,7 +24,9 @@ export async function getTournaments(): Promise<TournamentWithoutTeams[]> {
       }
     })
 
-    await redisClient.set(REDIS_CACHE_KEY, JSON.stringify(tournaments), 'EX', ONE_YEAR_IN_SECONDS)
+    await redisClient.set(REDIS_CACHE_KEY, JSON.stringify(tournaments), {
+      ex: ONE_YEAR_IN_SECONDS
+    })
 
     return tournaments
   }
