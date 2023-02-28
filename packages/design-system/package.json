@@ -38,7 +38,7 @@
     "@storybook/test-runner": "0.9.4",
     "@storybook/testing-library": "0.0.13",
     "@storybook/theming": "6.5.16",
-    "chromatic": "6.17.0",
+    "chromatic": "6.17.1",
     "eslint-config-lpr": "0.0.0",
     "jest": "27.5.1",
     "next": "13.1.6",
