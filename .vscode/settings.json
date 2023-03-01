@@ -8,7 +8,10 @@
     "**/.yarn": true,
     "**/storybook-static": true,
     "**/yarn-error.log": true,
-    "**/yarn.lock": true
+    "**/yarn.lock": true,
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/.eslintcache": true
   },
 
   // save config
