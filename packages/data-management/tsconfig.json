@@ -26,5 +26,5 @@
   },
   "display": "Data Management",
   "exclude": ["dist", "build", "node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "types.d.ts"]
 }
