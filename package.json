@@ -8,11 +8,13 @@
   "scripts": {
     "build": "turbo run build && turbo run postbuild",
     "build-storybook": "turbo run build-storybook",
+    "changeset": "changeset",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test"
   },
   "devDependencies": {
+    "@changesets/cli": "2.26.0",
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
     "@types/tailwindcss": "3.0.11",
