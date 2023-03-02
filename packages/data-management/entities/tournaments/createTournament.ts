@@ -1,10 +1,10 @@
 import type { Tournament } from '@prisma/client'
-import type { PandaScoreTournament } from 'pandascore/types'
 import { getPlaiceholder } from 'plaiceholder'
 
 import type { PLAYER, TEAM } from '@lpr/types'
 
 import { prismaClient } from 'Clients/prisma'
+import type { PandaScoreTournament } from 'Pandascore/types'
 
 const LINEUP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
 
