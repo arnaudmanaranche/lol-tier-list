@@ -3662,6 +3662,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lpr/types@workspace:packages/types"
   dependencies:
+    eslint-config-lpr: 1.0.0
     tsup: 6.6.3
   languageName: unknown
   linkType: soft
