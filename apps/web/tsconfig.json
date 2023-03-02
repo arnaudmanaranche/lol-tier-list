@@ -24,6 +24,7 @@
       "Clients/*": ["../../packages/data-management/clients/*"],
       "Entities/*": ["../../packages/data-management/entities/*"],
       "Hooks/*": ["src/hooks/*"],
+      "Pandascore/*": ["../../packages/data-management/pandascore/*"],
       "Utils/*": ["src/utils/*"]
     }
   },
