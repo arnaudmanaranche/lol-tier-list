@@ -1,5 +1,5 @@
 import { m } from 'framer-motion'
-// import type { GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
@@ -7,12 +7,12 @@ import type { ReactElement } from 'react'
 import type { TournamentWithoutTeams } from '@lpr/data'
 import { PageHeaderWrapper, Title, Tournament } from '@lpr/ui'
 
-// import { apiInstance } from 'Utils/api'
+import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import { parent, stat } from 'Utils/framerMotion'
 
 const TournamentsListPage = ({
-  tournaments = []
+  tournaments
 }: {
   tournaments: TournamentWithoutTeams[]
 }): ReactElement => (
@@ -46,14 +46,14 @@ const TournamentsListPage = ({
   </>
 )
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const { data } = await apiInstance.get<TournamentWithoutTeams[]>('/tournaments')
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await apiInstance.get<TournamentWithoutTeams[]>('/tournaments')
 
-//   return {
-//     props: {
-//       tournaments: data
-//     }
-//   }
-// }
+  return {
+    props: {
+      tournaments: data
+    }
+  }
+}
 
 export default TournamentsListPage
