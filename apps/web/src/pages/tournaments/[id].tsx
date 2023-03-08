@@ -20,6 +20,7 @@ import { DEFAULT_TITLE } from 'Utils/constants'
 import { getShareableFacebookLink, getShareableTwitterLink } from 'Utils/getShareabaleLinks'
 
 const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactElement => {
+  return null
   const { teams, id, logo, event, region, year, logo_base64 } = tournament
 
   const handleLogin = useLogin()
@@ -143,31 +144,31 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await apiInstance.get<TournamentWithoutTeams[]>('/tournaments')
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const { data } = await apiInstance.get<TournamentWithoutTeams[]>('/tournaments')
 
-  const paths = data.map(({ id }) => ({
-    params: { id }
-  }))
+//   const paths = data.map(({ id }) => ({
+//     params: { id }
+//   }))
 
-  return {
-    paths,
-    fallback: false
-  }
-}
+//   return {
+//     paths,
+//     fallback: false
+//   }
+// }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const {
-    params: { id }
-  } = context
+// export const getStaticProps: GetStaticProps = async (context) => {
+//   const {
+//     params: { id }
+//   } = context
 
-  const { data: tournament } = await apiInstance.get<Tournament>(`/tournaments/${id}`)
+//   const { data: tournament } = await apiInstance.get<Tournament>(`/tournaments/${id}`)
 
-  return {
-    props: {
-      tournament
-    }
-  }
-}
+//   return {
+//     props: {
+//       tournament
+//     }
+//   }
+// }
 
 export default CreateRankingPage
