@@ -2498,22 +2498,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cronitorio/cronitor-rum-js@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@cronitorio/cronitor-rum-js@npm:0.1.0"
-  checksum: f37bb0643c6cc3b17ef60398ec36a796c80e265fe501ca9d52addddaa5eb04d591a05ad32b2bc62840e4851e9ac12c65a985ec9f5386245507dd17107ba37e76
+"@cronitorio/cronitor-rum-js@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@cronitorio/cronitor-rum-js@npm:0.2.0"
+  checksum: 34f137cb6cb995cf5a39e436fcd6773d73bf0f04c2f30feb2ea6ebb67d19bb31f5db4f5c65119b9671b4904045ab50970d0ac17619208f2460258a7b8643521d
   languageName: node
   linkType: hard
 
-"@cronitorio/cronitor-rum-nextjs@npm:0.2.0":
-  version: 0.2.0
-  resolution: "@cronitorio/cronitor-rum-nextjs@npm:0.2.0"
+"@cronitorio/cronitor-rum-nextjs@npm:0.2.1":
+  version: 0.2.1
+  resolution: "@cronitorio/cronitor-rum-nextjs@npm:0.2.1"
   dependencies:
-    "@cronitorio/cronitor-rum-js": ^0.1.0
+    "@cronitorio/cronitor-rum-js": ^0.2.0
   peerDependencies:
     next: ^13
     react: ^18
-  checksum: 25b9370bd249e5cfd67bc468cd1c3e54ab9a166116db7b2e4c7e08a0aa023aef9e7cc749865b0d83f9516929297ceea9312a421d16a7b481a79ca72a86d55e9c
+  checksum: 127249f4da1413c0859f51a6715759ea0358b5239c3d4608e60432a7c2b4e684342fd7a6094cca6a653bae4568985f8209d200269cecf0f4b55eee627f550538
   languageName: node
   linkType: hard
 
@@ -23917,7 +23917,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:apps/web"
   dependencies:
-    "@cronitorio/cronitor-rum-nextjs": 0.2.0
+    "@cronitorio/cronitor-rum-nextjs": 0.2.1
     "@headlessui/react": 1.6.6
     "@heroicons/react": 2.0.15
     "@lpr/data": 1.0.0
