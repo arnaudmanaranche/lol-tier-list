@@ -18030,9 +18030,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:3.1.52":
-  version: 3.1.52
-  resolution: "next-sitemap@npm:3.1.52"
+"next-sitemap@npm:3.1.55":
+  version: 3.1.55
+  resolution: "next-sitemap@npm:3.1.55"
   dependencies:
     "@corex/deepmerge": ^4.0.29
     minimist: ^1.2.7
@@ -18042,7 +18042,7 @@ __metadata:
   bin:
     next-sitemap: bin/next-sitemap.mjs
     next-sitemap-cjs: bin/next-sitemap.cjs
-  checksum: e82ae8652f3cc9a66ae585eb059f00e15247dc1306344b8d1f53438b211e40b8744a64768d2c7bf88d167d791e0da40877ab2c4b6655e33a0d1cf918f3ac385b
+  checksum: 1c3a7686565203275cf3004d3ec7c8b487468454cf0ffd72a168ac395c740843daee5f670019bb14faa9055773ce6203ac52596d8cc7a48b1b12cfb1bad6a691
   languageName: node
   linkType: hard
 
@@ -23942,7 +23942,7 @@ __metadata:
     jest: 29.4.3
     jest-environment-jsdom: 29.4.3
     next: 13.1.6
-    next-sitemap: 3.1.52
+    next-sitemap: 3.1.55
     react: 18.2.0
     react-dom: 18.2.0
     sonner: 0.1.1

@@ -48,7 +48,7 @@
     "eslint-config-next": "13.1.6",
     "jest": "29.4.3",
     "jest-environment-jsdom": "29.4.3",
-    "next-sitemap": "3.1.52",
+    "next-sitemap": "3.1.55",
     "tailwind-config-lpr": "1.0.0"
   }
 }
