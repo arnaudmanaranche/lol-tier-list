@@ -43,7 +43,7 @@ export async function createTournament(data: TournamentData): Promise<Tournament
 
       const teamLogo = `https://${
         process.env.NEXT_PUBLIC_SUPABASE_ID
-      }.supabase.co/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${
+      }.supabase.co/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${tournamentYear}/${
         acronym ? acronym.toLowerCase() : ''.toLowerCase()
       }.png`
 
