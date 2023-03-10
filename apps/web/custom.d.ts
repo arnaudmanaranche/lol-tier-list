@@ -9,7 +9,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_SUPABASE_URL: string
     NEXT_PUBLIC_SUPABASE_ANON_KEY: string
     NEXT_PUBLIC_SUPABASE_TOKEN: string
-    OSANO_URL: string
     REVALIDATE_SECRET: string
   }
 }

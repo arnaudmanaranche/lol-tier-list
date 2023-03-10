@@ -4,6 +4,7 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/legacy/image'
+import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -23,6 +24,7 @@ const ViewRankingPage = ({
   ranking: RankingWithTournamentTeams
   isEditMode: boolean
 }): ReactElement => {
+  const router = useRouter()
   const [isRankingCreation, setIsRankingCreation] = useState(false)
 
   const copyRanking = Object.assign({}, ranking)
@@ -56,15 +58,35 @@ const ViewRankingPage = ({
     return
   }
 
+  console.log(router)
+
   return (
     <>
       <Head>
         <title>{`${ranking.tournament.region} - ${DEFAULT_TITLE}`}</title>
         <meta property="og:image" content={`${API_ENDPOINT}/og?id=${ranking.id}&entity=rankings`} />
+        <meta
+          property="og:title"
+          content={`${ranking.tournament.region} - ${ranking.tournament.event} - ${ranking.tournament.year}`}
+        />
+        <meta
+          property="og:description"
+          content={`Check my ${ranking.tournament.region} ${ranking.tournament.event} ${ranking.tournament.year} own power ranking`}
+        />
+        <meta name="twitter:site" content="@bearnais_volant" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:image:secure_url" content={ranking?.tournament?.logo} />
-        <meta property="og:image:width" content="200" />
-        <meta property="og:image:height" content="200" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="360" />
         <meta property="og:image:alt" content={`${ranking.tournament.region} logo`} />
+        <meta
+          name="description"
+          content={`Check my ${ranking.tournament.region} ${ranking.tournament.event} ${ranking.tournament.year} own power ranking`}
+        />
+        <meta
+          property="og:url"
+          content={`https://lol-power-ranking.vercel.app/rankings/${ranking.id}`}
+        />
       </Head>
       <RankingLegend />
       <PageHeaderWrapper>

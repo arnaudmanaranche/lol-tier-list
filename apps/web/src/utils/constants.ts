@@ -9,4 +9,3 @@ export const ROUTES = {
 export const SUPPORTED_REGIONS = ['lec', 'lcs', 'lck', 'lpl', 'lfl']
 
 export const DEFAULT_TITLE = 'LoL Power Ranking'
-export const DEFAULT_DESCRIPTION = 'Share easily your League of Legends power rankings'

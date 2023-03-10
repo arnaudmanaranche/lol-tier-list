@@ -5,9 +5,7 @@ class AppDocument extends Document {
     return (
       <Html lang="en" dir="ltr">
         <Head>
-          <meta charSet="utf-8" />
           <meta name="theme-color" content="#03acbf" />
-          <link rel="apple-touch-icon" href="" />
           <link
             rel="apple-touch-icon"
             sizes="152x152"
@@ -20,10 +18,7 @@ class AppDocument extends Document {
           />
           <meta property="fb:app_id" content="229332461869949" />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://lol-power-ranking.app" />
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:url" content="https://lol-power-ranking.app" />
-          <meta name="twitter:site" content="@a_manaranche" />
+          <meta name="twitter:site" content="@bearnais_volant" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
         <body className="bg-gunmetalDark antialiased">

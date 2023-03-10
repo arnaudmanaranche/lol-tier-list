@@ -86,10 +86,24 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
           property="og:image"
           content={`${API_ENDPOINT}/og?id=${tournament.id}&entity=tournaments`}
         />
+        <meta property="og:title" content={`${region} - ${event} - ${year}`} />
+        <meta
+          property="og:description"
+          content={`Create your ${region} ${event} ${year} own power ranking`}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:image:secure_url" content={logo} />
-        <meta property="og:image:width" content="200" />
-        <meta property="og:image:height" content="200" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="360" />
         <meta property="og:image:alt" content={`${region} logo`} />
+        <meta
+          name="description"
+          content={`Create your ${region} ${event} ${year} own power ranking`}
+        />
+        <meta
+          property="og:url"
+          content={`https://lol-power-ranking.vercel.app/tournaments/${tournament.id}`}
+        />
       </Head>
       <RankingLegend />
       <PageHeaderWrapper>

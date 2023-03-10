@@ -6,12 +6,8 @@ import type { Session } from '@supabase/auth-helpers-react'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import Script from 'next/script'
 import { useState } from 'react'
 import { Toaster } from 'sonner'
-
-import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from 'Utils/constants'
 
 import { Layout } from '../layout/Layout'
 
@@ -38,31 +34,19 @@ const App = ({
   const [supabaseClient] = useState(() => createBrowserSupabaseClient())
 
   return (
-    <>
-      <Head>
-        <title>{DEFAULT_TITLE}</title>
-        <meta name="description" content={DEFAULT_DESCRIPTION} />
-        <meta property="og:image" content="" key="og:image" />
-        <meta property="og:title" content={DEFAULT_TITLE} key="og:title" />
-        <meta property="og:description" content={DEFAULT_DESCRIPTION} key="og:description" />
-        <meta name="twitter:title" content={DEFAULT_TITLE} key="twitter:title" />
-        <meta name="twitter:description" content={DEFAULT_DESCRIPTION} key="twitter:description" />
-      </Head>
-      <Script src={process.env.OSANO_URL}></Script>
-      <SessionContextProvider
-        supabaseClient={supabaseClient}
-        initialSession={pageProps.initialSession}
-      >
-        <LazyMotion features={domAnimation}>
-          <div className={`${inter.variable} font-sans`}>
-            <Layout>
-              <Toaster richColors />
-              <Component {...pageProps} />
-            </Layout>
-          </div>
-        </LazyMotion>
-      </SessionContextProvider>
-    </>
+    <SessionContextProvider
+      supabaseClient={supabaseClient}
+      initialSession={pageProps.initialSession}
+    >
+      <LazyMotion features={domAnimation}>
+        <div className={`${inter.variable} font-sans`}>
+          <Layout>
+            <Toaster richColors />
+            <Component {...pageProps} />
+          </Layout>
+        </div>
+      </LazyMotion>
+    </SessionContextProvider>
   )
 }
 
