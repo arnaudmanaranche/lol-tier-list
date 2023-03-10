@@ -86,6 +86,10 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
           property="og:image"
           content={`${API_ENDPOINT}/og?id=${tournament.id}&entity=tournaments`}
         />
+        <meta
+          property="twitter:image"
+          content={`${API_ENDPOINT}/og?id=${tournament.id}&entity=tournaments`}
+        />
         <meta property="og:title" content={`${region} - ${event} - ${year}`} />
         <meta
           property="og:description"
