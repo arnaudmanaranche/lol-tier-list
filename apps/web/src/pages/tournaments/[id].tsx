@@ -14,7 +14,7 @@ import { Button, Modal, PageHeaderWrapper, RankingLegend, Team, Title } from '@l
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { useLogin } from 'Hooks/useLogin'
-import { apiInstance } from 'Utils/api'
+import { API_ENDPOINT, apiInstance } from 'Utils/api'
 import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import { getShareableFacebookLink, getShareableTwitterLink } from 'Utils/getShareabaleLinks'
@@ -82,7 +82,10 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
     <>
       <Head>
         <title>{`${region} - ${event} - ${year} - ${DEFAULT_TITLE}`}</title>
-        <meta property="og:image" content={logo} key="og:image" />
+        <meta
+          property="og:image"
+          content={`${API_ENDPOINT}/og?id=${tournament.id}&entity=tournaments`}
+        />
         <meta property="og:image:secure_url" content={logo} />
         <meta property="og:image:width" content="200" />
         <meta property="og:image:height" content="200" />

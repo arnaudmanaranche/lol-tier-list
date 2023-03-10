@@ -12,7 +12,7 @@ import type { RankingWithTournamentTeams } from '@lpr/data'
 import type { RANKING_VALUES } from '@lpr/types'
 import { Button, PageHeaderWrapper, RankingLegend, Team, Title } from '@lpr/ui'
 
-import { apiInstance } from 'Utils/api'
+import { API_ENDPOINT, apiInstance } from 'Utils/api'
 import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE } from 'Utils/constants'
 
@@ -60,7 +60,7 @@ const ViewRankingPage = ({
     <>
       <Head>
         <title>{`${ranking.tournament.region} - ${DEFAULT_TITLE}`}</title>
-        <meta property="og:image" content={ranking?.tournament?.logo} key="og:image" />
+        <meta property="og:image" content={`${API_ENDPOINT}/og?id=${ranking.id}&entity=rankings`} />
         <meta property="og:image:secure_url" content={ranking?.tournament?.logo} />
         <meta property="og:image:width" content="200" />
         <meta property="og:image:height" content="200" />
