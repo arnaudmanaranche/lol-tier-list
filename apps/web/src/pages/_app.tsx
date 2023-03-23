@@ -6,6 +6,8 @@ import type { Session } from '@supabase/auth-helpers-react'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
+import Script from 'next/script'
 import { useState } from 'react'
 import { Toaster } from 'sonner'
 
@@ -42,6 +44,7 @@ const App = ({
         <div className={`${inter.variable} font-sans`}>
           <Layout>
             <Toaster richColors />
+            <Script src="https://cmp.osano.com/169le9SWhqJ5CDSP/d125558d-b1ba-4e3b-a1f2-7fb2afc827d7/osano.js"></Script>
             <Component {...pageProps} />
           </Layout>
         </div>
