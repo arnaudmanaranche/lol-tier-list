@@ -1,10 +1,16 @@
+import Head from 'next/head'
 import type { ReactElement } from 'react'
 
 import { PageHeaderWrapper, Title } from '@lpr/ui'
 
+import { DEFAULT_TITLE } from 'Utils/constants'
+
 const PrivacyPage = (): ReactElement => {
   return (
     <>
+      <Head>
+        <title>{`Privacy - ${DEFAULT_TITLE}`}</title>
+      </Head>
       <PageHeaderWrapper>
         <Title>Privacy</Title>
         <div className="mt-8 max-w-lg space-y-6 text-lg leading-[1.4] text-white md:max-w-xl lg:text-xl">

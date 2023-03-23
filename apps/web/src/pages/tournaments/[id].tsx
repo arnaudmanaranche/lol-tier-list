@@ -81,7 +81,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
   return (
     <>
       <Head>
-        <title>{`${region} - ${event} - ${year} - ${DEFAULT_TITLE}`}</title>
+        <title>{`${region} ${capitalizeFirstLetter(event)} ${year} - ${DEFAULT_TITLE}`}</title>
         <meta
           property="og:image"
           content={`${API_ENDPOINT}/og?id=${tournament.id}&entity=tournaments`}

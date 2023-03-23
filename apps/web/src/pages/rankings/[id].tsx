@@ -63,7 +63,9 @@ const ViewRankingPage = ({
   return (
     <>
       <Head>
-        <title>{`${ranking.tournament.region} - ${DEFAULT_TITLE}`}</title>
+        <title>{`${ranking.tournament.region} ${capitalizeFirstLetter(ranking.tournament.event)} ${
+          ranking.tournament.year
+        } - ${DEFAULT_TITLE}`}</title>
         <meta property="og:image" content={`${API_ENDPOINT}/og?id=${ranking.id}&entity=rankings`} />
         <meta
           property="twitter:image"

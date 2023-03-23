@@ -1,17 +1,21 @@
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 import { m } from 'framer-motion'
+import Head from 'next/head'
 import Image from 'next/legacy/image'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
 
 import { PageHeaderWrapper, Title } from '@lpr/ui'
 
-import { ROUTES, SUPPORTED_REGIONS } from 'Utils/constants'
+import { DEFAULT_TITLE, ROUTES, SUPPORTED_REGIONS } from 'Utils/constants'
 import { parent, stat } from 'Utils/framerMotion'
 
 const HomePage = (): ReactElement => {
   return (
     <>
+      <Head>
+        <title>{`Home - ${DEFAULT_TITLE}`}</title>
+      </Head>
       <div className="bgGradient absolute inset-0 -top-[90px] -z-10 opacity-20 blur-3xl" />
       <PageHeaderWrapper>
         <Title>

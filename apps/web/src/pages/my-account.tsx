@@ -4,6 +4,7 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import type { User } from '@supabase/auth-helpers-react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import type { GetServerSideProps } from 'next'
+import Head from 'next/head'
 import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -15,7 +16,7 @@ import { Button, PageHeaderWrapper, Title } from '@lpr/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { apiInstance } from 'Utils/api'
-import { ROUTES } from 'Utils/constants'
+import { DEFAULT_TITLE, ROUTES } from 'Utils/constants'
 
 const MyAccountPage = ({
   user,
@@ -53,6 +54,9 @@ const MyAccountPage = ({
 
   return (
     <div>
+      <Head>
+        <title>{`My Account - ${DEFAULT_TITLE}`}</title>
+      </Head>
       <PageHeaderWrapper>
         <Title>My Account</Title>
       </PageHeaderWrapper>
