@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { createUser, deleteUser } from '@lpr/data'
 
-async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const userId = req.query.id as string
 
   switch (req.method) {
