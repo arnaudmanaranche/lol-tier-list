@@ -93,7 +93,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
         <meta property="og:title" content={`${region} - ${event} - ${year}`} />
         <meta
           property="og:description"
-          content={`Create your ${region} ${event} ${year} own power ranking`}
+          content={`Create your personal ${region} ${event} ${year} power ranking`}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:image:secure_url" content={logo} />
@@ -102,7 +102,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
         <meta property="og:image:alt" content={`${region} logo`} />
         <meta
           name="description"
-          content={`Create your ${region} ${event} ${year} own power ranking`}
+          content={`Create your personal ${region} ${event} ${year} power ranking`}
         />
         <meta
           property="og:url"
