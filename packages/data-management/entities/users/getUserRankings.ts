@@ -1,8 +1,8 @@
-import type { Ranking, Tournament } from '@prisma/client'
+import type { Ranking } from '@prisma/client'
 
 import { prismaClient } from 'Clients/prisma'
+import type { TournamentWithoutTeams } from 'Entities/tournaments/getTournaments'
 
-export type TournamentWithoutTeams = Omit<Tournament, 'teams'>
 type RankingWithoutTournament = Omit<Ranking, 'tournament' | 'data' | 'createdAt' | 'updatedAt'>
 
 export interface UserRankings extends RankingWithoutTournament {
