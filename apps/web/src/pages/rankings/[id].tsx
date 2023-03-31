@@ -4,7 +4,6 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/legacy/image'
-import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -24,7 +23,6 @@ const ViewRankingPage = ({
   ranking: RankingWithTournamentTeams
   isEditMode: boolean
 }): ReactElement => {
-  const router = useRouter()
   const [isRankingCreation, setIsRankingCreation] = useState(false)
 
   const copyRanking = Object.assign({}, ranking)
