@@ -58,8 +58,6 @@ const ViewRankingPage = ({
     return
   }
 
-  console.log(router)
-
   return (
     <>
       <Head>
