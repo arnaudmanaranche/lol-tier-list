@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { Fragment } from 'react'
+import { toast } from 'sonner'
 
 import type { UserRankings } from '@lpr/data'
 import { Button, PageHeaderWrapper, Title } from '@lpr/ui'
@@ -42,6 +43,7 @@ const MyAccountPage = ({
     try {
       await apiInstance.delete(`/rankings/${rankingId}`)
       router.replace(router.asPath)
+      toast.success('Your ranking was successfuly deleted.')
     } catch (error) {
       return error
     }

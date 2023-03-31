@@ -35,7 +35,7 @@ const ViewRankingPage = ({
       await apiInstance.patch<Ranking>(`/rankings/${copyRanking.id}`, {
         ranking: copyRanking
       })
-      toast('Your power ranking was successfully updated.')
+      toast.success('Your power ranking was successfully updated.')
       CronitorTrack('UpdateRanking')
     } catch (error) {
       toast.error('An error occured during the power ranking update.')
