@@ -104,7 +104,7 @@ const TournamentsListPage = ({
         <Section>
           <Section.Title>Past tournaments</Section.Title>
           {pastTournamentsDataIsLoading ? (
-            'Loading'
+            <p className="text-center text-white">Loading</p>
           ) : (
             <>
               <m.div
