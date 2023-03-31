@@ -2,7 +2,7 @@ import type { Tournament } from '@prisma/client'
 
 import { prismaClient } from 'Clients/prisma'
 import { ONE_YEAR_IN_SECONDS, redisClient } from 'Clients/redis'
-import type { TournamentWithoutTeams } from 'Entities/users'
+import type { TournamentWithoutTeams } from 'Entities/tournaments'
 
 export async function getTournament(tournamentId: string): Promise<Tournament | null> {
   const cachedData = await redisClient.get<Tournament>(`tournament_${tournamentId}`)

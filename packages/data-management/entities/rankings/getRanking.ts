@@ -2,8 +2,8 @@ import type { Ranking } from '@prisma/client'
 
 import { prismaClient } from 'Clients/prisma'
 import { ONE_YEAR_IN_SECONDS, redisClient } from 'Clients/redis'
+import type { TournamentWithoutTeams } from 'Entities/tournaments'
 import { getTournamentWitoutTeams } from 'Entities/tournaments'
-import type { TournamentWithoutTeams } from 'Entities/users'
 
 type RankingWithoutDates = Omit<Ranking, 'createdAt' | 'updatedAt'>
 
