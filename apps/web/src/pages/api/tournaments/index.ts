@@ -6,7 +6,13 @@ import { createTournament, getTournaments } from '@lpr/data'
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case 'GET':
-      const tournaments = await getTournaments()
+      const { take, cursor, showPastTournaments } = req.query
+
+      const tournaments = await getTournaments(
+        Number(take),
+        cursor as string,
+        Boolean(showPastTournaments) ?? false
+      )
       res.json(tournaments)
       break
     case 'POST':
