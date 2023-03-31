@@ -104,7 +104,11 @@ const TournamentsListPage = ({
         <Section>
           <Section.Title>Past tournaments</Section.Title>
           {pastTournamentsDataIsLoading ? (
-            <p className="text-center text-white">Loading</p>
+            <div className="grid animate-pulse grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-6 lg:grid-cols-4">
+              {[0, 1, 2, 3, 4, 5, 6, 7].map((arr) => (
+                <div className="h-[90px] min-w-[200px] rounded-sm bg-gunmetal p-2" key={arr} />
+              ))}
+            </div>
           ) : (
             <>
               <m.div
