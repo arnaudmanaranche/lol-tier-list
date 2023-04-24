@@ -2810,12 +2810,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroicons/react@npm:2.0.15":
-  version: 2.0.15
-  resolution: "@heroicons/react@npm:2.0.15"
+"@heroicons/react@npm:2.0.17":
+  version: 2.0.17
+  resolution: "@heroicons/react@npm:2.0.17"
   peerDependencies:
     react: ">= 16"
-  checksum: 11ec68629e73cb8ffe893090594ca5c02f4369dd964f1c95445bd83769d45df4df85cd12b021519c2bd14fdb38e3ce2ac6f2752e7c6dd578c26dc0ec75a5a35a
+  checksum: 31677c9b95de4ea92efa205c7a803c33003d3203b0cebf9ca74522485e5351caff7070cbd898885bf050f181682cab8d4815cbef0e7624c56d3312cdf50d2cb9
   languageName: node
   linkType: hard
 
@@ -3673,7 +3673,7 @@ __metadata:
   dependencies:
     "@babel/core": 7.20.12
     "@headlessui/react": 1.6.6
-    "@heroicons/react": 2.0.15
+    "@heroicons/react": 2.0.17
     "@lpr/data": 1.0.0
     "@lpr/types": 1.0.0
     "@storybook/addon-actions": 6.5.16
@@ -24156,7 +24156,7 @@ __metadata:
   dependencies:
     "@cronitorio/cronitor-rum-nextjs": 0.2.1
     "@headlessui/react": 1.6.6
-    "@heroicons/react": 2.0.15
+    "@heroicons/react": 2.0.17
     "@lpr/data": 1.0.0
     "@lpr/types": 1.0.0
     "@lpr/ui": 1.0.0
