@@ -35,5 +35,9 @@ export async function createTournament(data: TournamentData): Promise<Tournament
     }
   })
 
+  await fetch(
+    `https://lol-power-ranking.vercel.app/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=tournaments`
+  )
+
   return tournament
 }
