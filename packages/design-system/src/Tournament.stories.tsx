@@ -18,8 +18,7 @@ Default.args = {
   event: 'summer',
   active: true,
   logo_base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
-  year: new Date().getFullYear(),
-  pandascore_id: 1
+  year: new Date().getFullYear()
 }
 
 export const Disabled = Template.bind({})
@@ -30,6 +29,5 @@ Disabled.args = {
   event: 'summer',
   active: false,
   logo_base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
-  year: new Date().getFullYear(),
-  pandascore_id: 1
+  year: new Date().getFullYear()
 }

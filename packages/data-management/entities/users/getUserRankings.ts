@@ -25,7 +25,6 @@ export async function getUserRankings(userId: string): Promise<UserRankings[]> {
           id: true,
           event: true,
           region: true,
-          pandascore_id: true,
           active: true,
           logo: true,
           logo_base64: true,

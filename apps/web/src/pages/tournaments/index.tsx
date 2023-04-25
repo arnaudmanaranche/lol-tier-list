@@ -80,7 +80,7 @@ const TournamentsListPage = ({
               className="grid grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-6 lg:grid-cols-4"
             >
               {upcomingTournaments.map((tournament) => (
-                <m.div variants={stat} key={tournament.pandascore_id}>
+                <m.div variants={stat} key={tournament.id}>
                   {tournament.active ? (
                     <Link href={`/tournaments/${tournament.id}`} prefetch={false}>
                       <Tournament {...tournament} />
@@ -119,7 +119,7 @@ const TournamentsListPage = ({
               >
                 {pastTournamentsData?.map((tournaments) => {
                   return tournaments.map((tournament) => (
-                    <m.div variants={stat} key={tournament.pandascore_id}>
+                    <m.div variants={stat} key={tournament.id}>
                       <div className="cursor-not-allowed opacity-50">
                         <Tournament {...tournament} />
                       </div>

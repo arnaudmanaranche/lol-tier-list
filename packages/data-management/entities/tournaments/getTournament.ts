@@ -47,7 +47,6 @@ export async function getTournamentWitoutTeams(
         id: true,
         region: true,
         event: true,
-        pandascore_id: true,
         active: true,
         logo: true,
         logo_base64: true,

@@ -41,7 +41,6 @@ export async function getRanking(rankingId: string): Promise<RankingWithTourname
             id: true,
             event: true,
             region: true,
-            pandascore_id: true,
             active: true,
             logo: true,
             logo_base64: true,

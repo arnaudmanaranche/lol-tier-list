@@ -18,7 +18,6 @@ export async function fetchPandascoreTournamentsRosters(
       `https://api.pandascore.co/tournaments/${tournamentId}/rosters?token=${process.env.PANDASCORE_TOKEN}`
     ).then((response) => response.json())
 
-    const teamPromises = []
     for (const {
       acronym,
       id,
@@ -50,8 +49,6 @@ export async function fetchPandascoreTournamentsRosters(
         logo_base64: base64
       })
     }
-
-    await Promise.all(teamPromises)
   })
 
   await Promise.all(rosterPromises)

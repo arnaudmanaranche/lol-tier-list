@@ -8,16 +8,15 @@ datasource db {
 }
 
 model Tournament {
-  id            String    @id @default(uuid())
-  event         String
-  region        String
-  pandascore_id Int
-  teams         Json
-  active        Boolean   @default(true)
-  logo          String
-  logo_base64   String
-  year          Int
-  Ranking       Ranking[]
+  id          String    @id @default(uuid())
+  event       String
+  region      String
+  teams       Json
+  active      Boolean   @default(true)
+  logo        String
+  logo_base64 String
+  year        Int
+  Ranking     Ranking[]
 }
 
 model Ranking {

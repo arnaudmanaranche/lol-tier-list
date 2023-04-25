@@ -27,8 +27,6 @@ export async function createTournament(data: TournamentData): Promise<Tournament
     data: {
       event: tournamentEvent,
       region: tournamentRegion,
-      // To be removed
-      pandascore_id: 0,
       // @ts-expect-error TODO: type Prisma.JsonValue
       teams: organizedTeams,
       logo: tournamentLogo,

@@ -17,7 +17,6 @@ export async function getTournaments(
       teams: false,
       id: true,
       event: true,
-      pandascore_id: true,
       active: true,
       region: true,
       logo: true,
