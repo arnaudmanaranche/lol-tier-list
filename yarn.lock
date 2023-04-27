@@ -17338,7 +17338,6 @@ __metadata:
     prettier: 2.8.8
     prettier-plugin-packagejson: 2.4.3
     prettier-plugin-tailwindcss: 0.2.7
-    swr: 2.1.1
     tailwindcss: 3.2.7
     turbo: 1.7.4
     typescript: 4.9.5
@@ -24204,6 +24203,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     sonner: 0.1.1
+    swr: 2.1.1
     tailwind-config-lpr: 1.0.0
   languageName: unknown
   linkType: soft

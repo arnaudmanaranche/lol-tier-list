@@ -13,9 +13,6 @@
     "test": "turbo run test",
     "web": "turbo run dev --filter=web"
   },
-  "dependencies": {
-    "swr": "2.1.1"
-  },
   "devDependencies": {
     "@changesets/cli": "2.26.1",
     "@types/node": "18.13.0",
