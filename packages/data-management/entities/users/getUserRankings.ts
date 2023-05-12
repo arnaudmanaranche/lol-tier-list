@@ -3,7 +3,10 @@ import type { Ranking } from '@prisma/client'
 import { prismaClient } from 'Clients/prisma'
 import type { TournamentWithoutTeams } from 'Entities/tournaments/getTournaments'
 
-type RankingWithoutTournament = Omit<Ranking, 'tournament' | 'data' | 'createdAt' | 'updatedAt'>
+type RankingWithoutTournament = Omit<
+  Ranking,
+  'tournament' | 'data' | 'createdAt' | 'updatedAt' | 'teamValue'
+>
 
 export interface UserRankings extends RankingWithoutTournament {
   tournament: TournamentWithoutTeams
@@ -30,7 +33,8 @@ export async function getUserRankings(userId: string): Promise<UserRankings[]> {
           logo_base64: true,
           year: true
         }
-      }
+      },
+      teamValue: false
     }
   })
 

@@ -60,15 +60,21 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
     }
   }
 
-  const handleChangePlayerValue = (value: RANKING_VALUES, playerId: number, teamId: number) => {
-    const team = ranking.find(({ id }) => id === teamId)
+  const handleUpdateValue = (value: RANKING_VALUES, teamId: number, playerId?: number) => {
+    if (playerId) {
+      const team = ranking.find(({ id }) => id === teamId)
 
-    if (team) {
-      const player = team.players.find(({ id }) => id === playerId)
+      if (team) {
+        const player = team.players.find(({ id }) => id === playerId)
 
-      if (player) {
-        player.value = value
+        if (player) {
+          player.value = value
+        }
       }
+    } else {
+      const team = ranking.find(({ id }) => id === teamId)
+
+      team.teamValue = value
     }
 
     const hasUnsavedRanking = window.localStorage.getItem(rankingId)
@@ -133,7 +139,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
             logo_base64={logo_base64}
             players={players}
             onUpdate={(value, playerId) => {
-              handleChangePlayerValue(value, playerId, teamId)
+              handleUpdateValue(value, teamId, playerId)
             }}
           />
         ))}

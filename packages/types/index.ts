@@ -21,4 +21,5 @@ export interface TEAM {
   logo_base64: string
   name: string
   players: PLAYER[]
+  teamValue?: RANKING_VALUES
 }

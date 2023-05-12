@@ -109,20 +109,24 @@ const ViewRankingPage = ({
       </PageHeaderWrapper>
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:grid-cols-3 md:px-6">
         {/* @ts-expect-error TODO: type Prisma.JsonValue */}
-        {copyRanking.data.map(({ id: teamId, logo, name, players, logo_base64 }) => (
-          <Team
-            onUpdate={(value, playerId) => {
-              onUpdate(value, playerId, teamId)
-            }}
-            key={teamId}
-            id={teamId}
-            logo={logo}
-            logo_base64={logo_base64}
-            disabled={!isEditMode}
-            name={name}
-            players={players}
-          />
-        ))}
+        {copyRanking.data.map(
+          // @ts-expect-error TODO: type Prisma.JsonValue
+          ({ id: teamId, logo, name, players, logo_base64, value: teamValue }) => (
+            <Team
+              onUpdate={(value, playerId) => {
+                onUpdate(value, playerId, teamId)
+              }}
+              key={teamId}
+              id={teamId}
+              logo={logo}
+              logo_base64={logo_base64}
+              disabled={!isEditMode}
+              name={name}
+              players={players}
+              teamValue={teamValue}
+            />
+          )
+        )}
       </div>
       {isEditMode ? (
         <div className="my-20 flex justify-center">

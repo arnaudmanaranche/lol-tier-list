@@ -3,11 +3,12 @@ import type { ReactElement } from 'react'
 
 import type { RANKING_VALUES, TEAM } from '@lpr/types'
 
-import { Player } from './Player'
+import { Select } from './Select'
 
 export interface TeamProps extends TEAM {
-  onUpdate: (value: RANKING_VALUES, playerId: number) => void
+  onUpdate: (value: RANKING_VALUES, playerId?: number) => void
   disabled: boolean
+  teamValue?: RANKING_VALUES
 }
 
 export const Team = ({
@@ -16,7 +17,9 @@ export const Team = ({
   name,
   players,
   onUpdate,
-  disabled
+  disabled,
+  teamValue,
+  id
 }: TeamProps): ReactElement => {
   return (
     <div className="bg-white">
@@ -33,11 +36,11 @@ export const Team = ({
         <p className="m-2 font-bold">{name}</p>
       </div>
       {players.map(({ name: playerName, role, id: playerId, value }) => (
-        <Player
+        <Select
           disabled={disabled}
+          value={value}
           name={playerName}
           role={role}
-          value={value}
           key={playerId}
           id={playerId}
           onUpdate={(value) => {
@@ -45,6 +48,14 @@ export const Team = ({
           }}
         />
       ))}
+      <Select
+        disabled={disabled}
+        id={id}
+        value={teamValue}
+        onUpdate={(value) => {
+          onUpdate(value)
+        }}
+      />
     </div>
   )
 }

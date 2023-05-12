@@ -2,15 +2,18 @@ import clsx from 'clsx'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 
-import type { PLAYER } from '@lpr/types'
 import { RANKING_VALUES } from '@lpr/types'
 
-export interface Props extends PLAYER {
-  onUpdate: (value: RANKING_VALUES) => void
+export interface Props {
+  id: number
+  value?: RANKING_VALUES
   disabled: boolean
+  name?: string
+  role?: string
+  onUpdate: (value: RANKING_VALUES) => void
 }
 
-export const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactElement => {
+export const Select = ({ value, onUpdate, disabled, id, name, role }: Props): ReactElement => {
   const [currentValue, setValue] = useState(value)
 
   let currentClassname = ''
@@ -39,9 +42,15 @@ export const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactE
   }
 
   return (
-    <div className="flex items-center">
-      <span className="pl-3 capitalize">{role}</span>
-      <span className="grow text-center">{name}</span>
+    <div className={clsx('flex items-center', !role && !name && 'border-t-[1px]')}>
+      {name && role ? (
+        <>
+          <span className="pl-3 capitalize">{role}</span>
+          <span className="grow text-center">{name}</span>
+        </>
+      ) : (
+        <div className="flex-1 pl-3 text-center">Team rank</div>
+      )}
       {disabled ? (
         <span
           className={clsx(
@@ -53,7 +62,7 @@ export const Player = ({ name, role, value, onUpdate, disabled }: Props): ReactE
         </span>
       ) : (
         <select
-          data-testid={`${name}_value`}
+          data-testid={`${id}_value`}
           disabled={disabled}
           className={clsx(
             'h-[40px] min-w-[60px] text-center outline-none',

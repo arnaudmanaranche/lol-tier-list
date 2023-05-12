@@ -26,6 +26,7 @@ model Ranking {
   updatedAt    DateTime   @updatedAt @map("updated_at")
   tournamentId String
   userId       String
+  teamValue    String     @default("")
   tournament   Tournament @relation(fields: [tournamentId], references: [id])
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

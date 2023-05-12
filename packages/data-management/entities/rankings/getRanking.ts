@@ -47,6 +47,7 @@ export async function getRanking(rankingId: string): Promise<RankingWithTourname
             year: true
           }
         },
+        teamValue: true,
         userId: true
       }
     })

@@ -8,65 +8,61 @@ import { Team } from './Team'
 export default {
   title: 'Components/Team',
   component: Team,
-  argTypes: {}
+  args: {
+    base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
+    logo: 'https://fakeimg.pl/440x320/282828/eae0d0/',
+    name: 'Team Name',
+    players: [
+      {
+        id: 1,
+        name: 'Zeus',
+        role: 'top'
+      },
+      {
+        id: 2,
+        name: 'Jankos',
+        role: 'jun'
+      },
+      {
+        id: 3,
+        name: 'Betsy',
+        role: 'mid'
+      },
+      {
+        id: 4,
+        name: 'Rekkles',
+        role: 'adc'
+      },
+      {
+        id: 5,
+        name: 'LIMIT',
+        role: 'sup'
+      }
+    ],
+    onUpdate: () => null
+  }
 } as ComponentMeta<typeof Team>
 
 const Template: ComponentStory<typeof Team> = (args) => <Team {...args} />
 
-const args = {
-  base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
-  logo: 'https://fakeimg.pl/440x320/282828/eae0d0/',
-  name: 'Team Name',
-  players: [
-    {
-      id: 1,
-      name: 'Zeus',
-      role: 'top'
-    },
-    {
-      id: 2,
-      name: 'Jankos',
-      role: 'jun'
-    },
-    {
-      id: 3,
-      name: 'Betsy',
-      role: 'mid'
-    },
-    {
-      id: 4,
-      name: 'Rekkles',
-      role: 'adc'
-    },
-    {
-      id: 5,
-      name: 'LIMIT',
-      role: 'sup'
-    }
-  ],
-  onUpdate: () => null
-}
-
 export const Default = Template.bind({})
-Default.args = {
-  ...args
-}
-Default.play = async ({ canvasElement }) => {
+
+Default.play = async ({ canvasElement, args }) => {
+  const randomRankingValue = (index: number) =>
+    RANKING_VALUES[Object.keys(RANKING_VALUES)[index] as keyof typeof RANKING_VALUES]
+
   const players = args.players
 
   players.map(async (player, index) => {
-    const randomRankingValue =
-      RANKING_VALUES[Object.keys(RANKING_VALUES)[index] as keyof typeof RANKING_VALUES]
-
-    await userEvent.selectOptions(
-      await within(canvasElement).findByTestId(`${player.name}_value`),
-      [randomRankingValue]
-    )
+    await userEvent.selectOptions(await within(canvasElement).findByTestId(`${player.id}_value`), [
+      randomRankingValue(index)
+    ])
   })
+
+  await userEvent.selectOptions(await within(canvasElement).findByTestId(`${args.id}_value`), [
+    randomRankingValue(0)
+  ])
 }
 
-export const Disabled = Template.bind({})
-Disabled.args = {
-  ...args,
-  disabled: true
-}
+const TemplateDisable: ComponentStory<typeof Team> = (args) => <Team {...args} disabled />
+export const Disabled = TemplateDisable.bind({})

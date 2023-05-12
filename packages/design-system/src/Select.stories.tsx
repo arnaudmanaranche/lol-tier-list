@@ -3,15 +3,15 @@ import { userEvent, within } from '@storybook/testing-library'
 
 import { RANKING_VALUES } from '@lpr/types'
 
-import { Player } from './Player'
+import { Select } from './Select'
 
 export default {
-  title: 'Components/Player',
-  component: Player,
+  title: 'Components/Select',
+  component: Select,
   argTypes: {}
-} as ComponentMeta<typeof Player>
+} as ComponentMeta<typeof Select>
 
-const Template: ComponentStory<typeof Player> = (args) => <Player {...args} />
+const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />
 
 const args = {
   id: 1,
@@ -24,7 +24,7 @@ Default.args = {
   ...args
 }
 Default.play = async ({ canvasElement }) => {
-  await userEvent.selectOptions(await within(canvasElement).findByTestId(`${args.name}_value`), [
+  await userEvent.selectOptions(await within(canvasElement).findByTestId(`${args.id}_value`), [
     RANKING_VALUES.g
   ])
 }
