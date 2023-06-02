@@ -22,32 +22,34 @@ export const Team = ({
   id
 }: TeamProps): ReactElement => {
   return (
-    <div className="bg-white">
-      <div className="flex items-center border border-b-0 border-brightGray bg-gunmetal p-2 text-white">
-        <Image
-          src={logo}
-          alt={`${name} team logo`}
-          height={60}
-          width={60}
-          id={name}
-          placeholder="blur"
-          blurDataURL={logo_base64}
-        />
-        <p className="m-2 font-bold">{name}</p>
+    <div className="flex flex-col bg-white">
+      <div className="flex-1">
+        <div className="flex items-center border border-b-0 border-brightGray bg-gunmetal p-2 text-white">
+          <Image
+            src={logo}
+            alt={`${name} team logo`}
+            height={60}
+            width={60}
+            id={name}
+            placeholder="blur"
+            blurDataURL={logo_base64}
+          />
+          <p className="m-2 font-bold">{name}</p>
+        </div>
+        {players.map(({ name: playerName, role, id: playerId, value }) => (
+          <Select
+            disabled={disabled}
+            value={value}
+            name={playerName}
+            role={role}
+            key={playerId}
+            id={playerId}
+            onUpdate={(value) => {
+              onUpdate(value, playerId)
+            }}
+          />
+        ))}
       </div>
-      {players.map(({ name: playerName, role, id: playerId, value }) => (
-        <Select
-          disabled={disabled}
-          value={value}
-          name={playerName}
-          role={role}
-          key={playerId}
-          id={playerId}
-          onUpdate={(value) => {
-            onUpdate(value, playerId)
-          }}
-        />
-      ))}
       <Select
         disabled={disabled}
         id={id}
