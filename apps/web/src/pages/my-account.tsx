@@ -1,6 +1,6 @@
 import { Tab } from '@headlessui/react'
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs'
 import type { User } from '@supabase/auth-helpers-react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import type { GetServerSideProps } from 'next'
@@ -182,7 +182,7 @@ const MyAccountPage = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const supabase = createServerSupabaseClient(context)
+  const supabase = createPagesServerClient(context)
 
   const {
     data: { user }

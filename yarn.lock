@@ -5157,14 +5157,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/auth-helpers-nextjs@npm:0.5.4":
-  version: 0.5.4
-  resolution: "@supabase/auth-helpers-nextjs@npm:0.5.4"
+"@supabase/auth-helpers-nextjs@npm:0.7.0":
+  version: 0.7.0
+  resolution: "@supabase/auth-helpers-nextjs@npm:0.7.0"
   dependencies:
-    "@supabase/auth-helpers-shared": 0.2.4
+    "@supabase/auth-helpers-shared": 0.4.0
+    set-cookie-parser: ^2.6.0
   peerDependencies:
-    "@supabase/supabase-js": ^2.0.4
-  checksum: 8d5aca428f0c233affb5f9a8f63702675738e1c574044199c093816cbfa92329817458dabbead801c8ca8ef2bc17c3bf1f2c7c4cf86600ff8bc93fb1fc64b389
+    "@supabase/supabase-js": ^2.19.0
+  checksum: 1f1f0f0ab9afb818e68aca3aa54580e6ce07e3f9985c28a190e351f31585394c46d578cc4b5c164fdf73a8684e855fb78b7f5941f15c08f98cfd262d7ece1022
   languageName: node
   linkType: hard
 
@@ -5177,12 +5178,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/auth-helpers-shared@npm:0.2.4":
-  version: 0.2.4
-  resolution: "@supabase/auth-helpers-shared@npm:0.2.4"
+"@supabase/auth-helpers-shared@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@supabase/auth-helpers-shared@npm:0.4.0"
+  dependencies:
+    jose: ^4.14.3
   peerDependencies:
-    "@supabase/supabase-js": ^2.0.4
-  checksum: c655a90782e4d64344052ffd0db208562d132c90bc1ee00af7b7c1ef22f7186721792cd4148bb47a74b1afbb5a9e8b5f03deb970612505f5296a4126d64f99b7
+    "@supabase/supabase-js": ^2.19.0
+  checksum: c277287f74c3f5f4b15b02df02bffedb2ffb366d578688584119fe40646296b58ad9e9dac3539b8d187bb39d735714d8d13afa7e7a42c1131d1fe397f38ee8a8
   languageName: node
   linkType: hard
 
@@ -15793,6 +15796,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jose@npm:^4.14.3":
+  version: 4.14.4
+  resolution: "jose@npm:4.14.4"
+  checksum: 2d820a91a8fd97c05d8bc8eedc373b944a0cd7f5fe41063086da233d0473c73fb523912a9f026ea870782bd221f4a515f441a2d3af4de48c6f2c76dac5082377
+  languageName: node
+  linkType: hard
+
 "joycon@npm:^3.0.1":
   version: 3.1.1
   resolution: "joycon@npm:3.1.1"
@@ -20636,6 +20646,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"set-cookie-parser@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "set-cookie-parser@npm:2.6.0"
+  checksum: bf11ebc594c53d84588f1b4c04f1b8ce14e0498b1c011b3d76b5c6d5aac481bbc3f7c5260ec4ce99bdc1d9aed19f9fc315e73166a36ca74d0f12349a73f6bdc9
+  languageName: node
+  linkType: hard
+
 "set-value@npm:^2.0.0, set-value@npm:^2.0.1":
   version: 2.0.1
   resolution: "set-value@npm:2.0.1"
@@ -23343,7 +23360,7 @@ __metadata:
     "@sentry/nextjs": 7.37.1
     "@sentry/react": 7.37.1
     "@sentry/tracing": 7.37.1
-    "@supabase/auth-helpers-nextjs": 0.5.4
+    "@supabase/auth-helpers-nextjs": 0.7.0
     "@supabase/auth-helpers-react": 0.3.1
     "@supabase/supabase-js": 2.8.0
     "@svgr/webpack": 5.5.0

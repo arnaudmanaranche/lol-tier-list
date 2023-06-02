@@ -1,7 +1,7 @@
 import { useCronitor } from '@cronitorio/cronitor-rum-nextjs'
 import { Inter } from '@next/font/google'
 import { withProfiler } from '@sentry/react'
-import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { createPagesBrowserClient } from '@supabase/auth-helpers-nextjs'
 import type { Session } from '@supabase/auth-helpers-react'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { domAnimation, LazyMotion } from 'framer-motion'
@@ -32,7 +32,7 @@ const App = ({
     debug: process.env.NODE_ENV === 'development'
   })
 
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient())
+  const [supabaseClient] = useState(() => createPagesBrowserClient())
 
   return (
     <SessionContextProvider
