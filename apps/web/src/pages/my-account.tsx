@@ -35,7 +35,7 @@ const MyAccountPage = ({
       await apiInstance.delete(`/users/${user.id}`)
       router.push(ROUTES.HOME)
     } catch (error) {
-      return error
+      toast.error('An error occured during your account deletion. Please try again later.')
     }
   }
 
@@ -45,7 +45,7 @@ const MyAccountPage = ({
       router.replace(router.asPath)
       toast.success('Your ranking was successfuly deleted.')
     } catch (error) {
-      return error
+      toast.error('An error occured during your ranking deletion. Please try again later.')
     }
   }
 
@@ -137,7 +137,7 @@ const MyAccountPage = ({
           <Tab.Panel>
             <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
               <div className="rounded-md border border-brightGray bg-gunmetal text-white md:w-4/5">
-                <h2 className="p-5 text-xl">Login Connection</h2>
+                <h2 className="p-5 text-xl">Connection method</h2>
                 <div className="flex items-center p-4">
                   <TwitterIcon className="h-5 w-5 fill-white" />
                   <div className="flex flex-col justify-center p-4">
@@ -156,7 +156,7 @@ const MyAccountPage = ({
                 </div>
               </div>
             </div>
-            <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+            <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
               <div className="rounded-md border border-red-600 text-white md:w-4/5">
                 <h2 className="p-5 text-xl">Delete Personal Account</h2>
                 <p className="p-4 text-base">
