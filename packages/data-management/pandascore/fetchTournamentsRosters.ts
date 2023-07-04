@@ -4,7 +4,7 @@ import type { TEAM } from '@prodigy/types'
 
 import type { PandaScoreTournament } from './types'
 
-const LINEUP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
+const LINE_UP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
 
 export async function fetchPandascoreTournamentsRosters(
   tournamentIds: string[],
@@ -29,7 +29,7 @@ export async function fetchPandascoreTournamentsRosters(
         const { base64 } = await getPlaiceholder(teamLogo)
 
         const organizedPlayers = unorganizedPlayers
-          .sort((a, b) => LINEUP_ORDER.indexOf(a.role) - LINEUP_ORDER.indexOf(b.role))
+          .sort((a, b) => LINE_UP_ORDER.indexOf(a.role) - LINE_UP_ORDER.indexOf(b.role))
           .map(({ id, name, role }) => ({ id, name, role }))
 
         organizedTeams.push({
