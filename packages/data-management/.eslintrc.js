@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['lpr']
+  extends: ['prodigy']
 }

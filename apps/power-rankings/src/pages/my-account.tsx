@@ -12,8 +12,8 @@ import type { ReactElement } from 'react'
 import { Fragment } from 'react'
 import { toast } from 'sonner'
 
-import type { UserRankings } from '@lpr/data'
-import { Button, PageHeaderWrapper, Title } from '@lpr/ui'
+import type { UserRankings } from '@prodigy/data'
+import { Button, PageHeaderWrapper, Title } from '@prodigy/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { apiInstance } from 'Utils/api'

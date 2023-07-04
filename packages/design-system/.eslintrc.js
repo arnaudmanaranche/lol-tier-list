@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['lpr'],
+  extends: ['prodigy'],
   overrides: [
     {
       files: ['./src/**/*.stories.@(js|jsx|ts|tsx)']

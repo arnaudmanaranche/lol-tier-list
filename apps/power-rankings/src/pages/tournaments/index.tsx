@@ -7,8 +7,8 @@ import { useEffect } from 'react'
 import { toast } from 'sonner'
 import useSWRInfinite from 'swr/infinite'
 
-import type { TournamentWithoutTeams } from '@lpr/data'
-import { Button, PageHeaderWrapper, Title, Tournament } from '@lpr/ui'
+import type { TournamentWithoutTeams } from '@prodigy/data'
+import { Button, PageHeaderWrapper, Title, Tournament } from '@prodigy/ui'
 
 import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'

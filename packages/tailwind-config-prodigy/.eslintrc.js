@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['lpr'],
+  extends: ['prodigy'],
   rules: {
     '@typescript-eslint/no-var-requires': 0
   }

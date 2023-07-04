@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import Image from 'next/legacy/image'
 import type { ReactElement } from 'react'
 
-import type { TournamentWithoutTeams } from '@lpr/data'
+import type { TournamentWithoutTeams } from '@prodigy/data'
 
 export const Tournament = ({
   region,

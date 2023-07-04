@@ -1,7 +1,7 @@
 import { wrapApiHandlerWithSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { createUser, deleteUser } from '@lpr/data'
+import { createUser, deleteUser } from '@prodigy/data'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const userId = req.query.id as string

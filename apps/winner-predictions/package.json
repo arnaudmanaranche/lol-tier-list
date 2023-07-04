@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "2.0.17",
-    "@lpr/ui": "1.0.0",
+    "@prodigy/ui": "1.0.0",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -19,8 +19,8 @@
     "@next/env": "13.1.6",
     "@svgr/webpack": "5.5.0",
     "eslint": "8.34.0",
-    "eslint-config-lpr": "1.0.0",
     "eslint-config-next": "13.1.6",
-    "tailwind-config-lpr": "1.0.0"
+    "eslint-config-prodigy": "1.0.0",
+    "tailwind-config-prodigy": "1.0.0"
   }
 }

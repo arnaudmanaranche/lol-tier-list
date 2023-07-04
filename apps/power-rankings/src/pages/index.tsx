@@ -5,7 +5,7 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
 
-import { PageHeaderWrapper, Title } from '@lpr/ui'
+import { PageHeaderWrapper, Title } from '@prodigy/ui'
 
 import { DEFAULT_TITLE, ROUTES, SUPPORTED_REGIONS } from 'Utils/constants'
 import { parent, stat } from 'Utils/framerMotion'

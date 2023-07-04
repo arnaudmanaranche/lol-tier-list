@@ -8,9 +8,9 @@ import type { ReactElement } from 'react'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
-import type { RankingWithTournamentTeams } from '@lpr/data'
-import type { RANKING_VALUES } from '@lpr/types'
-import { Button, PageHeaderWrapper, RankingLegend, Team, Title } from '@lpr/ui'
+import type { RankingWithTournamentTeams } from '@prodigy/data'
+import type { RANKING_VALUES } from '@prodigy/types'
+import { Button, PageHeaderWrapper, RankingLegend, Team, Title } from '@prodigy/ui'
 
 import { API_ENDPOINT, apiInstance } from 'Utils/api'
 import { capitalizeFirstLetter } from 'Utils/capitalizeFirstLetter'

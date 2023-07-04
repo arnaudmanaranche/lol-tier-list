@@ -1,5 +1,5 @@
 {
-  "name": "@lpr/types",
+  "name": "@prodigy/types",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -7,7 +7,7 @@
     "build": "tsup"
   },
   "devDependencies": {
-    "eslint-config-lpr": "1.0.0",
+    "eslint-config-prodigy": "1.0.0",
     "tsup": "6.6.3"
   },
   "tsup": {

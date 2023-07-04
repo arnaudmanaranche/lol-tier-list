@@ -2,7 +2,7 @@
  * @type {import('next').NextConfig}
  */
 const moduleExports = {
-  transpilePackages: ['@lpr/ui'],
+  transpilePackages: ['@prodigy/ui'],
   reactStrictMode: true,
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({

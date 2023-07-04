@@ -1,5 +1,5 @@
 {
-  "name": "@lpr/data",
+  "name": "@prodigy/data",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -12,8 +12,8 @@
     "sharp": "0.30.7"
   },
   "devDependencies": {
-    "@lpr/types": "1.0.0",
-    "eslint-config-lpr": "1.0.0",
+    "@prodigy/types": "1.0.0",
+    "eslint-config-prodigy": "1.0.0",
     "prisma": "4.9.0"
   }
 }

@@ -5,7 +5,7 @@ const { withSentryConfig } = require('@sentry/nextjs')
  * @type {import('next').NextConfig}
  */
 const moduleExports = {
-  transpilePackages: ['@lpr/ui', '@lpr/types', '@lpr/data'],
+  transpilePackages: ['@prodigy/ui', '@prodigy/types', '@prodigy/data'],
   sentry: {
     hideSourceMaps: true
   },

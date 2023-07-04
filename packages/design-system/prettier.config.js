@@ -1,4 +1,4 @@
 module.exports = {
   ...require('../../.prettierrc.js'),
-  tailwindConfig: '../tailwind-config-lpr'
+  tailwindConfig: '../tailwind-config-prodigy'
 }

@@ -12,7 +12,7 @@ import { Toaster } from 'sonner'
 
 import { Layout } from '../layout/Layout'
 
-import '@lpr/ui/dist/output.css'
+import '@prodigy/ui/dist/output.css'
 import 'tailwindcss/utilities.css'
 import '../styles/custom.css'
 import '../styles/tailwind.css'

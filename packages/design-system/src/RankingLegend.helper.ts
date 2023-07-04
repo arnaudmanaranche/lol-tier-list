@@ -1,4 +1,4 @@
-import { RANKING_VALUES } from '@lpr/types'
+import { RANKING_VALUES } from '@prodigy/types'
 
 export const legend = [
   {

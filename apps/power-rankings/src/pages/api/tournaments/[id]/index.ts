@@ -1,7 +1,7 @@
 import { wrapApiHandlerWithSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { getTournament } from '@lpr/data'
+import { getTournament } from '@prodigy/data'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
 
-import { Button } from '@lpr/ui'
+import { Button } from '@prodigy/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { useLogin } from 'Hooks/useLogin'

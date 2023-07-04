@@ -11,7 +11,7 @@ module.exports = {
       {
         groups: [
           ['^@?\\w'],
-          ['^(@lpr)(/.*|$)'],
+          ['^(@prodigy)(/.*|$)'],
           ['^(Assets|Clients|Components|Entities|Hooks|Pandascore|Utils)(/.*|$)'],
           ['^\\.'],
           ['^.+\\.css$']

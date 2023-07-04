@@ -1,7 +1,7 @@
 import Image from 'next/legacy/image'
 import type { ReactElement } from 'react'
 
-import type { RANKING_VALUES, TEAM } from '@lpr/types'
+import type { RANKING_VALUES, TEAM } from '@prodigy/types'
 
 import { Select } from './Select'
 

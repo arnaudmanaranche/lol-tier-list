@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import type { ReactElement } from 'react'
 
-import { PageHeaderWrapper, Title } from '@lpr/ui'
+import { PageHeaderWrapper, Title } from '@prodigy/ui'
 
 import { DEFAULT_TITLE } from 'Utils/constants'
 

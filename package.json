@@ -1,5 +1,5 @@
 {
-  "name": "lol-power-ranking-apps",
+  "name": "prodigy",
   "private": true,
   "workspaces": [
     "apps/*",

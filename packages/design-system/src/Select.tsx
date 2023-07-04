@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 
-import { RANKING_VALUES } from '@lpr/types'
+import { RANKING_VALUES } from '@prodigy/types'
 
 export interface Props {
   id: number

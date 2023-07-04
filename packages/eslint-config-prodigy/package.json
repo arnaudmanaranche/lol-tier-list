@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-lpr",
+  "name": "eslint-config-prodigy",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {

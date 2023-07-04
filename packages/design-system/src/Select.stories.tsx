@@ -1,7 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
 import { userEvent, within } from '@storybook/testing-library'
 
-import { RANKING_VALUES } from '@lpr/types'
+import { RANKING_VALUES } from '@prodigy/types'
 
 import { Select } from './Select'
 

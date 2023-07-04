@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import { Button, PageHeaderWrapper, Title } from '@lpr/ui'
+import { Button, PageHeaderWrapper, Title } from '@prodigy/ui'
 
 import { ROUTES } from 'Utils/constants'
 

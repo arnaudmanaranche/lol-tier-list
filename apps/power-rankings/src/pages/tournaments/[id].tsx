@@ -8,9 +8,9 @@ import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
-import type { TournamentWithoutTeams } from '@lpr/data'
-import type { RANKING_VALUES, TEAM } from '@lpr/types'
-import { Button, Modal, PageHeaderWrapper, RankingLegend, Team, Title } from '@lpr/ui'
+import type { TournamentWithoutTeams } from '@prodigy/data'
+import type { RANKING_VALUES, TEAM } from '@prodigy/types'
+import { Button, Modal, PageHeaderWrapper, RankingLegend, Team, Title } from '@prodigy/ui'
 
 import TwitterIcon from 'Assets/twitter.svg'
 import { useLogin } from 'Hooks/useLogin'

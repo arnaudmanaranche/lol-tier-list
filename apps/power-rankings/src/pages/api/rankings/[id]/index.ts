@@ -1,7 +1,7 @@
 import { wrapApiHandlerWithSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { deleteRanking, getRanking, updateRanking } from '@lpr/data'
+import { deleteRanking, getRanking, updateRanking } from '@prodigy/data'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const rankingId = req.query.id as string

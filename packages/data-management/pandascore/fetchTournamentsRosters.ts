@@ -1,6 +1,6 @@
 import { getPlaiceholder } from 'plaiceholder'
 
-import type { TEAM } from '@lpr/types'
+import type { TEAM } from '@prodigy/types'
 
 import type { PandaScoreTournament } from './types'
 

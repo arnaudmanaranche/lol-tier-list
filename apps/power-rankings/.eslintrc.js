@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['lpr', 'next/core-web-vitals']
+  extends: ['prodigy', 'next/core-web-vitals']
 }

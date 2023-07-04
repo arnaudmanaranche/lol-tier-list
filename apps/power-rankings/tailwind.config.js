@@ -1,1 +1,1 @@
-module.exports = require('tailwind-config-lpr')
+module.exports = require('tailwind-config-prodigy')
