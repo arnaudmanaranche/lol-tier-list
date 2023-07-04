@@ -46,7 +46,7 @@ export default function HomePage() {
       <div className="mx-auto max-w-7xl pt-9">
         <header className="flex justify-between">
           <div className="flex">
-            <h1 className="font-bold md:flex-1 md:text-3xl lg:flex-none">Prodigy</h1>
+            <h1 className="font-bold md:flex-1 md:text-3xl lg:flex-none">WinnerPredictions</h1>
           </div>
         </header>
         <div className="mt-20 flex items-center justify-center text-orange-200">

@@ -20,7 +20,7 @@ Install dependencies
 
 Copy example env files without the .example extension
 
-    $ cp apps/web/.env.example apps/web/.env
+    $ cp apps/power-rankings/.env.example apps/power-rankings/.env
     $ cp packages/data-management/.env.example packages/data-management/.env
 
 Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)

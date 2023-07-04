@@ -10,8 +10,8 @@
     "build-storybook": "turbo run build-storybook",
     "changeset": "changeset",
     "lint": "turbo run lint",
-    "test": "turbo run test",
-    "web": "turbo run dev --filter=web"
+    "power-rankings": "turbo run dev --filter=power-rankings",
+    "test": "turbo run test"
   },
   "devDependencies": {
     "@changesets/cli": "2.26.1",

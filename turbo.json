@@ -9,7 +9,7 @@
       "dependsOn": ["^build-storybook"],
       "outputs": ["storybook-static/**"]
     },
-    "web#build": {
+    "power-rankings#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"],
       "env": [
