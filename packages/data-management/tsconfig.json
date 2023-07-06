@@ -22,7 +22,8 @@
     "paths": {
       "Clients/*": ["clients/*"],
       "Entities/*": ["entities/*"],
-      "Pandascore/*": ["pandascore/*"]
+      "Pandascore/*": ["pandascore/*"],
+      "Utils/*": ["utils/*"]
     }
   },
   "display": "Data Management",
