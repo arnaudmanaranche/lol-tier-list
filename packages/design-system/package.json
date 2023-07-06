@@ -9,7 +9,7 @@
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:eslint": "eslint --fix --cache",
     "lint:prettier": "prettier --write --check --ignore-path=../../.prettierignore .",
-    "test": "test-storybook",
+    "test-storybook": "test-storybook",
     "watch:css": "tailwindcss -i ./styles/index.css -o ./dist/output.css --watch"
   },
   "lint-staged": {

@@ -29,9 +29,9 @@
     "postbuild": {
       "dependsOn": ["^postbuild"]
     },
-    "test": {
-      "dependsOn": ["^build"],
-      "outputs": []
+    "test": {},
+    "test:watch": {
+      "cache": false
     },
     "lint": {
       "outputs": []

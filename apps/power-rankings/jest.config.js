@@ -6,8 +6,13 @@ const createJestConfig = nextJest({
 
 /** @type {import('jest').Config} */
 const customJestConfig = {
+  displayName: {
+    name: '@prodigy/apps/power-rankings'
+  },
   moduleDirectories: ['node_modules', '<rootDir>/'],
-  testEnvironment: 'jest-environment-jsdom'
+  testEnvironment: 'jest-environment-jsdom',
+  collectCoverage: true,
+  coverageDirectory: 'coverage'
 }
 
 module.exports = createJestConfig(customJestConfig)
