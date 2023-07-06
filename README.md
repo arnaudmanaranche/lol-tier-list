@@ -1,21 +1,20 @@
-# LoL Power Ranking
+# Prodigy
 
-[![](https://img.shields.io/security-headers?style=flat-square&url=https%3A%2F%2Flol-power-ranking.app%2F)](https://shields.io/)
-[![](https://img.shields.io/github/deployments/arnaudmanaranche/lol-power-ranking/production?label=Vercel&style=flat-square)](https://shields.io/)
-
-## Wiki
-
-### [Documentation](https://github.com/arnaudmanaranche/lol-power-ranking/wiki/Documentation)
-
-## How to run
+## Contribute
 
 Would you like to contribute? Awesome! 👏
 
     $ git clone git@github.com:your-github-username/lol-power-ranking
 
+## Wiki
+
+### [Documentation](https://github.com/arnaudmanaranche/lol-power-ranking/wiki/Documentation)
+
+## Requirements
+
 Install dependencies
 
-    $ cd lol-power-ranking
+    $ cd prodigy
     $ yarn install
 
 Copy example env files without the .example extension
@@ -27,6 +26,8 @@ Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-
 
     $ nvm use
 
-Start the webapp and the storybook project by running the following command
+## How to run apps
 
-    $ yarn dev
+- [Dashboard](/apps/dashboard/README.md)
+- [PowerRankings](/apps/power-rankings/README.md)
+- [WinnerPredictions](/apps/winner-predictions/README.md)
