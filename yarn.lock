@@ -5038,7 +5038,7 @@ __metadata:
     babel-jest: ^29.5.0
     eslint-config-prodigy: 1.0.0
     jest: 29.5.0
-    plaiceholder: 2.2.0
+    plaiceholder: 2.5.0
     prisma: 4.9.0
     sharp: 0.30.7
     typescript: 4.9.5
@@ -9480,10 +9480,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"blurhash@npm:1.1.4":
-  version: 1.1.4
-  resolution: "blurhash@npm:1.1.4"
-  checksum: 99a521ff35076f9182cd1c4d458a7aeac43cc101f13cc79f9cfdb8e6c97da6e33963496a1f5c950168b79001d0f17c97d0d57e75703363c3c4c31f97b28008f8
+"blurhash@npm:1.1.5":
+  version: 1.1.5
+  resolution: "blurhash@npm:1.1.5"
+  checksum: 8a647024948552e7250d4f123a0dc2a56941be476811c1c999b182cde01e6e15cc6938a8c523f1a2fea8c0dc12c1fffc1cf2001b86683e196bed03e88e176af2
   languageName: node
   linkType: hard
 
@@ -11793,7 +11793,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"encoding@npm:^0.1.13":
+"encoding@npm:0.1.13, encoding@npm:^0.1.13":
   version: 0.1.13
   resolution: "encoding@npm:0.1.13"
   dependencies:
@@ -14295,18 +14295,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"image-size@npm:1.0.0":
-  version: 1.0.0
-  resolution: "image-size@npm:1.0.0"
-  dependencies:
-    queue: 6.0.2
-  bin:
-    image-size: bin/image-size.js
-  checksum: 2d9d1edc43c0fa8effd27c44cd2d1b02ecc963219e78a76ac80b9d363f69c5aa19990cc23a323959ea510742ff07667e231f0852fd57eba5dc5b55432b58106d
-  languageName: node
-  linkType: hard
-
-"image-size@npm:^1.0.0":
+"image-size@npm:1.0.2, image-size@npm:^1.0.0":
   version: 1.0.2
   resolution: "image-size@npm:1.0.2"
   dependencies:
@@ -18143,13 +18132,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:2.6.2":
-  version: 2.6.2
-  resolution: "node-fetch@npm:2.6.2"
-  checksum: de367eae1dfbc0e12283c1cf92256ea7fba7eac8655e2e51ebb217727162396fc6cf24689ef9fc6accf075e3991e2ffaa061f7cfaa958215329649b2297ff06d
-  languageName: node
-  linkType: hard
-
 "node-fetch@npm:2.6.7":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
@@ -19138,17 +19120,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plaiceholder@npm:2.2.0":
-  version: 2.2.0
-  resolution: "plaiceholder@npm:2.2.0"
+"plaiceholder@npm:2.5.0":
+  version: 2.5.0
+  resolution: "plaiceholder@npm:2.5.0"
   dependencies:
-    blurhash: 1.1.4
-    image-size: 1.0.0
+    blurhash: 1.1.5
+    encoding: 0.1.13
+    image-size: 1.0.2
     node-cache: 5.1.2
-    node-fetch: 2.6.2
+    node-fetch: 2.6.7
   peerDependencies:
-    sharp: ">= 0.26.2"
-  checksum: 0a6bf76a93a416ef057d38a1b100673a377bac05633060fe37846e5ad71b56a993d4f5264ba45ad7bcf0b09046b74c796a4c0826feff66e7bf988cbee48f1067
+    sharp: ">= 0.30.6"
+  checksum: 8fde0744094abdf1db33fba647669836a0a7069f150524a75b104f1c76e7c61766a85e1eb693430c0bf291709f9becf596a8ab483d240ce22a668e6ab5c5e64e
   languageName: node
   linkType: hard
 
