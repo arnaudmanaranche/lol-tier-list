@@ -1,7 +1,7 @@
 import type { Ranking } from '@prisma/client'
 
-import { prismaClient } from 'Clients/prisma'
-import type { TournamentWithoutTeams } from 'Entities/tournaments/getTournaments'
+import { prismaClient } from '../../clients/prisma'
+import type { TournamentWithoutTeams } from '../tournaments/getTournaments'
 
 type RankingWithoutTournament = Omit<
   Ranking,

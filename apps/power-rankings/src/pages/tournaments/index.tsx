@@ -128,6 +128,7 @@ const TournamentsListPage = ({
                 })}
               </m.div>
               {/* We have reached the end of the pagination */}
+              {/* @ts-expect-error pagination */}
               {!pastTournamentsData[pastTournamentsDataSize - 1]?.length &&
               !pastTournamentsDataError ? null : (
                 <div className="my-10 flex justify-center">

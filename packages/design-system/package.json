@@ -1,14 +1,16 @@
 {
   "name": "@prodigy/ui",
   "version": "1.0.0",
+  "main": "index.ts",
   "scripts": {
     "build": "tailwindcss -i ./styles/index.css -o ./dist/output.css",
     "build-storybook": "build-storybook --quiet",
     "chromatic": "chromatic --exit-zero-on-changes",
     "dev": "start-storybook --quiet --port 9009",
-    "lint": "yarn lint:prettier && yarn lint:eslint",
+    "lint": "yarn lint:prettier && yarn lint:eslint && yarn lint:tsc",
     "lint:eslint": "eslint --fix --cache",
     "lint:prettier": "prettier --write --check --ignore-path=../../.prettierignore .",
+    "lint:tsc": "tsc -b",
     "test-storybook": "test-storybook",
     "watch:css": "tailwindcss -i ./styles/index.css -o ./dist/output.css --watch"
   },
@@ -18,13 +20,10 @@
       "yarn lint:eslint"
     ]
   },
-  "dependencies": {
-    "@headlessui/react": "1.6.6",
-    "@heroicons/react": "2.0.17",
-    "clsx": "1.2.1"
-  },
   "devDependencies": {
     "@babel/core": "7.20.12",
+    "@headlessui/react": "1.6.6",
+    "@heroicons/react": "2.0.17",
     "@prodigy/data": "1.0.0",
     "@prodigy/types": "1.0.0",
     "@storybook/addon-actions": "6.5.16",
@@ -39,6 +38,7 @@
     "@storybook/testing-library": "0.0.13",
     "@storybook/theming": "6.5.16",
     "chromatic": "6.17.3",
+    "clsx": "1.2.1",
     "eslint-config-prodigy": "1.0.0",
     "jest": "27.5.1",
     "next": "13.1.6",
@@ -46,6 +46,14 @@
     "react-dom": "18.2.0",
     "require-from-string": "2.0.2",
     "tailwind-config-prodigy": "1.0.0",
-    "tailwindcss": "3.2.7"
+    "tailwindcss": "3.2.7",
+    "typescript": "4.9.5"
+  },
+  "peerDependencies": {
+    "@headlessui/react": "1.6.6",
+    "@heroicons/react": "2.0.17",
+    "clsx": "1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

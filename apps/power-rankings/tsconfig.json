@@ -1,33 +1,19 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Next.js",
+  "extends": "../../tsconfig.base",
+  "display": "Power Rankings",
   "compilerOptions": {
-    "sourceMap": true,
-    "lib": ["dom", "esnext"],
-    "esModuleInterop": true,
-    "target": "es6",
-    "allowJs": true,
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "strict": false,
-    "baseUrl": ".",
-    "incremental": true,
+    "lib": ["DOM.Iterable", "ESNext", "DOM"],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": "./src",
     "paths": {
-      "Assets/*": ["src/svgs/*"],
-      "Clients/*": ["../../packages/data-management/clients/*"],
-      "Entities/*": ["../../packages/data-management/entities/*"],
-      "Hooks/*": ["src/hooks/*"],
-      "Pandascore/*": ["../../packages/data-management/pandascore/*"],
-      "Utils/*": ["src/utils/*"]
+      "Assets/*": ["./svgs/*"],
+      "Hooks/*": ["./hooks/*"],
+      "Utils/*": ["./utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts", "src/pages/_error.js"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts", "src/pages/_error.js"]
 }

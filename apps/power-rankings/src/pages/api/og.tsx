@@ -26,27 +26,29 @@ async function handler(req: NextRequest) {
     const entity = searchParams.get('entity')
     const entityId = searchParams.get('id')
 
-    const entityData = await fetchEntity(entity, entityId)
+    if (entity && entityId) {
+      const entityData = await fetchEntity(entity, entityId)
 
-    if (entity === 'tournaments') {
-      tournamentRegion = entityData.region
-      tournamentYear = entityData.year
-      tournamentEvent = entityData.event
-      tournamentLogo = entityData.logo
-    } else {
-      tournamentRegion = entityData.tournament.region
-      tournamentYear = entityData.tournament.year
-      tournamentEvent = entityData.tournament.event
-      tournamentLogo = entityData.tournament.logo
-    }
-
-    return new ImageResponse(
-      generatedOgImage(entity, tournamentRegion, tournamentLogo, tournamentEvent, tournamentYear),
-      {
-        width: 1200,
-        height: 630
+      if (entity === 'tournaments') {
+        tournamentRegion = entityData.region
+        tournamentYear = entityData.year
+        tournamentEvent = entityData.event
+        tournamentLogo = entityData.logo
+      } else {
+        tournamentRegion = entityData.tournament.region
+        tournamentYear = entityData.tournament.year
+        tournamentEvent = entityData.tournament.event
+        tournamentLogo = entityData.tournament.logo
       }
-    )
+
+      return new ImageResponse(
+        generatedOgImage(entity, tournamentRegion, tournamentLogo, tournamentEvent, tournamentYear),
+        {
+          width: 1200,
+          height: 630
+        }
+      )
+    }
   } catch (_) {
     return new Response(`Failed to generate the image`, {
       status: 500

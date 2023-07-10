@@ -42,7 +42,7 @@ const ViewRankingPage = ({
     }
   }
 
-  const onUpdate = (value: RANKING_VALUES, playerId: number, teamId: number) => {
+  const onUpdate = (value: RANKING_VALUES, teamId: number, playerId?: number) => {
     // @ts-expect-error TODO: type Prisma.JsonValue
     const team = copyRanking.data.find((t) => t.id === teamId)
 
@@ -114,7 +114,7 @@ const ViewRankingPage = ({
           ({ id: teamId, logo, name, players, logo_base64, value: teamValue }) => (
             <Team
               onUpdate={(value, playerId) => {
-                onUpdate(value, playerId, teamId)
+                onUpdate(value, teamId, playerId)
               }}
               key={teamId}
               id={teamId}
@@ -148,11 +148,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } = await supabase.auth.getUser()
 
   const {
-    params: { id },
+    params,
     query: { edit }
   } = context
 
-  const { data } = await apiInstance.get<RankingWithTournamentTeams>(`/rankings/${id}`)
+  const { data } = await apiInstance.get<RankingWithTournamentTeams>(`/rankings/${params?.id}`)
 
   if (!data) {
     return {

@@ -1,4 +1,4 @@
-import { prismaClient } from 'Clients/prisma'
+import { prismaClient } from '../../clients/prisma'
 
 export async function getRankings(): Promise<{ id: string }[]> {
   const rankings = await prismaClient.ranking.findMany({

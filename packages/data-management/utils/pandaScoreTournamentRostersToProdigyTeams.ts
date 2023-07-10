@@ -2,7 +2,7 @@ import { getPlaiceholder } from 'plaiceholder'
 
 import type { TEAM } from '@prodigy/types'
 
-import type { PandaScoreTournamentRoster } from 'Pandascore/types'
+import type { PandaScoreTournamentRoster } from '../pandascore/types'
 
 const LINE_UP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
 

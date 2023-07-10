@@ -1,7 +1,6 @@
 import { getPlaiceholder } from 'plaiceholder'
 
-import type { PandaScoreTournamentRoster } from 'Pandascore/types'
-
+import type { PandaScoreTournamentRoster } from '../pandascore/types'
 import { pandaScoreTournamentRostersToProdigyTeams } from './pandaScoreTournamentRostersToProdigyTeams'
 
 jest.mock('plaiceholder', () => ({

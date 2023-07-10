@@ -47,7 +47,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
       const { data } = await apiInstance.post<Ranking>('/rankings', {
         ranking,
         tournamentId: id,
-        userId: user.id
+        userId: user?.id
       })
       CronitorTrack('NewRanking')
       setRankingId(data.id)
@@ -62,7 +62,7 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
 
   const handleUpdateValue = (value: RANKING_VALUES, teamId: number, playerId?: number) => {
     if (playerId) {
-      const team = ranking.find(({ id }) => id === teamId)
+      const team = ranking?.find(({ id }) => id === teamId)
 
       if (team) {
         const player = team.players.find(({ id }) => id === playerId)
@@ -70,11 +70,17 @@ const CreateRankingPage = ({ tournament }: { tournament: Tournament }): ReactEle
         if (player) {
           player.value = value
         }
+
+        toast.error('An error occured during the player value selection.')
       }
     } else {
-      const team = ranking.find(({ id }) => id === teamId)
+      const team = ranking?.find(({ id }) => id === teamId)
 
-      team.teamValue = value
+      if (team) {
+        team.teamValue = value
+      } else {
+        toast.error('An error occured during the team value selection.')
+      }
     }
 
     const hasUnsavedRanking = window.localStorage.getItem(rankingId)
@@ -184,11 +190,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const {
-    params: { id }
-  } = context
+  const { params } = context
 
-  const { data: tournament } = await apiInstance.get<Tournament>(`/tournaments/${id}`)
+  const { data: tournament } = await apiInstance.get<Tournament>(`/tournaments/${params?.id}`)
 
   return {
     props: {

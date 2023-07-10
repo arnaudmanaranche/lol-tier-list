@@ -1,9 +1,9 @@
 import type { Tournament } from '@prisma/client'
 import { getPlaiceholder } from 'plaiceholder'
 
-import { prismaClient } from 'Clients/prisma'
-import { fetchPandascoreTournamentsRosters } from 'Pandascore/fetchTournamentsRosters'
-import { pandaScoreTournamentRostersToProdigyTeams } from 'Utils/pandaScoreTournamentRostersToProdigyTeams'
+import { prismaClient } from '../../clients/prisma'
+import { fetchPandascoreTournamentsRosters } from '../../pandascore/fetchTournamentsRosters'
+import { pandaScoreTournamentRostersToProdigyTeams } from '../../utils/pandaScoreTournamentRostersToProdigyTeams'
 
 export interface TournamentData {
   tournamentId: string[]

@@ -22,7 +22,7 @@ export const Header = (): ReactElement => {
     }
 
     const { data: authListener } = supabaseClient.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_IN') {
+      if (event === 'SIGNED_IN' && session) {
         upsertUser(session.user.id)
       }
     })

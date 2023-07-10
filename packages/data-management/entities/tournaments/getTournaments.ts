@@ -1,6 +1,6 @@
 import type { Tournament } from '@prisma/client'
 
-import { prismaClient } from 'Clients/prisma'
+import { prismaClient } from '../../clients/prisma'
 
 export type TournamentWithoutTeams = Omit<Tournament, 'teams'>
 
