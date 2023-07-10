@@ -1,15 +1,16 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import { PageHeaderWrapper } from './PageHeaderWrapper'
 
 export default {
   title: 'Components/PageHeaderWrapper',
-  component: PageHeaderWrapper,
-  argTypes: {}
-} as ComponentMeta<typeof PageHeaderWrapper>
+  component: PageHeaderWrapper
+} satisfies Meta<typeof PageHeaderWrapper>
 
-const Template: ComponentStory<typeof PageHeaderWrapper> = (args) => (
-  <PageHeaderWrapper {...args}>Hello world</PageHeaderWrapper>
-)
+type Story = StoryObj<typeof PageHeaderWrapper>
 
-export const Default = Template.bind({})
+export const Default = {
+  args: {
+    children: 'Hello world'
+  }
+} satisfies Story

@@ -1,8 +1,6 @@
 module.exports = {
-  extends: ['prodigy'],
-  overrides: [
-    {
-      files: ['./src/**/*.stories.@(js|jsx|ts|tsx)']
-    }
-  ]
-}
+  extends: ['prodigy', 'plugin:storybook/recommended'],
+  overrides: [{
+    files: ['./src/**/*.stories.@(js|jsx|ts|tsx)']
+  }]
+};

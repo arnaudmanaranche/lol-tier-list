@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/testing-library'
 
 import { RANKING_VALUES } from '@prodigy/types'
@@ -7,9 +7,14 @@ import { Team } from './Team'
 
 export default {
   title: 'Components/Team',
-  component: Team,
+  component: Team
+} satisfies Meta<typeof Team>
+
+type Story = StoryObj<typeof Team>
+
+export const Default = {
   args: {
-    base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
+    logo_base64: 'https://fakeimg.pl/440x320/282828/eae0d0/',
     logo: 'https://fakeimg.pl/440x320/282828/eae0d0/',
     name: 'Team Name',
     players: [
@@ -40,29 +45,22 @@ export default {
       }
     ],
     onUpdate: () => null
-  }
-} as ComponentMeta<typeof Team>
+  },
+  play: async ({ canvasElement, args }) => {
+    const randomRankingValue = (index: number) =>
+      RANKING_VALUES[Object.keys(RANKING_VALUES)[index] as keyof typeof RANKING_VALUES]
 
-const Template: ComponentStory<typeof Team> = (args) => <Team {...args} />
+    const players = args.players
 
-export const Default = Template.bind({})
+    players.map(async (player, index) => {
+      await userEvent.selectOptions(
+        await within(canvasElement).findByTestId(`${player.id}_value`),
+        [randomRankingValue(index)]
+      )
+    })
 
-Default.play = async ({ canvasElement, args }) => {
-  const randomRankingValue = (index: number) =>
-    RANKING_VALUES[Object.keys(RANKING_VALUES)[index] as keyof typeof RANKING_VALUES]
-
-  const players = args.players
-
-  players.map(async (player, index) => {
-    await userEvent.selectOptions(await within(canvasElement).findByTestId(`${player.id}_value`), [
-      randomRankingValue(index)
+    await userEvent.selectOptions(await within(canvasElement).findByTestId(`${args.id}_value`), [
+      randomRankingValue(0)
     ])
-  })
-
-  await userEvent.selectOptions(await within(canvasElement).findByTestId(`${args.id}_value`), [
-    randomRankingValue(0)
-  ])
-}
-
-const TemplateDisable: ComponentStory<typeof Team> = (args) => <Team {...args} disabled />
-export const Disabled = TemplateDisable.bind({})
+  }
+} satisfies Story
