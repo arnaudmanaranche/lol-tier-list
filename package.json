@@ -13,6 +13,9 @@
     "power-rankings": "turbo run dev --filter=power-rankings",
     "test": "FORCE_COLOR=1 turbo run test"
   },
+  "resolutions": {
+    "word-wrap": "npm:@aashutoshrathi/word-wrap@1.2.5"
+  },
   "devDependencies": {
     "@changesets/cli": "2.26.2",
     "@types/react": "18.2.14",

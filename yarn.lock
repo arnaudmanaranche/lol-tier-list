@@ -22558,10 +22558,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"word-wrap@npm:~1.2.3":
-  version: 1.2.3
-  resolution: "word-wrap@npm:1.2.3"
-  checksum: 30b48f91fcf12106ed3186ae4fa86a6a1842416df425be7b60485de14bec665a54a68e4b5156647dec3a70f25e84d270ca8bc8cd23182ed095f5c7206a938c1f
+"word-wrap@npm:@aashutoshrathi/word-wrap@1.2.5":
+  version: 1.2.5
+  resolution: "@aashutoshrathi/word-wrap@npm:1.2.5"
+  checksum: 06e2e20959a4dbbb06f9d324dc2f877c7fb1b5317237daf08a2ddfcbca6ddcaec67bcf0c9e8e1b7764d5b17b480dc4ef61ecb4f362644d0db5a33192df27680b
   languageName: node
   linkType: hard
 
