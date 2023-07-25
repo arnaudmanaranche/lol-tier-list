@@ -22,9 +22,9 @@
   },
   "devDependencies": {
     "@babel/core": "7.22.8",
-    "@babel/preset-env": "^7.22.7",
-    "@babel/preset-react": "^7.22.5",
-    "@babel/preset-typescript": "^7.22.5",
+    "@babel/preset-env": "7.22.7",
+    "@babel/preset-react": "7.22.5",
+    "@babel/preset-typescript": "7.22.5",
     "@headlessui/react": "1.6.6",
     "@heroicons/react": "2.0.17",
     "@prodigy/data": "1.0.0",
@@ -36,7 +36,7 @@
     "@storybook/addon-styling": "1.3.2",
     "@storybook/addons": "7.0.26",
     "@storybook/jest": "0.1.0",
-    "@storybook/nextjs": "^7.0.26",
+    "@storybook/nextjs": "7.0.26",
     "@storybook/react": "7.0.26",
     "@storybook/test-runner": "0.11.0",
     "@storybook/testing-library": "0.2.0",
@@ -46,7 +46,7 @@
     "clsx": "1.2.1",
     "eslint": "8.44.0",
     "eslint-config-prodigy": "1.0.0",
-    "eslint-plugin-storybook": "^0.6.12",
+    "eslint-plugin-storybook": "0.6.12",
     "jest": "27.5.1",
     "next": "13.1.6",
     "postcss": "8.4.25",
@@ -62,7 +62,7 @@
     "@headlessui/react": "1.6.6",
     "@heroicons/react": "2.0.17",
     "clsx": "1.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }
