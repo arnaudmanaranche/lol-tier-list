@@ -28,6 +28,4 @@ Use the Node version needed with [nvm](https://github.com/nvm-sh/nvm#installing-
 
 ## How to run apps
 
-- [Dashboard](/apps/dashboard/README.md)
 - [PowerRankings](/apps/power-rankings/README.md)
-- [WinnerPredictions](/apps/winner-predictions/README.md)
