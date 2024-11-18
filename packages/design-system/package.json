@@ -26,7 +26,7 @@
     "@babel/preset-react": "7.22.5",
     "@babel/preset-typescript": "7.22.5",
     "@headlessui/react": "1.6.6",
-    "@heroicons/react": "2.0.17",
+    "@heroicons/react": "2.2.0",
     "@prodigy/data": "1.0.0",
     "@prodigy/types": "1.0.0",
     "@storybook/addon-actions": "7.0.26",
@@ -60,7 +60,7 @@
   },
   "peerDependencies": {
     "@headlessui/react": "1.6.6",
-    "@heroicons/react": "2.0.17",
+    "@heroicons/react": "2.2.0",
     "clsx": "1.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
