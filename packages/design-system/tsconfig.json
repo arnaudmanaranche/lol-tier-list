@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.base",
-  "display": "Design System",
-  "compilerOptions": {
-    "lib": ["ES2015", "DOM"]
-  },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["dist", "build", "node_modules"]
-}

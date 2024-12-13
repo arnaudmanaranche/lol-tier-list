@@ -1,5 +1,0 @@
-export * from './createRanking'
-export * from './deleteRanking'
-export * from './getRanking'
-export * from './getRankings'
-export * from './updateRanking'
