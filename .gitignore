@@ -23,7 +23,6 @@ out
 # production
 build
 dist
-storybook-static
 
 # misc
 .DS_Store
@@ -47,9 +46,6 @@ yarn-error.log*
 # public
 robots.txt
 sitemap*.xml
-
-# Sentry
-.sentryclirc
 
 # Turbo
 .turbo

@@ -1,34 +1,77 @@
 {
-  "name": "prodigy",
+  "name": "lol-tier-list",
+  "version": "0.0.1",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "build": "turbo run build && turbo run postbuild",
-    "build-storybook": "turbo run build-storybook",
-    "changeset": "changeset",
-    "lint": "turbo run lint",
-    "power-rankings": "turbo run dev --filter=power-rankings",
-    "test": "FORCE_COLOR=1 turbo run test"
+    "_generate-types": "supabase gen types --lang=typescript --project-id $NEXT_PUBLIC_SUPABASE_ID --schema public > src/types/database.types.ts",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "dev": "next dev",
+    "generate:types": "dotenv -- yarn _generate-types",
+    "lint": "yarn lint:prettier && yarn lint:eslint && yarn lint:tsc",
+    "lint:eslint": "next lint --fix",
+    "lint:prettier": "prettier --write --check --ignore-path=../../.prettierignore .",
+    "lint:tsc": "tsc -b",
+    "start": "next start"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "eslint --cache --cache-location .next/cache/eslint/ --fix"
+    ]
   },
   "resolutions": {
     "word-wrap": "npm:@aashutoshrathi/word-wrap@1.2.5"
   },
-  "devDependencies": {
-    "@changesets/cli": "2.26.2",
-    "@types/react": "18.2.14",
-    "@types/tailwindcss": "3.0.11",
-    "husky": "8.0.3",
-    "lint-staged": "13.2.3",
-    "prettier": "2.8.8",
-    "prettier-plugin-packagejson": "2.4.5",
-    "prettier-plugin-tailwindcss": "0.2.7",
-    "turbo": "1.7.4"
+  "dependencies": {
+    "@headlessui/react": "2.2.0",
+    "@heroicons/react": "2.0.17",
+    "@supabase/ssr": "0.5.2",
+    "@supabase/supabase-js": "2.47.3",
+    "@vercel/og": "0.4.0",
+    "axios": "0.24.0",
+    "clsx": "1.2.1",
+    "framer-motion": "11.15.0",
+    "next": "14.2.20",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sonner": "0.1.1",
+    "swr": "2.2.5"
   },
-  "packageManager": "yarn@3.4.1",
-  "prisma": {
-    "schema": "packages/data-management/prisma/schema.prisma"
+  "devDependencies": {
+    "@babel/core": "7.22.8",
+    "@babel/preset-env": "7.22.7",
+    "@babel/preset-react": "7.22.5",
+    "@babel/preset-typescript": "7.22.5",
+    "@headlessui/react": "2.2.0",
+    "@heroicons/react": "2.0.17",
+    "@next/env": "13.1.6",
+    "@svgr/webpack": "5.5.0",
+    "@types/node": "20",
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "@types/tailwindcss": "3.0.11",
+    "@typescript-eslint/eslint-plugin": "8.5.0",
+    "@typescript-eslint/parser": "8.5.0",
+    "autoprefixer": "10.4.14",
+    "clsx": "1.2.1",
+    "dotenv-cli": "7.4.2",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.20",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "lint-staged": "13.2.3",
+    "next-sitemap": "4.2.3",
+    "postcss": "8.4.31",
+    "prettier": "3.3.3",
+    "prettier-plugin-packagejson": "2.4.5",
+    "prettier-plugin-tailwindcss": "0.5.7",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tailwindcss": "3.2.7",
+    "typescript": "5"
+  },
+  "packageManager": "yarn@4.5.3",
+  "engines": {
+    "node": "20.9.0"
   }
 }

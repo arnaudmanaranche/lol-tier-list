@@ -1,8 +1,0 @@
-{
-  "extends": "../../tsconfig.base",
-  "display": "Data Management",
-  "compilerOptions": {
-    "lib": ["ES2015", "DOM"]
-  },
-  "include": ["**/*.ts", "**/*.tsx", "types.d.ts"]
-}
