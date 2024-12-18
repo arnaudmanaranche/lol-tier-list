@@ -12,6 +12,7 @@ interface ButtonProps {
   isDisabled?: boolean
   icon?: ReactNode
   type?: ButtonType
+  className?: string
 }
 
 export const Button = ({
@@ -21,11 +22,13 @@ export const Button = ({
   to,
   isDisabled,
   icon,
-  type
+  type,
+  className: cN
 }: ButtonProps): ReactNode => {
   const className = clsx(
     'flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 px-6 py-2 text-white backdrop-invert backdrop-opacity-10 transition-colors hover:border-white content',
-    type === 'danger' && 'bg-red-500 hover:bg-red-600'
+    type === 'danger' && 'bg-red-500 hover:bg-red-600',
+    cN
   )
 
   if (href) {

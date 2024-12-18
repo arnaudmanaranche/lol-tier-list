@@ -1,8 +1,7 @@
 export const ROUTES = {
   HOME: '/',
   TOURNAMENTS: '/tournaments',
-  MY_ACCOUNT: '/my-account',
-  PRIVACY: '/privacy'
+  MY_ACCOUNT: '/my-account'
 }
 
 export const SUPPORTED_REGIONS = ['lec', 'lcs', 'lck', 'lpl', 'lfl']

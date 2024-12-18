@@ -10,7 +10,7 @@
     "generate:types": "dotenv -- yarn _generate-types",
     "lint": "yarn lint:prettier && yarn lint:eslint && yarn lint:tsc",
     "lint:eslint": "next lint --fix",
-    "lint:prettier": "prettier --write --check --ignore-path=../../.prettierignore .",
+    "lint:prettier": "prettier --write --check .",
     "lint:tsc": "tsc -b",
     "start": "next start"
   },
@@ -34,7 +34,7 @@
     "next": "14.2.20",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sonner": "0.1.1",
+    "sonner": "1.7.1",
     "swr": "2.2.5"
   },
   "devDependencies": {

@@ -22,6 +22,10 @@
     radial-gradient(at 47% 41%, rgb(214, 211, 209) 0, transparent 44%);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 #__next {
   position: relative;
   display: flex;

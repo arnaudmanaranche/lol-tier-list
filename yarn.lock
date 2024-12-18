@@ -5765,7 +5765,7 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:0.5.7"
     react: "npm:19.0.0"
     react-dom: "npm:19.0.0"
-    sonner: "npm:0.1.1"
+    sonner: "npm:1.7.1"
     swr: "npm:2.2.5"
     tailwindcss: "npm:3.2.7"
     typescript: "npm:5"
@@ -7229,12 +7229,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sonner@npm:0.1.1":
-  version: 0.1.1
-  resolution: "sonner@npm:0.1.1"
+"sonner@npm:1.7.1":
+  version: 1.7.1
+  resolution: "sonner@npm:1.7.1"
   peerDependencies:
-    react: ^18.0.0
-  checksum: 10/c771767647290a9fac998e1ad117ec156bd7e977a403c4c02e4faa04e5531421c7a38dcdf4b8a201d1468f153dcfb4fade5280bb7c602522476af619bad6baca
+    react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+    react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+  checksum: 10/a67279e3db9cf0ae235cc316812b22489dcbe2c9488e12313f35c5073520640ffe3c955a61ab1992ed4b4b96ca72087b6687b725305a0e3be9b1279c5a1fc735
   languageName: node
   linkType: hard
 

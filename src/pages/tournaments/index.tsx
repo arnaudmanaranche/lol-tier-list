@@ -25,7 +25,7 @@ const TAKE_PARAM_ARGUMENT = 5
 interface PageProps {
   upcomingTournaments: TournamentWithoutTeams[]
   pastTournaments: TournamentWithoutTeams[]
-  user: User
+  user: User | null
 }
 
 const Page = ({
@@ -92,7 +92,7 @@ const Page = ({
       </PageHeaderWrapper>
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <div className="mt-10">
-          <h2 className="mb-5 px-4 text-2xl text-white md:px-6">
+          <h2 className="mb-5 px-4 text-2xl font-semibold text-white md:px-6">
             Upcoming tournaments
           </h2>
           {upcomingTournaments.length ? (
@@ -104,40 +104,56 @@ const Page = ({
             >
               {upcomingTournaments.map((tournament) => (
                 <m.div variants={stat} key={tournament.id}>
-                  {tournament.active ? (
+                  {tournament.active && user ? (
                     <Link
                       href={`/tournaments/${tournament.region}/${tournament.year}/${tournament.event}`}
                       prefetch={false}
+                      className="transition-transform hover:scale-105"
                     >
                       <Tournament {...tournament} />
                     </Link>
                   ) : (
-                    // Some upcoming tournaments can be not active due to missing
-                    // data from the PandaScore API
-                    <div className="cursor-not-allowed opacity-50">
-                      <Tournament {...tournament} />
+                    <div
+                      className="cursor-not-allowed transition-opacity hover:opacity-70"
+                      onClick={() => {
+                        toast.info(
+                          user
+                            ? 'This tournament is not yet active'
+                            : 'You need to be logged in to access this tournament'
+                        )
+                      }}
+                    >
+                      <Tournament {...tournament} active={false} />
                     </div>
                   )}
                 </m.div>
               ))}
             </m.div>
           ) : (
-            <p className="text-center text-white">
-              There is no upcoming tournament for the moment.
-            </p>
+            <div className="rounded-lg bg-gunmetal p-8 text-center">
+              <p className="text-lg text-white">
+                No upcoming tournaments scheduled at the moment.
+              </p>
+              <p className="mt-2 text-gray-400">
+                Check back later for new tournaments!
+              </p>
+            </div>
           )}
         </div>
+
         <div className="mt-10">
-          <h2 className="tracking mb-5 px-4 text-2xl text-white md:px-6">
+          <h2 className="mb-5 px-4 text-2xl font-semibold text-white md:px-6">
             Past tournaments
           </h2>
           {pastTournamentsDataIsLoading ? (
-            <div className="grid animate-pulse grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-6 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-6 lg:grid-cols-4">
               {[0, 1, 2, 3, 4, 5, 6, 7].map((arr) => (
                 <div
-                  className="h-[90px] min-w-[200px] rounded-sm bg-gunmetal p-2"
+                  className="relative h-[90px] min-w-[200px] overflow-hidden rounded-sm bg-gunmetal p-2"
                   key={arr}
-                />
+                >
+                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                </div>
               ))}
             </div>
           ) : (
@@ -151,17 +167,19 @@ const Page = ({
                 {pastTournamentsData?.map((tournaments) => {
                   return tournaments.map((tournament) => (
                     <m.div variants={stat} key={tournament.id}>
-                      <div className="cursor-not-allowed opacity-50">
+                      <div className="cursor-not-allowed transition-opacity hover:opacity-70">
                         <Tournament {...tournament} />
                       </div>
                     </m.div>
                   ))
                 })}
               </m.div>
-              {/* We have reached the end of the pagination */}
               {/* @ts-expect-error pagination */}
-              {!pastTournamentsData[pastTournamentsDataSize - 1]?.length &&
-              !pastTournamentsDataError ? null : (
+              {!pastTournamentsData[pastTournamentsDataSize - 1]?.length ? (
+                <div className="my-10 text-center text-gray-400">
+                  No more tournaments to load
+                </div>
+              ) : (
                 <div className="my-10 flex justify-center">
                   <Button
                     isDisabled={pastTournamentsDataIsLoading}
@@ -187,15 +205,6 @@ export const getServerSideProps = (async (context) => {
   const {
     data: { user }
   } = await supabase.auth.getUser()
-
-  if (!user) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false
-      }
-    }
-  }
 
   const { data: upcomingTournaments } = await apiInstance.get<
     TournamentWithoutTeams[]

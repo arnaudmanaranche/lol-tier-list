@@ -43,7 +43,7 @@ function Metadata({ tournament }: { tournament: Tournament }): ReactNode {
   return (
     <Head>
       {/* Title */}
-      <title>{TITLE}</title>
+      <title>{`${TITLE}`}</title>
       <meta property="og:title" content={TITLE} />
       {/* Image */}
       <meta property="og:image" content={IMAGE} />
@@ -138,10 +138,10 @@ const Page = ({
       <Header user={user} />
       <RankingLegend />
       <PageHeaderWrapper>
-        <div className="mb-10">
+        <div className="mb-8">
           <Link
             href={ROUTES.TOURNAMENTS}
-            className="text-white text-opacity-100 hover:underline"
+            className="text-white transition-colors hover:text-opacity-80 hover:underline"
           >
             Tournaments
           </Link>
@@ -149,74 +149,92 @@ const Page = ({
             / {region.toUpperCase()} {year} {capitalizeFirstLetter(event)}
           </span>
         </div>
-        <Image
-          src={logo}
-          alt={`This is the logo of ${region} for the ${year} ${event} tournament`}
-          height={100}
-          width={100}
-          id={`${region}_${event}_${year}`}
-        />
-        <Title>{`${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)}`}</Title>
+        <div className="flex flex-col items-center gap-6">
+          <Image
+            src={logo}
+            alt={`This is the logo of ${region} for the ${year} ${event} tournament`}
+            height={120}
+            width={120}
+            className="rounded-lg shadow-lg"
+            id={`${region}_${event}_${year}`}
+          />
+          <Title>{`${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)}`}</Title>
+        </div>
       </PageHeaderWrapper>
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:grid-cols-3 md:px-6">
-        {(ranking as TeamInterface[])?.map(
-          ({ id: teamId, logo, name, players }) => (
-            <Team
-              key={teamId}
-              id={teamId}
-              disabled={false}
-              logo={logo}
-              name={name}
-              players={players}
-              onUpdate={(value, playerId) => {
-                handleUpdateValue(value, teamId, playerId)
-              }}
-            />
-          )
-        )}
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+        <div className="grid gap-6 rounded-xl bg-gray-900/50 p-6 shadow-xl sm:grid-cols-2 lg:grid-cols-3">
+          {(ranking as TeamInterface[])?.map(
+            ({ id: teamId, logo, name, players }) => (
+              <Team
+                key={teamId}
+                id={teamId}
+                disabled={false}
+                logo={logo}
+                name={name}
+                players={players}
+                onUpdate={(value, playerId) => {
+                  handleUpdateValue(value, teamId, playerId)
+                }}
+              />
+            )
+          )}
+        </div>
       </div>
-      <div className="my-20 flex justify-center">
+      <div className="my-20 flex flex-col items-center gap-4">
         {user?.id ? (
           <Button
             isDisabled={isRankingCreation}
             onClick={handleOnCreateTierList}
+            className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
           >
-            Create my tier list
+            {isRankingCreation ? 'Creating...' : 'Create my tier list'}
           </Button>
         ) : (
-          <div className="flex flex-col items-center">
-            <Button onClick={handleLogin}>Sign in with Twitter</Button>
+          <div className="flex flex-col items-center gap-4">
+            <Button
+              onClick={handleLogin}
+              className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
+            >
+              Sign in with Twitter
+            </Button>
+            <p className="text-sm text-white text-opacity-60">
+              Sign in to create and share your tier list
+            </p>
           </div>
         )}
       </div>
       <Modal
-        title="Your tier list was created"
+        title="Your tier list was created!"
         toggleModal={handleToggleModal}
         isOpen={isModalOpen}
       >
-        <p className="mb-10 text-white">
-          Creating ranking is always exciting, but sharing it with others is
-          even more fulfilling!
-        </p>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 ">
-          <Button
-            href={getShareableFacebookLink({
-              event: event,
-              region: region,
-              year: year
-            })}
-          >
-            Share on Facebook
-          </Button>
-          <Button
-            href={getShareableTwitterLink({
-              event: event,
-              region: region,
-              year: year
-            })}
-          >
-            Share on Twitter
-          </Button>
+        <div className="flex flex-col gap-6">
+          <p className="text-lg text-white">
+            Creating ranking is always exciting, but sharing it with others is
+            even more fulfilling! Share your tier list on:
+          </p>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <Button
+              href={getShareableFacebookLink({
+                event: event,
+                region: region,
+                year: year
+              })}
+              className="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#1877F2]/90"
+            >
+              <span>Share on Facebook</span>
+            </Button>
+            <Button
+              href={getShareableTwitterLink({
+                event: event,
+                region: region,
+                year: year
+              })}
+              className="flex items-center justify-center gap-2 bg-[#1DA1F2] hover:bg-[#1DA1F2]/90"
+            >
+              <span>Share on Twitter</span>
+            </Button>
+          </div>
         </div>
       </Modal>
     </>
@@ -269,6 +287,15 @@ export const getServerSideProps = (async (context) => {
   const { data: tournament } = await apiInstance.get<Tournament>(
     `/tournaments/${(params.slug as string[]).join('/')}`
   )
+
+  if (!tournament.active) {
+    return {
+      redirect: {
+        destination: '/tournaments',
+        permanent: false
+      }
+    }
+  }
 
   return {
     props: {

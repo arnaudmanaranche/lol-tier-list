@@ -5,7 +5,7 @@ import type { Team as TeamInterface, TIER_LIST_VALUES } from 'types'
 import { Select } from './Select'
 
 interface TeamProps extends TeamInterface {
-  onUpdate: (value: TIER_LIST_VALUES, playerId?: number) => void
+  onUpdate?: (value: TIER_LIST_VALUES, playerId?: number) => void
   disabled: boolean
   teamValue?: TIER_LIST_VALUES
 }
@@ -41,7 +41,7 @@ export const Team = ({
             key={playerId}
             id={playerId}
             onUpdate={(value) => {
-              onUpdate(value, playerId)
+              onUpdate?.(value, playerId)
             }}
           />
         ))}
@@ -51,7 +51,7 @@ export const Team = ({
         id={id}
         value={teamValue}
         onUpdate={(value) => {
-          onUpdate(value)
+          onUpdate?.(value)
         }}
       />
     </div>

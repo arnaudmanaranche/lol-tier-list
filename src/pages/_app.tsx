@@ -28,10 +28,8 @@ const App = ({ Component, pageProps }: AppProps): ReactNode => {
   return (
     <LazyMotion features={domAnimation}>
       <Head>
-        <title>
-          {DEFAULT_TITLE} - Create, share, and explore tier lists for League of
-          Legends tournaments
-        </title>
+        <title>{`${DEFAULT_TITLE} - Create, share, and explore tier lists for League of
+          Legends tournaments`}</title>
         <meta name="description" content={DEFAULT_DESCRIPTION} />
         <meta
           property="og:title"

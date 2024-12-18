@@ -45,7 +45,7 @@ function Metadata({
   return (
     <Head>
       {/* Title */}
-      <title>{TITLE}</title>
+      <title>{`${TITLE}`}</title>
       <meta property="og:title" content={TITLE} />
       {/* Image */}
       <meta property="og:image" content={IMAGE} />
@@ -114,10 +114,10 @@ const Page = ({
       <Header user={user} />
       <RankingLegend />
       <PageHeaderWrapper>
-        <div className="mb-10">
+        <div className="mb-8">
           <Link
             href={ROUTES.TOURNAMENTS}
-            className="text-white text-opacity-100 hover:underline"
+            className="text-white transition-colors hover:text-opacity-80 hover:underline"
           >
             Tournaments
           </Link>
@@ -127,42 +127,48 @@ const Page = ({
             {capitalizeFirstLetter(ranking.tournament.event)}
           </span>
         </div>
-        <Image
-          src={ranking.tournament.logo}
-          alt={`${ranking.tournament.region} logo`}
-          height={100}
-          width={100}
-          id={`${ranking.tournament.region}_${ranking.tournament.event}_${ranking.tournament.year}`}
-        />
+        <div className="flex flex-col items-center gap-6">
+          <Image
+            src={ranking.tournament.logo}
+            alt={`${ranking.tournament.region} logo`}
+            height={100}
+            width={100}
+            className="rounded-lg shadow-lg"
+            id={`${ranking.tournament.region}_${ranking.tournament.event}_${ranking.tournament.year}`}
+          />
+        </div>
         <Title>
           {`@${username}'s tier list ${ranking.tournament.region.toUpperCase()} ${capitalizeFirstLetter(ranking.tournament.event)} - ${
             ranking.tournament.year
           }`}
         </Title>
       </PageHeaderWrapper>
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 md:grid-cols-3 md:px-6">
-        {(copyRanking?.data as unknown as TeamInterface[])?.map(
-          ({ id: teamId, logo, name, players, teamValue }) => (
-            <Team
-              onUpdate={(value, playerId) => {
-                handleUpdateTierList(value, teamId, playerId)
-              }}
-              key={teamId}
-              id={teamId}
-              logo={logo}
-              disabled={!isEditMode}
-              name={name}
-              players={players}
-              teamValue={teamValue}
-            />
-          )
-        )}
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+        <div className="grid gap-6 rounded-xl bg-gray-900/50 p-6 shadow-xl sm:grid-cols-2 lg:grid-cols-3">
+          {(copyRanking?.data as unknown as TeamInterface[])?.map(
+            ({ id: teamId, logo, name, players, teamValue }) => (
+              <Team
+                onUpdate={(value, playerId) => {
+                  handleUpdateTierList(value, teamId, playerId)
+                }}
+                key={teamId}
+                id={teamId}
+                logo={logo}
+                disabled={!isEditMode}
+                name={name}
+                players={players}
+                teamValue={teamValue}
+              />
+            )
+          )}
+        </div>
       </div>
       {isEditMode ? (
-        <div className="my-20 flex justify-center">
+        <div className="my-20 flex flex-col items-center gap-4">
           <Button
             isDisabled={isRankingCreation}
             onClick={onSubmitUpdatedTierList}
+            className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
           >{`Update my ${ranking.tournament.region} tier list`}</Button>
         </div>
       ) : null}
