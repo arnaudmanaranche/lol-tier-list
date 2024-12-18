@@ -3504,7 +3504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.2":
+"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.6":
   version: 7.0.6
   resolution: "cross-spawn@npm:7.0.6"
   dependencies:
@@ -3854,17 +3854,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv-cli@npm:7.4.2":
-  version: 7.4.2
-  resolution: "dotenv-cli@npm:7.4.2"
+"dotenv-cli@npm:7.4.4":
+  version: 7.4.4
+  resolution: "dotenv-cli@npm:7.4.4"
   dependencies:
-    cross-spawn: "npm:^7.0.3"
+    cross-spawn: "npm:^7.0.6"
     dotenv: "npm:^16.3.0"
     dotenv-expand: "npm:^10.0.0"
     minimist: "npm:^1.2.6"
   bin:
     dotenv: cli.js
-  checksum: 10/48d887ea9be08f7453dc87d6c938311989e951d0b43028eadcbaff3be1ca56180f8c38b8f932fc2e59f0210e59f4b5c59cf8a34da3e6c92f63fe6d7ce4f09f65
+  checksum: 10/04d4459a21c32526a79609ce98f566e7978f359f4d98f5d6e35f43bfdc0f35c75330e25d7a5f84391c0557164c48f46adb031dcc8b9bf5121b45ed15562a09f1
   languageName: node
   linkType: hard
 
@@ -5750,7 +5750,7 @@ __metadata:
     autoprefixer: "npm:10.4.20"
     axios: "npm:0.24.0"
     clsx: "npm:1.2.1"
-    dotenv-cli: "npm:7.4.2"
+    dotenv-cli: "npm:7.4.4"
     eslint: "npm:8.57.0"
     eslint-config-next: "npm:14.2.20"
     eslint-config-prettier: "npm:8.8.0"
