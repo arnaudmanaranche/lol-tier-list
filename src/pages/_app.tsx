@@ -1,7 +1,7 @@
 import 'tailwindcss/utilities.css'
 import '../styles/custom.css'
 
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/next'
 import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import { Bebas_Neue, Roboto } from 'next/font/google'
