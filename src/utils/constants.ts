@@ -12,5 +12,5 @@ export const DEFAULT_DESCRIPTION =
 
 export const WEBSITE_URL =
   process.env.NODE_ENV === 'production'
-    ? 'https://lol-tier-list.com'
+    ? 'https://www.lol-tier-list.com'
     : 'http://localhost:3000'

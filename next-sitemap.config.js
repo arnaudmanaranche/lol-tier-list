@@ -1,4 +1,4 @@
-const WEBSITE_URL = 'https://lol-tier-list.com'
+const WEBSITE_URL = 'https://www.lol-tier-list.com'
 
 const PATHS_TO_EXCLUDE = ['/my-account']
 
