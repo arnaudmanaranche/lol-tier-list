@@ -45,7 +45,7 @@
     "@babel/preset-typescript": "7.26.0",
     "@headlessui/react": "2.2.0",
     "@heroicons/react": "2.0.17",
-    "@next/env": "13.1.6",
+    "@next/env": "13.5.7",
     "@svgr/webpack": "5.5.0",
     "@types/node": "20",
     "@types/react": "18",
