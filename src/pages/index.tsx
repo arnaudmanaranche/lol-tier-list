@@ -123,7 +123,9 @@ const Page = ({
               Your opinion matters
             </h2>
             <p className="max-w-xl text-center text-xl text-gray-300 md:text-left md:text-2xl">
-              Set a value for each player and globally team
+              Express your views by assigning a ranking to each player on the
+              roster and evaluating the team&apos;s overall performance. Your
+              input shapes the ultimate tier list!
             </p>
           </div>
           <div className="flex-1">
@@ -150,9 +152,10 @@ const Page = ({
         <div className="flex flex-col items-center justify-center gap-10">
           <div className="flex flex-col items-center space-y-6">
             <h2 className="text-5xl font-bold text-white">Unique URLs</h2>
-            <p className="max-w-xl text-center text-xl text-gray-300 md:text-left md:text-2xl">
-              Shareable custom urls for your tier lists and share them with your
-              friends
+            <p className="max-w-xl text-center text-xl text-gray-300 md:text-2xl">
+              Create personalized tier lists with unique URLs that you can
+              easily share with your friends, allowing them to explore and
+              discuss your rankings effortlessly.
             </p>
           </div>
           <UrlDisplay />
@@ -162,9 +165,10 @@ const Page = ({
             <h2 className="max-w-xl text-5xl font-bold text-white">
               Supported regions
             </h2>
-            <p className="max-w-xl text-center text-xl text-gray-300 md:text-left md:text-2xl">
-              Discover the latest tournaments from the most popular regions in
-              the world.
+            <p className="max-w-xl text-center text-xl text-gray-300 md:text-2xl">
+              Stay up to date with the most exciting tournaments from the top
+              esports regions across the globe, featuring the best teams and
+              thrilling matches.
             </p>
             <m.div
               variants={parent}

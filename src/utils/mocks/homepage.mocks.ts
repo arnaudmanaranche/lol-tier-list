@@ -72,7 +72,7 @@ const mockPlayers3: Player[] = [
     name: 'Bwipo',
     role: 'top',
     id: 11,
-    value: 'a'
+    value: 's'
   },
   {
     name: 'Inspired',
