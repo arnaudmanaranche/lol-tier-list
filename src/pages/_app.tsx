@@ -9,7 +9,11 @@ import Head from 'next/head'
 import type { ReactNode } from 'react'
 import { Toaster } from 'sonner'
 
-import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from '@/utils/constants'
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  WEBSITE_URL
+} from '@/utils/constants'
 
 const title = Bebas_Neue({
   weight: ['400'],
@@ -29,17 +33,23 @@ const App = ({ Component, pageProps }: AppProps): ReactNode => {
   return (
     <LazyMotion features={domAnimation}>
       <Head>
+        {/* Title */}
         <title>{`${DEFAULT_TITLE} - Create, share, and explore tier lists for League of
           Legends tournaments`}</title>
-        <meta name="description" content={DEFAULT_DESCRIPTION} />
         <meta
           property="og:title"
           content={`${DEFAULT_TITLE} - Create, share, and explore tier lists for League of
           Legends tournaments`}
         />
+        {/* Description */}
+        <meta name="description" content={DEFAULT_DESCRIPTION} />
         <meta property="og:description" content={DEFAULT_DESCRIPTION} />
+        {/* Image */}
+        <meta name="og:image" content={`${WEBSITE_URL}/opengraph.png`} />
+        {/* Open graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:type" content="website" />
+        {/* Twitter */}
+        <meta name="twitter:image" content={`${WEBSITE_URL}/opengraph.png`} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className={`${title.variable} ${body.variable}`}>

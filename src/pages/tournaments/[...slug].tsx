@@ -38,7 +38,7 @@ interface PageProps {
 function Metadata({ tournament }: { tournament: Tournament }): ReactNode {
   const TITLE = `${DEFAULT_TITLE} - ${tournament.region.toUpperCase()} ${tournament.year} ${capitalizeFirstLetter(tournament.event)}`
   const DESCRIPTION = `Create your own tier list for the ${tournament.region.toUpperCase()} ${capitalizeFirstLetter(tournament.event)} ${tournament.year} tournament and share it with your friends`
-  const IMAGE = `${API_ENDPOINT}/api/og?path=tournaments/${tournament.region}/${tournament.event}/${tournament.year}`
+  const IMAGE = `${API_ENDPOINT}/og?path=tournaments/${tournament.region}/${tournament.year}/${tournament.event}`
 
   return (
     <Head>

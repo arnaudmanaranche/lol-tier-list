@@ -93,7 +93,7 @@ const Page = ({
           >
             <h1 className="text-center text-6xl font-bold text-white lg:text-8xl">
               You don&apos;t have to be a{' '}
-              <span className="bg-blue-600 px-2 font-sans leading-relaxed ">
+              <span className="bg-blue-600 px-2 font-sans leading-relaxed">
                 challenger
               </span>{' '}
               to rate pro players

@@ -27,7 +27,7 @@ async function handler(
       .eq('user.username', req.query.username as string)
       .single()
 
-    res.status(200).json({ ...data, username: data?.user.username })
+    res.status(200).json(data)
   } else {
     res.status(405).end(`Method ${req.method} Not Allowed`)
   }

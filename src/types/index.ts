@@ -5,6 +5,7 @@ export type Ranking = Tables<'rankings'>
 export type RankingWithTournament = Omit<Ranking, 'tournament'> & {
   tournament: Tournament
 }
+export type User = Tables<'users'>
 
 export interface Player {
   name: string
