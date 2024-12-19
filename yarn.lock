@@ -5759,7 +5759,7 @@ __metadata:
     lint-staged: "npm:13.2.3"
     next: "npm:14.2.20"
     next-sitemap: "npm:4.2.3"
-    postcss: "npm:8.4.31"
+    postcss: "npm:8.4.49"
     prettier: "npm:3.3.3"
     prettier-plugin-packagejson: "npm:2.4.5"
     prettier-plugin-tailwindcss: "npm:0.5.7"
@@ -6593,7 +6593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.0.9":
+"postcss@npm:8.4.49, postcss@npm:^8.0.9":
   version: 8.4.49
   resolution: "postcss@npm:8.4.49"
   dependencies:
