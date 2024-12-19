@@ -3900,14 +3900,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:8.8.0":
-  version: 8.8.0
-  resolution: "eslint-config-prettier@npm:8.8.0"
+"eslint-config-prettier@npm:8.10.0":
+  version: 8.10.0
+  resolution: "eslint-config-prettier@npm:8.10.0"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
     eslint-config-prettier: bin/cli.js
-  checksum: 10/3638144cecada897105ff9442bc85aba71c4f44d7d25b576cb34d50a207f6655f7cc55e729aad1a934a9f15e55c88e7adcbd1067d6582325fc89864c879b52f1
+  checksum: 10/0a51ab1417cbf80fabcf7a406960a142663539c8140fdb0a187b78f3d708b9d137a62a4bc4e689150e290b667750ddabd1740a516623b0cb4adb6cc1962cfe2c
   languageName: node
   linkType: hard
 
@@ -5550,7 +5550,7 @@ __metadata:
     dotenv-cli: "npm:7.4.4"
     eslint: "npm:8.57.1"
     eslint-config-next: "npm:14.2.20"
-    eslint-config-prettier: "npm:8.8.0"
+    eslint-config-prettier: "npm:8.10.0"
     eslint-plugin-simple-import-sort: "npm:7.0.0"
     framer-motion: "npm:11.15.0"
     lint-staged: "npm:13.2.3"
