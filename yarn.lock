@@ -1443,10 +1443,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:13.1.6":
-  version: 13.1.6
-  resolution: "@next/env@npm:13.1.6"
-  checksum: 10/499f64cfb581fded65f012833aed8dcee920aad4a6bc7a0493c252807c64aaddd640666c5e3e046695712dc31cdfa0acabbfd0f6a0ff42d3a60187663b383c96
+"@next/env@npm:13.5.7, @next/env@npm:^13.4.3":
+  version: 13.5.7
+  resolution: "@next/env@npm:13.5.7"
+  checksum: 10/d6465a2a85fa2f829d9c888b8a22be5649ad0f4bdd260e0a0061d7e88c7add33b702a6afead2d6cc6fde746b6132eb591e3baac7ece13e460c168517bb06205f
   languageName: node
   linkType: hard
 
@@ -1454,13 +1454,6 @@ __metadata:
   version: 14.2.20
   resolution: "@next/env@npm:14.2.20"
   checksum: 10/3aaf2ba16344d7cede12a846859fddffa172e951f2dc28bb66f8b7c24cb2c207d2a49c84fea965ae964714aeb2269cff7a91723b57631765f78fd02b9465d1f2
-  languageName: node
-  linkType: hard
-
-"@next/env@npm:^13.4.3":
-  version: 13.5.7
-  resolution: "@next/env@npm:13.5.7"
-  checksum: 10/d6465a2a85fa2f829d9c888b8a22be5649ad0f4bdd260e0a0061d7e88c7add33b702a6afead2d6cc6fde746b6132eb591e3baac7ece13e460c168517bb06205f
   languageName: node
   linkType: hard
 
@@ -5376,7 +5369,7 @@ __metadata:
     "@babel/preset-typescript": "npm:7.26.0"
     "@headlessui/react": "npm:2.2.0"
     "@heroicons/react": "npm:2.0.17"
-    "@next/env": "npm:13.1.6"
+    "@next/env": "npm:13.5.7"
     "@supabase/ssr": "npm:0.5.2"
     "@supabase/supabase-js": "npm:2.47.3"
     "@svgr/webpack": "npm:5.5.0"
