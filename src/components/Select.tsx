@@ -10,6 +10,8 @@ import type { ReactNode } from 'react'
 import { useState } from 'react'
 import { TIER_LIST_VALUES } from 'types'
 
+import { roleNameToIcon } from '@/utils/roleNameToIcon'
+
 interface SelectProps {
   id: number
   value?: TIER_LIST_VALUES
@@ -60,7 +62,7 @@ export const Select = ({
     >
       {name && role ? (
         <>
-          <span className="pl-3 capitalize">{role}</span>
+          <span className="pl-3 capitalize">{roleNameToIcon(role)}</span>
           <span className="grow text-center">{name}</span>
         </>
       ) : (
