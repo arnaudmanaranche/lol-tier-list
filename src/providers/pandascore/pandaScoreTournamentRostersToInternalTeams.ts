@@ -2,7 +2,7 @@ import type { Player, Team } from 'types'
 
 import type { PandaScoreTournamentRoster } from './types'
 
-const LINE_UP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
+export const LINE_UP_ORDER = ['top', 'jun', 'mid', 'adc', 'sup']
 
 export async function pandaScoreTournamentRostersToInternalTeams(
   rosters: PandaScoreTournamentRoster[],

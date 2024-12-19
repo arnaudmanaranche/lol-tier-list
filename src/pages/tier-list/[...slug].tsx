@@ -8,6 +8,7 @@ import type { ReactNode } from 'react'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import type {
+  Player,
   RankingWithTournament,
   Team as TeamInterface,
   TIER_LIST_VALUES,
@@ -18,7 +19,6 @@ import type {
 import { Button } from '@/components/Button'
 import { Header } from '@/components/Header/Header'
 import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
-import { RankingLegend } from '@/components/RankingLegend'
 import { Team } from '@/components/Team'
 import { Title } from '@/components/Title'
 import { API_ENDPOINT, apiInstance } from '@/utils/api'
@@ -73,16 +73,21 @@ const Page = ({
   user
 }: InferGetServerSidePropsType<typeof getServerSideProps>): ReactNode => {
   const [isRankingCreation, setIsRankingCreation] = useState(false)
-
-  const copyRanking = Object.assign({}, ranking)
+  const [localRanking, setLocalRanking] = useState(() => ({
+    ...ranking,
+    data: ranking?.data?.map((team: TeamInterface) => ({
+      ...team,
+      players: team.players.map((player: Player) => ({ ...player }))
+    }))
+  }))
 
   const onSubmitUpdatedTierList = async () => {
     setIsRankingCreation(true)
     try {
       await apiInstance.patch<RankingWithTournament>(
-        `/tier-list/by-id/${copyRanking.id}`,
+        `/tier-list/by-id/${localRanking.id}`,
         {
-          ranking: copyRanking
+          ranking: localRanking
         }
       )
       toast.success('Your tier list was successfully updated.')
@@ -98,17 +103,23 @@ const Page = ({
     teamId: number,
     playerId?: number
   ) => {
-    // @ts-expect-error TODO: type Prisma.JsonValue
-    const team = copyRanking.data.find((t) => t.id === teamId)
+    setLocalRanking((prevRanking) => {
+      const updatedTeams = prevRanking.data.map((team: TeamInterface) => {
+        if (team.id === teamId) {
+          const updatedPlayers = team.players.map((player: Player) => {
+            if (player.id === playerId) {
+              return { ...player, value }
+            }
+            return player
+          })
 
-    // @ts-expect-error TODO: type Prisma.JsonValue
-    const player = team?.players.find((p) => p.id === playerId)
+          return { ...team, players: updatedPlayers }
+        }
+        return team
+      })
 
-    if (player) {
-      player.value = value
-    }
-
-    return
+      return { ...prevRanking, data: updatedTeams }
+    })
   }
 
   return (
@@ -118,7 +129,6 @@ const Page = ({
         username={ranking.user.username}
       />
       <Header user={user} />
-      <RankingLegend />
       <PageHeaderWrapper>
         <div className="mb-8">
           <Link
@@ -151,7 +161,7 @@ const Page = ({
       </PageHeaderWrapper>
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <div className="grid gap-6 rounded-xl bg-gray-900/50 p-6 shadow-xl sm:grid-cols-2 lg:grid-cols-3">
-          {(copyRanking?.data as unknown as TeamInterface[])?.map(
+          {(localRanking?.data as unknown as TeamInterface[])?.map(
             ({ id: teamId, logo, name, players, teamValue }) => (
               <Team
                 onUpdate={(value, playerId) => {

@@ -4,6 +4,7 @@ export type Tournament = Tables<'tournaments'>
 export type Ranking = Tables<'rankings'>
 export type RankingWithTournament = Omit<Ranking, 'tournament'> & {
   tournament: Tournament
+  data: Team[]
 }
 export type User = Tables<'users'>
 
@@ -25,10 +26,20 @@ export interface Team {
 export type TournamentWithoutTeams = Omit<Tournament, 'teams'>
 
 export enum TIER_LIST_VALUES {
-  g = 'g',
-  s = 's',
-  a = 'a',
-  b = 'b',
-  c = 'c',
-  d = 'd'
+  gTier = 'g',
+  sPlusTier = 's+',
+  sTier = 's',
+  sMinusTier = 's-',
+  aPlusTier = 'a+',
+  aTier = 'a',
+  aMinusTier = 'a-',
+  bPlusTier = 'b+',
+  bTier = 'b',
+  bMinusTier = 'b-',
+  cPlusTier = 'c+',
+  cTier = 'c',
+  cMinusTier = 'c-',
+  dPlusTier = 'd+',
+  dTier = 'd',
+  dMinusTier = 'd-'
 }

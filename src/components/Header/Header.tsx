@@ -75,12 +75,12 @@ export function Header({ user }: HeaderProps): ReactNode {
                 </div>
               </Link>
             </li>
-            <li>
+            <li className="hidden md:block">
               <Link href="/#features" className="text-lg font-bold text-white">
                 Features
               </Link>
             </li>
-            <li>
+            <li className="hidden md:block">
               <Link
                 href={ROUTES.TOURNAMENTS}
                 className="text-lg font-bold text-white"

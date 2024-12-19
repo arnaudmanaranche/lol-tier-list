@@ -11,7 +11,7 @@ export const config = {
 
 interface PathToEntity {
   'tournaments/:region/:year/:event': Tournament
-  'tier-list/:region/:year/:event': RankingWithTournament
+  'tier-list/:region/:year/:event/:username': RankingWithTournament
 }
 
 type InferEntity<T extends keyof PathToEntity> = PathToEntity[T]

@@ -18,7 +18,6 @@ import { Button } from '@/components/Button'
 import { Header } from '@/components/Header/Header'
 import { Modal } from '@/components/Modal'
 import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
-import { RankingLegend } from '@/components/RankingLegend'
 import { Team } from '@/components/Team'
 import { Title } from '@/components/Title'
 import { useLogin } from '@/hooks/useLogin'
@@ -136,7 +135,6 @@ const Page = ({
     <>
       <Metadata tournament={tournament} />
       <Header user={user} />
-      <RankingLegend />
       <PageHeaderWrapper>
         <div className="mb-8">
           <Link

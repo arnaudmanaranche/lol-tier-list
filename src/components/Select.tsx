@@ -1,10 +1,5 @@
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOption,
-  ListboxOptions
-} from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { CursorArrowRaysIcon } from '@heroicons/react/24/outline'
+import * as Popover from '@radix-ui/react-popover'
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { useState } from 'react'
@@ -13,7 +8,6 @@ import { TIER_LIST_VALUES } from 'types'
 import { roleNameToIcon } from '@/utils/roleNameToIcon'
 
 interface SelectProps {
-  id: number
   value?: TIER_LIST_VALUES
   disabled: boolean
   name?: string
@@ -25,7 +19,6 @@ export const Select = ({
   value,
   onUpdate,
   disabled,
-  id,
   name,
   role
 }: SelectProps): ReactNode => {
@@ -34,95 +27,115 @@ export const Select = ({
   let currentClassname = ''
 
   switch (currentValue) {
-    case TIER_LIST_VALUES.g:
+    case TIER_LIST_VALUES.gTier:
       currentClassname = 'bg-gTier'
       break
-    case TIER_LIST_VALUES.s:
+    case TIER_LIST_VALUES.sTier:
       currentClassname = 'bg-sTier'
       break
-    case TIER_LIST_VALUES.a:
+    case TIER_LIST_VALUES.sPlusTier:
+      currentClassname = 'bg-sPlusTier'
+      break
+    case TIER_LIST_VALUES.sMinusTier:
+      currentClassname = 'bg-sMinusTier'
+      break
+    case TIER_LIST_VALUES.aTier:
       currentClassname = 'bg-aTier'
       break
-    case TIER_LIST_VALUES.b:
+    case TIER_LIST_VALUES.aPlusTier:
+      currentClassname = 'bg-aPlusTier'
+      break
+    case TIER_LIST_VALUES.aMinusTier:
+      currentClassname = 'bg-aMinusTier'
+      break
+    case TIER_LIST_VALUES.bTier:
       currentClassname = 'bg-bTier'
       break
-    case TIER_LIST_VALUES.c:
+    case TIER_LIST_VALUES.bPlusTier:
+      currentClassname = 'bg-bPlusTier'
+      break
+    case TIER_LIST_VALUES.bMinusTier:
+      currentClassname = 'bg-bMinusTier'
+      break
+    case TIER_LIST_VALUES.cTier:
       currentClassname = 'bg-cTier'
       break
-    case TIER_LIST_VALUES.d:
+    case TIER_LIST_VALUES.cPlusTier:
+      currentClassname = 'bg-cPlusTier'
+      break
+    case TIER_LIST_VALUES.cMinusTier:
+      currentClassname = 'bg-cMinusTier'
+      break
+    case TIER_LIST_VALUES.dTier:
       currentClassname = 'bg-dTier'
+      break
+    case TIER_LIST_VALUES.dPlusTier:
+      currentClassname = 'bg-dPlusTier'
+      break
+    case TIER_LIST_VALUES.dMinusTier:
+      currentClassname = 'bg-dMinusTier'
       break
     default:
       break
   }
 
   return (
-    <div
-      className={clsx('flex items-center', !role && !name && 'border-t-[1px]')}
-    >
-      {name && role ? (
-        <>
-          <span className="pl-3 capitalize">{roleNameToIcon(role)}</span>
-          <span className="grow text-center">{name}</span>
-        </>
-      ) : (
-        <div className="flex-1 pl-3 text-center">Team rank</div>
-      )}
-      {disabled ? (
-        <span
+    <Popover.Root>
+      <Popover.Trigger asChild>
+        <div
+          aria-disabled={disabled}
           className={clsx(
-            'flex h-[40px] min-w-[60px] items-center justify-center py-2 uppercase',
-            currentClassname ?? 'bg-white'
+            'flex cursor-pointer items-center data-[state=open]:bg-gray-200',
+            !role && !name && 'border-t-[1px]'
           )}
         >
-          {currentValue ?? 'n/a'}
-        </span>
-      ) : (
-        <Listbox
-          value={currentValue}
-          onChange={(e: TIER_LIST_VALUES) => {
-            onUpdate(e)
-            setValue(e)
-          }}
-          defaultValue=""
-          data-testid={`${id}_value`}
+          {name && role ? (
+            <>
+              <span className="pl-3 capitalize">{roleNameToIcon(role)}</span>
+              <span className="grow text-center">{name}</span>
+            </>
+          ) : (
+            <div className="flex-1  text-center">Team rank</div>
+          )}
+          <span
+            className={clsx(
+              'flex h-[40px] min-w-[60px] items-center justify-center py-2 uppercase',
+              currentClassname ?? 'bg-white'
+            )}
+          >
+            {currentValue ?? 'n/a'}
+          </span>
+        </div>
+      </Popover.Trigger>
+      <Popover.Portal>
+        <Popover.Content
+          className="data-[state=open]:data-[side=right]:animate-slideLeftAndFade w-[260px] rounded bg-white p-5 shadow-[0_10px_38px_-10px_hsla(206,22%,7%,.35),0_10px_20px_-15px_hsla(206,22%,7%,.2)] will-change-[transform,opacity] focus:shadow-[0_10px_38px_-10px_hsla(206,22%,7%,.35),0_10px_20px_-15px_hsla(206,22%,7%,.2),0_0_0_2px_theme(colors.violet7)]"
+          sideOffset={5}
         >
-          <div className="relative">
-            <ListboxButton
-              className={`sm:text-sm/6 h-[40px] min-w-[60px] cursor-default py-1.5 pl-3 pr-2 text-left text-gray-900 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 ${currentClassname} flex items-center justify-between`}
-            >
-              <span className="col-start-1 row-start-1 flex items-center gap-3">
-                {!currentValue ? (
-                  <span className="text-gray-700">n/a</span>
-                ) : (
-                  <span className="block truncate uppercase">
-                    {currentValue}
-                  </span>
-                )}
-              </span>
-              <ChevronDownIcon className="h-4 w-4 text-black/60" />
-            </ListboxButton>
-            <ListboxOptions
-              transition
-              className="absolute z-10 max-h-56 w-full overflow-auto bg-white shadow-lg  focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
-            >
-              {(
-                Object.keys(TIER_LIST_VALUES) as Array<
-                  keyof typeof TIER_LIST_VALUES
+          <div className="grid grid-cols-4 gap-2">
+            {Object.entries(TIER_LIST_VALUES).map(([key, value]) => (
+              <Popover.Close key={key}>
+                <button
+                  onClick={() => {
+                    onUpdate?.(value)
+                    setValue(value)
+                  }}
+                  className={`flex h-[40px] min-w-[60px] bg-${key} items-center justify-center py-2 uppercase`}
                 >
-              ).map((value) => (
-                <ListboxOption
-                  key={value}
-                  value={value}
-                  className={`cursor-pointer select-none py-2 hover:bg-slate-200`}
-                >
-                  <div className="text-center uppercase">{value}</div>
-                </ListboxOption>
-              ))}
-            </ListboxOptions>
+                  {value}
+                </button>
+              </Popover.Close>
+            ))}
           </div>
-        </Listbox>
-      )}
-    </div>
+          <Popover.Close
+            className="size-[25px] text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute right-[5px] top-[5px] inline-flex cursor-default items-center justify-center rounded-full outline-none focus:shadow-[0_0_0_2px]"
+            aria-label="Close"
+          >
+            <CursorArrowRaysIcon />
+          </Popover.Close>
+          <Popover.Arrow className="fill-white" />
+        </Popover.Content>
+      </Popover.Portal>
+    </Popover.Root>
   )
 }

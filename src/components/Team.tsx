@@ -1,6 +1,7 @@
 import Image from 'next/legacy/image'
-import type { ReactNode } from 'react'
-import type { Team as TeamInterface, TIER_LIST_VALUES } from 'types'
+import { type ReactNode } from 'react'
+import type { TIER_LIST_VALUES } from 'types'
+import { type Team as TeamInterface } from 'types'
 
 import { Select } from './Select'
 
@@ -16,8 +17,7 @@ export const Team = ({
   players,
   onUpdate,
   disabled,
-  teamValue,
-  id
+  teamValue
 }: TeamProps): ReactNode => {
   return (
     <div className="flex flex-col bg-white">
@@ -32,23 +32,23 @@ export const Team = ({
           />
           <p className="m-2 font-bold">{name}</p>
         </div>
-        {players.map(({ name: playerName, role, id: playerId, value }) => (
-          <Select
-            disabled={disabled}
-            value={value as TIER_LIST_VALUES}
-            name={playerName}
-            role={role}
-            key={playerId}
-            id={playerId}
-            onUpdate={(value) => {
-              onUpdate?.(value, playerId)
-            }}
-          />
-        ))}
+        <div className="flex flex-col">
+          {players.map(({ name: playerName, role, id: playerId, value }) => (
+            <Select
+              disabled={disabled}
+              value={value as TIER_LIST_VALUES}
+              name={playerName}
+              role={role}
+              key={playerId}
+              onUpdate={(value) => {
+                onUpdate?.(value, playerId)
+              }}
+            />
+          ))}
+        </div>
       </div>
       <Select
         disabled={disabled}
-        id={id}
         value={teamValue}
         onUpdate={(value) => {
           onUpdate?.(value)
