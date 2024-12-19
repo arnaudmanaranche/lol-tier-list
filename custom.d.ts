@@ -8,5 +8,8 @@ declare namespace NodeJS {
     NEXT_PUBLIC_SUPABASE_ID: string
     NEXT_PUBLIC_SUPABASE_TOKEN: string
     NEXT_PUBLIC_SUPABASE_URL: string
+    // Resend
+    RESEND_API_KEY: string
+    RESEND_AUDIENCE_ID: string
   }
 }

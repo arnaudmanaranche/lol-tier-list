@@ -84,27 +84,24 @@ export interface Database {
       users: {
         Row: {
           created_at: string
-          email: string | null
+          email: string
           id: string
-          payment_date: string | null
           updated_at: string
-          username: string | null
+          username: string
         }
         Insert: {
           created_at?: string
-          email?: string | null
+          email: string
           id?: string
-          payment_date?: string | null
           updated_at?: string
-          username?: string | null
+          username: string
         }
         Update: {
           created_at?: string
-          email?: string | null
+          email?: string
           id?: string
-          payment_date?: string | null
           updated_at?: string
-          username?: string | null
+          username?: string
         }
         Relationships: []
       }

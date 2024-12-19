@@ -26,7 +26,6 @@ const body = Roboto({
 })
 
 const App = ({ Component, pageProps }: AppProps): ReactNode => {
-  console.log(process.env.NODE_ENV)
   return (
     <LazyMotion features={domAnimation}>
       <Head>

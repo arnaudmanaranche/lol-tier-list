@@ -5,6 +5,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Image from 'next/legacy/image'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
+import type { FormEvent } from 'react'
 import { type ReactNode, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
@@ -14,8 +15,10 @@ import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Team } from '@/components/Team'
 import { UrlDisplay } from '@/components/UrlDisplay/UrlDisplay'
 import { useLogin } from '@/hooks/useLogin'
+import { apiInstance } from '@/utils/api'
 import { ROUTES, SUPPORTED_REGIONS } from '@/utils/constants'
 import { parent, stat } from '@/utils/framerMotion'
+import { isValidEmail } from '@/utils/isValidEmail'
 import { mockTeams } from '@/utils/mocks/homepage.mocks'
 
 interface PageProps {
@@ -34,6 +37,25 @@ const Page = ({
       handleLogin()
     } else {
       router.push(ROUTES.TOURNAMENTS)
+    }
+  }
+
+  const handleSubscribeNewsletter = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const form = e.target as HTMLFormElement
+    const email = form.email.value
+
+    if (isValidEmail(email)) {
+      try {
+        await apiInstance.post('/newsletter', { email })
+        toast.message('Subscribed successfully!')
+        form.reset()
+      } catch {
+        toast.message(
+          'An error occurred while trying to subscribe. Please try again.'
+        )
+      }
     }
   }
 
@@ -202,10 +224,14 @@ const Page = ({
             Join our newsletter to receive the latest updates about tournaments
             and tier lists.
           </p>
-          <form className="mx-auto max-w-md">
+          <form
+            className="mx-auto max-w-md"
+            onSubmit={handleSubscribeNewsletter}
+          >
             <div className="flex flex-col gap-4 sm:flex-row">
               <input
                 type="email"
+                id="email"
                 placeholder="Enter your email"
                 className="flex-1 rounded-lg border border-white/10 bg-white/10 px-4 py-3 text-white placeholder-gray-400 backdrop-blur-sm transition-colors duration-200 focus:border-blue-500 focus:outline-none"
               />
