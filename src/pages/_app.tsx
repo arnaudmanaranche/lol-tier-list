@@ -1,6 +1,7 @@
 import 'tailwindcss/utilities.css'
 import '../styles/custom.css'
 
+import { Analytics } from '@vercel/analytics/react'
 import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import { Bebas_Neue, Roboto } from 'next/font/google'
@@ -52,6 +53,7 @@ const App = ({ Component, pageProps }: AppProps): ReactNode => {
         <Toaster richColors />
         <main className="relative min-h-screen">
           <Component {...pageProps} />
+          <Analytics />
         </main>
       </div>
     </LazyMotion>
