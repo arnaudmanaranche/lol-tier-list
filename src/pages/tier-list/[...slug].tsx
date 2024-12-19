@@ -22,11 +22,14 @@ import { Team } from '@/components/Team'
 import { Title } from '@/components/Title'
 import { API_ENDPOINT, apiInstance } from '@/utils/api'
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
-import { DEFAULT_TITLE, ROUTES } from '@/utils/constants'
-import { WEBSITE_URL } from '@/utils/constants'
+import { DEFAULT_TITLE, ROUTES, WEBSITE_URL } from '@/utils/constants'
+
+interface TierList extends RankingWithTournament {
+  username: string
+}
 
 interface PageProps {
-  ranking: RankingWithTournament
+  ranking: TierList
   isEditMode: boolean
   user: User | null
 }
@@ -38,8 +41,8 @@ function Metadata({
   tournament: Tournament
   username: string
 }) {
-  const TITLE = `${DEFAULT_TITLE} - ${tournament.region} ${tournament.year} ${capitalizeFirstLetter(tournament.event)}`
-  const DESCRIPTION = `Discover @${username}'s tier list for the ${tournament.region} ${tournament.event} ${tournament.year} tournament. Create your own tier list and share it with your friends`
+  const TITLE = `${DEFAULT_TITLE} - ${tournament.region.toUpperCase()} ${tournament.year} ${capitalizeFirstLetter(tournament.event)}`
+  const DESCRIPTION = `Discover @${username}'s tier list for the ${tournament.region.toUpperCase()} ${capitalizeFirstLetter(tournament.event)} ${tournament.year} tournament. Create your own tier list and share it with your friends`
   const IMAGE = `${API_ENDPOINT}/api/og?path=tier-list/${tournament.region}/${tournament.event}/${tournament.year}`
 
   return (
@@ -71,7 +74,6 @@ const Page = ({
   const [isRankingCreation, setIsRankingCreation] = useState(false)
 
   const copyRanking = Object.assign({}, ranking)
-  const username = user?.identities?.[0].identity_data?.preferred_username
 
   const onSubmitUpdatedTierList = async () => {
     setIsRankingCreation(true)
@@ -110,7 +112,7 @@ const Page = ({
 
   return (
     <>
-      <Metadata tournament={ranking.tournament} username={username} />
+      <Metadata tournament={ranking.tournament} username={ranking.username} />
       <Header user={user} />
       <RankingLegend />
       <PageHeaderWrapper>
@@ -138,7 +140,7 @@ const Page = ({
           />
         </div>
         <Title>
-          {`@${username}'s tier list ${ranking.tournament.region.toUpperCase()} ${capitalizeFirstLetter(ranking.tournament.event)} - ${
+          {`@${ranking.username}'s tier list ${ranking.tournament.region.toUpperCase()} ${capitalizeFirstLetter(ranking.tournament.event)} - ${
             ranking.tournament.year
           }`}
         </Title>
@@ -194,7 +196,7 @@ export const getServerSideProps = (async (context) => {
     }
   }
 
-  const { data } = await apiInstance.get<RankingWithTournament>(
+  const { data } = await apiInstance.get<TierList>(
     `/tier-list/${(params.slug as string[]).join('/')}`,
     {
       headers: {
@@ -213,7 +215,8 @@ export const getServerSideProps = (async (context) => {
     props: {
       ranking: data,
       isEditMode: edit !== undefined && user?.id === data.user_id,
-      user
+      user,
+      username: data.username
     }
   }
 }) satisfies GetServerSideProps<PageProps>
