@@ -23,7 +23,7 @@ async function handler(
 
       await supabaseClient.from('users').upsert({
         id: data.session.user.id,
-        email: data.session.user.email,
+        email: data.session.user.email as string,
         username:
           data.session.user?.identities?.[0]?.identity_data?.preferred_username
       })
