@@ -5835,7 +5835,7 @@ __metadata:
     postcss: "npm:8.4.49"
     prettier: "npm:3.4.2"
     prettier-plugin-packagejson: "npm:2.5.6"
-    prettier-plugin-tailwindcss: "npm:0.5.7"
+    prettier-plugin-tailwindcss: "npm:0.6.9"
     react: "npm:19.0.0"
     react-dom: "npm:19.0.0"
     resend: "npm:4.0.1"
@@ -6717,22 +6717,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:0.5.7":
-  version: 0.5.7
-  resolution: "prettier-plugin-tailwindcss@npm:0.5.7"
+"prettier-plugin-tailwindcss@npm:0.6.9":
+  version: 0.6.9
+  resolution: "prettier-plugin-tailwindcss@npm:0.6.9"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
     "@shopify/prettier-plugin-liquid": "*"
-    "@shufo/prettier-plugin-blade": "*"
     "@trivago/prettier-plugin-sort-imports": "*"
+    "@zackad/prettier-plugin-twig-melody": "*"
     prettier: ^3.0
     prettier-plugin-astro: "*"
     prettier-plugin-css-order: "*"
     prettier-plugin-import-sort: "*"
     prettier-plugin-jsdoc: "*"
+    prettier-plugin-marko: "*"
+    prettier-plugin-multiline-arrays: "*"
     prettier-plugin-organize-attributes: "*"
     prettier-plugin-organize-imports: "*"
+    prettier-plugin-sort-imports: "*"
     prettier-plugin-style-order: "*"
     prettier-plugin-svelte: "*"
   peerDependenciesMeta:
@@ -6742,9 +6745,9 @@ __metadata:
       optional: true
     "@shopify/prettier-plugin-liquid":
       optional: true
-    "@shufo/prettier-plugin-blade":
-      optional: true
     "@trivago/prettier-plugin-sort-imports":
+      optional: true
+    "@zackad/prettier-plugin-twig-melody":
       optional: true
     prettier-plugin-astro:
       optional: true
@@ -6756,17 +6759,19 @@ __metadata:
       optional: true
     prettier-plugin-marko:
       optional: true
+    prettier-plugin-multiline-arrays:
+      optional: true
     prettier-plugin-organize-attributes:
       optional: true
     prettier-plugin-organize-imports:
+      optional: true
+    prettier-plugin-sort-imports:
       optional: true
     prettier-plugin-style-order:
       optional: true
     prettier-plugin-svelte:
       optional: true
-    prettier-plugin-twig-melody:
-      optional: true
-  checksum: 10/fb53766b6543bb46b5ba544d75e220c01d51fcf29403d3b908a0bcedf3a8c0e7481c8e6d7bb321bae8c96ae4f31d4d1c39e5e3e888b495d575705f6809854076
+  checksum: 10/ac04a35ebf7e2b76528871bf192c6c97bd20b1587251ceaed273d571ae7afb2dc5923340595686fc5f707cee0e60e4d87abaf082effbbe1e83ea1a3a30360047
   languageName: node
   linkType: hard
 
