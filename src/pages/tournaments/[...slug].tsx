@@ -20,7 +20,6 @@ import { Modal } from '@/components/Modal'
 import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Team } from '@/components/Team'
 import { Title } from '@/components/Title'
-import { useLogin } from '@/hooks/useLogin'
 import { API_ENDPOINT, apiInstance } from '@/utils/api'
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE, ROUTES, WEBSITE_URL } from '@/utils/constants'
@@ -69,8 +68,6 @@ const Page = ({
   const [ranking, setRanking] = useState<TeamInterface[] | null>(null)
   const [isModalOpen, setModalOpen] = useState(false)
   const [isRankingCreation, setIsRankingCreation] = useState(false)
-
-  const handleLogin = useLogin()
 
   const handleToggleModal = () => setModalOpen((value) => !value)
 
@@ -173,33 +170,20 @@ const Page = ({
                 onUpdate={(value, playerId) => {
                   handleUpdateValue(value, teamId, playerId)
                 }}
+                teamValue=""
               />
             )
           )}
         </div>
       </div>
       <div className="my-20 flex flex-col items-center gap-4">
-        {user?.id ? (
-          <Button
-            isDisabled={isRankingCreation}
-            onClick={handleOnCreateTierList}
-            className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
-          >
-            {isRankingCreation ? 'Creating...' : 'Create my tier list'}
-          </Button>
-        ) : (
-          <div className="flex flex-col items-center gap-4">
-            <Button
-              onClick={handleLogin}
-              className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
-            >
-              Sign in with Twitter
-            </Button>
-            <p className="text-sm text-white text-opacity-60">
-              Sign in to create and share your tier list
-            </p>
-          </div>
-        )}
+        <Button
+          isDisabled={isRankingCreation}
+          onClick={handleOnCreateTierList}
+          className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
+        >
+          {isRankingCreation ? 'Creating...' : 'Create my tier list'}
+        </Button>
       </div>
       <Modal
         title="Your tier list was created!"

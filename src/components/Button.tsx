@@ -26,8 +26,10 @@ export const Button = ({
   className: cN
 }: ButtonProps): ReactNode => {
   const className = clsx(
-    'flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 px-6 py-2 text-white backdrop-invert backdrop-opacity-10 transition-colors hover:border-white content',
-    type === 'danger' && 'bg-red-500 hover:bg-red-600',
+    'flex items-center justify-center rounded-md px-6 py-2 text-white transition-all hover:border-white',
+    type === 'danger'
+      ? 'bg-red-500 hover:bg-red-600'
+      : 'bg-[#6036a2] hover:bg-[#472878]',
     cN
   )
 

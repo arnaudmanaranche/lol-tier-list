@@ -59,7 +59,6 @@ const Page = ({
     } finally {
       setIsLoading(false)
     }
-    setIsLoading(true)
   }
 
   const handleLogout = async () => {
@@ -171,7 +170,7 @@ const Page = ({
                 <div className="flex items-center px-5">
                   <XIcon className="h-5 w-5 fill-white" />
                   <div className="flex flex-col justify-center p-4">
-                    <span>Twitter</span>
+                    <span>X (formerly Twitter)</span>
                     <p className="text-md text-white">
                       {user.email}{' '}
                       <Link

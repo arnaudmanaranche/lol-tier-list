@@ -6,13 +6,13 @@ const mockPlayers1: Player[] = [
     name: 'Zeus',
     role: 'top',
     id: 2,
-    value: TIER_LIST_VALUES.sPlusTier
+    value: ''
   },
   {
     name: 'Oner',
     role: 'jun',
     id: 3,
-    value: TIER_LIST_VALUES.gTier
+    value: TIER_LIST_VALUES.sMinusTier
   },
   {
     name: 'Faker',
@@ -30,7 +30,7 @@ const mockPlayers1: Player[] = [
     name: 'Keria',
     role: 'sup',
     id: 4,
-    value: TIER_LIST_VALUES.gTier
+    value: TIER_LIST_VALUES.sPlusTier
   }
 ]
 

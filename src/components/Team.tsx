@@ -8,7 +8,7 @@ import { Select } from './Select'
 interface TeamProps extends TeamInterface {
   onUpdate?: (value: TIER_LIST_VALUES, playerId?: number) => void
   disabled: boolean
-  teamValue?: TIER_LIST_VALUES
+  teamValue: TIER_LIST_VALUES | ''
 }
 
 export const Team = ({

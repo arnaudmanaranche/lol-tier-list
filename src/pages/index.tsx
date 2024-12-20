@@ -71,7 +71,7 @@ const Page = ({
 
   return (
     <div className="px-4">
-      <div className="h-screen">
+      <div className="md:h-screen">
         <Header user={user} />
         <div className="bgGradient absolute inset-0 -top-[90px] -z-10 opacity-20 blur-3xl" />
         <PageHeaderWrapper>
@@ -81,60 +81,48 @@ const Page = ({
             transition={{ duration: 0.5 }}
             className="space-y-12 md:space-y-16"
           >
-            <h1 className="text-center text-6xl font-bold text-white lg:text-8xl">
+            <h1 className="text-center text-5xl font-bold text-white lg:text-8xl">
               You don&apos;t have to be a{' '}
-              <span className="bg-blue-600 px-2 font-sans leading-relaxed">
+              <span
+                className="rounded-md bg-[#6036a2] px-4 font-sans leading-relaxed"
+                id="bg"
+              >
                 challenger
               </span>{' '}
               to rate pro players
             </h1>
-            <div className="mx-auto flex flex-col items-center space-y-8 text-lg leading-[1.4] text-gray-300 md:max-w-3xl md:space-y-10 lg:text-xl">
-              <p className="text-center text-lg md:text-2xl">
-                Create, share, and analyze tier lists made by passionate for
-                League of Legends tournaments.
-              </p>
-              <p className="text-center text-lg md:text-2xl">
-                Join a community of enthusiasts and deepen your game
-                understanding.
-              </p>
+            <div className="mx-auto flex flex-col items-center space-y-10 text-lg leading-[1.4] text-gray-100 md:max-w-3xl md:space-y-20 lg:text-xl">
+              <div className="space-y-4">
+                <p className="text-center text-lg md:text-xl">
+                  Create, share, and analyze tier lists made by passionate for
+                  League of Legends tournaments.
+                </p>
+                <p className="text-center text-lg md:text-xl">
+                  Join a community of enthusiasts and deepen your game
+                  understanding.
+                </p>
+              </div>
               <div
                 role="button"
                 onClick={handleCTA}
-                className="w-full max-w-lg transform rounded-lg bg-blue-500 py-4 text-center text-lg font-bold capitalize text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg"
+                className="w-full max-w-lg transform rounded-lg bg-[#6036a2] bg-gradient-to-r py-4 text-center font-sans text-2xl font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
                 Create my tier list
               </div>
-              <a
-                href="#features"
-                className="flex items-center gap-2 text-lg leading-6 text-white transition-colors hover:text-blue-400"
-              >
-                Learn more
-                <svg
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </a>
             </div>
           </m.div>
         </PageHeaderWrapper>
       </div>
-      <div className="mx-auto flex max-w-screen-lg flex-col gap-40">
-        <div
+      <div className="mx-auto flex max-w-screen-lg flex-col gap-20 md:gap-40">
+        <section
           className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:gap-20"
           id="features"
         >
           <div className="flex flex-col space-y-6">
-            <h2 className="max-w-xl text-center text-5xl font-bold text-white md:text-left md:text-5xl">
+            <h2 className="max-w-xl text-center text-3xl font-bold text-white md:text-left md:text-5xl">
               Your opinion matters
             </h2>
-            <p className="max-w-xl text-center text-xl text-gray-300 md:text-left md:text-2xl">
+            <p className="max-w-xl text-center text-lg text-gray-100 md:text-left md:text-xl">
               Express your views by assigning a ranking to each player on the
               roster and evaluating the team&apos;s overall performance. Your
               input shapes the ultimate tier list!
@@ -171,24 +159,26 @@ const Page = ({
               </span>
             </span>
           </div>
-        </div>
-        <div className="flex flex-col items-center justify-center gap-10">
+        </section>
+        <section className="flex flex-col items-center justify-center gap-10">
           <div className="flex flex-col items-center space-y-6">
-            <h2 className="text-5xl font-bold text-white">Unique URLs</h2>
-            <p className="max-w-xl text-center text-xl text-gray-300 md:text-2xl">
+            <h2 className="text-3xl font-bold text-white md:text-5xl">
+              Unique URLs
+            </h2>
+            <p className="max-w-xl text-center text-lg text-gray-100 md:text-xl">
               Create personalized tier lists with unique URLs that you can
               easily share with your friends, allowing them to explore and
               discuss your rankings effortlessly.
             </p>
           </div>
           <UrlDisplay />
-        </div>
-        <div className="flex flex-col items-center justify-center gap-10">
-          <section className="flex flex-col items-center space-y-6">
-            <h2 className="max-w-xl text-5xl font-bold text-white">
+        </section>
+        <section className="flex flex-col items-center justify-center gap-10">
+          <div className="flex flex-col items-center space-y-6">
+            <h2 className="max-w-xl text-3xl font-bold text-white md:text-5xl">
               Supported regions
             </h2>
-            <p className="max-w-xl text-center text-xl text-gray-300 md:text-2xl">
+            <p className="max-w-xl text-center text-lg text-gray-100 md:text-xl">
               Stay up to date with the most exciting tournaments from the top
               esports regions across the globe, featuring the best teams and
               thrilling matches.
@@ -215,13 +205,13 @@ const Page = ({
                 </m.div>
               ))}
             </m.div>
-          </section>
-        </div>
-        <section className="mb-10 rounded-2xl border-[1px] border-white/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-8 text-center backdrop-blur-sm transition-colors duration-300 hover:border-white/30 md:p-12">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+          </div>
+        </section>
+        <section className="mb-10 rounded-2xl border-[1px] border-white/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-8 text-center backdrop-blur-sm transition-colors hover:border-white/30 md:p-12">
+          <h2 className="mb-4 text-3xl font-bold text-white md:text-5xl">
             Stay Updated
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-300">
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-100 md:text-xl">
             Join our newsletter to receive the latest updates about tournaments
             and tier lists.
           </p>
@@ -234,11 +224,11 @@ const Page = ({
                 type="email"
                 id="email"
                 placeholder="Enter your email"
-                className="flex-1 rounded-lg border border-white/10 bg-white/10 px-4 py-3 text-white placeholder-gray-400 backdrop-blur-sm transition-colors duration-200 focus:border-blue-500 focus:outline-none"
+                className="flex-1 rounded-lg border border-white/10 bg-white/10 px-4 py-3 text-white placeholder-gray-400 backdrop-blur-sm transition-colors focus:border-white focus:outline-none"
               />
               <button
                 type="submit"
-                className="rounded-lg bg-blue-500 px-8 py-3 font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg"
+                className="rounded-lg bg-[#6036a2] px-8 py-3 font-medium text-white transition-all hover:bg-[#472878] hover:shadow-lg"
               >
                 Subscribe
               </button>

@@ -41,7 +41,8 @@ export async function pandaScoreTournamentRostersToInternalTeams(
           name: tournamentName,
           players: organizedPlayers,
           logo: teamLogo,
-          id
+          id,
+          teamValue: ''
         })
       }
     )

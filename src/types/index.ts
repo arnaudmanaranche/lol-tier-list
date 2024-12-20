@@ -19,7 +19,7 @@ export interface Team {
   logo: string
   name: string
   players: Player[]
-  teamValue?: TIER_LIST_VALUES
+  teamValue: TIER_LIST_VALUES | ''
   id: number
 }
 
