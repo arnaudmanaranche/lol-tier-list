@@ -108,13 +108,11 @@ const Page = ({
                     <Link
                       href={`/tournaments/${tournament.region}/${tournament.year}/${tournament.event}`}
                       prefetch={false}
-                      className="transition-transform hover:scale-105"
                     >
                       <Tournament {...tournament} />
                     </Link>
                   ) : (
                     <div
-                      className="cursor-not-allowed transition-opacity hover:opacity-70"
                       onClick={() => {
                         toast.info(
                           user
@@ -140,7 +138,6 @@ const Page = ({
             </div>
           )}
         </div>
-
         <div className="mt-10">
           <h2 className="mb-5 px-4 text-2xl font-semibold text-white md:px-6">
             Past tournaments
@@ -167,7 +164,7 @@ const Page = ({
                 {pastTournamentsData?.map((tournaments) => {
                   return tournaments.map((tournament) => (
                     <m.div variants={stat} key={tournament.id}>
-                      <div className="cursor-not-allowed transition-opacity hover:opacity-70">
+                      <div className="cursor-not-allowed">
                         <Tournament {...tournament} />
                       </div>
                     </m.div>

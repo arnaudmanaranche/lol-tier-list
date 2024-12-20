@@ -19,9 +19,6 @@
       "eslint --cache --cache-location .next/cache/eslint/ --fix"
     ]
   },
-  "resolutions": {
-    "word-wrap": "npm:@aashutoshrathi/word-wrap@1.2.5"
-  },
   "dependencies": {
     "@headlessui/react": "2.2.0",
     "@heroicons/react": "2.0.17",

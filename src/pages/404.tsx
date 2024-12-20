@@ -1,13 +1,16 @@
 import type { ReactNode } from 'react'
 
 import { Button } from '@/components/Button'
+import { Footer } from '@/components/Footer/Footer'
+import { Header } from '@/components/Header/Header'
 import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Title } from '@/components/Title'
 import { ROUTES } from '@/utils/constants'
 
-const Page404 = (): ReactNode => {
+const Page = (): ReactNode => {
   return (
     <>
+      <Header user={null} />
       <div className="bgGradient absolute inset-0 -top-[90px] -z-10 opacity-20 blur-3xl" />
       <PageHeaderWrapper>
         <Title>Page not found</Title>
@@ -21,8 +24,9 @@ const Page404 = (): ReactNode => {
           <Button to={ROUTES.HOME}>Return to home</Button>
         </div>
       </PageHeaderWrapper>
+      <Footer />
     </>
   )
 }
 
-export default Page404
+export default Page

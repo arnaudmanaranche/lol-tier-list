@@ -28,6 +28,7 @@ export const Tournament = ({
         height={60}
         width={60}
         id={`${region}_${event}_${year}`}
+        className={clsx(!active && 'opacity-20')}
       />
       <p className="font-bold capitalize text-white">{`${region.toUpperCase()} ${event} - ${year}`}</p>
     </div>
