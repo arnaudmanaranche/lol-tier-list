@@ -8,7 +8,7 @@ import { TIER_LIST_VALUES } from 'types'
 import { roleNameToIcon } from '@/utils/roleNameToIcon'
 
 interface SelectProps {
-  value?: TIER_LIST_VALUES
+  value: TIER_LIST_VALUES | ''
   disabled: boolean
   name?: string
   role?: string
@@ -103,19 +103,19 @@ export const Select = ({
               currentClassname ?? 'bg-white'
             )}
           >
-            {currentValue ?? 'n/a'}
+            {currentValue === '' ? 'n/a' : currentValue}
           </span>
         </div>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
-          className="data-[state=open]:data-[side=right]:animate-slideLeftAndFade w-[260px] rounded bg-white p-5 shadow-[0_10px_38px_-10px_hsla(206,22%,7%,.35),0_10px_20px_-15px_hsla(206,22%,7%,.2)] will-change-[transform,opacity] focus:shadow-[0_10px_38px_-10px_hsla(206,22%,7%,.35),0_10px_20px_-15px_hsla(206,22%,7%,.2),0_0_0_2px_theme(colors.violet7)]"
+          className="w-[260px] rounded bg-white p-3 shadow-2xl will-change-[transform,opacity] data-[state=open]:data-[side=right]:animate-slideLeftAndFade"
           sideOffset={5}
         >
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-4 gap-1">
             {Object.entries(TIER_LIST_VALUES).map(([key, value]) => (
               <Popover.Close key={key}>
-                <button
+                <div
                   onClick={() => {
                     onUpdate?.(value)
                     setValue(value)
@@ -123,7 +123,7 @@ export const Select = ({
                   className={`flex h-[40px] min-w-[60px] bg-${key} items-center justify-center py-2 uppercase`}
                 >
                   {value}
-                </button>
+                </div>
               </Popover.Close>
             ))}
           </div>
