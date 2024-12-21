@@ -3864,9 +3864,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv-cli@npm:7.4.4":
-  version: 7.4.4
-  resolution: "dotenv-cli@npm:7.4.4"
+"dotenv-cli@npm:8.0.0":
+  version: 8.0.0
+  resolution: "dotenv-cli@npm:8.0.0"
   dependencies:
     cross-spawn: "npm:^7.0.6"
     dotenv: "npm:^16.3.0"
@@ -3874,7 +3874,7 @@ __metadata:
     minimist: "npm:^1.2.6"
   bin:
     dotenv: cli.js
-  checksum: 10/04d4459a21c32526a79609ce98f566e7978f359f4d98f5d6e35f43bfdc0f35c75330e25d7a5f84391c0557164c48f46adb031dcc8b9bf5121b45ed15562a09f1
+  checksum: 10/3acbc2712f97de5a7b916e2e611682377b5f62efb7ebe63ede314800bedd9c63e9ae1e8b1f819efe0e87f9d813842695cfed991a276290a79cac63d48c60df05
   languageName: node
   linkType: hard
 
@@ -5835,7 +5835,7 @@ __metadata:
     autoprefixer: "npm:10.4.20"
     axios: "npm:0.24.0"
     clsx: "npm:1.2.1"
-    dotenv-cli: "npm:7.4.4"
+    dotenv-cli: "npm:8.0.0"
     eslint: "npm:8.57.1"
     eslint-config-next: "npm:14.2.20"
     eslint-config-prettier: "npm:8.10.0"
