@@ -82,11 +82,12 @@ export const Select = ({
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
-        <div
-          aria-disabled={disabled}
+        <button
+          disabled={disabled}
           className={clsx(
-            'flex cursor-pointer items-center data-[state=open]:bg-gray-200',
-            !role && !name && 'border-t-[1px]'
+            'flex items-center data-[state=open]:bg-gray-200',
+            !role && !name && 'border-t-[1px]',
+            disabled ? 'cursor-auto' : 'cursor-pointer'
           )}
         >
           {name && role ? (
@@ -105,7 +106,7 @@ export const Select = ({
           >
             {currentValue === '' ? 'n/a' : currentValue}
           </span>
-        </div>
+        </button>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content

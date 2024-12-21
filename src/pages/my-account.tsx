@@ -1,5 +1,5 @@
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
+import * as Tabs from '@radix-ui/react-tabs'
 import type { User } from '@supabase/supabase-js'
 import { createClient } from 'clients/supabase/client'
 import { createClient as createServerPropsClient } from 'clients/supabase/server-props'
@@ -81,135 +81,119 @@ const Page = ({
       <PageHeaderWrapper>
         <Title>My Account</Title>
       </PageHeaderWrapper>
-      <TabGroup defaultIndex={0}>
+      <Tabs.Root defaultValue="tab1">
         <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
-          <TabList className="flex space-x-4 rounded-md bg-gunmetal p-2 text-white">
-            <Tab as={Fragment}>
-              {({ selected }) => (
-                <div
-                  className={
-                    selected
-                      ? 'cursor-pointer rounded-md bg-gunmetalDark p-2'
-                      : 'cursor-pointer p-2 transition-all'
-                  }
-                >
-                  My tier lists
-                </div>
-              )}
-            </Tab>
-            <Tab as={Fragment}>
-              {({ selected }) => (
-                <div
-                  className={
-                    selected
-                      ? 'cursor-pointer rounded-md bg-gunmetalDark p-2'
-                      : 'cursor-pointer p-2 transition-all'
-                  }
-                >
-                  Settings
-                </div>
-              )}
-            </Tab>
-          </TabList>
+          <Tabs.List className="flex space-x-4 rounded-md bg-gunmetal p-2 text-white">
+            <Tabs.Trigger
+              value="tab1"
+              className="cursor-pointer rounded-md p-2 transition-all data-[state=active]:bg-gunmetalDark"
+            >
+              My tier lists
+            </Tabs.Trigger>
+            <Tabs.Trigger
+              value="tab2"
+              className="cursor-pointer rounded-md p-2 transition-all data-[state=active]:bg-gunmetalDark"
+            >
+              Settings
+            </Tabs.Trigger>
+          </Tabs.List>
         </div>
-        <TabPanels>
-          <TabPanel>
-            <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-              {tierlists && tierlists?.length <= 0 ? (
-                <div className="flex flex-col items-center space-y-4">
-                  <h2 className="text-2xl text-white">
-                    You don&apos;t have any tier list yet
-                  </h2>
-                  <Button to={ROUTES.TOURNAMENTS}>Browse tournaments</Button>
-                </div>
-              ) : (
-                <ul className="rounded-sm border border-brightGray bg-gunmetal">
-                  {tierlists?.map((tierlist) => (
-                    <li
-                      className="flex items-center p-6 text-white"
-                      key={tierlist.id}
-                    >
-                      <div className="flex grow items-center">
-                        <Image
-                          src={tierlist.tournament.logo}
-                          alt={`${tierlist.tournament.region} logo`}
-                          height={60}
-                          width={60}
-                          id={`${tierlist.tournament.region}_${tierlist.tournament.event}_${tierlist.tournament.year}`}
-                        />
-                        <span className="ml-2 capitalize">{`${tierlist.tournament.region.toUpperCase()} ${tierlist.tournament.event} - ${tierlist.tournament.year}`}</span>
-                      </div>
-                      <div className="flex justify-end space-x-4">
-                        <Button
-                          to={`/tier-list/${tierlist.tournament.region}/${tierlist.tournament.year}/${tierlist.tournament.event}/${user.identities?.[0].identity_data?.preferred_username}?edit`}
-                        >
-                          <span className="hidden md:flex">Edit</span>
-                          <PencilIcon className="h-5 w-5 md:ml-2" />
-                        </Button>
-                        <Button
-                          isDisabled={isLoading}
-                          onClick={() => {
-                            handleDeleteTierlist(tierlist.id)
-                          }}
-                          type="danger"
-                        >
-                          <span className="hidden md:flex">Delete</span>
-                          <TrashIcon className="h-5 w-5 md:ml-2" />
-                        </Button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
-              <div className="rounded-md border border-brightGray bg-gunmetal text-white md:w-4/5">
-                <h2 className="p-5 text-xl">Connection method</h2>
-                <div className="flex items-center px-5">
-                  <XIcon className="h-5 w-5 fill-white" />
-                  <div className="flex flex-col justify-center p-4">
-                    <span>X (formerly Twitter)</span>
-                    <p className="text-md text-white">
-                      {user.email}{' '}
-                      <Link
-                        href={`https://twitter.com/${user.user_metadata.preferred_username}`}
-                        target="_blank"
-                        rel="external nofollow noreferrer"
+        <Tabs.Content value="tab1">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+            {tierlists && tierlists?.length <= 0 ? (
+              <div className="flex flex-col items-center space-y-4">
+                <h2 className="text-2xl text-white">
+                  You don&apos;t have any tier list yet
+                </h2>
+                <Button to={ROUTES.TOURNAMENTS}>Browse tournaments</Button>
+              </div>
+            ) : (
+              <ul className="rounded-sm border border-brightGray bg-gunmetal">
+                {tierlists?.map((tierlist) => (
+                  <li
+                    className="flex items-center p-6 text-white"
+                    key={tierlist.id}
+                  >
+                    <div className="flex grow items-center">
+                      <Image
+                        src={tierlist.tournament.logo}
+                        alt={`${tierlist.tournament.region} logo`}
+                        height={60}
+                        width={60}
+                        id={`${tierlist.tournament.region}_${tierlist.tournament.event}_${tierlist.tournament.year}`}
+                      />
+                      <span className="ml-2 capitalize">{`${tierlist.tournament.region.toUpperCase()} ${tierlist.tournament.event} - ${tierlist.tournament.year}`}</span>
+                    </div>
+                    <div className="flex justify-end space-x-4">
+                      <Button
+                        to={`/tier-list/${tierlist.tournament.region}/${tierlist.tournament.year}/${tierlist.tournament.event}/${user.identities?.[0].identity_data?.preferred_username}?edit`}
                       >
-                        (@{user.user_metadata.preferred_username})
-                      </Link>
-                    </p>
-                  </div>
+                        <span className="hidden md:flex">Edit</span>
+                        <PencilIcon className="h-5 w-5 md:ml-2" />
+                      </Button>
+                      <Button
+                        isDisabled={isLoading}
+                        onClick={() => {
+                          handleDeleteTierlist(tierlist.id)
+                        }}
+                        type="danger"
+                      >
+                        <span className="hidden md:flex">Delete</span>
+                        <TrashIcon className="h-5 w-5 md:ml-2" />
+                      </Button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </Tabs.Content>
+        <Tabs.Content value="tab2">
+          <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
+            <div className="rounded-md border border-brightGray bg-gunmetal text-white md:w-4/5">
+              <h2 className="p-5 text-xl">Connection method</h2>
+              <div className="flex items-center px-5">
+                <XIcon className="h-5 w-5 fill-white" />
+                <div className="flex flex-col justify-center p-4">
+                  <span>X (formerly Twitter)</span>
+                  <p className="text-md text-white">
+                    {user.email}{' '}
+                    <Link
+                      href={`https://twitter.com/${user.user_metadata.preferred_username}`}
+                      target="_blank"
+                      rel="external nofollow noreferrer"
+                    >
+                      (@{user.user_metadata.preferred_username})
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
-              <div className="rounded-md border border-red-600 text-white md:w-4/5">
-                <h2 className="p-5 text-xl">Delete Personal Account</h2>
-                <p className="p-4 text-base">
-                  Permanently delete your account and all of its contents from
-                  the Lol Tier List platform. This action is not reversible, so
-                  please continue with caution.
-                </p>
-                <div className="flex flex-row-reverse rounded-b-md px-6 py-3">
-                  <Button type="danger" onClick={deleteMyAccount}>
-                    Delete my account
-                  </Button>
-                </div>
-              </div>
-            </div>
-            <div className="mx-auto my-20 w-full max-w-7xl px-4 md:px-6">
-              <div className="md:w-4/5">
-                <Button isDisabled={isLoading} onClick={handleLogout}>
-                  Logout
+          </div>
+          <div className="mx-auto mb-12 w-full max-w-7xl px-4 md:px-6">
+            <div className="rounded-md border border-red-600 text-white md:w-4/5">
+              <h2 className="p-5 text-xl">Delete Personal Account</h2>
+              <p className="p-4 text-base">
+                Permanently delete your account and all of its contents from the
+                Lol Tier List platform. This action is not reversible, so please
+                continue with caution.
+              </p>
+              <div className="flex flex-row-reverse rounded-b-md px-6 py-3">
+                <Button type="danger" onClick={deleteMyAccount}>
+                  Delete my account
                 </Button>
               </div>
             </div>
-          </TabPanel>
-        </TabPanels>
-      </TabGroup>
+          </div>
+          <div className="mx-auto my-20 w-full max-w-7xl px-4 md:px-6">
+            <div className="md:w-4/5">
+              <Button isDisabled={isLoading} onClick={handleLogout}>
+                Logout
+              </Button>
+            </div>
+          </div>
+        </Tabs.Content>
+      </Tabs.Root>
     </>
   )
 }
