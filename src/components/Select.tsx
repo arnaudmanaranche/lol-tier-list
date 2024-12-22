@@ -1,4 +1,3 @@
-import { CursorArrowRaysIcon } from '@heroicons/react/24/outline'
 import * as Popover from '@radix-ui/react-popover'
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
@@ -96,7 +95,7 @@ export const Select = ({
               <span className="grow text-center">{name}</span>
             </>
           ) : (
-            <div className="flex-1  text-center">Team rank</div>
+            <div className="flex-1 text-center">Team rank</div>
           )}
           <span
             className={clsx(
@@ -128,13 +127,6 @@ export const Select = ({
               </Popover.Close>
             ))}
           </div>
-          <Popover.Close
-            className="size-[25px] text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute right-[5px] top-[5px] inline-flex cursor-default items-center justify-center rounded-full outline-none focus:shadow-[0_0_0_2px]"
-            aria-label="Close"
-          >
-            <CursorArrowRaysIcon />
-          </Popover.Close>
-          <Popover.Arrow className="fill-white" />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

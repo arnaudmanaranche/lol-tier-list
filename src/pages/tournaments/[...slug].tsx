@@ -4,6 +4,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import router from 'next/router'
 import type { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
@@ -24,9 +25,12 @@ import { API_ENDPOINT, apiInstance } from '@/utils/api'
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE, ROUTES, WEBSITE_URL } from '@/utils/constants'
 import {
-  getShareableFacebookLink,
+  getShareableRedditLink,
   getShareableTwitterLink
 } from '@/utils/getShareabaleLinks'
+
+import RedditIcon from '../../svgs/reddit.svg'
+import XIcon from '../../svgs/x.svg'
 
 interface PageProps {
   tournament: Tournament
@@ -64,12 +68,21 @@ const Page = ({
   user
 }: InferGetServerSidePropsType<typeof getServerSideProps>): ReactNode => {
   const { region, event, year, logo, teams, id } = tournament
-
   const [ranking, setRanking] = useState<TeamInterface[] | null>(null)
   const [isModalOpen, setModalOpen] = useState(false)
   const [isRankingCreation, setIsRankingCreation] = useState(false)
+  const [canShareNative, setCanShareNative] = useState(false)
 
-  const handleToggleModal = () => setModalOpen((value) => !value)
+  const handleToggleModal = () => {
+    const username = user?.identities?.[0]?.identity_data
+      ?.preferred_username as string
+
+    if (isModalOpen) {
+      router.replace(`/tier-list/${region}/${year}/${event}/${username}?edit`)
+    } else {
+      setModalOpen((value) => !value)
+    }
+  }
 
   const handleUpdateValue = (
     value: TIER_LIST_VALUES,
@@ -128,6 +141,18 @@ const Page = ({
     }
   }, [teams, tournament.id])
 
+  useEffect(() => {
+    setCanShareNative(navigator.canShare())
+  }, [])
+
+  const handleOnShareNative = () => {
+    navigator.share({
+      title: `${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)}`,
+      text: `Check out my tier list for the ${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)} tournament!`,
+      url: `${WEBSITE_URL}/tier-list/${region}/${event}/${year}/${tournament}`
+    })
+  }
+
   return (
     <>
       <Metadata tournament={tournament} />
@@ -177,11 +202,7 @@ const Page = ({
         </div>
       </div>
       <div className="my-20 flex flex-col items-center gap-4">
-        <Button
-          isDisabled={isRankingCreation}
-          onClick={handleOnCreateTierList}
-          className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
-        >
+        <Button isDisabled={isRankingCreation} onClick={handleOnCreateTierList}>
           {isRankingCreation ? 'Creating...' : 'Create my tier list'}
         </Button>
       </div>
@@ -191,32 +212,34 @@ const Page = ({
         isOpen={isModalOpen}
       >
         <div className="flex flex-col gap-6">
-          <p className="text-lg text-white">
-            Creating ranking is always exciting, but sharing it with others is
-            even more fulfilling! Share your tier list on:
-          </p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Button
-              href={getShareableFacebookLink({
-                event: event,
-                region: region,
-                year: year
-              })}
-              className="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#1877F2]/90"
-            >
-              <span>Share on Facebook</span>
-            </Button>
-            <Button
-              href={getShareableTwitterLink({
-                event: event,
-                region: region,
-                year: year
-              })}
-              className="flex items-center justify-center gap-2 bg-[#1DA1F2] hover:bg-[#1DA1F2]/90"
-            >
-              <span>Share on Twitter</span>
-            </Button>
-          </div>
+          {canShareNative ? (
+            <div onClick={handleOnShareNative}>
+              <span>Share</span>
+            </div>
+          ) : (
+            <>
+              <Button
+                href={getShareableTwitterLink({
+                  event: event,
+                  region: region,
+                  year: year
+                })}
+              >
+                Share on <XIcon className="mx-2 h-5 w-5 fill-white" /> (formerly
+                Twitter)
+              </Button>
+              <Button
+                href={getShareableRedditLink({
+                  event: event,
+                  region: region,
+                  year: year
+                })}
+              >
+                Share on <RedditIcon className="mx-2 h-5 w-5 fill-white" />
+                Reddit
+              </Button>
+            </>
+          )}
         </div>
       </Modal>
     </>
@@ -247,7 +270,7 @@ export const getServerSideProps = (async (context) => {
     }
   }
 
-  const { data: userCanAccess, error } = await supabase.rpc(
+  const { data: userCanAccess } = await supabase.rpc(
     'can_access_to_tournament',
     {
       p_user_id: user.id,
@@ -257,10 +280,13 @@ export const getServerSideProps = (async (context) => {
     }
   )
 
-  if (!userCanAccess || error) {
+  const username = user.identities?.[0].identity_data
+    ?.preferred_username as string
+
+  if (!userCanAccess) {
     return {
       redirect: {
-        destination: '/tournaments?status=unauthorized',
+        destination: `/tier-list/${params.slug[0]}/${params.slug[1]}/${params.slug[2]}/${username}`,
         permanent: false
       }
     }
