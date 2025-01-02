@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { type ReactNode, useMemo } from 'react'
 
+import useIsMobile from '@/hooks/useIsMobile'
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
 import { WEBSITE_URL } from '@/utils/constants'
 import {
@@ -25,6 +26,7 @@ export function TierListCreatedModal({
   username,
   year
 }: TierListCreatedModalProps): ReactNode {
+  const isMobile = useIsMobile()
   const shareData = useMemo(
     () => ({
       title: `${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)}`,
@@ -40,7 +42,7 @@ export function TierListCreatedModal({
 
   return (
     <div className="flex flex-col gap-6">
-      {navigator.canShare(shareData) ? (
+      {isMobile && navigator.canShare(shareData) ? (
         <Button onClick={handleOnShareNative}>Share your tier list</Button>
       ) : (
         <>
