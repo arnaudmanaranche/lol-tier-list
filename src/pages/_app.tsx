@@ -43,11 +43,14 @@ const App = ({ Component, pageProps }: AppProps): ReactNode => {
         <meta name="description" content={DEFAULT_DESCRIPTION} />
         <meta property="og:description" content={DEFAULT_DESCRIPTION} />
         {/* Image */}
-        <meta name="og:image" content={`${WEBSITE_URL}/opengraph.png`} />
+        <meta name="og:image" content={`${WEBSITE_URL}/opengraph_v2.png`} />
         {/* Open graph */}
         <meta property="og:type" content="website" />
         {/* Twitter */}
-        <meta name="twitter:image" content={`${WEBSITE_URL}/opengraph.png`} />
+        <meta
+          name="twitter:image"
+          content={`${WEBSITE_URL}/opengraph_v2.png`}
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className={`${title.variable} ${body.variable}`}>
