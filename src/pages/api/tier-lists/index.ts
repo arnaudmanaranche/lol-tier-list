@@ -8,7 +8,11 @@ async function handler(
   const supabaseClient = createClient(req, res)
 
   if (req.method === 'GET') {
-    const { data } = await supabaseClient.from('rankings').select('*')
+    const { data } = await supabaseClient
+      .from('rankings')
+      .select(
+        'tournament:tournaments(year, event, region), user:users(username)'
+      )
 
     res.status(200).json(data)
   } else {

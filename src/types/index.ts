@@ -6,6 +6,13 @@ export type TierListWithTournament = Omit<Tierlist, 'tournament'> & {
   tournament: Tournament
   data: Team[]
 }
+export type TierListWithTournamentAndUsername = Omit<Tierlist, 'tournament'> & {
+  tournament: Tournament
+  data: Team[]
+  user: {
+    username: string
+  }
+}
 export type User = Tables<'users'>
 
 export interface Player {
