@@ -18,6 +18,7 @@ import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Title } from '@/components/Title'
 import { apiInstance } from '@/utils/api'
 import { ROUTES } from '@/utils/constants'
+import { tournamentEventModifier } from '@/utils/tournamentEventModifier'
 
 import XIcon from '../svgs/x.svg'
 
@@ -122,7 +123,7 @@ const Page = ({
                         width={60}
                         id={`${tierlist.tournament.region}_${tierlist.tournament.event}_${tierlist.tournament.year}`}
                       />
-                      <span className="ml-2 capitalize">{`${tierlist.tournament.region.toUpperCase()} ${tierlist.tournament.event} - ${tierlist.tournament.year}`}</span>
+                      <span className="ml-2 capitalize">{`${tierlist.tournament.region.toUpperCase()} ${tournamentEventModifier(tierlist.tournament.event)} - ${tierlist.tournament.year}`}</span>
                     </div>
                     <div className="flex justify-end space-x-4">
                       <Button

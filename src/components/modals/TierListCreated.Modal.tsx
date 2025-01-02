@@ -41,9 +41,7 @@ export function TierListCreatedModal({
   return (
     <div className="flex flex-col gap-6">
       {navigator.canShare(shareData) ? (
-        <div onClick={handleOnShareNative}>
-          <span>Share</span>
-        </div>
+        <Button onClick={handleOnShareNative}>Share your tier list</Button>
       ) : (
         <>
           <Button
@@ -68,19 +66,19 @@ export function TierListCreatedModal({
             Share on <RedditIcon className="mx-2 h-5 w-5 fill-white" />
             Reddit
           </Button>
-          <div className="text-center text-lg text-white">
-            You like the project?{' '}
-            <Link
-              href="https://buymeacoffee.com/arnaudmanaranche"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              Support us
-            </Link>
-          </div>
         </>
       )}
+      <div className="text-center text-lg text-white">
+        You like the project?{' '}
+        <Link
+          href="https://buymeacoffee.com/arnaudmanaranche"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          Support us
+        </Link>
+      </div>
     </div>
   )
 }
