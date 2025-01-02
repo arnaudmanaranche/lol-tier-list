@@ -1,6 +1,6 @@
 import { ImageResponse } from '@vercel/og'
 import type { NextRequest } from 'next/server'
-import type { RankingWithTournament, Tournament } from 'types'
+import type { TierListWithTournament, Tournament } from 'types'
 
 import { API_ENDPOINT } from '@/utils/api'
 import { generatedOgImage } from '@/utils/generatedOgImage'
@@ -11,7 +11,7 @@ export const config = {
 
 interface PathToEntity {
   'tournaments/:region/:year/:event': Tournament
-  'tier-list/:region/:year/:event/:username': RankingWithTournament
+  'tier-list/:region/:year/:event/:username': TierListWithTournament
 }
 
 type InferEntity<T extends keyof PathToEntity> = PathToEntity[T]
@@ -31,17 +31,26 @@ const fetchEntity = async <T extends keyof PathToEntity>({
 }
 
 const extractEntityData = (
-  entityData: Tournament | RankingWithTournament,
+  entityData: Tournament | TierListWithTournament,
   isTierlist: boolean
-): { region: string; year: number; event: string; logo: string } => {
+): {
+  region: string
+  year: number
+  event: string
+  logo: string
+  username: string
+} => {
   const tournamentData = isTierlist
-    ? (entityData as RankingWithTournament).tournament
+    ? (entityData as TierListWithTournament).tournament
     : (entityData as Tournament)
+
   return {
     region: tournamentData.region,
     year: tournamentData.year,
     event: tournamentData.event,
-    logo: tournamentData.logo
+    logo: tournamentData.logo,
+    // @ts-expect-error username is OK
+    username: isTierlist ? entityData.user.username : ''
   }
 }
 
@@ -57,15 +66,25 @@ async function handler(req: NextRequest): Promise<ImageResponse> {
     const isTierlist = path.startsWith('tier-list')
     const entityData = await fetchEntity({ path })
 
-    const { region, year, event, logo } = extractEntityData(
+    const { region, year, event, logo, username } = extractEntityData(
       entityData,
       isTierlist
     )
-    const ogImage = generatedOgImage(isTierlist, region, logo, event, year)
 
-    return new ImageResponse(ogImage, { width: 1200, height: 630 })
+    const ogImage = generatedOgImage(
+      isTierlist,
+      region,
+      logo,
+      event,
+      year,
+      username
+    )
+
+    return new ImageResponse(ogImage, { width: 800, height: 400 })
   } catch {
-    return new Response(`Failed to generate the image`, { status: 500 })
+    return new Response(`Failed to generate the image`, {
+      status: 500
+    })
   }
 }
 
