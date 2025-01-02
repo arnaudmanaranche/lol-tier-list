@@ -26,7 +26,6 @@ module.exports = {
         gunmetal: '#292E41',
         gunmetalDark: '#1B2030',
         brightGray: '#ebebef14',
-        charcoal: '#383d51',
         dark: '#0e0e10',
         // Tiers
         gTier: '#ff1902',
