@@ -1,5 +1,6 @@
 import createClient from 'clients/supabase/api'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { fetchPandascoreTournamentInfo } from 'providers/pandascore/fetchTournamentInfo'
 import { fetchPandascoreTournamentsRosters } from 'providers/pandascore/fetchTournamentsRosters'
 import { pandaScoreTournamentRostersToInternalTeams } from 'providers/pandascore/pandaScoreTournamentRostersToInternalTeams'
 import type { Json } from 'types/database.types'
@@ -19,6 +20,8 @@ async function handler(
         tournamentYear
       } = req.body
 
+      const { begin_at } = await fetchPandascoreTournamentInfo(tournamentIds[0])
+
       const pandascoreTournamentsRosters =
         await fetchPandascoreTournamentsRosters(tournamentIds)
 
@@ -35,7 +38,8 @@ async function handler(
         logo: `https://${
           process.env.NEXT_PUBLIC_SUPABASE_ID
         }.supabase.co/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${tournamentYear}/logo.png`,
-        year: tournamentYear
+        year: tournamentYear,
+        begin_at
       })
       res.status(201).json({ message: 'Tournament created' })
       break

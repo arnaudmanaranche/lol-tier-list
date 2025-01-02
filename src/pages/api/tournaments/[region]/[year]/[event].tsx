@@ -12,7 +12,7 @@ async function handler(
   }
 
   if (req.method === 'GET') {
-    const { data } = await supabaseClient
+    const { data, error } = await supabaseClient
       .from('tournaments')
       .select('*')
       .eq('event', req.query.event)
@@ -20,7 +20,15 @@ async function handler(
       .eq('region', req.query.region)
       .single()
 
-    res.json(data)
+    if (error) {
+      throw new Error(error.message)
+    }
+
+    if (data.begin_at < new Date().toISOString()) {
+      res.json({ ...data, active: false })
+    } else {
+      res.json(data)
+    }
   } else {
     throw new Error(`Method ${req.method} is not allowed`)
   }

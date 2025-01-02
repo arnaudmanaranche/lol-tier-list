@@ -4,6 +4,8 @@ import type { ReactElement } from 'react'
 
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
 
+import { tournamentEventModifier } from './tournamentEventModifier'
+
 export const generatedOgImage = (
   isTierlist: boolean,
   region: string,
@@ -55,7 +57,8 @@ export const generatedOgImage = (
         <span tw="flex pt-10 text-4xl">{wording}</span>
         <div tw="flex items-center mt-6">
           <span tw="flex text-4xl pt-4">
-            {region.toUpperCase()} {capitalizeFirstLetter(event)} {year}
+            {region.toUpperCase()}{' '}
+            {capitalizeFirstLetter(tournamentEventModifier(event))} {year}
           </span>
           <img src={logo} width={80} height={80} />
         </div>

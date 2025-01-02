@@ -1,3 +1,6 @@
+export interface PandaScoreTournamentInfo {
+  begin_at: string
+}
 export interface PandaScoreTournament {
   rosters: PandaScoreTournamentRoster[]
 }

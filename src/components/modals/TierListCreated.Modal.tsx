@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react'
+import Link from 'next/link'
+import { type ReactNode, useMemo } from 'react'
 
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
 import { WEBSITE_URL } from '@/utils/constants'
@@ -24,17 +25,22 @@ export function TierListCreatedModal({
   username,
   year
 }: TierListCreatedModalProps): ReactNode {
-  const handleOnShareNative = () => {
-    navigator.share({
+  const shareData = useMemo(
+    () => ({
       title: `${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)}`,
       text: `Check out my tier list for the ${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)} tournament!`,
       url: `${WEBSITE_URL}/tier-list/${region}/${event}/${year}/${username}`
-    })
+    }),
+    [event, region, username, year]
+  )
+
+  const handleOnShareNative = () => {
+    navigator.share(shareData)
   }
 
   return (
     <div className="flex flex-col gap-6">
-      {navigator.canShare() ? (
+      {navigator.canShare(shareData) ? (
         <div onClick={handleOnShareNative}>
           <span>Share</span>
         </div>
@@ -62,6 +68,17 @@ export function TierListCreatedModal({
             Share on <RedditIcon className="mx-2 h-5 w-5 fill-white" />
             Reddit
           </Button>
+          <div className="text-center text-lg text-white">
+            You like the project?{' '}
+            <Link
+              href="https://buymeacoffee.com/arnaudmanaranche"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Support us
+            </Link>
+          </div>
         </>
       )}
     </div>

@@ -127,6 +127,7 @@ const Page = ({
                     <div className="flex justify-end space-x-4">
                       <Button
                         to={`/tier-list/${tierlist.tournament.region}/${tierlist.tournament.year}/${tierlist.tournament.event}/${user.identities?.[0].identity_data?.preferred_username}?edit`}
+                        isDisabled={isLoading}
                       >
                         <span className="hidden md:flex">Edit</span>
                         <PencilIcon className="h-5 w-5 md:ml-2" />

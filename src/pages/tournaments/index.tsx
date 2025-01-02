@@ -202,7 +202,7 @@ const Page = ({
                   return tournaments.map((tournament) => (
                     <m.div variants={stat} key={tournament.id}>
                       <div className="cursor-not-allowed">
-                        <Tournament {...tournament} />
+                        <Tournament {...tournament} active={false} />
                       </div>
                     </m.div>
                   ))

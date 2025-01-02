@@ -30,6 +30,7 @@ export const Button = ({
     type === 'danger'
       ? 'bg-red-500 hover:bg-red-600'
       : 'bg-[#6036a2] hover:bg-[#472878]',
+    isDisabled && 'pointer-events-none',
     cN
   )
 
@@ -47,7 +48,12 @@ export const Button = ({
     )
   } else if (to) {
     return (
-      <Link href={to} prefetch={false} className={className}>
+      <Link
+        href={to}
+        prefetch={false}
+        className={className}
+        aria-disabled={isDisabled}
+      >
         {children}
       </Link>
     )
@@ -55,11 +61,7 @@ export const Button = ({
     return (
       <button
         onClick={onClick}
-        className={clsx(
-          className,
-          isDisabled &&
-            'disabled:cursor-not-allowed disabled:border-transparent disabled:hover:border-transparent'
-        )}
+        className={clsx(className)}
         disabled={isDisabled}
       >
         {children}
