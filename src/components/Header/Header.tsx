@@ -16,7 +16,7 @@ export function Header({ user }: HeaderProps): ReactNode {
   const handleLogin = useLogin()
 
   return (
-    <header className="mx-auto flex w-full max-w-7xl items-center px-4 pt-6  md:px-6">
+    <header className="mx-auto flex w-full max-w-7xl items-center px-4 pt-6 md:px-6">
       <div className="mx-auto flex flex-1 items-center justify-between p-3 md:flex-row md:p-5">
         <nav>
           <ul className="flex items-center gap-4">
@@ -77,7 +77,7 @@ export function Header({ user }: HeaderProps): ReactNode {
         {!user ? (
           <div
             onClick={handleLogin}
-            className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#1DA1F2] py-2 px-4 font-bold text-white transition hover:bg-[#1A91DA]"
+            className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#1DA1F2] px-4 py-2 font-bold text-white transition hover:bg-[#1A91DA]"
           >
             Sign in with
             <XIcon className="h-5 w-5 fill-white" />

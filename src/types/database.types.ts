@@ -54,6 +54,7 @@ export interface Database {
       tournaments: {
         Row: {
           active: boolean
+          begin_at: string
           event: string
           id: string
           logo: string
@@ -63,6 +64,7 @@ export interface Database {
         }
         Insert: {
           active?: boolean
+          begin_at?: string
           event: string
           id?: string
           logo: string
@@ -72,6 +74,7 @@ export interface Database {
         }
         Update: {
           active?: boolean
+          begin_at?: string
           event?: string
           id?: string
           logo?: string

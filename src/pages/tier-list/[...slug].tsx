@@ -24,6 +24,7 @@ import { Title } from '@/components/Title'
 import { API_ENDPOINT, apiInstance } from '@/utils/api'
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE, ROUTES, WEBSITE_URL } from '@/utils/constants'
+import { tournamentEventModifier } from '@/utils/tournamentEventModifier'
 
 interface TierListWithUser extends RankingWithTournament {
   user: UserInterface
@@ -140,7 +141,9 @@ const Page = ({
           <span className="mx-2 text-white text-opacity-60">
             / {ranking.tournament.region.toUpperCase()}{' '}
             {ranking.tournament.year}{' '}
-            {capitalizeFirstLetter(ranking.tournament.event)}
+            {capitalizeFirstLetter(
+              tournamentEventModifier(ranking.tournament.event)
+            )}
           </span>
         </div>
         <div className="flex flex-col items-center gap-6">
@@ -154,7 +157,7 @@ const Page = ({
           />
         </div>
         <Title>
-          {`@${ranking.user.username}'s tier list ${ranking.tournament.region.toUpperCase()} ${capitalizeFirstLetter(ranking.tournament.event)} - ${
+          {`@${ranking.user.username}'s tier list ${ranking.tournament.region.toUpperCase()} ${capitalizeFirstLetter(tournamentEventModifier(ranking.tournament.event))} - ${
             ranking.tournament.year
           }`}
         </Title>
@@ -185,7 +188,9 @@ const Page = ({
             isDisabled={isRankingCreation}
             onClick={onSubmitUpdatedTierList}
             className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
-          >{`Update my ${ranking.tournament.region} tier list`}</Button>
+          >
+            Update my tier list
+          </Button>
         </div>
       ) : null}
     </>

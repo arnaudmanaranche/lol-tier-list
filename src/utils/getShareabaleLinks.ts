@@ -5,14 +5,16 @@ interface ShareableLinkProps {
   event: string
   year: number
   region: string
+  username: string
 }
 
 const getShareableLinkContent = ({
   event,
   year,
-  region
+  region,
+  username
 }: ShareableLinkProps): { url: string; text: string } => {
-  const url = `${WEBSITE_URL}/tier-list/${region}/${year}/${event}`
+  const url = `${WEBSITE_URL}/tier-list/${region}/${year}/${event}/${username}`
   const text = `Discover my League of Legends tier list for the ${region.toUpperCase()} ${capitalizeFirstLetter(event)} ${year} tournament. Create your own tier list and share it with your friends`
   return { url, text }
 }

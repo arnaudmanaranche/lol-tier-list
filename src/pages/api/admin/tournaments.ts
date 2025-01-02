@@ -13,15 +13,14 @@ async function handler(
   switch (req.method) {
     case 'POST':
       const {
-        tournamentId,
+        tournamentIds,
         tournamentRegion,
-        tournamentLogo,
         tournamentEvent,
         tournamentYear
       } = req.body
 
       const pandascoreTournamentsRosters =
-        await fetchPandascoreTournamentsRosters(tournamentId)
+        await fetchPandascoreTournamentsRosters(tournamentIds)
 
       const organizedTeams = await pandaScoreTournamentRostersToInternalTeams(
         pandascoreTournamentsRosters,
@@ -33,7 +32,9 @@ async function handler(
         event: tournamentEvent,
         region: tournamentRegion,
         teams: organizedTeams as unknown as Json[],
-        logo: tournamentLogo,
+        logo: `https://${
+          process.env.NEXT_PUBLIC_SUPABASE_ID
+        }.supabase.co/storage/v1/object/public/${tournamentRegion.toLowerCase()}/${tournamentYear}/logo.png`,
         year: tournamentYear
       })
       res.status(201).json({ message: 'Tournament created' })

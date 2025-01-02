@@ -3,6 +3,8 @@ import Image from 'next/legacy/image'
 import type { ReactNode } from 'react'
 import type { TournamentWithoutTeams } from 'types'
 
+import { tournamentEventModifier } from '@/utils/tournamentEventModifier'
+
 export const Tournament = ({
   region,
   event,
@@ -18,7 +20,7 @@ export const Tournament = ({
       )}
     >
       {!active ? (
-        <div className="absolute top-0 right-0 mt-4 -mr-5 w-24 rotate-[45deg] bg-brightGray pl-6 text-xs text-white">
+        <div className="absolute right-0 top-0 -mr-5 mt-4 w-24 rotate-[45deg] bg-brightGray pl-6 text-xs text-white">
           <span>Disabled</span>
         </div>
       ) : null}
@@ -30,7 +32,7 @@ export const Tournament = ({
         id={`${region}_${event}_${year}`}
         className={clsx(!active && 'opacity-20')}
       />
-      <p className="font-bold capitalize text-white">{`${region.toUpperCase()} ${event} - ${year}`}</p>
+      <p className="font-bold capitalize text-white">{`${region.toUpperCase()} ${tournamentEventModifier(event)} - ${year}`}</p>
     </div>
   )
 }

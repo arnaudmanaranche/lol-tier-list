@@ -5,7 +5,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import type { ReactNode } from 'react'
+import type { FormEvent, ReactNode } from 'react'
 import { useEffect } from 'react'
 import { toast } from 'sonner'
 import useSWRInfinite from 'swr/infinite'
@@ -20,6 +20,7 @@ import { apiInstance } from '@/utils/api'
 import { DEFAULT_TITLE } from '@/utils/constants'
 import { fetcher } from '@/utils/fetcher'
 import { parent, stat } from '@/utils/framerMotion'
+import { isValidEmail } from '@/utils/isValidEmail'
 const TAKE_PARAM_ARGUMENT = 5
 
 interface PageProps {
@@ -62,6 +63,25 @@ const Page = ({
       fallback: { pastTournaments }
     }
   )
+
+  const handleSubscribeNewsletter = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const form = e.target as HTMLFormElement
+    const email = form.email.value
+
+    if (isValidEmail(email)) {
+      try {
+        await apiInstance.post('/newsletter', { email })
+        toast.success('Subscribed successfully!')
+        form.reset()
+      } catch {
+        toast.message(
+          'An error occurred while trying to subscribe. Please try again.'
+        )
+      }
+    }
+  }
 
   useEffect(() => {
     if (pastTournamentsDataError) {
@@ -128,14 +148,31 @@ const Page = ({
               ))}
             </m.div>
           ) : (
-            <div className="rounded-lg bg-gunmetal p-8 text-center">
-              <p className="text-lg text-white">
-                No upcoming tournaments scheduled at the moment.
+            <section className="mb-10 rounded-2xl border-[1px] border-white/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-8 text-center backdrop-blur-sm transition-colors hover:border-white/30 md:p-12">
+              <p className="mx-auto mb-8 max-w-3xl text-lg text-gray-100 md:text-xl">
+                Join our newsletter to know when the next tournament will be
+                live.
               </p>
-              <p className="mt-2 text-gray-400">
-                Check back later for new tournaments!
-              </p>
-            </div>
+              <form
+                className="mx-auto max-w-md"
+                onSubmit={handleSubscribeNewsletter}
+              >
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    className="flex-1 rounded-lg border border-white/10 bg-white/10 px-4 py-3 text-white placeholder-gray-400 backdrop-blur-sm transition-colors focus:border-white focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="rounded-lg bg-[#6036a2] px-8 py-3 font-medium text-white transition-all hover:bg-[#472878] hover:shadow-lg"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </section>
           )}
         </div>
         <div className="mt-10">

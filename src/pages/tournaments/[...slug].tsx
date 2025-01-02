@@ -1,6 +1,7 @@
 import type { User } from '@supabase/supabase-js'
 import { createClient } from 'clients/supabase/server-props'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,20 +18,21 @@ import type {
 
 import { Button } from '@/components/Button'
 import { Header } from '@/components/Header/Header'
-import { Modal } from '@/components/Modal'
+import { RankingCreatedModal } from '@/components/modals/TierListCreated.Modal'
 import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Team } from '@/components/Team'
 import { Title } from '@/components/Title'
 import { API_ENDPOINT, apiInstance } from '@/utils/api'
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE, ROUTES, WEBSITE_URL } from '@/utils/constants'
-import {
-  getShareableRedditLink,
-  getShareableTwitterLink
-} from '@/utils/getShareabaleLinks'
+import { tournamentEventModifier } from '@/utils/tournamentEventModifier'
 
-import RedditIcon from '../../svgs/reddit.svg'
-import XIcon from '../../svgs/x.svg'
+const Modal = dynamic(
+  () => import('../../components/Modal').then((mod) => mod.Modal),
+  {
+    ssr: false
+  }
+)
 
 interface PageProps {
   tournament: Tournament
@@ -71,12 +73,11 @@ const Page = ({
   const [ranking, setRanking] = useState<TeamInterface[] | null>(null)
   const [isModalOpen, setModalOpen] = useState(false)
   const [isRankingCreation, setIsRankingCreation] = useState(false)
-  const [canShareNative, setCanShareNative] = useState(false)
+
+  const username = user?.identities?.[0]?.identity_data
+    ?.preferred_username as string
 
   const handleToggleModal = () => {
-    const username = user?.identities?.[0]?.identity_data
-      ?.preferred_username as string
-
     if (isModalOpen) {
       router.replace(`/tier-list/${region}/${year}/${event}/${username}?edit`)
     } else {
@@ -141,18 +142,6 @@ const Page = ({
     }
   }, [teams, tournament.id])
 
-  useEffect(() => {
-    setCanShareNative(navigator.canShare())
-  }, [])
-
-  const handleOnShareNative = () => {
-    navigator.share({
-      title: `${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)}`,
-      text: `Check out my tier list for the ${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)} tournament!`,
-      url: `${WEBSITE_URL}/tier-list/${region}/${event}/${year}/${tournament}`
-    })
-  }
-
   return (
     <>
       <Metadata tournament={tournament} />
@@ -166,7 +155,8 @@ const Page = ({
             Tournaments
           </Link>
           <span className="mx-2 text-white text-opacity-60">
-            / {region.toUpperCase()} {year} {capitalizeFirstLetter(event)}
+            / {region.toUpperCase()} {year}{' '}
+            {capitalizeFirstLetter(tournamentEventModifier(event))}
           </span>
         </div>
         <div className="flex flex-col items-center gap-6">
@@ -178,7 +168,7 @@ const Page = ({
             className="rounded-lg shadow-lg"
             id={`${region}_${event}_${year}`}
           />
-          <Title>{`${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)}`}</Title>
+          <Title>{`${region.toUpperCase()} ${year} ${capitalizeFirstLetter(tournamentEventModifier(event))}`}</Title>
         </div>
       </PageHeaderWrapper>
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
@@ -211,36 +201,12 @@ const Page = ({
         toggleModal={handleToggleModal}
         isOpen={isModalOpen}
       >
-        <div className="flex flex-col gap-6">
-          {canShareNative ? (
-            <div onClick={handleOnShareNative}>
-              <span>Share</span>
-            </div>
-          ) : (
-            <>
-              <Button
-                href={getShareableTwitterLink({
-                  event: event,
-                  region: region,
-                  year: year
-                })}
-              >
-                Share on <XIcon className="mx-2 h-5 w-5 fill-white" /> (formerly
-                Twitter)
-              </Button>
-              <Button
-                href={getShareableRedditLink({
-                  event: event,
-                  region: region,
-                  year: year
-                })}
-              >
-                Share on <RedditIcon className="mx-2 h-5 w-5 fill-white" />
-                Reddit
-              </Button>
-            </>
-          )}
-        </div>
+        <RankingCreatedModal
+          year={year}
+          event={event}
+          username={username}
+          region={region}
+        />
       </Modal>
     </>
   )
