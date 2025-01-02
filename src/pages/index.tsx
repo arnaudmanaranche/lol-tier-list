@@ -197,7 +197,7 @@ const Page = ({
                   tabIndex={0}
                 >
                   <Image
-                    src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.co/storage/v1/object/public/${region}/2023/logo.png`}
+                    src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ID}.supabase.co/storage/v1/object/public/${region}/${new Date().getFullYear()}/logo.png`}
                     alt={`${region} logo`}
                     height={80}
                     width={80}
