@@ -1,8 +1,8 @@
 import type { Tables } from './database.types'
 
 export type Tournament = Tables<'tournaments'>
-export type Ranking = Tables<'rankings'>
-export type RankingWithTournament = Omit<Ranking, 'tournament'> & {
+export type Tierlist = Tables<'rankings'>
+export type TierListWithTournament = Omit<Tierlist, 'tournament'> & {
   tournament: Tournament
   data: Team[]
 }

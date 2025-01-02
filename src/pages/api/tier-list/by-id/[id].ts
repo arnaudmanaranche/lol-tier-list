@@ -7,7 +7,7 @@ async function handler(
 ): Promise<void> {
   const supabaseClient = createClient(req, res)
 
-  const rankingId = req.query.id as string
+  const tierListId = req.query.id as string
 
   const { data: user } = await supabaseClient.auth.getUser()
 
@@ -19,20 +19,20 @@ async function handler(
     await supabaseClient
       .from('rankings')
       .delete()
-      .eq('id', rankingId)
+      .eq('id', tierListId)
       .eq('user_id', user?.user?.id as string)
     res.status(204).json({ status: 'OK' })
   } else if (req.method === 'PATCH') {
     const {
-      body: { ranking: rankingData }
+      body: { tierList: tierListData }
     } = req
 
     const { data: updatedData } = await supabaseClient
       .from('rankings')
       .update({
-        data: rankingData.data
+        data: tierListData.data
       })
-      .eq('id', rankingId)
+      .eq('id', tierListId)
       .eq('user_id', user?.user?.id as string)
       .single()
     res.status(204).json(updatedData)

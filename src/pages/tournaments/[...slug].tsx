@@ -10,15 +10,15 @@ import type { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import type {
-  Ranking,
   Team as TeamInterface,
   TIER_LIST_VALUES,
+  Tierlist,
   Tournament
 } from 'types'
 
 import { Button } from '@/components/Button'
 import { Header } from '@/components/Header/Header'
-import { RankingCreatedModal } from '@/components/modals/TierListCreated.Modal'
+import { TierListCreatedModal } from '@/components/modals/TierListCreated.Modal'
 import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Team } from '@/components/Team'
 import { Title } from '@/components/Title'
@@ -70,9 +70,9 @@ const Page = ({
   user
 }: InferGetServerSidePropsType<typeof getServerSideProps>): ReactNode => {
   const { region, event, year, logo, teams, id } = tournament
-  const [ranking, setRanking] = useState<TeamInterface[] | null>(null)
+  const [tierList, setTierList] = useState<TeamInterface[] | null>(null)
   const [isModalOpen, setModalOpen] = useState(false)
-  const [isRankingCreation, setIsRankingCreation] = useState(false)
+  const [isTierListCreation, setIsTierListCreation] = useState(false)
 
   const username = user?.identities?.[0]?.identity_data
     ?.preferred_username as string
@@ -91,7 +91,7 @@ const Page = ({
     playerId?: number
   ) => {
     if (playerId) {
-      const team = ranking?.find(({ id }) => id === teamId)
+      const team = tierList?.find(({ id }) => id === teamId)
 
       if (team) {
         const player = team.players.find(({ id }) => id === playerId)
@@ -103,7 +103,7 @@ const Page = ({
         }
       }
     } else {
-      const team = ranking?.find(({ id }) => id === teamId)
+      const team = tierList?.find(({ id }) => id === teamId)
 
       if (team) {
         team.teamValue = value
@@ -112,14 +112,14 @@ const Page = ({
       }
     }
 
-    window.localStorage.setItem(tournament.id, JSON.stringify(ranking))
+    window.localStorage.setItem(tournament.id, JSON.stringify(tierList))
   }
 
   const handleOnCreateTierList = async () => {
-    setIsRankingCreation(true)
+    setIsTierListCreation(true)
     try {
-      await apiInstance.post<Ranking>('/tier-list', {
-        ranking,
+      await apiInstance.post<Tierlist>('/tier-list', {
+        tierList,
         tournamentId: id,
         userId: user?.id
       })
@@ -128,17 +128,17 @@ const Page = ({
     } catch {
       toast.error('An error occured during the tier list creation.')
     } finally {
-      setIsRankingCreation(false)
+      setIsTierListCreation(false)
     }
   }
 
   useEffect(() => {
-    const hasUnsavedRanking = window.localStorage.getItem(tournament.id)
+    const hasUnsavedTierList = window.localStorage.getItem(tournament.id)
 
-    if (hasUnsavedRanking) {
-      setRanking(JSON.parse(hasUnsavedRanking))
+    if (hasUnsavedTierList) {
+      setTierList(JSON.parse(hasUnsavedTierList))
     } else {
-      setRanking(teams as unknown as TeamInterface[])
+      setTierList(teams as unknown as TeamInterface[])
     }
   }, [teams, tournament.id])
 
@@ -173,7 +173,7 @@ const Page = ({
       </PageHeaderWrapper>
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <div className="grid gap-6 rounded-xl bg-gray-900/50 p-6 shadow-xl sm:grid-cols-2 lg:grid-cols-3">
-          {(ranking as TeamInterface[])?.map(
+          {(tierList as TeamInterface[])?.map(
             ({ id: teamId, logo, name, players }) => (
               <Team
                 key={teamId}
@@ -192,8 +192,11 @@ const Page = ({
         </div>
       </div>
       <div className="my-20 flex flex-col items-center gap-4">
-        <Button isDisabled={isRankingCreation} onClick={handleOnCreateTierList}>
-          {isRankingCreation ? 'Creating...' : 'Create my tier list'}
+        <Button
+          isDisabled={isTierListCreation}
+          onClick={handleOnCreateTierList}
+        >
+          {isTierListCreation ? 'Creating...' : 'Create my tier list'}
         </Button>
       </div>
       <Modal
@@ -201,7 +204,7 @@ const Page = ({
         toggleModal={handleToggleModal}
         isOpen={isModalOpen}
       >
-        <RankingCreatedModal
+        <TierListCreatedModal
           year={year}
           event={event}
           username={username}

@@ -10,11 +10,11 @@ async function handler(
 
   if (req.method === 'POST') {
     const {
-      body: { ranking, tournamentId, userId }
+      body: { tierList, tournamentId, userId }
     } = req
 
     const { error } = await supabaseClient.from('rankings').insert({
-      data: ranking as unknown as Json,
+      data: tierList as unknown as Json,
       tournament_id: tournamentId,
       user_id: userId
     })

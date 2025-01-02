@@ -9,9 +9,9 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import type {
   Player,
-  RankingWithTournament,
   Team as TeamInterface,
   TIER_LIST_VALUES,
+  TierListWithTournament,
   Tournament,
   User as UserInterface
 } from 'types'
@@ -26,12 +26,12 @@ import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
 import { DEFAULT_TITLE, ROUTES, WEBSITE_URL } from '@/utils/constants'
 import { tournamentEventModifier } from '@/utils/tournamentEventModifier'
 
-interface TierListWithUser extends RankingWithTournament {
+interface TierListWithUser extends TierListWithTournament {
   user: UserInterface
 }
 
 interface PageProps {
-  ranking: TierListWithUser
+  tierList: TierListWithUser
   isEditMode: boolean
   user: User | null
 }
@@ -69,33 +69,33 @@ function Metadata({
 }
 
 const Page = ({
-  ranking,
+  tierList,
   isEditMode,
   user
 }: InferGetServerSidePropsType<typeof getServerSideProps>): ReactNode => {
-  const [isRankingCreation, setIsRankingCreation] = useState(false)
-  const [localRanking, setLocalRanking] = useState(() => ({
-    ...ranking,
-    data: ranking?.data?.map((team: TeamInterface) => ({
+  const [isTierListCreation, setIsTierListCreation] = useState(false)
+  const [localTierList, setLocalTierList] = useState(() => ({
+    ...tierList,
+    data: tierList?.data?.map((team: TeamInterface) => ({
       ...team,
       players: team.players.map((player: Player) => ({ ...player }))
     }))
   }))
 
   const onSubmitUpdatedTierList = async () => {
-    setIsRankingCreation(true)
+    setIsTierListCreation(true)
     try {
-      await apiInstance.patch<RankingWithTournament>(
-        `/tier-list/by-id/${localRanking.id}`,
+      await apiInstance.patch<TierListWithTournament>(
+        `/tier-list/by-id/${localTierList.id}`,
         {
-          ranking: localRanking
+          tierList: localTierList
         }
       )
       toast.success('Your tier list was successfully updated.')
     } catch {
       toast.error('An error occured during the tier list update.')
     } finally {
-      setIsRankingCreation(false)
+      setIsTierListCreation(false)
     }
   }
 
@@ -104,8 +104,8 @@ const Page = ({
     teamId: number,
     playerId?: number
   ) => {
-    setLocalRanking((prevRanking) => {
-      const updatedTeams = prevRanking.data.map((team: TeamInterface) => {
+    setLocalTierList((prev) => {
+      const updatedTeams = prev.data.map((team: TeamInterface) => {
         if (team.id === teamId) {
           const updatedPlayers = team.players.map((player: Player) => {
             if (player.id === playerId) {
@@ -119,15 +119,15 @@ const Page = ({
         return team
       })
 
-      return { ...prevRanking, data: updatedTeams }
+      return { ...prev, data: updatedTeams }
     })
   }
 
   return (
     <>
       <Metadata
-        tournament={ranking.tournament}
-        username={ranking.user.username}
+        tournament={tierList.tournament}
+        username={tierList.user.username}
       />
       <Header user={user} />
       <PageHeaderWrapper>
@@ -139,32 +139,32 @@ const Page = ({
             Tournaments
           </Link>
           <span className="mx-2 text-white text-opacity-60">
-            / {ranking.tournament.region.toUpperCase()}{' '}
-            {ranking.tournament.year}{' '}
+            / {tierList.tournament.region.toUpperCase()}{' '}
+            {tierList.tournament.year}{' '}
             {capitalizeFirstLetter(
-              tournamentEventModifier(ranking.tournament.event)
+              tournamentEventModifier(tierList.tournament.event)
             )}
           </span>
         </div>
         <div className="flex flex-col items-center gap-6">
           <Image
-            src={ranking.tournament.logo}
-            alt={`${ranking.tournament.region} logo`}
+            src={tierList.tournament.logo}
+            alt={`${tierList.tournament.region} logo`}
             height={100}
             width={100}
             className="rounded-lg shadow-lg"
-            id={`${ranking.tournament.region}_${ranking.tournament.event}_${ranking.tournament.year}`}
+            id={`${tierList.tournament.region}_${tierList.tournament.event}_${tierList.tournament.year}`}
           />
         </div>
         <Title>
-          {`@${ranking.user.username}'s tier list ${ranking.tournament.region.toUpperCase()} ${capitalizeFirstLetter(tournamentEventModifier(ranking.tournament.event))} - ${
-            ranking.tournament.year
+          {`@${tierList.user.username}'s tier list ${tierList.tournament.region.toUpperCase()} ${capitalizeFirstLetter(tournamentEventModifier(tierList.tournament.event))} - ${
+            tierList.tournament.year
           }`}
         </Title>
       </PageHeaderWrapper>
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <div className="grid gap-6 rounded-xl bg-gray-900/50 p-6 shadow-xl sm:grid-cols-2 lg:grid-cols-3">
-          {(localRanking?.data as unknown as TeamInterface[])?.map(
+          {(localTierList?.data as unknown as TeamInterface[])?.map(
             ({ id: teamId, logo, name, players, teamValue }) => (
               <Team
                 onUpdate={(value, playerId) => {
@@ -185,7 +185,7 @@ const Page = ({
       {isEditMode ? (
         <div className="my-20 flex flex-col items-center gap-4">
           <Button
-            isDisabled={isRankingCreation}
+            isDisabled={isTierListCreation}
             onClick={onSubmitUpdatedTierList}
             className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
           >
@@ -232,7 +232,7 @@ export const getServerSideProps = (async (context) => {
 
   return {
     props: {
-      ranking: data,
+      tierList: data,
       isEditMode: edit !== undefined && user?.id === data.user_id,
       user,
       username: data.user.username

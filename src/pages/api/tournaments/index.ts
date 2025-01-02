@@ -10,7 +10,7 @@ async function handler(
   if (req.method === 'GET') {
     const { take, cursor, showPastTournaments } = req.query
     const today = new Date()
-    today.setHours(0, 0, 0, 0) // Set time to 00:00:00
+    today.setHours(0, 0, 0, 0)
 
     let query = supabaseClient
       .from('tournaments')

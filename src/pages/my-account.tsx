@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import type { ReactNode } from 'react'
 import { Fragment, useState } from 'react'
 import { toast } from 'sonner'
-import type { RankingWithTournament } from 'types'
+import type { TierListWithTournament } from 'types'
 
 import { Button } from '@/components/Button'
 import { Header } from '@/components/Header/Header'
@@ -23,7 +23,7 @@ import XIcon from '../svgs/x.svg'
 
 interface PageProps {
   user: User
-  tierlists: RankingWithTournament[]
+  tierlists: TierListWithTournament[]
 }
 
 const Page = ({
@@ -46,15 +46,15 @@ const Page = ({
     }
   }
 
-  const handleDeleteTierlist = async (rankingId: string) => {
+  const handleDeleteTierlist = async (tierListId: string) => {
     try {
       setIsLoading(true)
-      await apiInstance.delete(`/tier-list/by-id/${rankingId}`)
+      await apiInstance.delete(`/tier-list/by-id/${tierListId}`)
       router.replace(router.asPath)
-      toast.success('Your ranking was successfuly deleted.')
+      toast.success('Your tier list was successfuly deleted.')
     } catch {
       toast.error(
-        'An error occured during your ranking deletion. Please try again later.'
+        'An error occured during your tier list deletion. Please try again later.'
       )
     } finally {
       setIsLoading(false)
@@ -214,8 +214,8 @@ export const getServerSideProps = (async (context) => {
     }
   }
 
-  const { data } = await apiInstance.get<RankingWithTournament[]>(
-    `/users/${user.id}/rankings`
+  const { data } = await apiInstance.get<TierListWithTournament[]>(
+    `/users/${user.id}/tier-lists`
   )
 
   return {

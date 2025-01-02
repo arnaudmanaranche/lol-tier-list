@@ -11,19 +11,19 @@ import RedditIcon from '../../svgs/reddit.svg'
 import XIcon from '../../svgs/x.svg'
 import { Button } from '../Button'
 
-interface RankingCreatedModalProps {
+interface TierListCreatedModalProps {
   region: string
   event: string
   year: number
   username: string
 }
 
-export function RankingCreatedModal({
+export function TierListCreatedModal({
   region,
   event,
   username,
   year
-}: RankingCreatedModalProps): ReactNode {
+}: TierListCreatedModalProps): ReactNode {
   const handleOnShareNative = () => {
     navigator.share({
       title: `${region.toUpperCase()} ${year} ${capitalizeFirstLetter(event)}`,

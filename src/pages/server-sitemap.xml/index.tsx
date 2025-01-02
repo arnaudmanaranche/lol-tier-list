@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from 'next'
 import type { ISitemapField } from 'next-sitemap'
 import { getServerSideSitemapLegacy } from 'next-sitemap'
-import type { RankingWithTournament, TournamentWithoutTeams } from 'types'
+import type { TierListWithTournament, TournamentWithoutTeams } from 'types'
 
 import { apiInstance } from '@/utils/api'
 import { WEBSITE_URL } from '@/utils/constants'
@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     await apiInstance.get<TournamentWithoutTeams[]>(`/tournaments`)
 
   const { data: tierLists } =
-    await apiInstance.get<RankingWithTournament[]>(`/tier-lists`)
+    await apiInstance.get<TierListWithTournament[]>(`/tier-lists`)
 
   const fields: ISitemapField[] = []
 
