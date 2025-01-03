@@ -21,12 +21,18 @@ async function handler(
         return res.redirect('/auth/auth-code-error')
       }
 
-      await supabaseClient.from('users').upsert({
-        id: data.session.user.id,
-        email: data.session.user.email as string,
-        username:
-          data.session.user?.identities?.[0]?.identity_data?.preferred_username
-      })
+      const { error: err, data: d } = await supabaseClient
+        .from('users')
+        .upsert({
+          id: data.session.user.id,
+          email: data.session.user.email as string,
+          username:
+            data.session.user?.identities?.[0]?.identity_data
+              ?.preferred_username
+        })
+
+      console.log(d)
+      console.log(err)
 
       const forwardedHost = req.headers['x-forwarded-host']
       const origin = req.headers.origin || `https://${forwardedHost}`
