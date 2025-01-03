@@ -17,7 +17,7 @@ import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Title } from '@/components/Title'
 import { Tournament } from '@/components/Tournament'
 import { apiInstance } from '@/utils/api'
-import { DEFAULT_TITLE } from '@/utils/constants'
+import { DEFAULT_TITLE, WEBSITE_URL } from '@/utils/constants'
 import { fetcher } from '@/utils/fetcher'
 import { parent, stat } from '@/utils/framerMotion'
 import { isValidEmail } from '@/utils/isValidEmail'
@@ -105,6 +105,12 @@ const Page = ({
     <>
       <Head>
         <title>{`${DEFAULT_TITLE} - Tournaments list`}</title>
+        {/* Image */}
+        <meta name="og:image" content={`${WEBSITE_URL}/opengraph_v2.png`} />
+        <meta
+          name="twitter:image"
+          content={`${WEBSITE_URL}/opengraph_v2.png`}
+        />
       </Head>
       <Header user={user} />
       <PageHeaderWrapper>

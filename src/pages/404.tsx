@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import type { ReactNode } from 'react'
 
 import { Button } from '@/components/Button'
@@ -5,11 +6,19 @@ import { Footer } from '@/components/Footer/Footer'
 import { Header } from '@/components/Header/Header'
 import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Title } from '@/components/Title'
-import { ROUTES } from '@/utils/constants'
+import { ROUTES, WEBSITE_URL } from '@/utils/constants'
 
 const Page = (): ReactNode => {
   return (
     <>
+      <Head>
+        {/* Image */}
+        <meta name="og:image" content={`${WEBSITE_URL}/opengraph_v2.png`} />
+        <meta
+          name="twitter:image"
+          content={`${WEBSITE_URL}/opengraph_v2.png`}
+        />
+      </Head>
       <Header user={null} />
       <div className="bgGradient absolute inset-0 -top-[90px] -z-10 opacity-20 blur-3xl" />
       <PageHeaderWrapper>
