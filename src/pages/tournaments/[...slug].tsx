@@ -239,7 +239,7 @@ export const getServerSideProps = (async (context) => {
     }
   }
 
-  const { data: userCanAccess } = await supabase.rpc(
+  const { data: userCanAccess, error } = await supabase.rpc(
     'can_access_to_tournament',
     {
       p_user_id: user.id,
@@ -248,6 +248,12 @@ export const getServerSideProps = (async (context) => {
       p_year: params.slug[1] as unknown as number
     }
   )
+
+  if (error) {
+    return {
+      notFound: true
+    }
+  }
 
   const username = user.identities?.[0].identity_data
     ?.preferred_username as string
