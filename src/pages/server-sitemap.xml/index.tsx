@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   upcomingTournaments.map((tournament) => {
     fields.push({
-      loc: `${WEBSITE_URL}/tournament/${tournament.region}/${tournament.year}/${tournament.event}`,
+      loc: `${WEBSITE_URL}/tournaments/${tournament.region}/${tournament.year}/${tournament.event}`,
       lastmod: new Date().toISOString()
     })
   })
