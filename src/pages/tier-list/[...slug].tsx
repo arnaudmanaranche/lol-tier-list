@@ -62,7 +62,7 @@ function Metadata({
       <meta name="description" content={DESCRIPTION} />
       <meta
         property="og:url"
-        content={`${WEBSITE_URL}/tier-list/${tournament.region}/${tournament.event}/${tournament.year}`}
+        content={`${WEBSITE_URL}/tier-list/${tournament.region}/${tournament.year}/${tournament.event}/${username}`}
       />
     </Head>
   )
