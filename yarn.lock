@@ -4992,6 +4992,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-to-image@npm:1.11.11":
+  version: 1.11.11
+  resolution: "html-to-image@npm:1.11.11"
+  checksum: 10/099206c3aaa54ca36d0df91426fe2b05258fe73c913dca6874dd8250973d47f629d3f45e427d5d51cc416ee305b898ce8db0a71336b3700a059ef1116b64d944
+  languageName: node
+  linkType: hard
+
 "html-to-text@npm:9.0.5":
   version: 9.0.5
   resolution: "html-to-text@npm:9.0.5"
@@ -5826,6 +5833,7 @@ __metadata:
     eslint-config-prettier: "npm:8.10.0"
     eslint-plugin-simple-import-sort: "npm:7.0.0"
     framer-motion: "npm:11.15.0"
+    html-to-image: "npm:1.11.11"
     lint-staged: "npm:13.3.0"
     next: "npm:14.2.20"
     next-sitemap: "npm:4.2.3"

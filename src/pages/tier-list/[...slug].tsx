@@ -18,6 +18,8 @@ import type {
 
 import { Button } from '@/components/Button'
 import { Header } from '@/components/Header/Header'
+import { Modal } from '@/components/Modal'
+import { TierListCreatedModal } from '@/components/modals/TierListCreated.Modal'
 import { PageHeaderWrapper } from '@/components/PageHeaderWrapper'
 import { Team } from '@/components/Team'
 import { Title } from '@/components/Title'
@@ -81,6 +83,7 @@ const Page = ({
       players: team.players.map((player: Player) => ({ ...player }))
     }))
   }))
+  const [isModalOpen, setModalOpen] = useState(false)
 
   const onSubmitUpdatedTierList = async () => {
     setIsTierListCreation(true)
@@ -91,12 +94,16 @@ const Page = ({
           tierList: localTierList
         }
       )
-      toast.success('Your tier list was successfully updated.')
+      setModalOpen(true)
     } catch {
       toast.error('An error occured during the tier list update.')
     } finally {
       setIsTierListCreation(false)
     }
+  }
+
+  const handleToggleModal = () => {
+    setModalOpen((value) => !value)
   }
 
   const handleUpdateTierList = (
@@ -163,7 +170,10 @@ const Page = ({
         </Title>
       </PageHeaderWrapper>
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
-        <div className="grid gap-6 rounded-xl bg-gray-900/50 p-6 shadow-xl sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="grid gap-6 rounded-xl bg-gray-900/50 p-6 shadow-xl sm:grid-cols-2 lg:grid-cols-3"
+          id="tier-list"
+        >
           {(localTierList?.data as unknown as TeamInterface[])?.map(
             ({ id: teamId, logo, name, players, teamValue }) => (
               <Team
@@ -193,6 +203,18 @@ const Page = ({
           </Button>
         </div>
       ) : null}
+      <Modal
+        title="Your tier list was updated!"
+        toggleModal={handleToggleModal}
+        isOpen={isModalOpen}
+      >
+        <TierListCreatedModal
+          year={tierList.tournament.year}
+          event={tierList.tournament.event}
+          username={tierList.user.username}
+          region={tierList.tournament.region}
+        />
+      </Modal>
     </>
   )
 }

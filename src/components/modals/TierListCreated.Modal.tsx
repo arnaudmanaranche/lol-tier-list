@@ -1,5 +1,7 @@
+import { toPng } from 'html-to-image'
 import Link from 'next/link'
 import { type ReactNode, useMemo } from 'react'
+import { toast } from 'sonner'
 
 import useIsMobile from '@/hooks/useIsMobile'
 import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter'
@@ -9,6 +11,7 @@ import {
   getShareableTwitterLink
 } from '@/utils/getShareabaleLinks'
 
+import DownloadIcon from '../../svgs/download.svg'
 import RedditIcon from '../../svgs/reddit.svg'
 import XIcon from '../../svgs/x.svg'
 import { Button } from '../Button'
@@ -40,6 +43,25 @@ export function TierListCreatedModal({
     navigator.share(shareData)
   }
 
+  const handleTierListToImage = async () => {
+    const node = document.getElementById('tier-list')
+
+    if (!node) return
+
+    toPng(node)
+      .then(function (dataUrl) {
+        const link = document.createElement('a')
+        link.href = dataUrl
+        link.download = `${region}_${event}_${year}_${username}_tier_list.png`
+        document.body.appendChild(link)
+
+        link.click()
+      })
+      .catch(function () {
+        toast.error('An error occured during the image creation.')
+      })
+  }
+
   return (
     <div className="flex flex-col gap-6">
       {isMobile && navigator.canShare(shareData) ? (
@@ -67,6 +89,13 @@ export function TierListCreatedModal({
           >
             Share on <RedditIcon className="mx-2 h-5 w-5 fill-white" />
             Reddit
+          </Button>
+          <Button
+            onClick={handleTierListToImage}
+            className="min-w-[200px] shadow-lg transition-shadow hover:shadow-xl"
+          >
+            <DownloadIcon className="mx-2 h-5 w-5 fill-white" />
+            Download as an image
           </Button>
         </>
       )}
