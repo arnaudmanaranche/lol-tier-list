@@ -30,6 +30,21 @@ export const Footer = (): ReactNode => (
             </li>
           </ul>
         </div>
+        <div>
+          <p className="mb-4 font-semibold">Tier Lists</p>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/tier-list/lec/2025/winter/Nisqy">
+                Nisqy LEC Tier List
+              </Link>
+            </li>
+            <li>
+              <Link href="/tier-list/lfl/2025/kickoff/DrakoFR_">
+                Drako LFL Tier List
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="mt-4 pt-4 text-center">
         <p>© Copyright {new Date().getFullYear()} - All rights reserved</p>
