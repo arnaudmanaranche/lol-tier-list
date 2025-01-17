@@ -43,6 +43,11 @@ export const Footer = (): ReactNode => (
                 Drako LFL Tier List
               </Link>
             </li>
+            <li>
+              <Link href="/tier-list/lec/2025/winter/DrakoFR_">
+                Drako LEC Tier List
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
