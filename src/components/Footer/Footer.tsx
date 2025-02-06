@@ -28,6 +28,15 @@ export const Footer = (): ReactNode => (
                 Support the project
               </Link>
             </li>
+            <li>
+              <Link
+                href="https://x.com/intent/user?screen_name=LeagueTierList_"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Follow us on X
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
