@@ -9,6 +9,27 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      'daily-guess': {
+        Row: {
+          created_at: string
+          id: number
+          team_id: number
+          tournament_id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          team_id: number
+          tournament_id: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          team_id?: number
+          tournament_id?: number
+        }
+        Relationships: []
+      }
       rankings: {
         Row: {
           created_at: string
@@ -56,6 +77,7 @@ export interface Database {
           active: boolean
           begin_at: string
           event: string
+          groups: Json | null
           id: string
           logo: string
           region: string
@@ -66,6 +88,7 @@ export interface Database {
           active?: boolean
           begin_at?: string
           event: string
+          groups?: Json | null
           id?: string
           logo: string
           region: string
@@ -76,6 +99,7 @@ export interface Database {
           active?: boolean
           begin_at?: string
           event?: string
+          groups?: Json | null
           id?: string
           logo?: string
           region?: string

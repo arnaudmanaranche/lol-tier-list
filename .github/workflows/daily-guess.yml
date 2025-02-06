@@ -1,0 +1,16 @@
+name: Daily Guess
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  daily-guess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Run daily guess script
+        run: |
+          yarn
+          node ./scripts/daily-guess.ts
