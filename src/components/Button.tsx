@@ -30,7 +30,7 @@ export const Button = ({
     type === 'danger'
       ? 'bg-red-500 hover:bg-red-600'
       : 'bg-[#6036a2] hover:bg-[#472878]',
-    isDisabled && 'pointer-events-none',
+    isDisabled && 'pointer-events-none cursor-not-allowed',
     cN
   )
 

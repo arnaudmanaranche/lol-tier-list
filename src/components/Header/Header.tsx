@@ -58,17 +58,23 @@ export function Header({ user }: HeaderProps): ReactNode {
               </Link>
             </li>
             <li className="hidden md:block">
-              <Link href="/#features" className="text-lg font-bold text-white">
-                Features
-              </Link>
-            </li>
-            <li className="hidden md:block">
               <Link
                 href={ROUTES.TOURNAMENTS}
                 className="text-lg font-bold text-white"
               >
                 Tournaments
               </Link>
+            </li>
+            <li className="hidden items-center space-x-2 md:flex">
+              <Link
+                href={ROUTES.DAILY_GUESS}
+                className="text-lg font-bold text-white"
+              >
+                Daily Guess
+              </Link>
+              <span className="rounded-md bg-[#472878] px-2 py-1 text-xs font-bold text-white">
+                NEW
+              </span>
             </li>
           </ul>
         </nav>

@@ -11,5 +11,7 @@ declare namespace NodeJS {
     // Resend
     RESEND_API_KEY: string
     RESEND_AUDIENCE_ID: string
+    // PandaScore
+    PANDASCORE_TOKEN: string
   }
 }

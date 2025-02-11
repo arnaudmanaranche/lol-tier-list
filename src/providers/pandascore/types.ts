@@ -5,6 +5,21 @@ export interface PandaScoreTournament {
   rosters: PandaScoreTournamentRoster[]
 }
 
+export interface PandaScoreTournamentWithExpectedRosters {
+  expected_roster: Array<{
+    team: {
+      id: number
+      name: string
+    }
+    players: Array<{
+      name: string
+    }>
+  }>
+  serie: {
+    full_name: string
+  }
+}
+
 export interface PandaScoreTournamentRoster {
   acronym: string
   id: number
