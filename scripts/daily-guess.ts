@@ -34,12 +34,7 @@ const REGIONS: string[] = [
 const PAST_TOURNAMENTS_URL = 'https://api.pandascore.co/lol/tournaments/past'
 const TOURNAMENT_ROSTERS_URL = 'https://api.pandascore.co/tournaments'
 
-/**
- * @typedef {import('./scr/types/database.types').Database} Database
- */
-
-const db = /** @type {Database} */ {}
-const supabase = new SupabaseClient<db>(
+const supabase = new SupabaseClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
