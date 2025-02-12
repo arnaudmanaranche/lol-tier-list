@@ -1463,6 +1463,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cronitorio/cronitor-rum-nextjs@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@cronitorio/cronitor-rum-nextjs@npm:0.4.0"
+  dependencies:
+    "@cronitorio/cronitor-rum": "npm:^0.4.0"
+  peerDependencies:
+    next: ^13
+    react: ^18
+  checksum: 10/bb8210f651ee9ec9e49d3689b64816a48b8c33e1e5ec2bbb12daaad470fc5f05c6f645835c03dc18ec349cf970d986e2c7d8c9edcdbeb013626ef48111030822
+  languageName: node
+  linkType: hard
+
+"@cronitorio/cronitor-rum@npm:^0.4.0":
+  version: 0.4.1
+  resolution: "@cronitorio/cronitor-rum@npm:0.4.1"
+  dependencies:
+    web-vitals: "npm:^3.3.0"
+  checksum: 10/d45ca8f2145d697afdc7144b10b2b0f6c1321a9169a25b2abfa3cb57989d78f3878cda698071c59ae408031094667f6040ecd29c7c3bfd82a19b24f615b0620b
+  languageName: node
+  linkType: hard
+
 "@cspotcode/source-map-support@npm:^0.8.0":
   version: 0.8.1
   resolution: "@cspotcode/source-map-support@npm:0.8.1"
@@ -6106,6 +6127,7 @@ __metadata:
     "@babel/preset-env": "npm:7.26.7"
     "@babel/preset-react": "npm:7.26.3"
     "@babel/preset-typescript": "npm:7.26.0"
+    "@cronitorio/cronitor-rum-nextjs": "npm:0.4.0"
     "@heroicons/react": "npm:2.0.17"
     "@next/env": "npm:13.5.8"
     "@radix-ui/react-dialog": "npm:1.1.4"
@@ -8550,6 +8572,13 @@ __metadata:
   version: 3.0.1
   resolution: "v8-compile-cache-lib@npm:3.0.1"
   checksum: 10/88d3423a52b6aaf1836be779cab12f7016d47ad8430dffba6edf766695e6d90ad4adaa3d8eeb512cc05924f3e246c4a4ca51e089dccf4402caa536b5e5be8961
+  languageName: node
+  linkType: hard
+
+"web-vitals@npm:^3.3.0":
+  version: 3.5.2
+  resolution: "web-vitals@npm:3.5.2"
+  checksum: 10/59c5d7775c32977eb9156d186113f4de66c235cfea7a113d2f430ef25db25a5efe1980d2ba466f7ceefc7b1a3847764933dc1567b6d9b8f340d12e75209e3f79
   languageName: node
   linkType: hard
 

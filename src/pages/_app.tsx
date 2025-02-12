@@ -1,6 +1,7 @@
 import 'tailwindcss/utilities.css'
 import '../styles/custom.css'
 
+import { useCronitor } from '@cronitorio/cronitor-rum-nextjs'
 import { Analytics } from '@vercel/analytics/next'
 import { domAnimation, LazyMotion } from 'framer-motion'
 import type { AppProps } from 'next/app'
@@ -26,6 +27,8 @@ const body = Roboto({
 })
 
 const App = ({ Component, pageProps }: AppProps): ReactNode => {
+  useCronitor(process.env.NEXT_PUBLIC_CRONITOR_API_KEY)
+
   return (
     <LazyMotion features={domAnimation}>
       <Head>

@@ -13,5 +13,7 @@ declare namespace NodeJS {
     RESEND_AUDIENCE_ID: string
     // PandaScore
     PANDASCORE_TOKEN: string
+    // Cronitor
+    NEXT_PUBLIC_CRONITOR_API_KEY: string
   }
 }

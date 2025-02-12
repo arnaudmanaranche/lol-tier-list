@@ -1,3 +1,4 @@
+import { track } from '@cronitorio/cronitor-rum'
 import { createClient as createServerPropsClient } from 'clients/supabase/server-props'
 import clsx from 'clsx'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -97,6 +98,7 @@ const Page = ({
     (e: React.FormEvent) => {
       e.preventDefault()
       if (remainingAttempts === 0 || !hasValidGuessesToSubmit) return
+      track('DailyGuessGameSubmit')
 
       const results = checkGuesses()
       setHasSubmitted(true)
@@ -239,6 +241,7 @@ const Page = ({
                   disabled={isCorrect[index]}
                   onChange={(e) => {
                     const value = e.target.value
+                    track('DailyGuessGameInput')
                     setGuess(index, value)
                   }}
                   className={clsx(
