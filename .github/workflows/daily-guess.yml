@@ -14,4 +14,4 @@ jobs:
       - name: Run daily guess script
         run: |
           yarn
-          ts-node ./scripts/daily-guess.ts
+          node ./scripts/daily-guess.ts
