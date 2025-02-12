@@ -1,7 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface UseGuessGameProps {
   correctNames: string[]
+}
+
+interface StoredGameState {
+  date: string
+  guesses: string[]
+  isCorrect: boolean[]
+  attempts: number
+  attemptsHistory: boolean[][]
+  isComplete: boolean
 }
 
 export function useGuessGame({ correctNames }: UseGuessGameProps): {
@@ -34,6 +43,43 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
   const [isComplete, setIsComplete] = useState(false)
   const [attempts, setAttempts] = useState(0)
   const [attemptsHistory, setAttemptsHistory] = useState<boolean[][]>([])
+
+  // Load saved state on mount
+  useEffect(() => {
+    const today = new Date().toISOString().split('T')[0]
+    const savedState = localStorage.getItem('daily-guess-game-state')
+
+    if (savedState) {
+      try {
+        const parsed = JSON.parse(savedState) as StoredGameState
+        if (parsed.date === today) {
+          setGuesses(parsed.guesses)
+          setIsCorrect(parsed.isCorrect)
+          setAttempts(parsed.attempts)
+          setAttemptsHistory(parsed.attemptsHistory)
+          setIsComplete(parsed.isComplete)
+        } else {
+          // Reset if it's a new day
+          localStorage.removeItem('daily-guess-game-state')
+        }
+      } catch (error) {
+        console.error('Error loading saved game state:', error)
+      }
+    }
+  }, [])
+
+  // Save state after each change
+  useEffect(() => {
+    const state: StoredGameState = {
+      date: new Date().toISOString().split('T')[0],
+      guesses,
+      isCorrect,
+      attempts,
+      attemptsHistory,
+      isComplete
+    }
+    localStorage.setItem('daily-guess-game-state', JSON.stringify(state))
+  }, [guesses, isCorrect, attempts, attemptsHistory, isComplete])
 
   const setGuess = (index: number, value: string) => {
     setGuesses((prev) => {

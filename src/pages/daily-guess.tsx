@@ -29,8 +29,6 @@ interface PageProps {
 const DAILY_GUESS_GAME_ONBOARDING_LOCALE_STORAGE_KEY =
   'daily-guess-game-onboarding'
 
-const LAST_SUBMISSION_LOCALE_STORAGE_KEY = 'last-submission'
-
 const Page = ({
   roster,
   tournamentName
@@ -43,16 +41,11 @@ const Page = ({
     setGuess,
     checkGuesses,
     isCorrect,
-    setGuesses,
-    setIsCorrect,
     isComplete,
-    setIsComplete,
     usedNames,
-    attempts,
     attemptsHistory,
     remainingAttempts,
     MAX_ATTEMPTS,
-    setAttemptsHistory,
     hasValidGuessesToSubmit
   } = useGuessGame({
     correctNames: roster.players.map((player) => player.name)
@@ -103,33 +96,14 @@ const Page = ({
       const results = checkGuesses()
       setHasSubmitted(true)
 
-      localStorage.setItem(
-        LAST_SUBMISSION_LOCALE_STORAGE_KEY,
-        JSON.stringify({
-          date: new Date().toISOString().split('T')[0],
-          result: JSON.stringify(guesses),
-          attemptsHistory: [...attemptsHistory, results],
-          attempts: attempts + 1
-        })
-      )
-
       if (results.every(Boolean) || remainingAttempts === 1) {
         setShowCompletionModal(true)
       }
     },
-    [
-      checkGuesses,
-      guesses,
-      attemptsHistory,
-      attempts,
-      remainingAttempts,
-      hasValidGuessesToSubmit
-    ]
+    [checkGuesses, remainingAttempts, hasValidGuessesToSubmit]
   )
 
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0]
-
     const hasSeenOnboarding = localStorage.getItem(
       DAILY_GUESS_GAME_ONBOARDING_LOCALE_STORAGE_KEY
     )
@@ -142,65 +116,10 @@ const Page = ({
       )
     }
 
-    const lastSubmissionRaw = localStorage.getItem(
-      LAST_SUBMISSION_LOCALE_STORAGE_KEY
-    )
-    if (lastSubmissionRaw) {
-      try {
-        const lastSubmission = JSON.parse(lastSubmissionRaw)
-        if (lastSubmission && today === lastSubmission?.date) {
-          const previousGuesses = JSON.parse(lastSubmission.result) || []
-          const previousHistory = lastSubmission.attemptsHistory || []
-          const previousAttempts = lastSubmission.attempts || 0
-
-          const updatedGuesses = Array(5)
-            .fill('')
-            .map((_, index) => previousGuesses[index] || '')
-
-          const correctNamesLower = roster.players.map((player) =>
-            player.name.toLowerCase()
-          )
-          const updatedIsCorrect = updatedGuesses.map((guess) =>
-            correctNamesLower.includes(guess.toLowerCase())
-          )
-
-          setGuesses(updatedGuesses)
-          setIsCorrect(updatedIsCorrect)
-          if (previousHistory.length) {
-            setAttemptsHistory(previousHistory)
-          }
-
-          if (
-            previousAttempts >= MAX_ATTEMPTS ||
-            updatedIsCorrect.every(Boolean)
-          ) {
-            setShowCompletionModal(true)
-            setIsCorrect(updatedIsCorrect)
-            if (updatedIsCorrect.every(Boolean)) {
-              setIsComplete(true)
-            }
-          }
-        } else {
-          localStorage.setItem(
-            LAST_SUBMISSION_LOCALE_STORAGE_KEY,
-            JSON.stringify({
-              date: new Date().toISOString().split('T')[0],
-              result: []
-            })
-          )
-        }
-      } catch (error) {
-        console.error('Error parsing last submission:', error)
-      }
+    if (isComplete || remainingAttempts === 0) {
+      setShowCompletionModal(true)
     }
-  }, [
-    roster.players,
-    setGuesses,
-    setIsCorrect,
-    setAttemptsHistory,
-    setIsComplete,
-    MAX_ATTEMPTS
-  ])
+  }, [isComplete, remainingAttempts])
 
   return (
     <>
