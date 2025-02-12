@@ -6204,7 +6204,7 @@ __metadata:
     react: "npm:19.0.0"
     react-dom: "npm:19.0.0"
     resend: "npm:4.0.1"
-    sonner: "npm:1.7.1"
+    sonner: "npm:1.7.4"
     swr: "npm:2.2.5"
     tailwindcss: "npm:3.4.17"
     ts-node: "npm:10.9.2"
@@ -7835,13 +7835,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sonner@npm:1.7.1":
-  version: 1.7.1
-  resolution: "sonner@npm:1.7.1"
+"sonner@npm:1.7.4":
+  version: 1.7.4
+  resolution: "sonner@npm:1.7.4"
   peerDependencies:
     react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
     react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
-  checksum: 10/a67279e3db9cf0ae235cc316812b22489dcbe2c9488e12313f35c5073520640ffe3c955a61ab1992ed4b4b96ca72087b6687b725305a0e3be9b1279c5a1fc735
+  checksum: 10/454dfedb9e91276dda38455fced43d66d84875048d5bf5e223c4d95167ca6fefb4d868ecec1c3bf5c9e91896dc6407adbde92eabb37a97126af4fb0856f96e61
   languageName: node
   linkType: hard
 
