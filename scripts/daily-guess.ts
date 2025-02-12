@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-console */
-import { SupabaseClient } from '@supabase/supabase-js'
-import ora from 'ora'
-import type { Database } from 'types/database.types'
+const { SupabaseClient } = require('@supabase/supabase-js')
+const ora = require('ora')
 
 interface PandaScoreTournament {
   id: number
@@ -34,7 +34,7 @@ const REGIONS: string[] = [
 const PAST_TOURNAMENTS_URL = 'https://api.pandascore.co/lol/tournaments/past'
 const TOURNAMENT_ROSTERS_URL = 'https://api.pandascore.co/tournaments'
 
-const supabase = new SupabaseClient<Database>(
+const supabase = new SupabaseClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
