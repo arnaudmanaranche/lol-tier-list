@@ -15,9 +15,10 @@ export interface PandaScoreTournamentWithExpectedRosters {
       name: string
     }>
   }>
-  serie: {
-    full_name: string
+  league: {
+    name: string
   }
+  begin_at: string
 }
 
 export interface PandaScoreTournamentRoster {

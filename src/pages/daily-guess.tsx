@@ -354,6 +354,8 @@ export const getServerSideProps = (async (context) => {
     .from('daily-guess')
     .select('*')
     .lte('created_at', new Date().toISOString())
+    .order('created_at', { ascending: false })
+    .limit(1)
 
   if (error) {
     return {
@@ -365,7 +367,7 @@ export const getServerSideProps = (async (context) => {
     `https://api.pandascore.co/tournaments/${data[0]?.tournament_id}?token=${process.env.PANDASCORE_TOKEN}`
   )
 
-  const { expected_roster, serie } =
+  const { expected_roster, league, begin_at } =
     (await response.json()) as PandaScoreTournamentWithExpectedRosters
 
   const roster = expected_roster.find((r) => r.team.id === data[0]?.team_id)
@@ -379,7 +381,7 @@ export const getServerSideProps = (async (context) => {
   return {
     props: {
       roster,
-      tournamentName: serie.full_name
+      tournamentName: `${new Date(begin_at).getFullYear()} ${league.name}`
     }
   }
 }) satisfies GetServerSideProps<PageProps>
