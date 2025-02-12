@@ -3,6 +3,7 @@ name: Daily Guess
 on:
   schedule:
     - cron: '0 5 * * *'
+  workflow_dispatch:
 
 jobs:
   daily-guess:
