@@ -1,7 +1,4 @@
 /* eslint-disable no-console */
-
-import process from 'process'
-
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { SupabaseClient } = require('@supabase/supabase-js')
 
