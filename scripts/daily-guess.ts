@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
-import { SupabaseClient } from '@supabase/supabase-js'
-import ora from 'ora'
-import type { Database } from 'types/database.types'
+
+import process from 'process'
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { SupabaseClient } = require('@supabase/supabase-js')
 
 interface PandaScoreTournament {
   id: number
@@ -34,7 +36,7 @@ const REGIONS: string[] = [
 const PAST_TOURNAMENTS_URL = 'https://api.pandascore.co/lol/tournaments/past'
 const TOURNAMENT_ROSTERS_URL = 'https://api.pandascore.co/tournaments'
 
-const supabase = new SupabaseClient<Database>(
+const supabase = new SupabaseClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
@@ -109,32 +111,32 @@ async function getLatestDailyGuess() {
 }
 
 async function getTournamentRoster() {
-  const spinner = ora()
+  // const spinner = ora()
 
   try {
     const region = pickRandomInList(REGIONS)
 
-    spinner.start(`Fetching the past tournaments list for the region ${region}`)
+    // spinner.start(`Fetching the past tournaments list for the region ${region}`)
     const tournaments = await fetchTournamentsForRegion(region)
 
     if (!tournaments.length) {
-      spinner.fail('No tournament found')
+      // spinner.fail('No tournament found')
       throw new Error(`No tournament found for the region ${region}`)
     }
 
-    spinner.succeed('Fetched the past tournament list')
+    // spinner.succeed('Fetched the past tournament list')
     const tournament = pickRandomInList(tournaments)
     console.info(`Selected tournament ${tournament.id}`)
 
-    spinner.start(`Fetching rosters for tournament ID ${tournament.id}`)
+    // spinner.start(`Fetching rosters for tournament ID ${tournament.id}`)
     const rosters = await fetchRostersForTournament(tournament.id)
 
     if (!rosters.length) {
-      spinner.fail('No rosters found')
+      // spinner.fail('No rosters found')
       throw new Error(`No rosters found for the tournament ID ${tournament.id}`)
     }
 
-    spinner.succeed('Fetched rosters')
+    // spinner.succeed('Fetched rosters')
     const roster = pickRandomInList(rosters)
     console.info(`Selected roster ${roster.acronym}`)
 
