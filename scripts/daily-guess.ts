@@ -96,7 +96,7 @@ async function getLatestDailyGuess() {
   const { data, error } = await supabase
     .from('daily-guess')
     .select()
-    .rangeLte('created_at', new Date().toLocaleTimeString())
+    .lte('created_at', new Date().toISOString())
     .single()
 
   if (error && error.code !== 'PGRST116') {
