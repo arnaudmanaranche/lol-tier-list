@@ -11,6 +11,7 @@ interface StoredGameState {
   attempts: number
   attemptsHistory: boolean[][]
   isComplete: boolean
+  submittedGuesses: string[]
 }
 
 export function useGuessGame({ correctNames }: UseGuessGameProps): {
@@ -29,9 +30,20 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
   remainingAttempts: number
   MAX_ATTEMPTS: number
   hasValidGuessesToSubmit: boolean
+  minimumNewGuesses: number
+  newGuessesCount: number
+  submittedGuesses: string[]
 } {
   const MAX_ATTEMPTS = 6
+  const MINIMUM_NEW_GUESSES = 2
   const [guesses, setGuesses] = useState<string[]>(['', '', '', '', ''])
+  const [submittedGuesses, setSubmittedGuesses] = useState<string[]>([
+    '',
+    '',
+    '',
+    '',
+    ''
+  ])
   const [isCorrect, setIsCorrect] = useState<boolean[]>([
     false,
     false,
@@ -43,8 +55,14 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
   const [isComplete, setIsComplete] = useState(false)
   const [attempts, setAttempts] = useState(0)
   const [attemptsHistory, setAttemptsHistory] = useState<boolean[][]>([])
+  const [previousGuesses, setPreviousGuesses] = useState<string[]>([
+    '',
+    '',
+    '',
+    '',
+    ''
+  ])
 
-  // Load saved state on mount
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0]
     const savedState = localStorage.getItem('daily-guess-game-state')
@@ -58,8 +76,8 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
           setAttempts(parsed.attempts)
           setAttemptsHistory(parsed.attemptsHistory)
           setIsComplete(parsed.isComplete)
+          setSubmittedGuesses(parsed.submittedGuesses || ['', '', '', '', ''])
         } else {
-          // Reset if it's a new day
           localStorage.removeItem('daily-guess-game-state')
         }
       } catch (error) {
@@ -68,7 +86,6 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
     }
   }, [])
 
-  // Save state after each change
   useEffect(() => {
     const state: StoredGameState = {
       date: new Date().toISOString().split('T')[0],
@@ -76,10 +93,18 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
       isCorrect,
       attempts,
       attemptsHistory,
-      isComplete
+      isComplete,
+      submittedGuesses
     }
     localStorage.setItem('daily-guess-game-state', JSON.stringify(state))
-  }, [guesses, isCorrect, attempts, attemptsHistory, isComplete])
+  }, [
+    guesses,
+    isCorrect,
+    attempts,
+    attemptsHistory,
+    isComplete,
+    submittedGuesses
+  ])
 
   const setGuess = (index: number, value: string) => {
     setGuesses((prev) => {
@@ -88,6 +113,14 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
       return newGuesses
     })
   }
+
+  const newGuessesCount = guesses.filter((guess, index) => {
+    return (
+      guess.trim() !== '' &&
+      !isCorrect[index] &&
+      guess !== previousGuesses[index]
+    )
+  }).length
 
   const checkGuesses = () => {
     const correctNamesLower = correctNames.map((name) => name.toLowerCase())
@@ -104,6 +137,8 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
       return false
     })
 
+    setPreviousGuesses([...guesses])
+    setSubmittedGuesses([...guesses])
     setIsCorrect(newIsCorrect)
     setAttempts((prev) => prev + 1)
     setAttemptsHistory((prev) => [...prev, newIsCorrect])
@@ -111,9 +146,9 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
     return newIsCorrect
   }
 
-  const hasValidGuessesToSubmit = guesses.some(
-    (guess, index) => guess.trim() !== '' && !isCorrect[index]
-  )
+  const hasValidGuessesToSubmit =
+    newGuessesCount >= MINIMUM_NEW_GUESSES &&
+    guesses.some((guess, index) => guess.trim() !== '' && !isCorrect[index])
 
   return {
     guesses,
@@ -130,6 +165,9 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
     setAttemptsHistory,
     remainingAttempts: MAX_ATTEMPTS - attempts,
     MAX_ATTEMPTS,
-    hasValidGuessesToSubmit
+    hasValidGuessesToSubmit,
+    minimumNewGuesses: MINIMUM_NEW_GUESSES,
+    newGuessesCount,
+    submittedGuesses
   }
 }

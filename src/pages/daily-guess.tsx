@@ -46,7 +46,10 @@ const Page = ({
     attemptsHistory,
     remainingAttempts,
     MAX_ATTEMPTS,
-    hasValidGuessesToSubmit
+    hasValidGuessesToSubmit,
+    minimumNewGuesses,
+    newGuessesCount,
+    submittedGuesses
   } = useGuessGame({
     correctNames: roster.players.map((player) => player.name)
   })
@@ -137,18 +140,18 @@ const Page = ({
         </div>
         <div className="mx-auto w-full max-w-7xl space-y-12 px-4 py-16 md:px-6">
           <h1 className="text-center text-5xl font-bold text-white lg:text-8xl">
-            Find the roster of{' '}
+            Find{' '}
             <span className="rounded-md bg-[#6036a2] px-4 font-sans leading-relaxed">
               {roster.team.name}
-            </span>{' '}
-            during the{' '}
+            </span>
+            &apos;s roster during{' '}
             <span className="rounded-md bg-[#6036a2] px-4 font-sans leading-relaxed">
               {tournamentName}
             </span>
           </h1>
           <div className="text-center text-white">
             <p>
-              Attempts remaining: {remainingAttempts}/{MAX_ATTEMPTS}
+              Remaining attempts: {remainingAttempts}/{MAX_ATTEMPTS}
             </p>
           </div>
           <form onSubmit={handleSubmit} className="mx-auto max-w-xl">
@@ -160,32 +163,45 @@ const Page = ({
                   disabled={isCorrect[index]}
                   onChange={(e) => {
                     const value = e.target.value
-                    track('DailyGuessGameInput')
                     setGuess(index, value)
                   }}
+                  onBlur={() => track('DailyGuessGameInput')}
                   className={clsx(
                     'w-full rounded-md p-2',
                     isCorrect[index] &&
                       'ring-4 ring-green-800 disabled:cursor-not-allowed disabled:border-gray-300 disabled:bg-white disabled:opacity-80',
                     hasSubmitted &&
-                      usedNames.has(guess.toLowerCase()) &&
-                      !isCorrect[index] &&
-                      'ring-4 ring-red-800',
-                    hasSubmitted && guess && !isCorrect[index] && 'bg-red-100'
+                      submittedGuesses[index] &&
+                      !isCorrect[index] && [
+                        usedNames.has(submittedGuesses[index].toLowerCase()) &&
+                          'ring-4 ring-red-800',
+                        'bg-red-100'
+                      ]
                   )}
                   placeholder={`Player ${index + 1}`}
                 />
-                {hasSubmitted && guess && !isCorrect[index] && (
-                  <p className="mt-1 text-sm text-red-500">
-                    Incorrect guess. Try again!
-                  </p>
-                )}
+                {hasSubmitted &&
+                  submittedGuesses[index] &&
+                  !isCorrect[index] && (
+                    <p className="mt-1 text-sm text-red-500">
+                      Wrong answer. Try again!
+                    </p>
+                  )}
               </div>
             ))}
-            <div className="mt-6 flex justify-end gap-2">
-              <Button isDisabled={isComplete || !hasValidGuessesToSubmit}>
-                Check Guesses
-              </Button>
+            <div className="mt-6 space-y-2">
+              {!hasValidGuessesToSubmit && newGuessesCount > 0 && (
+                <p className="text-sm text-yellow-500">
+                  You must submit at least {minimumNewGuesses} new names for
+                  each submission. Currently: {newGuessesCount}/
+                  {minimumNewGuesses}
+                </p>
+              )}
+              <div className="flex justify-end gap-2">
+                <Button isDisabled={isComplete || !hasValidGuessesToSubmit}>
+                  Check
+                </Button>
+              </div>
             </div>
           </form>
         </div>
@@ -200,22 +216,21 @@ const Page = ({
           <div className="space-y-2">
             <h2 className="text-xl">About</h2>
             <p>
-              Every day, guess the full roster of a League of Legends team
-              during a previous tournament.
+              Each day, guess the complete roster of a League of Legends team
+              from a past tournament.
             </p>
           </div>
           <div className="space-y-2">
             <h2 className="text-xl">How to play</h2>
             <ul>
-              <li>Enter the names of the players in the roster. </li>
+              <li>Enter the names of the players in the roster.</li>
               <li>
-                The order doesn&apos;t matter—you can enter any role in any
-                input field.
+                Order doesn&apos;t matter - you can enter any role in any field.
               </li>
               <li>You have {MAX_ATTEMPTS} attempts to guess the players.</li>
               <li>
-                Names are not case-sensitive, but be mindful of player nicknames
-                (e.g., <code>Jiizuke</code>).
+                Names are not case sensitive, but pay attention to player
+                nicknames (e.g.: <code>Jiizuke</code>).
               </li>
             </ul>
           </div>
@@ -232,7 +247,7 @@ const Page = ({
         <div className="space-y-4 text-white">
           <p className="text-lg">
             {isComplete
-              ? `You successfully found all players in ${attemptsHistory.length} attempts!`
+              ? `You found all players in ${attemptsHistory.length} attempts!`
               : "You've used all your attempts. Better luck next time!"}
           </p>
           <div className="space-y-2">
