@@ -107,33 +107,46 @@ async function getLatestDailyGuess() {
   return { data }
 }
 
-async function getTournamentRoster() {
-  // const spinner = ora()
+async function postTweet(text: string) {
+  try {
+    const response = await fetch('https://api.x.com/2/tweets', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.X_BEARER_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ text })
+    })
 
+    if (!response.ok) {
+      throw new Error(`Failed to post tweet: ${response.statusText}`)
+    }
+
+    console.info('Successfully posted tweet!')
+    return await response.json()
+  } catch (error) {
+    console.error('Error posting tweet:', error)
+  }
+}
+
+async function getTournamentRoster() {
   try {
     const region = pickRandomInList(REGIONS)
-
-    // spinner.start(`Fetching the past tournaments list for the region ${region}`)
     const tournaments = await fetchTournamentsForRegion(region)
 
     if (!tournaments.length) {
-      // spinner.fail('No tournament found')
       throw new Error(`No tournament found for the region ${region}`)
     }
 
-    // spinner.succeed('Fetched the past tournament list')
     const tournament = pickRandomInList(tournaments)
     console.info(`Selected tournament ${tournament.id}`)
 
-    // spinner.start(`Fetching rosters for tournament ID ${tournament.id}`)
     const rosters = await fetchRostersForTournament(tournament.id)
 
     if (!rosters.length) {
-      // spinner.fail('No rosters found')
       throw new Error(`No rosters found for the tournament ID ${tournament.id}`)
     }
 
-    // spinner.succeed('Fetched rosters')
     const roster = pickRandomInList(rosters)
     console.info(`Selected roster ${roster.acronym}`)
 
@@ -146,13 +159,22 @@ async function getTournamentRoster() {
       console.warn(
         'Selected roster is the same as the latest daily guess. Retrying...'
       )
-      return getTournamentRoster() // Recursively re-run to pick a different roster
+      return getTournamentRoster()
     }
 
     await insertRosterInDatabase({
       tournamentId: tournament.id,
       teamId: roster.id
     })
+
+    const tournamentResponse = await fetch(
+      `${TOURNAMENT_ROSTERS_URL}/${tournament.id}?token=${process.env.PANDASCORE_TOKEN}`
+    )
+    const tournamentData = await tournamentResponse.json()
+
+    await postTweet(
+      `🎮 New Daily Guess available!\n\n🕵️ You have 6 tries to guess a roster from a past tournament.\n\nToday's challenge: Can you name the ${roster.acronym} roster from the ${new Date(tournamentData.begin_at).getFullYear()} ${tournamentData.league.name}?\n\n👉 https://lol-tier-list.com/daily-guess\n\n#LeagueOfLegends`
+    )
   } catch (err) {
     console.error('Error in getTournamentRoster:', err)
   }
