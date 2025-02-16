@@ -3,9 +3,12 @@ import { createClient as createServerPropsClient } from 'clients/supabase/server
 import clsx from 'clsx'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import type { PandaScoreTournamentWithExpectedRosters } from 'providers/pandascore/types'
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
 
+import { CoffeeIcon } from '@/components/animatedIcons/Coffee'
+import { ShareIcon } from '@/components/animatedIcons/Share'
 import { Button } from '@/components/Button'
 import { Footer } from '@/components/Footer/Footer'
 import { Header } from '@/components/Header/Header'
@@ -273,9 +276,21 @@ const Page = ({
               ))}
             </div>
           </div>
-          <div>
+          <div className="space-y-4">
             <Button className="w-full" onClick={handleShare}>
-              Share
+              <ShareIcon />
+              Share your result
+            </Button>
+            <Button className="w-full">
+              <Link
+                href="https://buymeacoffee.com/arnaudmanaranche"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center"
+              >
+                <CoffeeIcon />
+                Support the project
+              </Link>
             </Button>
           </div>
         </div>
