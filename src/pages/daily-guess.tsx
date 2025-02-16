@@ -104,6 +104,7 @@ const Page = ({
 
       if (results.every(Boolean) || remainingAttempts === 1) {
         setShowCompletionModal(true)
+        track('DailyGuessGameComplete')
       }
     },
     [checkGuesses, remainingAttempts, hasValidGuessesToSubmit]
