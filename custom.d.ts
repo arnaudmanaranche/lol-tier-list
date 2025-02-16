@@ -15,5 +15,8 @@ declare namespace NodeJS {
     PANDASCORE_TOKEN: string
     // Cronitor
     NEXT_PUBLIC_CRONITOR_API_KEY: string
+    // N8N
+    N8N_WEBHOOK_URL: string
+    N8N_API_KEY: string
   }
 }
