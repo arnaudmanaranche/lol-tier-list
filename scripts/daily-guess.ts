@@ -109,7 +109,7 @@ async function getLatestDailyGuess() {
 
 async function postTweet(text: string) {
   try {
-    const response = await fetch(process.env.N8N_WEBHOOK_URL, {
+    const response = await fetch(`${process.env.N8N_WEBHOOK_URL}`, {
       method: 'POST',
       headers: {
         N8N_API_KEY: process.env.N8N_API_KEY,
