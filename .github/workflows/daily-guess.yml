@@ -12,6 +12,8 @@ jobs:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
       PANDASCORE_TOKEN: ${{ secrets.PANDASCORE_TOKEN }}
+      N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
+      N8N_API_KEY: ${{ secrets.N8N_API_KEY }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
