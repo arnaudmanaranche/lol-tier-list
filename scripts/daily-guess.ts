@@ -112,7 +112,7 @@ async function postTweet(text: string) {
     const response = await fetch(`${process.env.N8N_WEBHOOK_URL}`, {
       method: 'POST',
       headers: {
-        N8N_API_KEY: process.env.N8N_API_KEY,
+        N8N_API_KEY: `${process.env.N8N_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ text })
