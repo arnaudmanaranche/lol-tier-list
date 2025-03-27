@@ -6257,6 +6257,7 @@ __metadata:
     swr: "npm:2.2.5"
     tailwindcss: "npm:3.4.17"
     ts-node: "npm:10.9.2"
+    twitter-api-v2: "npm:1.20.2"
     typescript: "npm:5"
   languageName: unknown
   linkType: soft
@@ -8384,6 +8385,13 @@ __metadata:
   version: 2.5.0
   resolution: "tslib@npm:2.5.0"
   checksum: 10/ea556fbdf396fe15dbd45e242754e86e7c36e0dce8644404a7c8a81ae1e940744dc639569aeca1ae370a7f804d82872f3fd8564eb23be9adb7618201d0314dac
+  languageName: node
+  linkType: hard
+
+"twitter-api-v2@npm:1.20.2":
+  version: 1.20.2
+  resolution: "twitter-api-v2@npm:1.20.2"
+  checksum: 10/9cd6aae7d45247783fb6c5a47ebdacb1c7a7b03591502eb988bc9a33e7ed2bde84733902bc3ddab81beab3402a94794f3edc3a5a6b9500bae59b8c59e72857c7
   languageName: node
   linkType: hard
 

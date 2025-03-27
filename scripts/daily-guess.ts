@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-console */
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+
 const { SupabaseClient } = require('@supabase/supabase-js')
+const { TwitterApi } = require('twitter-api-v2')
 
 interface PandaScoreTournament {
   id: number
@@ -37,6 +39,13 @@ const supabase = new SupabaseClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
+
+const twitterClient = new TwitterApi({
+  appKey: process.env.TWITTER_API_KEY!,
+  appSecret: process.env.TWITTER_API_SECRET!,
+  accessToken: process.env.TWITTER_ACCESS_TOKEN!,
+  accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET!
+})
 
 function pickRandomInList<T>(list: T[]): T {
   const index = Math.floor(Math.random() * list.length)
@@ -109,14 +118,7 @@ async function getLatestDailyGuess() {
 
 async function postTweet(text: string) {
   try {
-    const response = await fetch(`${process.env.N8N_WEBHOOK_URL}`, {
-      method: 'POST',
-      headers: {
-        N8N_API_KEY: `${process.env.N8N_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ text })
-    })
+    const response = await twitterClient.v2.tweet(text)
 
     if (!response.ok) {
       throw new Error(`Failed to post tweet: ${response.statusText}`)

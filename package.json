@@ -38,7 +38,8 @@
     "resend": "4.0.1",
     "sonner": "1.7.1",
     "swr": "2.2.5",
-    "ts-node": "10.9.2"
+    "ts-node": "10.9.2",
+    "twitter-api-v2": "1.20.2"
   },
   "devDependencies": {
     "@babel/core": "7.26.9",
