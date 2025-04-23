@@ -8,25 +8,24 @@ async function handler(
   const supabaseClient = createClient(req, res)
 
   if (req.method === 'GET') {
-    const { take, cursor, showPastTournaments } = req.query
+    const { take, page = 0, showPastTournaments } = req.query
     const today = new Date()
     today.setHours(0, 0, 0, 0)
+
+    const from = Number(page) * Number(take)
+    const to = from + Number(take) - 1
 
     let query = supabaseClient
       .from('tournaments')
       .select('id, event, year, region, active, logo, begin_at')
       .order('year', { ascending: false })
       .order('active', { ascending: false })
-      .limit(Number(take))
+      .range(from, to)
 
     if (showPastTournaments === 'true') {
       query = query.lt('begin_at', today.toISOString())
     } else {
       query = query.gte('begin_at', today.toISOString())
-    }
-
-    if (cursor) {
-      query = query.gt('id', cursor)
     }
 
     const { data } = await query

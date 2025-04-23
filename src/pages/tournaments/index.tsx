@@ -50,9 +50,7 @@ const Page = ({
       // We have reached the end of the pagination
       if (previousPageData && !previousPageData.length) return null
 
-      return `/api/tournaments?cursor=${
-        previousPageData[previousPageData.length - 1].id
-      }&take=${TAKE_PARAM_ARGUMENT}&showPastTournaments=true`
+      return `/api/tournaments?page=${pageIndex}&take=${TAKE_PARAM_ARGUMENT}&showPastTournaments=true`
     },
     fetcher,
     {
@@ -100,6 +98,9 @@ const Page = ({
       )
     }
   }, [searchParams])
+
+  const lastPage = pastTournamentsData?.[pastTournamentsDataSize - 1]
+  const isReachingEnd = !lastPage || lastPage.length < TAKE_PARAM_ARGUMENT
 
   return (
     <>
@@ -214,8 +215,7 @@ const Page = ({
                   ))
                 })}
               </m.div>
-              {/* @ts-expect-error pagination */}
-              {!pastTournamentsData[pastTournamentsDataSize - 1]?.length ? (
+              {isReachingEnd ? (
                 <div className="my-10 text-center text-gray-400">
                   No more tournaments to load
                 </div>
