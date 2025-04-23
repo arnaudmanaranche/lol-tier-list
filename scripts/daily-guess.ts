@@ -120,8 +120,8 @@ async function postTweet(text: string) {
   try {
     const response = await twitterClient.v2.tweet(text)
 
-    if (!response.ok) {
-      throw new Error(`Failed to post tweet: ${response.statusText}`)
+    if (!response.data.id) {
+      throw new Error(`Failed to post tweet: ${response.errors[0].title}`)
     }
 
     console.info('Successfully posted tweet!')
