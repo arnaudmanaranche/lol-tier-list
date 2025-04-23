@@ -29,7 +29,8 @@ const REGIONS: string[] = [
   'lcs',
   'league-of-legends-lck-champions-korea',
   'world-championship',
-  'msi'
+  'msi',
+  'lfl'
 ]
 
 const PAST_TOURNAMENTS_URL = 'https://api.pandascore.co/lol/tournaments/past'
