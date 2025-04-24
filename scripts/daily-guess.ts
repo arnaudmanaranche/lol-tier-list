@@ -126,7 +126,6 @@ async function postTweet(text: string) {
     }
 
     console.info('Successfully posted tweet!')
-    return await response.json()
   } catch (error) {
     console.error('Error posting tweet:', error)
   }
