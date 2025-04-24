@@ -122,6 +122,9 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
     )
   }).length
 
+  const remainingToGuess = isCorrect.filter((c) => !c).length
+  const requiredNewGuesses = Math.min(MINIMUM_NEW_GUESSES, remainingToGuess)
+
   const checkGuesses = () => {
     const correctNamesLower = correctNames.map((name) => name.toLowerCase())
 
@@ -147,7 +150,7 @@ export function useGuessGame({ correctNames }: UseGuessGameProps): {
   }
 
   const hasValidGuessesToSubmit =
-    newGuessesCount >= MINIMUM_NEW_GUESSES &&
+    newGuessesCount >= requiredNewGuesses &&
     guesses.some((guess, index) => guess.trim() !== '' && !isCorrect[index])
 
   return {
