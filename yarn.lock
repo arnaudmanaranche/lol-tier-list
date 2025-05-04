@@ -1627,12 +1627,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroicons/react@npm:2.0.17":
-  version: 2.0.17
-  resolution: "@heroicons/react@npm:2.0.17"
+"@heroicons/react@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@heroicons/react@npm:2.2.0"
   peerDependencies:
-    react: ">= 16"
-  checksum: 10/21d3a1e1c4de6d6fa0f70d4be11b3c42c838da5da569862c4dcc6aefaf94ee08b5232d89637e1a176eca4db975212ccd02257ef68baeaa95ea7038e0f613fec6
+    react: ">= 16 || ^19.0.0-rc"
+  checksum: 10/5bf8a3faa16f1566165bfaec2448ce3c2bd3e4f49e446ccf233f6aa63626155585eaf7e89f01fb4e8e92dfca3d7113b8c517c3b3c04036b9243c818595db3908
   languageName: node
   linkType: hard
 
@@ -6217,7 +6217,7 @@ __metadata:
     "@babel/preset-react": "npm:7.26.3"
     "@babel/preset-typescript": "npm:7.26.0"
     "@cronitorio/cronitor-rum-nextjs": "npm:0.4.0"
-    "@heroicons/react": "npm:2.0.17"
+    "@heroicons/react": "npm:2.2.0"
     "@next/env": "npm:13.5.8"
     "@radix-ui/react-dialog": "npm:1.1.4"
     "@radix-ui/react-popover": "npm:1.1.4"
