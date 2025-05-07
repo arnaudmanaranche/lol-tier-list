@@ -23,7 +23,7 @@ export const Modal = ({
           <Dialog.Title className="mb-6 font-sans text-2xl font-medium leading-6 text-white">
             {title}
           </Dialog.Title>
-          <Dialog.Description>{children}</Dialog.Description>
+          <Dialog.Description asChild>{children}</Dialog.Description>
           <Dialog.Close asChild>
             <button
               className="absolute right-2.5 top-2.5 inline-flex size-[25px] appearance-none items-center justify-center rounded-full text-white"
