@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 class AppDocument extends Document {
   render(): JSX.Element {
@@ -20,6 +21,11 @@ class AppDocument extends Document {
           />
           <meta name="apple-mobile-web-app-title" content="Begintrips" />
           <link rel="manifest" href="/site.webmanifest" />
+          <Script
+            src="https://analytics.ahrefs.com/analytics.js"
+            data-key="KlczvsyN9AlO57BGXL30+w"
+            async
+          />
         </Head>
         <body className="bg-gunmetalDark antialiased">
           <Main />
