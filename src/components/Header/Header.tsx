@@ -65,6 +65,14 @@ export function Header({ user }: HeaderProps): ReactNode {
                 Tournaments
               </Link>
             </li>
+            <li className="hidden md:block">
+              <Link
+                href={ROUTES.TIER_LISTS}
+                className="text-lg font-bold text-white"
+              >
+                Tier Lists
+              </Link>
+            </li>
             <li className="hidden items-center space-x-2 md:flex">
               <Link
                 href={ROUTES.DAILY_GUESS}

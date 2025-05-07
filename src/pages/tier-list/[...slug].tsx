@@ -140,10 +140,10 @@ const Page = ({
       <PageHeaderWrapper>
         <div className="mb-8">
           <Link
-            href={ROUTES.TOURNAMENTS}
+            href={ROUTES.TIER_LISTS}
             className="text-white transition-colors hover:text-opacity-80 hover:underline"
           >
-            Tournaments
+            Tier Lists
           </Link>
           <span className="mx-2 text-white text-opacity-60">
             / {tierList.tournament.region.toUpperCase()}{' '}

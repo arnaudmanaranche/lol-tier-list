@@ -21,6 +21,7 @@ import { DEFAULT_TITLE, WEBSITE_URL } from '@/utils/constants'
 import { fetcher } from '@/utils/fetcher'
 import { parent, stat } from '@/utils/framerMotion'
 import { isValidEmail } from '@/utils/isValidEmail'
+
 const TAKE_PARAM_ARGUMENT = 5
 
 interface PageProps {

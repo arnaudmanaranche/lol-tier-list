@@ -1,8 +1,9 @@
 export const ROUTES = {
+  DAILY_GUESS: '/daily-guess',
   HOME: '/',
-  TOURNAMENTS: '/tournaments',
   MY_ACCOUNT: '/my-account',
-  DAILY_GUESS: '/daily-guess'
+  TIER_LISTS: '/tier-lists',
+  TOURNAMENTS: '/tournaments'
 }
 
 export const SUPPORTED_REGIONS = ['lec', 'lcs', 'lck', 'lpl', 'lfl']
