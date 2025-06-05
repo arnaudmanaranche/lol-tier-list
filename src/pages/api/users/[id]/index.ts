@@ -9,10 +9,10 @@ async function handler(
   res: NextApiResponse
 ): Promise<void> {
   const userId = req.query.id as string
-  const supbaseClient = createClient(req, res)
+  const supabaseClient = createClient(req, res)
 
   if (req.method === 'DELETE') {
-    const { data } = await supbaseClient
+    const { data } = await supabaseClient
       .from('users')
       .select()
       .eq('id', userId)
@@ -23,7 +23,7 @@ async function handler(
       return
     }
 
-    await supbaseClient.from('users').delete().eq('id', data.id)
+    await supabaseClient.from('users').delete().eq('id', data.id)
 
     resend.contacts.remove({
       email: data.email,
