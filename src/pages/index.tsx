@@ -101,7 +101,7 @@ const Page = ({
                 </span>{' '}
                 to rate pro players
               </h1>
-              <div className="mx-auto flex flex-col items-center space-y-10 text-lg leading-[1.4] text-gray-100 md:max-w-3xl md:space-y-20 lg:text-xl">
+              <div className="mx-auto flex flex-col items-center space-y-8 text-lg leading-[1.4] text-gray-300 md:max-w-3xl md:space-y-10 lg:text-xl">
                 <div className="space-y-4">
                   <p className="text-center text-lg md:text-xl">
                     Create, share, and analyze tier lists made by passionate for
@@ -128,7 +128,7 @@ const Page = ({
             className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:gap-20"
             id="features"
           >
-            <div className="flex flex-col space-y-6">
+            <div className="flex flex-col items-center space-y-6 md:items-start">
               <h2 className="max-w-xl text-center text-3xl font-bold text-white md:text-left md:text-5xl">
                 Your opinion matters
               </h2>
