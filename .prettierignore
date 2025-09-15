@@ -4,3 +4,13 @@ node_modules/
 
 # production
 .next/
+dist/
+.turbo/
+
+# Generated files
+*.d.ts
+*.tsbuildinfo
+
+# Config files that shouldn't be formatted
+yarn.lock
+package-lock.json

@@ -4,5 +4,5 @@ module.exports = {
   trailingComma: 'none',
   tabWidth: 2,
   plugins: ['prettier-plugin-packagejson', 'prettier-plugin-tailwindcss'],
-  tailwindConfig: './tailwind.config.js'
+  tailwindConfig: './apps/web/tailwind.config.js'
 }

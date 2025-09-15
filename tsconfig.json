@@ -4,7 +4,6 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -12,19 +11,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "target": "esnext",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "baseUrl": "./src",
-    "paths": {
-      "@/hooks/*": ["./hooks/*"],
-      "@/utils/*": ["./utils/*"],
-      "@/components/*": ["./components/*"]
-    }
+    "target": "esnext"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [],
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "./apps/web"
+    }
+  ]
 }

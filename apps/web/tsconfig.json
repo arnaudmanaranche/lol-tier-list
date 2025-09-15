@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/hooks/*": ["./hooks/*"],
+      "@/utils/*": ["./utils/*"],
+      "@/components/*": ["./components/*"],
+      "@/types/*": ["./types/*"],
+      "@/clients/*": ["./clients/*"],
+      "@/providers/*": ["./providers/*"],
+      "@/pages/*": ["./pages/*"],
+      "@/styles/*": ["./styles/*"],
+      "@/svgs/*": ["./svgs/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": ["next-env.d.ts", "custom.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
