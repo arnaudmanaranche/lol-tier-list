@@ -3,6 +3,7 @@
 
 const { SupabaseClient } = require('@supabase/supabase-js')
 const { TwitterApi } = require('twitter-api-v2')
+const { GoogleGenAI } = require('@google/genai')
 
 interface PandaScoreTournament {
   id: number
@@ -33,6 +34,17 @@ const REGIONS: string[] = [
   'lfl'
 ]
 
+const REGION_HASHTAGS: Record<string, string> = {
+  'lta-north': '#LTA',
+  lec: '#LEC',
+  'league-of-legends-lpl-china': '#LPL',
+  lcs: '#LCS',
+  'league-of-legends-lck-champions-korea': '#LCK',
+  'world-championship': '#Worlds',
+  msi: '#MSI',
+  lfl: '#LFL'
+}
+
 const PAST_TOURNAMENTS_URL = 'https://api.pandascore.co/lol/tournaments/past'
 const TOURNAMENT_ROSTERS_URL = 'https://api.pandascore.co/tournaments'
 
@@ -47,6 +59,8 @@ const twitterClient = new TwitterApi({
   accessToken: process.env.TWITTER_ACCESS_TOKEN!,
   accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET!
 })
+
+const googleAiClient = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY })
 
 function pickRandomInList<T>(list: T[]): T {
   const index = Math.floor(Math.random() * list.length)
@@ -131,6 +145,32 @@ async function postTweet(text: string) {
   }
 }
 
+async function getTeamTwitterHandle(teamName: string): Promise<string | null> {
+  try {
+    const prompt = `What is the official Twitter/X handle for the League of Legends esports team "${teamName}"? Return ONLY the handle (e.g. "FNATIC" or "G2esports"), without the @ symbol. If you are not sure or if the team doesn't exist, return "null".`
+
+    const response = await googleAiClient.models.generateContent({
+      model: 'gemini-1.5-flash',
+      contents: prompt
+    })
+
+    const text = response.text().trim()
+
+    if (
+      text.toLowerCase() === 'null' ||
+      text.includes(' ') ||
+      text.length > 15
+    ) {
+      return null
+    }
+
+    return text.replace('@', '')
+  } catch (error) {
+    console.error(`Error searching twitter handle for ${teamName}:`, error)
+    return null
+  }
+}
+
 async function getTournamentRoster() {
   try {
     const region = pickRandomInList(REGIONS)
@@ -174,8 +214,14 @@ async function getTournamentRoster() {
     )
     const tournamentData = await tournamentResponse.json()
 
+    const teamHandle = await getTeamTwitterHandle(roster.name)
+    const regionHashtag = REGION_HASHTAGS[region] || '#LoLEsports'
+    const teamMention = teamHandle ? ` (@${teamHandle})` : ''
+
     await postTweet(
-      `🎮 New Daily Guess available!\n\n🕵️ You have 6 tries to guess a roster from a past tournament.\n\nToday's challenge: Can you name the ${roster.acronym} roster from the ${new Date(tournamentData.begin_at).getFullYear()} ${tournamentData.league.name}?\n\n👉 https://lol-tier-list.com/daily-guess\n\n#LeagueOfLegends`
+      `🎮 New Daily Guess available!\n\n🕵️ You have 6 tries to guess a roster from a past tournament.\n\nToday's challenge: Can you name the ${roster.acronym}${teamMention} roster from the ${new Date(
+        tournamentData.begin_at
+      ).getFullYear()} ${tournamentData.league.name}?\n\n👉 https://lol-tier-list.com/daily-guess\n\n#LeagueOfLegends ${regionHashtag}`
     )
   } catch (err) {
     console.error('Error in getTournamentRoster:', err)
