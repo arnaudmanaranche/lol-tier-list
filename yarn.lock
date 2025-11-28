@@ -9891,7 +9891,6 @@ __metadata:
     "@babel/preset-react": "npm:7.26.3"
     "@babel/preset-typescript": "npm:7.26.0"
     "@cronitorio/cronitor-rum-nextjs": "npm:0.4.0"
-    "@google/genai": "npm:^1.30.0"
     "@heroicons/react": "npm:2.0.17"
     "@next/env": "npm:15.5.3"
     "@radix-ui/react-dialog": "npm:1.1.4"
