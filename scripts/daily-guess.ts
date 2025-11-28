@@ -149,14 +149,15 @@ async function getTeamTwitterHandle(teamName: string): Promise<string | null> {
   try {
     const prompt = `What is the official Twitter/X handle for the League of Legends esports team "${teamName}"? Return ONLY the handle (e.g. "FNATIC" or "G2esports"), without the @ symbol. If you are not sure or if the team doesn't exist, return "null".`
 
-    const response = await googleAiClient.models.generateContent({
-      model: 'gemini-1.5-flash',
+    const response = await googleAiClient.languageModel.generateContent({
+      model: 'gemini-2.0-flash',
       contents: prompt
     })
 
-    const text = response.text().trim()
+    const text = response.text?.trim()
 
     if (
+      !text ||
       text.toLowerCase() === 'null' ||
       text.includes(' ') ||
       text.length > 15
