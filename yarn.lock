@@ -4639,6 +4639,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-cli@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "dotenv-cli@npm:11.0.0"
+  dependencies:
+    cross-spawn: "npm:^7.0.6"
+    dotenv: "npm:^17.1.0"
+    dotenv-expand: "npm:^12.0.0"
+    minimist: "npm:^1.2.6"
+  bin:
+    dotenv: cli.js
+  checksum: 10/0dab973aa8d94163f9b17f7452f9c9b567baf67e6551c3d883f3ea1df9edbd69a9ea55cbc8e020026c9e8d8f01056087526d011c1829924483c8c72f9c17c79a
+  languageName: node
+  linkType: hard
+
 "dotenv-expand@npm:^10.0.0":
   version: 10.0.0
   resolution: "dotenv-expand@npm:10.0.0"
@@ -4646,10 +4660,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-expand@npm:^12.0.0":
+  version: 12.0.3
+  resolution: "dotenv-expand@npm:12.0.3"
+  dependencies:
+    dotenv: "npm:^16.4.5"
+  checksum: 10/d9aaf051805c8fa64e7e3620936ecb38229a93f5603883e53856d6f57cd4ae93fb74baefdf0b03b1c0608bc3eefbbcb23912972d7303b6191a5c0e1688a8652f
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^16.3.0":
   version: 16.4.7
   resolution: "dotenv@npm:16.4.7"
   checksum: 10/f13bfe97db88f0df4ec505eeffb8925ec51f2d56a3d0b6d916964d8b4af494e6fb1633ba5d09089b552e77ab2a25de58d70259b2c5ed45ec148221835fc99a0c
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.4.5":
+  version: 16.6.1
+  resolution: "dotenv@npm:16.6.1"
+  checksum: 10/1d1897144344447ffe62aa1a6d664f4cd2e0784e0aff787eeeec1940ded32f8e4b5b506d665134fc87157baa086fce07ec6383970a2b6d2e7985beaed6a4cc14
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^17.1.0":
+  version: 17.2.3
+  resolution: "dotenv@npm:17.2.3"
+  checksum: 10/f8b78626ebfff6e44420f634773375c9651808b3e1a33df6d4cc19120968eea53e100f59f04ec35f2a20b2beb334b6aba4f24040b2f8ad61773f158ac042a636
   languageName: node
   linkType: hard
 
@@ -6995,6 +7032,7 @@ __metadata:
     "@google/genai": "npm:^1.30.0"
     "@typescript-eslint/eslint-plugin": "npm:8.18.1"
     "@typescript-eslint/parser": "npm:8.18.1"
+    dotenv-cli: "npm:^11.0.0"
     eslint: "npm:8.57.1"
     eslint-config-prettier: "npm:8.10.0"
     eslint-plugin-simple-import-sort: "npm:7.0.0"

@@ -54,10 +54,10 @@ const supabase = new SupabaseClient(
 )
 
 const twitterClient = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY!,
-  appSecret: process.env.TWITTER_API_SECRET!,
-  accessToken: process.env.TWITTER_ACCESS_TOKEN!,
-  accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET!
+  appKey: process.env.TWITTER_API_KEY || 'mock',
+  appSecret: process.env.TWITTER_API_SECRET || 'mock',
+  accessToken: process.env.TWITTER_ACCESS_TOKEN || 'mock',
+  accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || 'mock'
 })
 
 const googleAiClient = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY })
@@ -133,6 +133,14 @@ async function getLatestDailyGuess() {
 
 async function postTweet(text: string) {
   try {
+    if (
+      process.env.TWITTER_API_KEY === 'mock' ||
+      !process.env.TWITTER_API_KEY
+    ) {
+      console.info('Mocking tweet post:', text)
+      return
+    }
+
     const response = await twitterClient.v2.tweet(text)
 
     if (!response.data.id) {
@@ -149,7 +157,7 @@ async function getTeamTwitterHandle(teamName: string): Promise<string | null> {
   try {
     const prompt = `What is the official Twitter/X handle for the League of Legends esports team "${teamName}"? Return ONLY the handle (e.g. "FNATIC" or "G2esports"), without the @ symbol. If you are not sure or if the team doesn't exist, return "null".`
 
-    const response = await googleAiClient.languageModel.generateContent({
+    const response = await googleAiClient.models.generateContent({
       model: 'gemini-2.0-flash',
       contents: prompt
     })

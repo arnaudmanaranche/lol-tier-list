@@ -9,6 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
+    "daily-guess": "dotenv -- ts-node scripts/daily-guess.ts",
     "dev": "turbo run dev",
     "generate:types": "turbo run generate:types",
     "lint": "turbo run lint",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "8.18.1",
     "@typescript-eslint/parser": "8.18.1",
+    "dotenv-cli": "11.0.0",
     "eslint": "8.57.1",
     "eslint-config-prettier": "8.10.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
