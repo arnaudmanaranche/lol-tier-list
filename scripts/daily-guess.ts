@@ -170,8 +170,11 @@ async function getTeamTwitterHandle(teamName: string): Promise<string | null> {
       text.includes(' ') ||
       text.length > 15
     ) {
+      console.log(`Could not find a valid twitter handle for ${teamName}`)
       return null
     }
+
+    console.log(`Found twitter handle for ${teamName}: ${text}`)
 
     return text.replace('@', '')
   } catch (error) {
