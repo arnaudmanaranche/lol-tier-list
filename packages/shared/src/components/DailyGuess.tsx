@@ -1,5 +1,6 @@
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
-import { Platform, Share, Text, View } from 'react-native'
+
+import { Platform, Share, Text, View } from '../primitives'
 
 import { useGuessGame } from '../hooks/useDailyGuessGame'
 import { CoffeeIcon } from '../icons/CoffeeIcon'

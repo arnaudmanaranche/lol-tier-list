@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { createClient } from '@/clients/supabase/api'
+import createClient from '@/clients/supabase/api'
 import type { PandaScoreTournamentWithExpectedRosters } from '@/providers/pandascore/types'
 
 interface RosterResponse {

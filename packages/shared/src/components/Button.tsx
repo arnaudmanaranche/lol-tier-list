@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react'
-import { Pressable, Text, type PressableProps } from 'react-native'
+
+import { Pressable, Text } from '../primitives'
 
 type ButtonType = 'default' | 'danger'
 
-interface ButtonProps extends Omit<PressableProps, 'children'> {
+interface ButtonProps {
   children: ReactNode
   onPress?: () => void
   isDisabled?: boolean

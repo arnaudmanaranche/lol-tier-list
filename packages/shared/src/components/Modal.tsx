@@ -1,13 +1,9 @@
 import type { ReactNode } from 'react'
-import {
-  Modal as RNModal,
-  Pressable,
-  Text,
-  View,
-  type ModalProps as RNModalProps
-} from 'react-native'
+import { Modal as RNModal } from 'react-native'
 
-interface ModalProps extends Omit<RNModalProps, 'visible'> {
+import { Pressable, Text, View } from '../primitives'
+
+interface ModalProps {
   isOpen: boolean
   toggleModal: () => void
   title: ReactNode
@@ -18,16 +14,16 @@ export function Modal({
   isOpen,
   toggleModal,
   title,
-  children,
-  ...props
+  children
 }: ModalProps): ReactNode {
+  if (!isOpen) return null
+
   return (
     <RNModal
       visible={isOpen}
       transparent
       animationType="fade"
       onRequestClose={toggleModal}
-      {...props}
     >
       <View className="flex-1 items-center justify-center bg-black/40">
         <View className="m-5 max-w-[450px] rounded-lg bg-[#121212] p-6 shadow-lg">
@@ -38,7 +34,6 @@ export function Modal({
             <Pressable
               onPress={toggleModal}
               className="h-8 w-8 items-center justify-center rounded-full"
-              accessibilityLabel="Close"
             >
               <Text className="text-xl text-white">✕</Text>
             </Pressable>

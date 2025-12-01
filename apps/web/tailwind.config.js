@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
-  content: ['./src/**/*.tsx'],
+  content: ['./src/**/*.tsx', '../../packages/shared/src/**/*.{ts,tsx}'],
   darkMode: 'class',
   safelist: [
     'bg-gTier',

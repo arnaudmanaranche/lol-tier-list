@@ -1,7 +1,11 @@
 import type { ReactNode } from 'react'
-import { Text, TextInput, View, type TextInputProps } from 'react-native'
 
-interface GameInputProps extends TextInputProps {
+import { Text, TextInput, View } from '../primitives'
+
+interface GameInputProps {
+  value?: string
+  onChangeText?: (text: string) => void
+  onBlur?: () => void
   isCorrect?: boolean
   hasError?: boolean
   errorMessage?: string
