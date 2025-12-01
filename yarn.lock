@@ -12385,7 +12385,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-svg@npm:^15.11.2":
+"react-native-svg@npm:^15.11.2, react-native-svg@npm:^15.8.0":
   version: 15.15.1
   resolution: "react-native-svg@npm:15.15.1"
   dependencies:
@@ -14798,6 +14798,7 @@ __metadata:
     "@babel/preset-typescript": "npm:7.26.0"
     "@cronitorio/cronitor-rum-nextjs": "npm:0.4.0"
     "@heroicons/react": "npm:2.0.17"
+    "@lol-tier-list/shared": "workspace:*"
     "@next/env": "npm:15.5.3"
     "@radix-ui/react-dialog": "npm:1.1.4"
     "@radix-ui/react-popover": "npm:1.1.4"
@@ -14824,6 +14825,8 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:0.6.11"
     react: "npm:19.1.1"
     react-dom: "npm:19.1.1"
+    react-native-svg: "npm:^15.8.0"
+    react-native-web: "npm:~0.21.0"
     resend: "npm:4.0.1"
     sonner: "npm:1.7.1"
     swr: "npm:2.2.5"
