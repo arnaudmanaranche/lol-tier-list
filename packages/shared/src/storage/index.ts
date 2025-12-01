@@ -1,2 +1,2 @@
 export type { Storage } from './types'
-export { storage } from './storage'
+export { storage } from './storage.web'

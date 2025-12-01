@@ -25,6 +25,7 @@
   "dependencies": {
     "@cronitorio/cronitor-rum-nextjs": "0.4.0",
     "@heroicons/react": "2.0.17",
+    "@lol-tier-list/shared": "workspace:*",
     "@radix-ui/react-dialog": "1.1.4",
     "@radix-ui/react-popover": "1.1.4",
     "@radix-ui/react-tabs": "1.1.2",
@@ -39,6 +40,7 @@
     "next": "15.5.3",
     "react": "19.1.1",
     "react-dom": "19.1.1",
+    "react-native-web": "~0.21.0",
     "resend": "4.0.1",
     "sonner": "1.7.1",
     "swr": "2.2.5",
