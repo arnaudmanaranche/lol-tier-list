@@ -56,14 +56,33 @@ Text.displayName = 'Text'
 
 // TextInput component - renders as input with Tailwind classes
 interface TextInputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  extends Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'onChange' | 'autoCorrect'
+  > {
   className?: string
   onChangeText?: (text: string) => void
   editable?: boolean
+  // React Native specific props to ignore
+  placeholderTextColor?: string
+  autoCapitalize?: string
+  autoCorrect?: boolean
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ className, onChangeText, editable = true, ...props }, ref) => (
+  (
+    {
+      className,
+      onChangeText,
+      editable = true,
+      // Destructure RN-specific props to prevent them from being passed to DOM
+      placeholderTextColor: _placeholderTextColor,
+      autoCapitalize: _autoCapitalize,
+      autoCorrect: _autoCorrect,
+      ...props
+    },
+    ref
+  ) => (
     <input
       ref={ref}
       className={className}

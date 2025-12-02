@@ -1,5 +1,6 @@
 import { DailyGuess } from '@lol-tier-list/shared/components'
 import { storage } from '@lol-tier-list/shared/storage'
+import Constants from 'expo-constants'
 import * as Linking from 'expo-linking'
 import { useEffect, useState } from 'react'
 import { ActivityIndicator, Text, View } from 'react-native'
@@ -17,7 +18,23 @@ interface RosterData {
   tournamentName: string
 }
 
-const API_URL = 'https://lol-tierlist.com/api/daily-guess'
+// Use local dev server in development, production URL otherwise
+const getApiUrl = () => {
+  if (__DEV__) {
+    // Get the local IP from Expo's manifest
+    const debuggerHost = Constants.expoConfig?.hostUri?.split(':')[0]
+    if (debuggerHost) {
+      return `http://${debuggerHost}:3000/api/daily-guess`
+    }
+    // Fallback for simulator
+    return 'http://localhost:3000/api/daily-guess'
+  }
+  return 'https://lol-tierlist.com/api/daily-guess'
+}
+
+const API_URL = getApiUrl()
+
+console.log('API_URL', API_URL)
 
 export default function DailyGuessScreen() {
   const [data, setData] = useState<RosterData | null>(null)

@@ -3,8 +3,8 @@ import { type ReactNode, useCallback, useEffect, useState } from 'react'
 import { Platform, Share, Text, View } from '../primitives'
 
 import { useGuessGame } from '../hooks/useDailyGuessGame'
-import { CoffeeIcon } from '../icons/CoffeeIcon'
-import { ShareIcon } from '../icons/ShareIcon'
+// import { CoffeeIcon } from '../icons/CoffeeIcon'
+// import { ShareIcon } from '../icons/ShareIcon'
 import type { Storage } from '../storage/types'
 
 import { Button } from './Button'
@@ -285,14 +285,14 @@ export function DailyGuess({
           <View className="space-y-3">
             <Button onPress={handleShare} className="w-full">
               <View className="flex-row items-center justify-center">
-                <ShareIcon />
+                {/* <ShareIcon /> */}
                 <Text className="ml-2 text-white">Share your result</Text>
               </View>
             </Button>
             {onSupportPress && (
               <Button onPress={onSupportPress} className="w-full">
                 <View className="flex-row items-center justify-center">
-                  <CoffeeIcon />
+                  {/* <CoffeeIcon /> */}
                   <Text className="ml-2 text-white">Support the project</Text>
                 </View>
               </Button>

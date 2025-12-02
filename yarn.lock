@@ -2794,6 +2794,16 @@ __metadata:
   peerDependencies:
     react: ">=18"
     react-native: ">=0.74"
+  dependenciesMeta:
+    moti:
+      optional: true
+    nativewind:
+      optional: true
+    react-native-reanimated:
+      optional: true
+  peerDependenciesMeta:
+    react-native:
+      optional: true
   languageName: unknown
   linkType: soft
 
