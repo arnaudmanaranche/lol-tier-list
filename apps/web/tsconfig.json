@@ -21,6 +21,12 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "custom.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "custom.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "../../packages/shared/src/**/*.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -10,6 +10,7 @@ interface GameInputProps {
   hasError?: boolean
   errorMessage?: string
   index: number
+  className?: string
 }
 
 export function GameInput({
