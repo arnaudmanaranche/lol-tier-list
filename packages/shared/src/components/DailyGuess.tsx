@@ -47,7 +47,6 @@ export function DailyGuess({
     checkGuesses,
     isCorrect,
     isComplete,
-    usedNames,
     attemptsHistory,
     remainingAttempts,
     MAX_ATTEMPTS,
@@ -175,10 +174,7 @@ export function DailyGuess({
               value={guess}
               isCorrect={isCorrect[index]}
               hasError={
-                hasSubmitted &&
-                !!submittedGuesses[index] &&
-                !isCorrect[index] &&
-                usedNames.has(submittedGuesses[index].toLowerCase())
+                hasSubmitted && !!submittedGuesses[index] && !isCorrect[index]
               }
               errorMessage="Wrong answer. Try again!"
               onChangeText={(value) => {
