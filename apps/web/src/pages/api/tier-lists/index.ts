@@ -10,18 +10,20 @@ async function handler(
   if (req.method === 'GET') {
     const { take, page = 0 } = req.query
 
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-
-    const from = Number(page) * Number(take)
-    const to = from + Number(take) - 1
-
-    const { data } = await supabaseClient
+    let query = supabaseClient
       .from('rankings')
       .select(
         'tournament:tournaments(year, event, region, logo), user:users(username)'
       )
-      .range(from, to)
+
+    // Only apply pagination if take is provided
+    if (take) {
+      const from = Number(page) * Number(take)
+      const to = from + Number(take) - 1
+      query = query.range(from, to)
+    }
+
+    const { data } = await query
 
     res.status(200).json(data)
   } else {
